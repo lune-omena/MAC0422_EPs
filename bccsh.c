@@ -43,8 +43,8 @@ int main () {
         }
         */
 
-       printf("\n%s\n", buffer);
-       sleep(1);
+       //printf("\n%s\n", buffer);
+       //sleep(1);
     }
 
     return 0;

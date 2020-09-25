@@ -34,39 +34,38 @@ processos (ep1). */
 
 /* Bibliotecas */
 #include <stdio.h>          /* printf(), fgets()... */
-#include <stdlib.h>         /* malloc() */
+#include <stdlib.h>         /* malloc(), free() */
 #include <unistd.h>         /* sleep()*/
 #include <pthread.h>        /* usado para threads e semáforos */
-#include <unistd.h>         /* contém constantes mágicas do unix, ex: SYS_write */
+/*#include <unistd.h>         *//* contém constantes mágicas do unix, ex: SYS_write */
 #include <sys/syscall.h>    /* usado para syscalls */
 #include <sys/wait.h>       /* waitpid()*/
-
-//typedef long int pid_t;
+#include <readline/readline.h> /* ler linha de comando */
+#include <readline/history.h>  /* historico do terminal */
 
 /* Execução */
 int main () {
     //https://stackoverflow.com/questions/30149779/c-execve-parameters-spawn-a-shell-example
 
     char * buffer;   // buffer de texto
+    char * prompt = "lara@salsinha:~/bla$ "; // usuário :)
     pid_t childpid;  // usado para processo filho
     char * args[2];  // usados como parâmetros para execve
-
+    
     // Vamos ter que mudar isso aqui :0
     args[0] = "/bin/ls";
     //args[1] = "-lh";
     args[1] = NULL;
 
-    buffer = (char *) malloc(MAX*sizeof(char));
+    using_history();
 
     printf("bom dia\n");
     printf("Digite CTRL+C para finalizar.\n");
 
     /* Código retirado da aula de 17/09 */
-    while (1) {
+    while ((buffer=readline(prompt))) {
         // type_prompt();
-        printf("lara@salsinha:~/bla$ ");
         // read_command(command, parameters);
-        fgets(buffer, MAX, stdin);
 
         if( (childpid = fork()) == 0 ) {
             // Código do filho
@@ -99,9 +98,9 @@ int main () {
 
        //printf("\n%s\n", buffer);
        //sleep(1);
+       add_history(buffer);
+       free(buffer);
     }
-
-    free(buffer);
 
     return 0;
 }

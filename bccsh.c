@@ -53,7 +53,8 @@ int main () {
 
     // Vamos ter que mudar isso aqui :0
     args[0] = "/bin/ls";
-    args[1] = "-lh";
+    //args[1] = "-lh";
+    args[1] = NULL;
 
     buffer = (char *) malloc(MAX*sizeof(char));
 
@@ -72,8 +73,17 @@ int main () {
             printf("código do filho\n");
             //execve(command, parameters, 0);
             execve(args[0], args, NULL);
+            /*  aparentemente o execve funciona da seguinte maneira:
+                o primeiro argumento é o processo a substituir o atual (com seu path)
+                o segundo indica os argumentos que seguiriam em seguida do path (tipo argc da main) ->
+                (By convention, the  first of  these  strings  (i.e.,  argv[0])  should contain the filename 
+                associated with the file being executed. )
+                o terceiro é um array de strings ? parece que pode ser 0 ou NULL;
+                ( The argv and envp arrays must each include a null pointer at the end of the array.)
+            */
 
             //(https://man7.org/linux/man-pages/man2/execve.2.html)
+
             while (1) {
                 sleep(1);
                 printf("Primeiro processo filho...\n");

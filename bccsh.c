@@ -1,7 +1,7 @@
 /* EP1 - Sistemas Operacionais
  * 
  * Nome: Lara Ayumi Nagamatsu               NUSP: 9910568
- * Nome: Lucy Anne de Omena Evangelista     NUSP: 
+ * Nome: Lucy Anne de Omena Evangelista     NUSP: 11221776
  * 
  */
 
@@ -37,12 +37,16 @@ processos (ep1). */
 #include <stdlib.h>     /* malloc() */
 #include <unistd.h>     /* sleep()*/
 #include <pthread.h>    /* usado para threads e semáforos */
+#include <unistd.h>     /* contém constantes mágicas do unix, ex: SYS_write */
+#include <sys/syscall.h>/* usado para syscalls */
+
+typedef long int pid_t;
 
 /* Execução */
 int main () {
 
     char * buffer;
-    //pid_t childpid;
+    pid_t childpid;
 
     buffer = (char *) malloc(MAX*sizeof(char));
 

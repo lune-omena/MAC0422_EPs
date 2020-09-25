@@ -20,6 +20,8 @@ processos (ep1). */
 int main () {
 
     char * buffer;
+    //pid_t childpid;
+
     buffer = (char *) malloc(MAX*sizeof(char));
 
     printf("bom dia\n");
@@ -33,13 +35,19 @@ int main () {
         fgets(buffer, MAX, stdin);
 
         /*
-        if(fork() != 0) {
-            // Código do pai
-            waitpid(-1, &status, 0);
+        if( (childpid = fork()) == 0 ) {
+            // Código do filho
+            printf("código do filho\n");
+            //execve(command, parameters, 0);
+            while (1) {
+                sleep(1);
+                printf("Primeiro processo filho...\n");
+            }
         }
         else {
-            // Código do filho
-            execve(command, parameters, 0);
+            // Código do pai
+            printf("código do pai\n");
+            //waitpid(-1, &status, 0);
         }
         */
 
@@ -48,6 +56,6 @@ int main () {
     }
 
     free(buffer);
-    
+
     return 0;
 }

@@ -11,7 +11,7 @@
 processos (ep1). */
 
 /* Bibliotecas */
-#include <stdio.h>      /* printf(), scanf()... */
+#include <stdio.h>      /* printf(), fgets()... */
 #include <stdlib.h>     /* malloc() */
 #include <unistd.h>     /* sleep()*/
 #include <pthread.h>    /* usado para threads e semáforos */
@@ -47,5 +47,7 @@ int main () {
        //sleep(1);
     }
 
+    free(buffer);
+    
     return 0;
 }

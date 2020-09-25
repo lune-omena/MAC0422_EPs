@@ -5,6 +5,9 @@
  * 
  */
 
+/* LUCY!!!! gostei muito deste site: https://explainshell.com/explain?cmd=du+-hs+.
+ * dê uma olhada :) */
+
 #define MAX 100 // número de caracteres a serem lidos por linha no bccsh
 
 /* A compilação do código deve gerar dois binários. Um binário do bccsh e um binário do simulador de
@@ -58,6 +61,7 @@ int main () {
             // Código do filho
             printf("código do filho\n");
             //execve(command, parameters, 0);
+            //(https://man7.org/linux/man-pages/man2/execve.2.html)
             while (1) {
                 sleep(1);
                 printf("Primeiro processo filho...\n");
@@ -67,6 +71,7 @@ int main () {
             // Código do pai
             printf("código do pai\n");
             //waitpid(-1, &status, 0);
+            //(https://man7.org/linux/man-pages/man2/waitpid.2.html)
         }
         */
 

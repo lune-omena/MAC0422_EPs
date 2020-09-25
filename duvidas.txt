@@ -1,0 +1,51 @@
+https://t.me/SistemasOperacionais/698
+https://t.me/SistemasOperacionais/698
+
+pid_t é definido como:
+typedef long int pid_t
+
+--------
+
+Caso vcs usem o vscode, usem a extensão clangd ao invés da extensão da microsoft q pra todo include q vc der, ao passar o mouse em cima ele te mostra um link que te leva pro header. Foi lá que eu vi esse typedef.
+
+--------
+
+Gentez se eu faço ln -s teste1.txt teste2.txt eu crio um link teste2.txt -> teste1.txt ne?
+
+vc pode testar com pastas tb. ln -s . abc cria um um atalho abc que sempre dá na mesma pagina atual, ai vc pode ficar entrando infinitamente na mesma pasta kkkk
+
+----------------------
+Pra cima e para baixo no terminal
+Talvez lendo esse link vc possa ter alguma ideia http://web.mit.edu/gnu/doc/html/rlman_2.html :)
+
+Declara using_history(), pega a entrada com readline() e da add_history() na string lida. Lembra de dar free na string depois
+
+Se passar o prompt como argumento da readline ele deixa de dar aquele problema lá seta pra baixo sumir o prompt
+
+
+------------------------------
+Gemte, eu lembro q alguem perguntou se as threads sempre viriam ordenadas no txt e ele respondeu q sim
+Acho q era por t0
+
+
+--------------------------------------
+Eu so queria saber como faz um negocio, como eu interrompo uma thread q ja ta rodando o processo dela?!
+
+Com pthread_cancel eu acho que rola!
+Tem pthread_kill também se não me engano, mas acho que essa mata a thread
+Manda como argumento alguma coisa contável que depois você manda de novo quando criar uma nova thread pra terminar a tarefa
+Eu e minha dupla fazemos mais ou menos por aí
+Quando precisamos interromper uma thread, a gente passa alguma coisa que seja atualizável pra quando criar essa thread interrompida depois de novo, ela já possa vir no estado que tinha parado
+Dito isso, não sei se pthread_cancel mata ou para a thread......
+
+
+
+------------------
+gente, alguem mais teve problema pra passar argumento pro binario na hora de executar pelo nosso shell? to tentando mandar pro traceroute mas o traceroute me da a saida como se não tivesse passado argumento nenhum
+tipo, eu passo o traceroute www.google.com.br mas a saida do traceroute é "Usage: traceroute..."
+
+Se for o mesmo erro que eu e minha dupla tivemos, por definição o argv[0] tem que ser o nome do binário
+A gente estava chamando o binário e colocando só os parâmetros no argv
+Sem colocar o nome do binário no argv[0]
+o nome do binario tem que ser o argv[0] da chamada do proprio binario
+

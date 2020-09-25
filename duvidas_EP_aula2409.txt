@@ -1,0 +1,39 @@
+• expressão atômica: sem valor intermediário acessível
+• EP - simular processos de forma sintética (só consome CPU, sem aguardo de E/S), o FCFS não precisa fazer preempção (interrompe o processo em execução para atender outro) -> única entidade que pode retirá-lo é ele msm
+• Professor, eu tenho uma duvida sobre o EP.  Supondo que um processo tenha t0 = 8, eu preciso esperar 8 seg reais para criar a thread? eu posso criar todas as threads juntas e só garantir que uma thread não comece o trabalho dela antes de d0?
+R: Pode. Pode ler o arq. de entrada inteiro, guardar e só ativar os eventos quando o relógio mostrar que acontecerem.
+• Aproveitando, como eu sei que o t0 vai ser sempre menor que o tempo atual que o escalonador está rodando?
+R: ?? não tem como. Se o maior t0 que tem é 200, alguma hora o simulador chega em 200?
+• É normal o execve terminar o programa após a execução?
+R: rodando o du com exec -> se você rodá-lo, quando acabar volta pro shell. lembre-se de fazer o fork.
+• Também queria saber se podemos ter um cenário onde a CPU pode ficar parada esperando porque um processo já acabou e o próximo só chega daqui a alguns segundos?
+R: Sim. É pra fazer exatamente isso.
+• É garantido que a entrada está ordenada pelos t0s?
+R: Sim.
+• Aproveitando também, para um processos ter certo tempo real, pensei em fazer um cálculo envolvendo o CLOCKS_PER_SEC pra ficar num loop por determinado tempo, ou tem alguma outra forma de fazer? 
+R: Não precisa disso tudo. Coloca um sleep ou usleep. O tempo será em número natural, então a função sleep() já é suficiente.
+• Considerando que o simulador está rodando fazem 12 segundos e nesse momento ele lê um processo com t0 = 10 segundos
+R: os caras que vão chegando vão ter que esperar. :( vão ficar na fila.
+• sim, mas considera que eu leio todos os processos e termino de ler depois de 5 segundos, mas tem um processo que deveria ter executado em 3 segundos, mas eu demorei 5s pra ler, o que fazer?
+R: se isso acontecer, espera ler tudo para começar a rodar depois.
+• Lembrando que quando faz o execve você tá substituindo a imagem direta. Por isso precisa do fork() antes.
+• No FCFS,  pode acontecer a seguinte situação: um processo chega em t = 1s e demora 10s para terminar. Então em t = 1s, o processo começa e roda por 10s. Se em algum momento entre 1s e 10s chegar um segundo processo, esse só passará a ser executado após t=11s, quando o primeiro processo terminar? mesmo que seu t0 esteja entre 1 e 10?
+R: sim. supondo fcfs (escalonador), isso vaia acontecer. é necessário um bom arquivo de entrada para msotrar as vantagens e desvantagens de algoritmos.
+• Professor, mas a gente tem que ficar operando durante o tempo todo ou podemos fazer apenas uma operação?
+Do tipo, fazer um sleep de 10 segundos e depois fazer só uma operação pra simular essa thread rodando?
+R: você tem que ter um jeito de contar que o processo rodasse isso, esse tempo. Um jeito é fazer 10x sleep() de 1 segundo. no round-robin, teremos que vários processos irão acabar mais rápido (funciona com preempção). O sleep() não consome CPU, deslocamento de bit (i = i +1 com sleep(1)), algo assim. -> fica de olho no top (do shell), um consumo de 10% de CPU é daora. faz uma thread (while(1)) rodando o top em paralelo, rodando uma soma com sleep em x milissegundos. se não tiver comendo muita cpu, faz multiplicação ou potência ou algo assim. 
+• ESCREVA top NO BASH E TECLE 1
+• professor, fiquei confuso sobre o tempo agora. devemos usar segundos ou a espera pode ser de menos tempo?
+R: segundos!!!!!!!
+• eu tava pensando no controlador do simulador do tipo: agora é t = 5. Aí ele olha na fila e vê se tem alguem com t0 = 5. Não tem ninguem. Aí eu ponho um sleep(1) antes da proxima iteração?
+R: sim, tudo bem. Mas vamos falar de Round-Robin hoje. cuidado com isso.
+• professor, no FCFS, quando dois processos chegam no mesmo instante de tempo, vale escolher qualquer um para ser o "primeiro"?
+R: sim, a decisão é sua. escolha qualquer um. (pega o primeiro do arquivo, como sugestão, para não comer cpu)
+• Professor, falando nisso, precisamos usar todos os processadores no escalonador? Se sim, existe algum jeito de o programa saber quantos cores vc tem no seu computador? Uma variável de ambiente ou algo do tipo?
+R: pode usar, mas recomenda usar apenas 1. pode ser que o SO escolha diferentes. tem como saber quantos cores, não lembra como. 
+• Professor, pode usar o time.h pra isso?
+R: sim.
+• A gente vai ter que interromper com syscalls pra dar chance a outros processos?
+R: daniel recomenda que interrompa com semáforos. Inicializa todos os semáforos com zero, e passa pro escalonador para ver o primeiro da fila e da V no processo que é o primeiro da fila. todos os rpocessos tão num loop infinito, e como deu V ela começa a rodar. P  no final. Quando o escalonador for tirar porque deu quantum ou tempo menor, dá um P nessa thread para pará-la. não precisa usar syscalls, pode usar pthreads.
+• No caso do FCFS se passarem do deadline não tem o que a gente fazer, né?
+R: não, isso é pros gráficos.

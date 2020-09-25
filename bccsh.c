@@ -33,20 +33,27 @@ processos (ep1). */
  */
 
 /* Bibliotecas */
-#include <stdio.h>      /* printf(), fgets()... */
-#include <stdlib.h>     /* malloc() */
-#include <unistd.h>     /* sleep()*/
-#include <pthread.h>    /* usado para threads e semáforos */
-#include <unistd.h>     /* contém constantes mágicas do unix, ex: SYS_write */
-#include <sys/syscall.h>/* usado para syscalls */
+#include <stdio.h>          /* printf(), fgets()... */
+#include <stdlib.h>         /* malloc() */
+#include <unistd.h>         /* sleep()*/
+#include <pthread.h>        /* usado para threads e semáforos */
+#include <unistd.h>         /* contém constantes mágicas do unix, ex: SYS_write */
+#include <sys/syscall.h>    /* usado para syscalls */
+#include <sys/wait.h>       /* waitpid()*/
 
-typedef long int pid_t;
+//typedef long int pid_t;
 
 /* Execução */
 int main () {
+    //https://stackoverflow.com/questions/30149779/c-execve-parameters-spawn-a-shell-example
 
-    char * buffer;
-    pid_t childpid;
+    char * buffer;   // buffer de texto
+    pid_t childpid;  // usado para processo filho
+    char * args[2];  // usados como parâmetros para execve
+
+    // Vamos ter que mudar isso aqui :0
+    args[0] = "/bin/ls";
+    args[1] = "-lh";
 
     buffer = (char *) malloc(MAX*sizeof(char));
 
@@ -60,11 +67,12 @@ int main () {
         // read_command(command, parameters);
         fgets(buffer, MAX, stdin);
 
-        /*
         if( (childpid = fork()) == 0 ) {
             // Código do filho
             printf("código do filho\n");
             //execve(command, parameters, 0);
+            execve(args[0], args, NULL);
+
             //(https://man7.org/linux/man-pages/man2/execve.2.html)
             while (1) {
                 sleep(1);
@@ -75,9 +83,9 @@ int main () {
             // Código do pai
             printf("código do pai\n");
             //waitpid(-1, &status, 0);
+            waitpid(-1, NULL, 0);
             //(https://man7.org/linux/man-pages/man2/waitpid.2.html)
         }
-        */
 
        //printf("\n%s\n", buffer);
        //sleep(1);

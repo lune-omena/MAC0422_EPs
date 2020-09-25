@@ -10,6 +10,25 @@
 /* A compilação do código deve gerar dois binários. Um binário do bccsh e um binário do simulador de
 processos (ep1). */
 
+/* o bccsh deve permitir a execução (externa) de:
+ * 
+ * /usr/bin/du -hs .                        -> https://www.geeksforgeeks.org/du-command-linux/
+ * (o comando du mostra o espaço de disco utilizado pelos files)
+ * /usr/bin/traceroute www.google.com.br    -> https://www.geeksforgeeks.org/traceroute-command-in-linux-with-examples/
+ * (traceroute imprime a rota que um pacote faz até chegar ao host)
+ * ./ep1 <argumentos do EP1>
+ * (este é o simulador de processos (: )
+ * 
+ * (obrigatoriamente usando syscalls que não sejam da famı́lia exec* ou similares.)
+ * 
+ * e também (interna) de:
+ * 
+ * mkdir <diretorio>
+ * kill -9 <PID>
+ * ln -s <arquivo> <link>
+ * 
+ */
+
 /* Bibliotecas */
 #include <stdio.h>      /* printf(), fgets()... */
 #include <stdlib.h>     /* malloc() */

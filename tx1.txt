@@ -1,0 +1,1 @@
+teste para o ln -s tx1.txt _novo_path_

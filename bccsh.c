@@ -16,11 +16,6 @@
 processos (ep1). */
 
 /* o bccsh deve permitir a execução (externa) de:
- * 
- * /usr/bin/du -hs .                        -> https://www.geeksforgeeks.org/du-command-linux/
- * (o comando du mostra o espaço de disco utilizado pelos files)
- * /usr/bin/traceroute www.google.com.br    -> https://www.geeksforgeeks.org/traceroute-command-in-linux-with-examples/
- * (traceroute imprime a rota que um pacote faz até chegar ao host)
  * ./ep1 <argumentos do EP1>
  * (este é o simulador de processos (: )
  * 
@@ -43,7 +38,9 @@ processos (ep1). */
 #include <sys/wait.h>            /* waitpid() */
 #include <readline/readline.h>   /* ler linha de comando */
 #include <readline/history.h>    /* historico do terminal */
-#include <string.h>              /* strcmp()... */
+#include <string.h>              /* strcmp(), strtok()... */
+
+#include <sys/stat.h>            /* syscall mkdir, kill, ...*/
 //obs: tive que instalar a lib readline. isso aconteceu com vc tbm?
 
 /* Execução */
@@ -51,11 +48,14 @@ int main () {
     //https://stackoverflow.com/questions/30149779/c-execve-parameters-spawn-a-shell-example
 
     char * buffer;   // buffer de texto
-    char * prompt = "lara@salsinha:~/bla$ "; // usuário :)
+    char * prompt = "{daniel@/tmp/mac0422/} "; // usuário :)
     pid_t childpid;  // usado para processo filho
-    int opcao = -1;
-
+    int opcao = -1;  // identificar se é por syscall ou invocação externa
     char * args[4];  // usados como parâmetros para execve obs: último valor de args é NULL
+
+    /* teste */
+    char* dirname = "novo";
+    /* fim teste */
 
     using_history();
 
@@ -65,7 +65,9 @@ int main () {
     /* Código retirado da aula de 17/09 */
     while ((buffer=readline(prompt))) {
 
-        /* COMANDOS DA BCCSH */
+        opcao =  -1;
+
+        /* COMANDOS EXTERNOS */
         if(!strcmp(buffer, DU_CMD)) {
             opcao = 0;
             args[0] = "/usr/bin/du";
@@ -79,22 +81,44 @@ int main () {
             args[1] = "www.google.com.br";
             args[2] = NULL;
         }
-        // EP1
+        /* FALTA SÓ ESTE: EP1 */
+
+        /* COMANDOS INTERNOS: */ // aqui vai vir o código das 3 que envolvem syscalls
+        // aqui vou ter que quebrar a string buffer por meio dos espaços
+        // usarei o comando strtok() para quebrar a string vinda do buffer
+        else if(!strcmp(buffer, "hola")) {
+            /* é bem estranho, mas parece que a syscall do mkdir é mkdir o.o*/
+            if(!mkdir(dirname,0777))
+                printf("Criado.\n");
+            else
+                printf("Não foi possível criar o diretório.\n"); 
+        }
+        else if(!strcmp(buffer, "aiai")) {
+            if(!kill(2229,SIGKILL)) // o primeiro argumento é o pid do processo! mudar dps
+                printf("Processo %d deletado\n", 2229);
+            else
+                printf("Não foi possível deletar o processo %d.\n", 2229);
+        }
+        else if(!strcmp(buffer, "buuu")) {
+
+            /*  stat("tx2.txt", 0x7ffc670e92a0)         = -1 ENOENT (No such file or directory)
+                symlinkat("tx1.txt", AT_FDCWD, "tx2.txt") = 0
+                lseek(0, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
+            */
+        }
         else {
             printf("Comando não identificado.\n");
-            opcao = -1;
+            //opcao = -1;
             args[0] = NULL;
         }
-        
-        // type_prompt();
-        // read_command(command, parameters);
 
-        // aqui vai vir o código das 3 que envolvem syscalls
+
+        /* Execução (invocação externa: */
         if(!opcao) {
             if( (childpid = fork()) == 0 ) {
                 // Código do filho
-                printf("código do filho\n");
                 execve(args[0], args, NULL);
+                // obs: último valor de args é necessáriamente NULL
                 /*  aparentemente o execve funciona da seguinte maneira:
                     o primeiro argumento é o processo a substituir o atual (com seu path)
                     o segundo indica os argumentos que seguiriam em seguida do path (tipo argc da main) ->
@@ -106,7 +130,6 @@ int main () {
             }
             else {
                 // Código do pai
-                printf("Sou o processo pai, criei o processo %d\n", childpid);
                 waitpid(-1, NULL, 0);
                 /* devolve controle ao processo pai quando todos os processo filhos morrerem 
                 https://man7.org/linux/man-pages/man2/waitpid.2.html) */

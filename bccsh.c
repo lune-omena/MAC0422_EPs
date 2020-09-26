@@ -42,6 +42,7 @@ processos (ep1). */
 #include <sys/wait.h>       /* waitpid()*/
 #include <readline/readline.h> /* ler linha de comando */
 #include <readline/history.h>  /* historico do terminal */
+//obs: tive que instalar a lib readline. isso aconteceu com vc tbm?
 
 /* Execução */
 int main () {
@@ -50,12 +51,13 @@ int main () {
     char * buffer;   // buffer de texto
     char * prompt = "lara@salsinha:~/bla$ "; // usuário :)
     pid_t childpid;  // usado para processo filho
-    char * args[2];  // usados como parâmetros para execve
+    char * args[3];  // usados como parâmetros para execve
     
     // Vamos ter que mudar isso aqui :0
+
     args[0] = "/bin/ls";
-    //args[1] = "-lh";
-    args[1] = NULL;
+    args[1] = "-lh";
+    args[2] = NULL; // necessariamente o último valor de args é NULL
 
     using_history();
 
@@ -64,8 +66,11 @@ int main () {
 
     /* Código retirado da aula de 17/09 */
     while ((buffer=readline(prompt))) {
+        
         // type_prompt();
         // read_command(command, parameters);
+
+        // aqui vai vir o código das 3 que envolvem syscalls
 
         if( (childpid = fork()) == 0 ) {
             // Código do filho
@@ -79,27 +84,19 @@ int main () {
                 associated with the file being executed. )
                 o terceiro é um array de strings ? parece que pode ser 0 ou NULL;
                 ( The argv and envp arrays must each include a null pointer at the end of the array.)
-            */
-
-            //(https://man7.org/linux/man-pages/man2/execve.2.html)
-
-            while (1) {
-                sleep(1);
-                printf("Primeiro processo filho...\n");
-            }
+                (https://man7.org/linux/man-pages/man2/execve.2.html)  */
         }
         else {
             // Código do pai
-            printf("código do pai\n");
-            //waitpid(-1, &status, 0);
+            printf("Sou o processo pai, criei o processo %d\n", childpid);
             waitpid(-1, NULL, 0);
-            //(https://man7.org/linux/man-pages/man2/waitpid.2.html)
+            /* devolve controle ao processo pai quando todos os processo filhos morrerem 
+               https://man7.org/linux/man-pages/man2/waitpid.2.html) */
         }
 
-       //printf("\n%s\n", buffer);
-       //sleep(1);
        add_history(buffer);
        free(buffer);
+
     }
 
     return 0;

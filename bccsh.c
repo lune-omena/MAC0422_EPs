@@ -51,13 +51,14 @@ int main () {
     char * buffer;   // buffer de texto
     char * prompt = "lara@salsinha:~/bla$ "; // usuário :)
     pid_t childpid;  // usado para processo filho
-    char * args[3];  // usados como parâmetros para execve
+    char * args[4];  // usados como parâmetros para execve
     
     // Vamos ter que mudar isso aqui :0
 
-    args[0] = "/bin/ls";
-    args[1] = "-lh";
-    args[2] = NULL; // necessariamente o último valor de args é NULL
+    args[0] = "/usr/bin/du";
+    args[1] = "-hs";
+    args[2] = ".";
+    args[3] = NULL; // necessariamente o último valor de args é NULL
 
     using_history();
 

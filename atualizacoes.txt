@@ -1,0 +1,14 @@
+Mexi um pouco mais no execve e finalmente consegui fazer o traceroute e o du funcionarem.
+(a razão de não terem funcionado antes foi porque coloquei um path errado =.=)
+Além disso, comecei a mexer nas syscalls. Li o grupo do telegram de SO e entendi que não havia necessidade de se 
+utilizar a função syscall(), só usar as chamadas de sistemas diretas mesmo da lib <sys/stat.h>.
+Neste caso, implementei a mkdir() e a kill() porque eram bem diretas (vi pelo strace mesmo).
+A ln -s <arquivo> <link> parece um pouco mais complicada.
+Acabei de fazer uma "./ep1" inicial, também. :)
+
+então, o que falta da parte 1:
+mudar o prompt (dá para mudar pro usuário atual com getlogin e o path por getcwd, mas não implementei)
+a syscall ln -s <arquivo> <link>
+
+obs:
+para usar o strtok(), precisa usar strtok(NULL, " ") para ir pra próxima palavra.

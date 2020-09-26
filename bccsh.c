@@ -1,4 +1,5 @@
 /* EP1 - Sistemas Operacionais
+ * Parte 1 - SHELL
  * 
  * Nome: Lara Ayumi Nagamatsu               NUSP: 9910568
  * Nome: Lucy Anne de Omena Evangelista     NUSP: 11221776
@@ -11,107 +12,135 @@
 // PARA FACILITAR ENTENDIMENTO
 #define DU_CMD "/usr/bin/du -hs ." 
 #define TRCRT_CMD "/usr/bin/traceroute www.google.com.br"
+#define MAX 200
 
 /* A compilação do código deve gerar dois binários. Um binário do bccsh e um binário do simulador de
 processos (ep1). */
 
 /* o bccsh deve permitir a execução (externa) de:
- * ./ep1 <argumentos do EP1>
- * (este é o simulador de processos (: )
- * 
- * (obrigatoriamente usando syscalls que não sejam da famı́lia exec* ou similares.)
- * 
- * e também (interna) de:
- * 
- * mkdir <diretorio>
- * kill -9 <PID>
  * ln -s <arquivo> <link>
- * 
  */
 
 /* Bibliotecas */
 #include <stdio.h>               /* printf(), fgets()... */
 #include <stdlib.h>              /* malloc(), free() */
-#include <unistd.h>              /* sleep(), contém constantes mágicas do unix, ex: SYS_write */
-#include <pthread.h>             /* usado para threads e semáforos */
+#include <unistd.h>              /* sleep(), getlogin(), SYS_write */
 #include <sys/syscall.h>         /* usado para syscalls */
 #include <sys/wait.h>            /* waitpid() */
 #include <readline/readline.h>   /* ler linha de comando */
 #include <readline/history.h>    /* historico do terminal */
 #include <string.h>              /* strcmp(), strtok()... */
-
 #include <sys/stat.h>            /* syscall mkdir, kill, ...*/
-//obs: tive que instalar a lib readline. isso aconteceu com vc tbm?
 
 /* Execução */
 int main () {
-    //https://stackoverflow.com/questions/30149779/c-execve-parameters-spawn-a-shell-example
 
-    char * buffer;   // buffer de texto
-    char * prompt = "{daniel@/tmp/mac0422/} "; // usuário :)
+    /* PROMPT/TEXTO */
+    char * buffer;                              // buffer de texto
+    //char * usr = getlogin();                    // pega o nome de usuário
+    char * prompt = "{daniel@/tmp/mac0422/} "; 
+    char * buf_break;
+
+    /* PROCESSOS */
     pid_t childpid;  // usado para processo filho
     int opcao = -1;  // identificar se é por syscall ou invocação externa
     char * args[4];  // usados como parâmetros para execve obs: último valor de args é NULL
 
-    /* teste */
-    char* dirname = "novo";
-    /* fim teste */
-
     using_history();
 
     printf("bom dia\n");
-    printf("Digite CTRL+C para finalizar.\n");
+    printf("Digite CTRL+D para finalizar.\n");
 
     /* Código retirado da aula de 17/09 */
     while ((buffer=readline(prompt))) {
 
-        opcao =  -1;
+        opcao = -1;
 
-        /* COMANDOS EXTERNOS */
+        /* COMANDO EXTERNO: /usr/bin/du -hs . */
         if(!strcmp(buffer, DU_CMD)) {
+
             opcao = 0;
             args[0] = "/usr/bin/du";
             args[1] = "-hs";
             args[2] = ".";
             args[3] = NULL;
+
         }
+        /* COMANDO EXTERNO: /usr/bin/traceroute www.google.com.br */
         else if(!strcmp(buffer, TRCRT_CMD)) {
+
             opcao = 0;
             args[0] = "/usr/bin/traceroute";
             args[1] = "www.google.com.br";
             args[2] = NULL;
-        }
-        /* FALTA SÓ ESTE: EP1 */
 
-        /* COMANDOS INTERNOS: */ // aqui vai vir o código das 3 que envolvem syscalls
-        // aqui vou ter que quebrar a string buffer por meio dos espaços
-        // usarei o comando strtok() para quebrar a string vinda do buffer
-        else if(!strcmp(buffer, "hola")) {
-            /* é bem estranho, mas parece que a syscall do mkdir é mkdir o.o*/
-            if(!mkdir(dirname,0777))
-                printf("Criado.\n");
-            else
-                printf("Não foi possível criar o diretório.\n"); 
-        }
-        else if(!strcmp(buffer, "aiai")) {
-            if(!kill(2229,SIGKILL)) // o primeiro argumento é o pid do processo! mudar dps
-                printf("Processo %d deletado\n", 2229);
-            else
-                printf("Não foi possível deletar o processo %d.\n", 2229);
-        }
-        else if(!strcmp(buffer, "buuu")) {
-
-            /*  stat("tx2.txt", 0x7ffc670e92a0)         = -1 ENOENT (No such file or directory)
-                symlinkat("tx1.txt", AT_FDCWD, "tx2.txt") = 0
-                lseek(0, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
-            */
         }
         else {
-            printf("Comando não identificado.\n");
-            //opcao = -1;
-            args[0] = NULL;
-        }
 
+            buf_break = strtok(buffer, " ");
+
+            /* roda caso usuário não inserir nada */
+            if(buf_break == NULL) {
+                args[0] = NULL;
+            }
+            /* COMANDO EXTERNO: ./ep1 <argumentos do EP1> */
+            else if(!strcmp(buf_break, "./ep1")) {
+                
+                opcao = 0;
+                args[0] = "./ep1";
+                /* não sei quantos argumnetos vai ter, agr só vou aeitar qu tem 0*/
+                args[1] = NULL;
+
+            }
+            /* COMANDO INTERNO: mkdir <diretorio> */
+            else if(!strcmp(buf_break, "mkdir")) {
+                char * dirname = strtok(NULL, " ");
+                
+                if(dirname == NULL) 
+                    printf("Precisa de mais argumentos.\n");
+
+                else if(!mkdir(dirname,0777)) 
+                    printf("Criado o diretório de nome %s.\n", dirname);
+
+                else 
+                    printf("Não foi possível criar o diretório.\n");
+            }
+            /* COMANDO INTERNO: kill -9 <PID> */
+            else if(!strcmp(buf_break, "kill")) {
+                buf_break = strtok(NULL, " ");
+
+                if(buf_break!= NULL && !strcmp(buf_break, "-9")) {
+                    buf_break = strtok(NULL, " ");
+
+                    if(buf_break != NULL) {
+                        long int kill_pid = strtol(buf_break, NULL, 0);
+
+                        if(!kill(kill_pid,SIGKILL)) 
+                            printf("Processo %ld deletado\n", kill_pid);
+                        else
+                            printf("Não foi possível deletar o processo %ld.\n", kill_pid);
+                    }
+                    else
+                        printf("Comando inválido.\n");
+                }
+                else 
+                    printf("Comando inválido.\n");
+            }
+            /* COMANDO INTERNO: ln -s <arquivo> <link> */
+            else if(!strcmp(buf_break, "ln")) {
+                /* do strace:
+                //  stat("tx2.txt", 0x7ffc670e92a0)         = -1 ENOENT (No such file or directory)
+                //  symlinkat("tx1.txt", AT_FDCWD, "tx2.txt") = 0
+                //  lseek(0, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
+                */
+            }
+            else {
+                printf("Comando não identificado.\n");
+                //opcao = -1;
+                args[0] = NULL;
+            }
+
+        }
 
         /* Execução (invocação externa: */
         if(!opcao) {

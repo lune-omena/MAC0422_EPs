@@ -12,14 +12,11 @@
 // PARA FACILITAR ENTENDIMENTO
 #define DU_CMD "/usr/bin/du -hs ." 
 #define TRCRT_CMD "/usr/bin/traceroute www.google.com.br"
+#define INVAL_OP "Operação inválida.\n"
 #define MAX 200
 
 /* A compilação do código deve gerar dois binários. Um binário do bccsh e um binário do simulador de
 processos (ep1). */
-
-/* o bccsh deve permitir a execução (externa) de:
- * ln -s <arquivo> <link>
- */
 
 /* Bibliotecas */
 #include <stdio.h>               /* printf(), fgets()... */
@@ -122,10 +119,10 @@ int main () {
                             printf("Não foi possível deletar o processo %ld.\n", kill_pid);
                     }
                     else
-                        printf("Comando inválido.\n");
+                        printf(INVAL_OP);
                 }
                 else 
-                    printf("Comando inválido.\n");
+                    printf(INVAL_OP);
             }
             /* COMANDO INTERNO: ln -s <arquivo> <link> */
             else if(!strcmp(buf_break, "ln")) {
@@ -145,13 +142,13 @@ int main () {
 
                         }
                         else
-                            printf("Comando inválido.\n");
+                            printf(INVAL_OP);
                     }
                     else
-                        printf("Comando inválido.\n");
+                        printf(INVAL_OP);
                 }
                 else
-                    printf("Comando inválido.\n");
+                    printf(INVAL_OP);
             }
             else {
                 printf("Comando não identificado.\n");

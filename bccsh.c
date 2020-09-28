@@ -31,6 +31,7 @@ processos (ep1). */
 #include <readline/history.h>    /* historico do terminal */
 #include <string.h>              /* strcmp(), strtok()... */
 #include <sys/stat.h>            /* syscall mkdir, kill, ...*/
+#include <fcntl.h>               /* AT_FDCWD do ln -s ... */   
 
 /* Execução */
 int main () {
@@ -128,11 +129,29 @@ int main () {
             }
             /* COMANDO INTERNO: ln -s <arquivo> <link> */
             else if(!strcmp(buf_break, "ln")) {
-                /* do strace:
-                //  stat("tx2.txt", 0x7ffc670e92a0)         = -1 ENOENT (No such file or directory)
-                //  symlinkat("tx1.txt", AT_FDCWD, "tx2.txt") = 0
-                //  lseek(0, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
-                */
+                buf_break = strtok(NULL, " ");
+
+                if(buf_break != NULL && !strcmp(buf_break, "-s")) {
+                    char * arquivo = strtok(NULL, " ");
+
+                    if( arquivo != NULL ) {
+                        char * link = strtok(NULL, " ");
+
+                        if( link != NULL ) {
+                            if(!symlinkat(arquivo, AT_FDCWD, link))
+                                printf("Atalho %s para %s foi criado.\n", link, arquivo);
+                            else
+                                printf("Não foi possíve criar o atalho %s para %s\n", link, arquivo);
+
+                        }
+                        else
+                            printf("Comando inválido.\n");
+                    }
+                    else
+                        printf("Comando inválido.\n");
+                }
+                else
+                    printf("Comando inválido.\n");
             }
             else {
                 printf("Comando não identificado.\n");

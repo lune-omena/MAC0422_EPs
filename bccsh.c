@@ -72,7 +72,7 @@ int main () {
     /* PROCESSOS */
     pid_t childpid;  // usado para processo filho
     int opcao = -1;  // identificar se é por syscall ou invocação externa
-    char * args[4];  // usados como parâmetros para execve obs: último valor de args é NULL
+    char * args[6];  // usados como parâmetros para execve obs: último valor de args é NULL
 
     using_history();
 
@@ -116,7 +116,12 @@ int main () {
                 
                 opcao = 0;
                 args[0] = "./ep1";
-                /* não sei quantos argumnetos vai ter, agr só vou aeitar qu tem 0*/
+                /* for(int i = 0; buf_break != NULL && i < 5; i++)) {
+                      args[i] = buf_break;
+                      buf_break = strtok(NULL, " ");
+                    } // no máximo 5 parâmetros + null
+                    args[i] = NULL;
+                */
                 args[1] = NULL;
 
             }

@@ -113,17 +113,15 @@ int main () {
             }
             /* COMANDO EXTERNO: ./ep1 <argumentos do EP1> */
             else if(!strcmp(buf_break, "./ep1")) {
-                
+                int i;
                 opcao = 0;
-                args[0] = "./ep1";
-                /* for(int i = 0; buf_break != NULL && i < 5; i++)) {
-                      args[i] = buf_break;
-                      buf_break = strtok(NULL, " ");
-                    } // no máximo 5 parâmetros + null
-                    args[i] = NULL;
-                */
-                args[1] = NULL;
 
+                for(i = 0; buf_break != NULL && i < 6; i++) { // no máximo 5 parâmetros + null
+                    args[i] = buf_break;
+                    buf_break = strtok(NULL, " ");
+                }
+
+                args[i] = NULL;
             }
             /* COMANDO INTERNO: mkdir <diretorio> */
             else if(!strcmp(buf_break, "mkdir")) {

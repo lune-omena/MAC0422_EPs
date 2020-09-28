@@ -8,4 +8,4 @@ bccsh:  bccsh.o
 		gcc bccsh.o -o bccsh -lreadline
 
 bccsh.o: bccsh.c
-		 gcc $(FLAGS) bccsh.c
+		gcc $(FLAGS) bccsh.c

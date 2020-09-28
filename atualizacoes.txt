@@ -12,3 +12,12 @@ a syscall ln -s <arquivo> <link>
 
 obs:
 para usar o strtok(), precisa usar strtok(NULL, " ") para ir pra próxima palavra.
+
+
+-///-
+
+27/09
+finalizei as syscalls (falta testar mais mas rsrsrs parece funcionar pelo q fiz) e arrumei o prompt
+não fiz muitos testes, mas funciona na minha máquina. precisamos dar free direito nos ponteiros também. :I
+
+

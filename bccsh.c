@@ -13,7 +13,6 @@
 #define DU_CMD "/usr/bin/du -hs ." 
 #define TRCRT_CMD "/usr/bin/traceroute www.google.com.br"
 #define INVAL_OP "Operação inválida.\n"
-#define MAX 200
 
 /* A compilação do código deve gerar dois binários. Um binário do bccsh e um binário do simulador de
 processos (ep1). */
@@ -35,9 +34,40 @@ int main () {
 
     /* PROMPT/TEXTO */
     char * buffer;                                // buffer de texto
-    //char * usr = getlogin();                    // pega o nome de usuário
+    char * usr;                                   // pega o nome de usuário
     char * prompt = "{daniel@/tmp/mac0422/} "; 
+    int    prompt_size;
     char * buf_break;
+    char * path_name;
+
+    /* FORMATAÇÃO DO PROMPT */
+
+    prompt_size = 4; // { + } + ' ' + @
+
+    if( (usr = getlogin()) == NULL ) {
+        printf("Não foi possível adquirir o usuário atual. Um usuário genérico será usado.\n");
+        usr = "daniel";
+    }
+
+    prompt_size += strlen(usr);
+
+    if( (path_name = getcwd(NULL, 0)) == 0 ) {
+        printf("Não foi possível adquirir o diretório atual. Um prompt genérico será usado.\n");
+        path_name = "/tmp/maco422";
+    }
+
+    prompt_size += strlen(path_name);
+
+    prompt = malloc(prompt_size*sizeof(char));
+    strcat(prompt, "{");
+    strcat(prompt, usr);
+    strcat(prompt, "@");
+    strcat(prompt, path_name);
+    strcat(prompt, "} ");
+ 
+    //printf("%s tem %d de tamanho\n", prompt, prompt_size);
+
+    /* FIM DE FORMATAÇÃO DO PROMPT */
 
     /* PROCESSOS */
     pid_t childpid;  // usado para processo filho
@@ -46,7 +76,7 @@ int main () {
 
     using_history();
 
-    printf("bom dia\n");
+    //printf("bom dia\n");
     printf("Digite CTRL+D para finalizar.\n");
 
     while ((buffer=readline(prompt))) {
@@ -158,7 +188,7 @@ int main () {
 
         }
 
-        /* Execução (invocação externa: */
+        /* Execução (invocação externa): */
         if(!opcao) {
             if( (childpid = fork()) == 0 ) {
                 // Código do filho
@@ -182,7 +212,6 @@ int main () {
         }
 
        free(buffer);
-
     }
 
     return 0;

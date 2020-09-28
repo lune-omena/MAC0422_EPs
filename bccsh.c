@@ -34,7 +34,7 @@ processos (ep1). */
 int main () {
 
     /* PROMPT/TEXTO */
-    char * buffer;                              // buffer de texto
+    char * buffer;                                // buffer de texto
     //char * usr = getlogin();                    // pega o nome de usuário
     char * prompt = "{daniel@/tmp/mac0422/} "; 
     char * buf_break;
@@ -49,10 +49,10 @@ int main () {
     printf("bom dia\n");
     printf("Digite CTRL+D para finalizar.\n");
 
-    /* Código retirado da aula de 17/09 */
     while ((buffer=readline(prompt))) {
 
         opcao = -1;
+        add_history(buffer);
 
         /* COMANDO EXTERNO: /usr/bin/du -hs . */
         if(!strcmp(buffer, DU_CMD)) {
@@ -181,7 +181,6 @@ int main () {
             }
         }
 
-       add_history(buffer);
        free(buffer);
 
     }

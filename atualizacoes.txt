@@ -21,3 +21,7 @@ finalizei as syscalls (falta testar mais mas rsrsrs parece funcionar pelo q fiz)
 não fiz muitos testes, mas funciona na minha máquina. precisamos dar free direito nos ponteiros também. :I
 
 
+-///-
+atualizei o makefile para gerar de cara os dois binários. basta digitar make ep no terminal.
+acho que da parte 1 realmente só falta liberar os ponteiro alocados.
+comecei a estruturar a parte 2, recebendo o arquivo trace.

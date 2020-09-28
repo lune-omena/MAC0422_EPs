@@ -9,6 +9,8 @@ FLAGS = -Wall -g -O0 -c
 # Para rodar o escalonador, digite:
 # ./ep1 <escalonador> <arquivo_trace> <novo_arquivo> <d>
 # sendo <d> opcional!
+#
+# (também podemos rodar ./ep1 pelo bccsh)
 
 ep: bccsh ep1
 

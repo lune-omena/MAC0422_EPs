@@ -6,10 +6,8 @@
  * 
  */
 
-/* A invocação do simulador no bccsh deve receber como primeiro parâmetro obrigatório o número
-representando cada escalonador, conforme a listagem acima, como segundo parâmetro obrigatório o
-nome do arquivo de trace e como terceiro parâmetro obrigatório o nome de um arquivo que será criado
-pelo simulador com 1 linha para cada processo e mais 1 linha extra no final. */
+/* ./ep1 <escalonador> <arquivo_trace> <novo_arquivo> <d>
+ * sendo <d> opcional! */
 
 /* aqui vai vir o código das threads :)*/
 #include <stdio.h>
@@ -20,15 +18,17 @@ int main(int argc, char ** argv) {
 
     /* arquivo de trace */
     FILE *arquivo;
+    char * buf;
 
     arquivo = fopen(argv[2], "r");
 
+    
     /* TIPOS DE ESCALONADOR */
     int escalonador = -1;
     
     if(argv[1] != NULL)
         escalonador = atoi(argv[1]);
-        
+
     switch(escalonador) {
             case(1):
                 printf("First Come, First Served\n");
@@ -42,8 +42,6 @@ int main(int argc, char ** argv) {
             default:
                 printf("Escalonador não reconhecido.\n");
     }
-
-    printf("%s\n", argv[0]);
 
     printf("batata\n");
     sleep(1);

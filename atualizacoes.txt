@@ -29,3 +29,13 @@ o recebimento do arquivo. deixei em um comentário no arquivo ep1.c, mas o geral
 ou podemos escolher ler todo o arquivo de uma vez e ir acionando as threads conforme dá o tempo;
 ou podemos construir os processos a partir do recebimento de cada processo.
 oq vc prefere?
+
+
+-///-
+28/09
+Ajustei o prompt, e um memory leak que estava havendo
+Para liberar as memorias certinho precisamos de um comando pra sair do term. Ia fazer mas fiquei presa na tarefa:
+Comecei a fazer a função de armazenamento dos processos na struct, mas não está dando certo D:
+Ela pega os valores bonitinhos quando uso variaveis locais, mas quando uso o ponteiro alocado de acordo com a quantidade de linhas dá problema. 
+O mesmo ocorre se eu defino estaticamente o tamanho do vetor de linhas :/
+help help

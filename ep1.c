@@ -36,7 +36,7 @@ int  contaLinhas(char * arquivo);
 void armazenaProcessos(char * arquivo, Data * processos);
 
 /* Bibliotecas */
-#include <stdio.h>
+#include <stdio.h>   /* printf(), fopen()... */
 #include <unistd.h>
 #include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
@@ -79,7 +79,6 @@ int main(int argc, char ** argv) {
     processos = (Data *) malloc(num_p*sizeof(Data));
     armazenaProcessos(argv[2], processos);
 
-
     for(int i = 0; i < num_p; i++) 
         printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 
@@ -90,10 +89,10 @@ int main(int argc, char ** argv) {
     printf("jabuticaba\n"); 
 
     /* Liberando memória */
-    free(processos);
     // LIBERAR OS NOMES DOS PROCESSOS
     for(int i = 0; i < num_p; i++)
         free(processos[i].processo);
+    free(processos);
 
     return 0;
 }
@@ -134,7 +133,6 @@ void armazenaProcessos(char * arquivo, Data * processos) {
     /* abaixo lê as linhas do arquivo */
     while( fgets (buf, MAX, f)!= NULL ) {
         //printf(".%s. tem tamanho %ld, é o processo %d\n", buf, strlen(buf), i);
-        //aparentemente o fgets pega até o \n, então tem que retirar
         
         buf_break = strtok(buf, " ");
         

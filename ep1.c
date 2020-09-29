@@ -55,27 +55,29 @@ int main(int argc, char ** argv) {
                 printf("Escalonador não reconhecido.\n");
     }
 
-    if( argv[2] != NULL ) {
-        /* Lendo o arquivo e consequentemente os processos */
-        num_p = contaLinhas(argv[2]);
-        processos = (Data *) malloc(num_p*sizeof(Data));
-
-        armazenaProcessos(argv[2], processos);
-        printf("%d e %d e %d \n", processos[0].d0, processos[0].dt, processos[0].deadline); //teste
-        printf("%s\n", processos[0].processo); //teste
-
-        printf("%d e %d e %d \n", processos[1].d0, processos[1].dt, processos[1].deadline); //teste
-        printf("%s\n", processos[1].processo); //teste
+    if(argv[2] == NULL) {
+        printf("Você precisa inserir um arquivo txt como segundo parâmetro!\n");
+        exit(EXIT_FAILURE);
     }
+
+    /* Lendo o arquivo e consequentemente os processos */
+    num_p = contaLinhas(argv[2]);
+    processos = (Data *) malloc(num_p*sizeof(Data));
+    armazenaProcessos(argv[2], processos);
+
+    for(int i = 0; i < num_p; i++) 
+        printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 
     printf("batata\n");
     sleep(1);
     printf("jabuticaba\n");
 
     /* Liberando memória */
-    if(argv[2])
-        free(processos);
-        
+    free(processos);
+    // LIBERAR OS NOMES DOS PROCESSOS
+    for(int i = 0; i < num_p; i++)
+        free(processos[i].processo);
+
     return 0;
 }
 
@@ -103,19 +105,18 @@ int contaLinhas(char * arquivo) {
 
 void armazenaProcessos(char * arquivo, Data * processos) {
     FILE *f;
-    char buf[MAX];
-    char * buf_break;
+    char buf[MAX];      // guarda a string da linha
+    char * buf_break;   // guarda a string entre " "
     int i;              // contador de linhas para a posição no vetor
     int j;              // contador dentro da linha a partir da separação " "
+    int size;           // tamanho da string
 
     f = fopen(arquivo, "r");
     i = 0;
 
     /* abaixo lê as linhas do arquivo */
     while( fgets (buf, MAX, f)!= NULL ) {
-      /* writing content to stdout */
-        //puts(buf);
-        printf(".%s. tem tamanho %ld, é o processo %d\n", buf, strlen(buf), i);
+        //printf(".%s. tem tamanho %ld, é o processo %d\n", buf, strlen(buf), i);
         //aparentemente o fgets pega até o \n, então tem que retirar
         
         buf_break = strtok(buf, " ");
@@ -123,21 +124,19 @@ void armazenaProcessos(char * arquivo, Data * processos) {
         j = 0;
         while(buf_break != NULL) {
             switch(j) {
-                case 0:
-                    processos[i].processo = buf_break;
-                    printf("caso 0\n");
+                case 0: // nome do processo
+                    size = strlen(buf_break);
+                    processos[i].processo = (char *) malloc(size*sizeof(char));
+                    strcpy(processos[i].processo, buf_break);
                     break;
-                case 1:
+                case 1: // t0
                     processos[i].d0 = atoi(buf_break);
-                    printf("caso 1\n");
                     break;
-                case 2:
+                case 2: // dt
                     processos[i].dt = atoi(buf_break);
-                    printf("caso 2\n");
                     break;
-                case 3:
+                case 3: // deadline
                     processos[i].deadline = atoi(buf_break);
-                    printf("caso 3\n");
                     break;
                 default:
                     printf("Algo deu errado. :(\n");

@@ -11,6 +11,18 @@
 /* ./ep1 <escalonador> <arquivo_trace> <novo_arquivo> <d>
  * sendo <d> opcional! */
 
+/* OBS: TEREMOS QUE CRIAR UM ARQUIVO TXT DE NOME <arg[3]> CONTENDO:
+ * NOME TF TR
+ * NOME = NOME DO PROCESSO
+ * TF = INSTANTE DE TEMPO QUE O PROCESSO TERMINOU
+ * TR = TEMPO DE RELÓGIO (TF-T0)
+ * E NO FIM UMA LINHA CONTENDO UM ÚNICO NÚMERO QUE INFORMA A
+ * QUANTIDADE DE MUDANÇAS DE CONTEXTO EFETUADAS NA SIMULAÇÃO
+ * 
+ * E SE O USUÁRIO OPTAR POR USAR O COMANDO "d", TEREMOS QUE INDICAR
+ * 
+ */
+
 /* Estruturas */
 typedef struct data {
     char * processo;
@@ -43,34 +55,39 @@ int main(int argc, char ** argv) {
 
     switch(escalonador) {
             case(1):
-                printf("First Come, First Served\n");
+                printf("ESCALONADOR: First Come, First Served\n");
                 break;
             case(2):
-                printf("Shortest Remaining Time Next\n");
+                printf("ESCALONADOR: Shortest Remaining Time Next\n");
                 break;
             case(3):
-                printf("Round-Robin\n");
+                printf("ESCALONADOR: Round-Robin\n");
                 break;
             default:
                 printf("Escalonador não reconhecido.\n");
     }
+
+    printf("\n");
 
     if(argv[2] == NULL) {
         printf("Você precisa inserir um arquivo txt como segundo parâmetro!\n");
         exit(EXIT_FAILURE);
     }
 
-    /* Lendo o arquivo e consequentemente os processos */
+    /* LEITURA DE ARQUIVO + PROCESSOS */
     num_p = contaLinhas(argv[2]);
     processos = (Data *) malloc(num_p*sizeof(Data));
     armazenaProcessos(argv[2], processos);
 
+
     for(int i = 0; i < num_p; i++) 
         printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 
+    printf("\n");
+
     printf("batata\n");
     sleep(1);
-    printf("jabuticaba\n");
+    printf("jabuticaba\n"); 
 
     /* Liberando memória */
     free(processos);
@@ -98,7 +115,7 @@ int contaLinhas(char * arquivo) {
     }
 
     fclose(f);
-    printf("%d processos computados\n", count);
+    printf("%d PROCESSOS COMPUTADOS\n", count);
 
     return count;
 }

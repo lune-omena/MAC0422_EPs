@@ -201,7 +201,6 @@ char * definePrompt()
     char * path_name;
     char * usr; 
 
-    //prompt_size = 4; // @ + : + ' ' + $
     prompt_size = 4; // @ + { + } + " "
 
     if( (usr = getlogin()) == NULL ) {
@@ -227,9 +226,7 @@ char * definePrompt()
     strcat(prompt, usr);
     strcat(prompt, "@");
     //strcat(prompt, unameData.nodename);
-    //strcat(prompt, ":");
     strcat(prompt, path_name);
-    //strcat(prompt, "$ ");
     strcat(prompt, "}");
     strcat(prompt, " ");
     //printf("%s tem %d de tamanho\n", prompt, prompt_size);

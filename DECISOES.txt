@@ -1,0 +1,3 @@
+Aqui estão as decisões de projeto que provavelmente vamos ter que incluir nos slides :)
+->  utilizamos structs para armazenar os processos. (para armazenar todos os processos, criamos
+    um vetor desse tipo struct Dado)

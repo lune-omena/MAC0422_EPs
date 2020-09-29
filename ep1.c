@@ -12,18 +12,19 @@
  * sendo <d> opcional! */
 
 /* Estruturas */
-/*
-struct utsname unameData;
-
 typedef struct data {
     char * processo;
     int d0, dt, deadline;
 } Data;
+/*
+struct utsname unameData; 
 */
 
 /* Funções */
 // Captação de texto em arquivo e armazenamento
 //Data ** armazenaProcessos(char * arquivo);
+int  contaLinhas(char * arquivo);
+void armazenaProcessos(char * arquivo, Data * processos);
 
 /* aqui vai vir o código das threads :)*/
 #include <stdio.h>
@@ -33,18 +34,9 @@ typedef struct data {
 
 int main(int argc, char ** argv) {
 
-    /* arquivo de trace */
-    FILE *arquivo;
-    //char * buf;
-    /* nome é uma string sem espaços em branco de no máximo 30 caracteres: 30 + */
-    char buf[MAX];
-
-
-
-    //Data **processos;
-
-    /* LEITURA DE ARQUIVO  - COM PROBLEMA, PFF COMENTAR*/
-  /*   processos = armazenaProcessos("teste.txt"); */
+    /* PROCESSOS */
+    int num_p;                      // número de processos do arquivo
+    Data * processos;               // vetor contendo processos
 
     /* TIPOS DE ESCALONADOR */
     int escalonador = -1;
@@ -66,13 +58,59 @@ int main(int argc, char ** argv) {
                 printf("Escalonador não reconhecido.\n");
     }
 
-    arquivo = fopen(argv[2], "r");
+    if( argv[2] != NULL ) {
+        /* Lendo o arquivo e consequentemente os processos */
+        num_p = contaLinhas(argv[2]);
+        processos = (Data *) malloc(num_p*sizeof(Data));
+        armazenaProcessos(argv[2], processos);
+        printf("%d e %d e %d \n", processos[0].d0, processos[0].dt, processos[0].deadline); //teste
+        printf("%s\n", processos[0].processo); //teste
+    }
+
+    printf("batata\n");
+    sleep(1);
+    printf("jabuticaba\n");
+
+    /* Liberando memória */
+    if(argv[2])
+        free(processos);
+        
+    return 0;
+}
+
+int contaLinhas(char * arquivo) {
+    int count = 0;
+    char ch;
+    FILE * f;
+
+    if ((f = fopen(arquivo, "r")) == NULL) {
+      perror("\nHouve um erro ao abrir o arquivo!\n");
+      exit(EXIT_FAILURE);
+    }
+
+    while(!feof(f)) {
+        ch = fgetc(f);
+        if(ch == '\n')
+            count++;
+    }
+
+    fclose(f);
+    printf("%d processos computados\n", count);
+
+    return count;
+}
+
+void armazenaProcessos(char * arquivo, Data * processos) {
+    FILE *f;
+    char buf[MAX];
+
+    f = fopen(arquivo, "r");
 
     /* abaixo lê as linhas do arquivo */
-    while( fgets (buf, MAX, arquivo)!=NULL ) {
+    while( fgets (buf, MAX, f)!= NULL ) {
       /* writing content to stdout */
         puts(buf);
-        printf("Tamanho de %s é %ld\n", buf, strlen(buf));
+        //printf("Tamanho de %s é %ld\n", buf, strlen(buf));
         /* na aula, o professor falou de 2 casos: poderiamos ler todo o arquivo e acionar as threads nos tempos dados
          * ou poderíamos ir acionando as threads conforme recebemos os processos. 
          * se usarmos a primeira opção:
@@ -87,15 +125,13 @@ int main(int argc, char ** argv) {
          * mas nai sei :0*/
     }
 
-    fclose(arquivo);    
+    processos[0].d0 = 1;
+    processos[0].deadline = 2;
+    processos[0].dt = 3;
+    processos->processo = "Nome";
 
-    printf("batata\n");
-    sleep(1);
-    printf("jabuticaba\n");
-        
-    return 0;
+    fclose(f);
 }
-
 
 /*
 Data ** armazenaProcessos(char * arquivo)
@@ -127,8 +163,8 @@ Data ** armazenaProcessos(char * arquivo)
 
     printf("\nNós temos %d linhas no arquivo", linhas);
     processos = (Data * )malloc(linhas * sizeof(Data));
-
-    /* processos[0].processo = "ola";
+    
+    processos[0].processo = "ola";
     processos[0].d0 = 3;
     processos[0].dt = 4;
     processos[0].deadline = 20;
@@ -137,8 +173,7 @@ Data ** armazenaProcessos(char * arquivo)
     processos[1].dt = 9;
     processos[1].deadline = 15;
     printf("\n%s %d %d %d", processos[0].processo, processos[0].d0, processos[0].dt, processos[0].deadline); 
-    printf("\n%s %d %d %d", processos[1].processo, processos[1].d0, processos[1].dt, processos[1].deadline); */ 
-    /*
+    printf("\n%s %d %d %d", processos[1].processo, processos[1].d0, processos[1].dt, processos[1].deadline); 
     printf("\nRolou?\n");
     printf("\nArquivo:");
     i = 0;

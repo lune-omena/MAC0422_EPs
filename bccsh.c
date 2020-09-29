@@ -25,39 +25,21 @@
 #include <readline/history.h>    /* historico do terminal */
 #include <string.h>              /* strcmp(), strtok()... */
 
-
 #include <fcntl.h>               /* AT_FDCWD do ln -s ... */   
 
-/* Estruturas */
-struct utsname unameData;
-
-typedef struct data {
-    char * processo;
-    int d0, dt, deadline;
-} Data;
-
-
 /* Funções */
-/* Criaçao de prompt personalizado */
-char * definePrompt();
-/* Captação de texto em arquivo e armazenamento */
-Data ** armazenaProcessos(char * arquivo);
+char * definePrompt(); // Criaçao de prompt personalizado
 
 /* Execução */
 int main () {
 
     /* PROMPT/TEXTO */
     char * buffer;                                
-    char * prompt; /*= "{daniel@/tmp/mac0422/} "; */
+    char * prompt; 
     char * buf_break;
-
-    Data **processos;
     
     /* FORMATAÇÃO DO PROMPT */
     prompt = definePrompt();
-
-    /* LEITURA DE ARQUIVO  - COM PROBLEMA, PFF COMENTAR*/
-  /*   processos = armazenaProcessos("teste.txt"); */
 
     /* PROCESSOS */
     pid_t childpid;  // usado para processo filho
@@ -212,81 +194,9 @@ int main () {
     return 0;
 }
 
-Data ** armazenaProcessos(char * arquivo)
-{
-    Data *processos;
-    FILE *arq, *count;
-    char ch;
-    char * proces;
-    char array[50];
-    int d0, dt, deadline;
-    int linhas = 0, i = 0;
-
-    count = fopen(arquivo, "r"); 
-
-    if (count == NULL)
-    {
-      perror("\nHouve um erro ao abrir o arquivo!\n");
-      exit(EXIT_FAILURE);
-    }
-
-    while(!feof(count))
-    {
-        ch = fgetc(count);
-        if(ch == '\n')
-            linhas++;
-        
-    }
-    fclose(count);
-
-    printf("\nNós temos %d linhas no arquivo", linhas);
-    processos = (Data * )malloc(linhas * sizeof(Data));
-
-    /* processos[0].processo = "ola";
-    processos[0].d0 = 3;
-    processos[0].dt = 4;
-    processos[0].deadline = 20;
-    processos[1].processo = "o121la";
-    processos[1].d0 = 7;
-    processos[1].dt = 9;
-    processos[1].deadline = 15;
-    printf("\n%s %d %d %d", processos[0].processo, processos[0].d0, processos[0].dt, processos[0].deadline); 
-    printf("\n%s %d %d %d", processos[1].processo, processos[1].d0, processos[1].dt, processos[1].deadline); */ 
-
-    printf("\nRolou?\n");
-    printf("\nArquivo:");
-    i = 0;
-    arq = fopen(arquivo, "r"); 
-
-     while(!feof(arq) && i < linhas)
-    {   
-        if (i < linhas)
-        {
-            fscanf(arq, "%s %d %d %d", processos[i].processo, &processos[i].d0, &processos[i].dt, &processos[i].deadline);
-            printf("\n%s %d %d %d", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
-            /* FUNCIONA QUANDO USA VARIAVEIS LOCAIS */
-            /*  fscanf(arq, "%s %d %d %d", proces, &d0, &dt, &deadline); */
-            i++;
-        }
-
-        fscanf(arq, "%s", proces);
-
-       
-        printf("\nUé"); 
-    } 
-
-
-
-    printf("\nRolou???????????????\n");
-    fclose(arq);
-
-    return NULL;
-}
-
-
 char * definePrompt()
 {
-    char * prompt; // buffer de texto
+    char * prompt;
     int prompt_size;
     char * path_name;
     char * usr; 

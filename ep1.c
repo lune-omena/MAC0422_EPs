@@ -11,9 +11,19 @@
 /* ./ep1 <escalonador> <arquivo_trace> <novo_arquivo> <d>
  * sendo <d> opcional! */
 
-struct processo {
+/* Estruturas */
+/*
+struct utsname unameData;
 
-};
+typedef struct data {
+    char * processo;
+    int d0, dt, deadline;
+} Data;
+*/
+
+/* Funções */
+// Captação de texto em arquivo e armazenamento
+//Data ** armazenaProcessos(char * arquivo);
 
 /* aqui vai vir o código das threads :)*/
 #include <stdio.h>
@@ -28,6 +38,13 @@ int main(int argc, char ** argv) {
     //char * buf;
     /* nome é uma string sem espaços em branco de no máximo 30 caracteres: 30 + */
     char buf[MAX];
+
+
+
+    //Data **processos;
+
+    /* LEITURA DE ARQUIVO  - COM PROBLEMA, PFF COMENTAR*/
+  /*   processos = armazenaProcessos("teste.txt"); */
 
     /* TIPOS DE ESCALONADOR */
     int escalonador = -1;
@@ -78,3 +95,78 @@ int main(int argc, char ** argv) {
         
     return 0;
 }
+
+
+/*
+Data ** armazenaProcessos(char * arquivo)
+{
+    Data *processos;
+    FILE *arq, *count;
+    char ch;
+    char * proces;
+    //char array[50];
+    //int d0, dt, deadline;
+    int linhas = 0, i = 0;
+
+    count = fopen(arquivo, "r"); 
+
+    if (count == NULL)
+    {
+      perror("\nHouve um erro ao abrir o arquivo!\n");
+      exit(EXIT_FAILURE);
+    }
+
+    while(!feof(count))
+    {
+        ch = fgetc(count);
+        if(ch == '\n')
+            linhas++;
+        
+    }
+    fclose(count);
+
+    printf("\nNós temos %d linhas no arquivo", linhas);
+    processos = (Data * )malloc(linhas * sizeof(Data));
+
+    /* processos[0].processo = "ola";
+    processos[0].d0 = 3;
+    processos[0].dt = 4;
+    processos[0].deadline = 20;
+    processos[1].processo = "o121la";
+    processos[1].d0 = 7;
+    processos[1].dt = 9;
+    processos[1].deadline = 15;
+    printf("\n%s %d %d %d", processos[0].processo, processos[0].d0, processos[0].dt, processos[0].deadline); 
+    printf("\n%s %d %d %d", processos[1].processo, processos[1].d0, processos[1].dt, processos[1].deadline); */ 
+    /*
+    printf("\nRolou?\n");
+    printf("\nArquivo:");
+    i = 0;
+    arq = fopen(arquivo, "r"); 
+
+     while(!feof(arq) && i < linhas)
+    {   
+        if (i < linhas)
+        {
+            fscanf(arq, "%s %d %d %d", processos[i].processo, &processos[i].d0, &processos[i].dt, &processos[i].deadline);
+            printf("\n%s %d %d %d", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
+            /* FUNCIONA QUANDO USA VARIAVEIS LOCAIS */
+            /*  fscanf(arq, "%s %d %d %d", proces, &d0, &dt, &deadline); */
+            /*i++;
+        }
+
+        fscanf(arq, "%s", proces);
+
+       
+        printf("\nUé"); 
+    } 
+
+
+
+    printf("\nRolou???????????????\n");
+    fclose(arq);
+
+    return NULL;
+}
+
+*/

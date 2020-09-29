@@ -16,20 +16,17 @@ typedef struct data {
     char * processo;
     int d0, dt, deadline;
 } Data;
-/*
-struct utsname unameData; 
-*/
 
 /* Funções */
-// Captação de texto em arquivo e armazenamento
-//Data ** armazenaProcessos(char * arquivo);
+// Conta o número de linhas do arquivo
 int  contaLinhas(char * arquivo);
+// Captação de texto em arquivo e armazenamento
 void armazenaProcessos(char * arquivo, Data * processos);
 
-/* aqui vai vir o código das threads :)*/
+/* Bibliotecas */
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h>  /* strlen() */
+#include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
 
 int main(int argc, char ** argv) {
@@ -62,9 +59,13 @@ int main(int argc, char ** argv) {
         /* Lendo o arquivo e consequentemente os processos */
         num_p = contaLinhas(argv[2]);
         processos = (Data *) malloc(num_p*sizeof(Data));
+
         armazenaProcessos(argv[2], processos);
         printf("%d e %d e %d \n", processos[0].d0, processos[0].dt, processos[0].deadline); //teste
         printf("%s\n", processos[0].processo); //teste
+
+        printf("%d e %d e %d \n", processos[1].d0, processos[1].dt, processos[1].deadline); //teste
+        printf("%s\n", processos[1].processo); //teste
     }
 
     printf("batata\n");
@@ -103,32 +104,52 @@ int contaLinhas(char * arquivo) {
 void armazenaProcessos(char * arquivo, Data * processos) {
     FILE *f;
     char buf[MAX];
+    char * buf_break;
+    int i;              // contador de linhas para a posição no vetor
+    int j;              // contador dentro da linha a partir da separação " "
 
     f = fopen(arquivo, "r");
+    i = 0;
 
     /* abaixo lê as linhas do arquivo */
     while( fgets (buf, MAX, f)!= NULL ) {
       /* writing content to stdout */
-        puts(buf);
-        //printf("Tamanho de %s é %ld\n", buf, strlen(buf));
-        /* na aula, o professor falou de 2 casos: poderiamos ler todo o arquivo e acionar as threads nos tempos dados
-         * ou poderíamos ir acionando as threads conforme recebemos os processos. 
-         * se usarmos a primeira opção:
-         * eu não sei como vamos guardar as informações, mas cada linha possui um processo:
-         * nome t0 dt deadline
-         * o nome tem no máximo 30 caracteres, os outros são ints.
-         * acho legal usarmos structs para montar o recebimento desses dados, gostaria de saber oq vc acha :)
-         * ou podemos guardar um vetor com o nome dos processos, um vetor pro t0 e outro pro dt ]
-         * (eu estou votando pelo que for mais fácil de implementar, sinceramente x.x)
-         * se for pela segunda:
-         * não precisaríamos guardar tudo num vetor de cara
-         * mas nai sei :0*/
-    }
+        //puts(buf);
+        printf(".%s. tem tamanho %ld, é o processo %d\n", buf, strlen(buf), i);
+        //aparentemente o fgets pega até o \n, então tem que retirar
+        
+        buf_break = strtok(buf, " ");
+        
+        j = 0;
+        while(buf_break != NULL) {
+            switch(j) {
+                case 0:
+                    processos[i].processo = buf_break;
+                    printf("caso 0\n");
+                    break;
+                case 1:
+                    processos[i].d0 = atoi(buf_break);
+                    printf("caso 1\n");
+                    break;
+                case 2:
+                    processos[i].dt = atoi(buf_break);
+                    printf("caso 2\n");
+                    break;
+                case 3:
+                    processos[i].deadline = atoi(buf_break);
+                    printf("caso 3\n");
+                    break;
+                default:
+                    printf("Algo deu errado. :(\n");
+                    exit(EXIT_FAILURE);
+            };
 
-    processos[0].d0 = 1;
-    processos[0].deadline = 2;
-    processos[0].dt = 3;
-    processos->processo = "Nome";
+            buf_break = strtok(NULL, " ");
+            j++;
+        }
+
+        i++;
+    }
 
     fclose(f);
 }
@@ -185,9 +206,9 @@ Data ** armazenaProcessos(char * arquivo)
         {
             fscanf(arq, "%s %d %d %d", processos[i].processo, &processos[i].d0, &processos[i].dt, &processos[i].deadline);
             printf("\n%s %d %d %d", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
-            /* FUNCIONA QUANDO USA VARIAVEIS LOCAIS */
-            /*  fscanf(arq, "%s %d %d %d", proces, &d0, &dt, &deadline); */
-            /*i++;
+            FUNCIONA QUANDO USA VARIAVEIS LOCAIS 
+            fscanf(arq, "%s %d %d %d", proces, &d0, &dt, &deadline);
+            i++;
         }
 
         fscanf(arq, "%s", proces);

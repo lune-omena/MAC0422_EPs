@@ -39,3 +39,8 @@ Comecei a fazer a função de armazenamento dos processos na struct, mas não es
 Ela pega os valores bonitinhos quando uso variaveis locais, mas quando uso o ponteiro alocado de acordo com a quantidade de linhas dá problema. 
 O mesmo ocorre se eu defino estaticamente o tamanho do vetor de linhas :/
 help help
+
+-//-
+29/09
+voltei o prompt pra versão antiga, mas as mudanças deixei comentadas
+

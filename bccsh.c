@@ -6,16 +6,10 @@
  * 
  */
 
-/* LUCY!!!! gostei muito deste site: https://explainshell.com/explain?cmd=du+-hs+.
- * dê uma olhada :) */
-
 // PARA FACILITAR ENTENDIMENTO
 #define DU_CMD "/usr/bin/du -hs ." 
 #define TRCRT_CMD "/usr/bin/traceroute www.google.com.br"
 #define INVAL_OP "Operação inválida.\n"
-
-/* A compilação do código deve gerar dois binários. Um binário do bccsh e um binário do simulador de
-processos (ep1). */
 
 /* Bibliotecas */
 #include <stdio.h>               /* printf(), fgets()... */
@@ -72,7 +66,6 @@ int main () {
 
     using_history();
 
-    //printf("bom dia\n");
     printf("Digite CTRL+D para finalizar.\n");
 
     while ((buffer = readline(prompt)))
@@ -81,8 +74,7 @@ int main () {
         add_history(buffer);
 
         /* COMANDO EXTERNO: /usr/bin/du -hs . */
-        if(!strcmp(buffer, DU_CMD))
-        {
+        if(!strcmp(buffer, DU_CMD)) {
 
             opcao = 0;
             args[0] = "/usr/bin/du";
@@ -299,15 +291,17 @@ char * definePrompt()
     char * path_name;
     char * usr; 
 
-    prompt_size = 4; // @ + : + ' ' + $
+    //prompt_size = 4; // @ + : + ' ' + $
+    prompt_size = 4; // @ + { + } + " "
 
     if( (usr = getlogin()) == NULL ) {
         printf("Não foi possível adquirir o usuário atual. Um usuário genérico será usado.\n");
         usr = "daniel";
     }
 
+    /*
     uname(&unameData);
-    prompt_size += strlen(unameData.nodename);
+    prompt_size += strlen(unameData.nodename);*/
 
     prompt_size += strlen(usr);
 
@@ -319,13 +313,15 @@ char * definePrompt()
     prompt_size += strlen(path_name);
 
     prompt = (char *) malloc(prompt_size * sizeof(char*));
-    /*strcat(prompt, "{");*/
-    strcpy(prompt, usr);
+    strcpy(prompt, "{");
+    strcat(prompt, usr);
     strcat(prompt, "@");
-    strcat(prompt, unameData.nodename);
-    strcat(prompt, ":");
+    //strcat(prompt, unameData.nodename);
+    //strcat(prompt, ":");
     strcat(prompt, path_name);
-    strcat(prompt, "$ ");
+    //strcat(prompt, "$ ");
+    strcat(prompt, "}");
+    strcat(prompt, " ");
     //printf("%s tem %d de tamanho\n", prompt, prompt_size);
 
     return prompt;

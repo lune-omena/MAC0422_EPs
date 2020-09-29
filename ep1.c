@@ -63,7 +63,8 @@ int main(int argc, char ** argv) {
          * nome t0 dt deadline
          * o nome tem no máximo 30 caracteres, os outros são ints.
          * acho legal usarmos structs para montar o recebimento desses dados, gostaria de saber oq vc acha :)
-         * ou podemos guardar um vetor com o nome dos processos, um vetor pro t0 e outro pro dt 
+         * ou podemos guardar um vetor com o nome dos processos, um vetor pro t0 e outro pro dt ]
+         * (eu estou votando pelo que for mais fácil de implementar, sinceramente x.x)
          * se for pela segunda:
          * não precisaríamos guardar tudo num vetor de cara
          * mas nai sei :0*/

@@ -24,4 +24,8 @@ não fiz muitos testes, mas funciona na minha máquina. precisamos dar free dire
 -///-
 atualizei o makefile para gerar de cara os dois binários. basta digitar make ep no terminal.
 acho que da parte 1 realmente só falta liberar os ponteiro alocados.
-comecei a estruturar a parte 2, recebendo o arquivo trace.
+comecei a estruturar a parte 2, recebendo o arquivo trace. temos que fazer decisões de projeto sobre como vamos fazer
+o recebimento do arquivo. deixei em um comentário no arquivo ep1.c, mas o geral é que:
+ou podemos escolher ler todo o arquivo de uma vez e ir acionando as threads conforme dá o tempo;
+ou podemos construir os processos a partir do recebimento de cada processo.
+oq vc prefere?

@@ -37,9 +37,12 @@ void armazenaProcessos(char * arquivo, Data * processos);
 
 /* Bibliotecas */
 #include <stdio.h>   /* printf(), fopen()... */
-#include <unistd.h>
 #include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
+
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main(int argc, char ** argv)
 {

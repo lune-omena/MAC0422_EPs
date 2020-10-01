@@ -25,3 +25,9 @@ ep1: ep1.o
 	
 ep1.o: ep1.c
 		gcc $(FLAGS) ep1.c
+
+teste: teste.o
+		gcc teste.o -o teste -lpthread
+
+teste.o: teste.c
+		gcc $(FLAGS) teste.c -lpthread

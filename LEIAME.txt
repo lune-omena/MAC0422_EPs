@@ -1,0 +1,1 @@
+arquivo LEIAME em formato texto puro explicando como compilar e executar os dois binários;

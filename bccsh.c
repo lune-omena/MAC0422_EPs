@@ -6,12 +6,8 @@
  * 
  */
 
-// PARA FACILITAR ENTENDIMENTO
-#define DU_CMD "/usr/bin/du -hs ." 
-#define TRCRT_CMD "/usr/bin/traceroute www.google.com.br"
-#define INVAL_OP "Operação inválida.\n"
-
 /* Bibliotecas */
+#include "bccsh.h"               /* header */
 #include <stdio.h>               /* printf(), fgets()... */
 #include <stdlib.h>              /* malloc(), free() */
 
@@ -26,9 +22,6 @@
 #include <string.h>              /* strcmp(), strtok()... */
 
 #include <fcntl.h>               /* AT_FDCWD do ln -s ... */   
-
-/* Funções */
-char * definePrompt(); // Criaçao de prompt personalizado
 
 /* Execução */
 int main () {

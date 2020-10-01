@@ -17,7 +17,7 @@ ep: bccsh ep1
 bccsh:  bccsh.o
 		gcc bccsh.o -o bccsh -lreadline
 
-bccsh.o: bccsh.c
+bccsh.o: bccsh.c bccsh.h
 		gcc $(FLAGS) bccsh.c
 
 ep1: ep1.o

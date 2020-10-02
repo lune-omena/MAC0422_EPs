@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "ep1.h"
 
 #define NITER 1000000000
 #define VEZES 5
@@ -81,6 +82,7 @@ int main() {
     int num_p;                      // número de processos do arquivo
     Data * processos; 
 
+    /* O MUTEX PRECISA SER VARIAVEL GLOBAAAAAAL */
     if(argv[2] == NULL) {
         printf("Você precisa inserir um arquivo txt como segundo parâmetro!\n");
         exit(EXIT_FAILURE);

@@ -27,9 +27,12 @@
 #include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
 
-#include <pthread.h>
+#include <pthread.h> /* pthread_init(), pthread_mutex_lock()...*/
 #include <stdlib.h>
 #include <unistd.h>
+
+/* VARIÁVEIS GLOBAIS */
+pthread_mutex_t mutex;
 
 int main(int argc, char ** argv)
 {
@@ -62,7 +65,7 @@ int main(int argc, char ** argv)
     switch(escalonador) {
         case(1):
             printf("ESCALONADOR: First Come, First Served\n");
-            FCFS(processos);
+            FCFS(processos, num_p);
             break;
         case(2):
             printf("ESCALONADOR: Shortest Remaining Time Next\n");
@@ -127,7 +130,9 @@ void armazenaProcessos(char * arquivo, Data * processos)
         while(buf_break != NULL) {
             switch(j) {
                 case 0: // nome do processo
-                    size = strlen(buf_break);
+                    size = strlen(buf_break)+1;
+                    //printf("%s, tamanho: %d\n", buf_break, size);
+                    strcat(buf_break, "\0");
                     processos[i].processo = (char *) malloc(size*sizeof(char));
                     strcpy(processos[i].processo, buf_break);
                     break;
@@ -155,6 +160,60 @@ void armazenaProcessos(char * arquivo, Data * processos)
     fclose(f);
 }
 
-void FCFS(Data * processos) {
+void * existe(void *a)
+{
+    /* quero receber a duração da thread*/
+    /* preciso receber o inicio dela e retornar o final? talvez sim, talvez não o.o*/
+    long int duracao = 10; /* convertendo parametro de entrada */
+    printf("A duração é de %ld segundos\n", duracao);
+    long int i;
+    int x = 0;
+
+    /* PROTOCOLO DE ENTRADA*/   
+    pthread_mutex_lock(&mutex); // P() -> espera valor de mutex 1 e decrementa
+    sleep(1);
+    printf("Passou do P()!\n");
+
+    /* REGIÃO CRITICA - EXECUTAR O PROCESSO POR X SEGUNDOS */
+    for(i = 0; i < duracao; i++) {
+        x++;
+        printf("Rodando processo por %ld segundos...", i);
+        sleep(1);
+    }
+
+    /* PROTOCOLO DE SAIDA */
+    pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
+
+    return NULL;
+}
+
+void FCFS(Data * processos, int num_p) {
     /* ordena processos prontos em fila por ordem de chegada e executa nessa ordem */
+
+    //int ind = 0;            // índice do processo no vetor processos
+    pthread_t tid[10];        // vetor de threads
+    //int * num = &num_p;
+
+    pthread_mutex_init(&mutex, NULL); 
+
+    for(int i = 0; i < 10; i++) {
+        if (pthread_create(&tid[i], NULL, existe(0), NULL)) {
+            printf("\n ERROR creating thread\n");
+            exit(1);
+        }
+    }
+
+    printf("rodou\n");
+
+    /* enquanto não acabou de rodar todos os processos
+     * o processo vai rodar por x quantidade de tempo - ou seja, faz operação
+     * mas os outros processos tem que ser rodados tbm, em concorrência né.
+     * então eu tenho que usar a quantidade de threads disponível. 
+     * (inicialmente vou começar com 10 threads mas n lembro se havia necessidade
+     * de haver uma quantidade maior ou menor) 
+     * insere no arquivo louco lá 
+    */
+
+    //pthread_mutex_destroy(&mutex);
+
 }

@@ -21,7 +21,7 @@ bccsh.o: bccsh.c bccsh.h
 		gcc $(FLAGS) bccsh.c
 
 ep1: ep1.o
-		gcc ep1.o -o ep1 
+		gcc ep1.o -pthread -o ep1 
 	
 ep1.o: ep1.c ep1.h
 		gcc $(FLAGS) ep1.c

@@ -201,10 +201,6 @@ char * definePrompt()
         usr = "daniel";
     }
 
-    /*
-    uname(&unameData);
-    prompt_size += strlen(unameData.nodename);*/
-
     prompt_size += strlen(usr);
 
     if( (path_name = getcwd(NULL, 0)) == 0 ) {
@@ -218,11 +214,9 @@ char * definePrompt()
     strcpy(prompt, "{");
     strcat(prompt, usr);
     strcat(prompt, "@");
-    //strcat(prompt, unameData.nodename);
     strcat(prompt, path_name);
     strcat(prompt, "}");
     strcat(prompt, " ");
-    //printf("%s tem %d de tamanho\n", prompt, prompt_size);
 
     return prompt;
 }

@@ -83,6 +83,8 @@ int main(int argc, char ** argv)
         free(processos[i].processo);    
     free(processos);
 
+    printf("\nFIM DO PROGRAMA\n");
+
     return 0;
 }
 
@@ -182,11 +184,11 @@ void * thread(void *a)
         /* REGIÃO CRITICA */
         x++;
         sleep(1);
+        printf("Rodando por %ld de tempo...\n", i);
         tempo_decorrido++;
         tempo_prog++;
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
-        printf("Rodando por %ld de tempo...\n", i);
     }
 
     return NULL;
@@ -199,7 +201,8 @@ void FCFS(Data * processos, int num_p) {
     pthread_t tid[num_p];            // vetor de threads
     int i;
     int terminou = 0;
-    tempo_prog = 0;  //tempo decorrido do programa
+    int iniciou = 0;
+    tempo_prog = 0;                  //tempo decorrido do programa
 
     /* enquanto não acabou de rodar todos os processos
      * eu vou esperando numa fila, vou atualizar a variável ind como representante
@@ -217,18 +220,27 @@ void FCFS(Data * processos, int num_p) {
         pthread_mutex_lock(&mutex_proc);
         terminou = 0;
         tempo_dt = processos[ind].dt;
+        
+        // preciso esperar quanto tempo der até acionar a thread no t0 dela
+        while(!iniciou) {
+            if(tempo_prog >= processos[ind].d0)
+                iniciou = 1;
+            else {
+                sleep(1);
+                tempo_prog++;
+            }
+        }
 
         if (pthread_create(&tid[ind], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
-        // quero que trave aqui
         while(!terminou) {
-            printf("VAI DESGRAÇA\n");
+            //printf("VAI DESGRAÇA\n");
+            /*
             printf("tempo decorrido:%ld e tempo_dt: %ld\n", tempo_decorrido, tempo_dt);
-            printf("tempo do program:%ld e tempo de inicio do processo:%d\n", tempo_prog, processos[ind+1].d0);
-            sleep(1);
-            if(tempo_decorrido >= tempo_dt && tempo_prog >= processos[ind+1].d0) {
+            sleep(1);*/
+            if(tempo_decorrido >= tempo_dt) {
                 printf("Esperou por %ld\n", tempo_decorrido);
                 ind++;
                 tempo_decorrido = 0;

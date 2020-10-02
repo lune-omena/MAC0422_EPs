@@ -164,6 +164,7 @@ void armazenaProcessos(char * arquivo, Data * processos)
 /* VARIÁVEIS GLOBAIS */
 long int tempo_decorrido = 0; //tempo decorrido do processo
 long int tempo_dt = 0;  //tempo a decorrer do processo i.e. tf -t0
+long int tempo_prog;
 long int x = 0;
 
 // antiga void * existe
@@ -182,6 +183,7 @@ void * thread(void *a)
         x++;
         sleep(1);
         tempo_decorrido++;
+        tempo_prog++;
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
         printf("Rodando por %ld de tempo...\n", i);
@@ -196,8 +198,8 @@ void FCFS(Data * processos, int num_p) {
     int ind = 0;                     // índice do processo no vetor processos
     pthread_t tid[num_p];            // vetor de threads
     int i;
-
-    long int tempo_prog = 0;  //tempo decorrido do programa
+    int terminou = 0;
+    tempo_prog = 0;  //tempo decorrido do programa
 
     /* enquanto não acabou de rodar todos os processos
      * eu vou esperando numa fila, vou atualizar a variável ind como representante
@@ -212,32 +214,29 @@ void FCFS(Data * processos, int num_p) {
 
     // ABAIXO: recebo na variável global tempo_dt o tempo a se decorrer do processo e crio thread
     while(ind < num_p) {
-
         pthread_mutex_lock(&mutex_proc);
-
+        terminou = 0;
         tempo_dt = processos[ind].dt;
 
         if (pthread_create(&tid[ind], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
-        
-        if(tempo_decorrido < tempo_dt && tempo_prog < processos[ind+1].d0) {
-            printf("Esperou por %ld\n", tempo_decorrido);
-            ind++;
-            tempo_decorrido = 0;
+        // quero que trave aqui
+        while(!terminou) {
+            printf("VAI DESGRAÇA\n");
+            printf("tempo decorrido:%ld e tempo_dt: %ld\n", tempo_decorrido, tempo_dt);
+            printf("tempo do program:%ld e tempo de inicio do processo:%d\n", tempo_prog, processos[ind+1].d0);
+            sleep(1);
+            if(tempo_decorrido >= tempo_dt && tempo_prog >= processos[ind+1].d0) {
+                printf("Esperou por %ld\n", tempo_decorrido);
+                ind++;
+                tempo_decorrido = 0;
+                pthread_mutex_unlock(&mutex_proc);
+                terminou = 1;
+            }
         }
-
-        pthread_mutex_unlock(&mutex_proc);
     }
-    /*
-    for (i = 0; i < num_p; i++) {
-        tempo_dt = processos[i].dt;
-        if (pthread_create(&tid[i], NULL, thread, NULL)) {
-            printf("\n ERROR creating thread\n");
-            exit(1);
-        }
-    }*/
 
     /* Esperando todas as threads executarem */
     for (i = 0; i < num_p; i++)

@@ -18,4 +18,5 @@ typedef struct data {
 int  contaLinhas(char * arquivo); // Conta o número de linhas do arquivo
 void armazenaProcessos(char * arquivo, Data * processos); // Captação de texto em arquivo e armazenamento
 void FCFS(Data * processos, int num_p);
-void * existe(void *a);
+void * thread1(void *a);
+void * thread2(void *a);

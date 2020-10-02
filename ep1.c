@@ -33,6 +33,8 @@
 
 /* VARIÁVEIS GLOBAIS */
 pthread_mutex_t mutex;
+pthread_mutex_t mutex2;
+
 
 int main(int argc, char ** argv)
 {
@@ -160,50 +162,67 @@ void armazenaProcessos(char * arquivo, Data * processos)
     fclose(f);
 }
 
-void * existe(void *a)
+long int x = 0;
+
+// antiga void * existe
+void * thread1(void *a)
 {
     /* quero receber a duração da thread*/
     /* preciso receber o inicio dela e retornar o final? talvez sim, talvez não o.o*/
-    long int duracao = 10; /* convertendo parametro de entrada */
+    long int duracao = 5; /* convertendo parametro de entrada */
+    printf("A duração é de %ld segundos\n", duracao);
+    long int i;
+
+    for(i = 0; i < duracao; i++) {
+        /* PROTOCOLO DE ENTRADA*/
+        pthread_mutex_lock(&mutex); // P() -> espera valor de mutex 1 e decrementa
+        /* REGIÃO CRITICA */
+        x++;
+        sleep(1);
+        /* PROTOCOLO DE SAIDA */
+        pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
+        printf("Rodando o %ld-ésimo processo...\n", i);
+    }
+
+    return NULL;
+}
+
+// antiga void * existe
+/*
+void * thread2(void *a)
+{
     printf("A duração é de %ld segundos\n", duracao);
     long int i;
     int x = 0;
 
-    /* PROTOCOLO DE ENTRADA*/   
-    pthread_mutex_lock(&mutex); // P() -> espera valor de mutex 1 e decrementa
-    sleep(1);
-    printf("Passou do P()!\n");
-
-    /* REGIÃO CRITICA - EXECUTAR O PROCESSO POR X SEGUNDOS */
     for(i = 0; i < duracao; i++) {
+        pthread_mutex_lock(&mutex2); // P() -> espera valor de mutex 1 e decrementa
         x++;
-        printf("Rodando processo por %ld segundos...", i);
         sleep(1);
+        pthread_mutex_unlock(&mutex2); // V() -> incrementa após P()
+        printf("Rodando o %ld-ésimo processo...\n", i);
     }
 
-    /* PROTOCOLO DE SAIDA */
-    pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
-
     return NULL;
-}
+}*/
 
 void FCFS(Data * processos, int num_p) {
     /* ordena processos prontos em fila por ordem de chegada e executa nessa ordem */
 
     //int ind = 0;            // índice do processo no vetor processos
-    pthread_t tid[10];        // vetor de threads
+    pthread_t tid[3];        // vetor de threads
     //int * num = &num_p;
+    int i;
 
-    pthread_mutex_init(&mutex, NULL); 
+    pthread_mutex_init(&mutex, NULL);  
 
-    for(int i = 0; i < 10; i++) {
-        if (pthread_create(&tid[i], NULL, existe(0), NULL)) {
+    //pthread_mutex_init(&mutex2, NULL);  
+
+    for(i = 0; i < num_p; i++)
+        if (pthread_create(&tid[i], NULL, thread1(0), NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
-    }
-
-    printf("rodou\n");
 
     /* enquanto não acabou de rodar todos os processos
      * o processo vai rodar por x quantidade de tempo - ou seja, faz operação
@@ -214,6 +233,14 @@ void FCFS(Data * processos, int num_p) {
      * insere no arquivo louco lá 
     */
 
-    //pthread_mutex_destroy(&mutex);
+    /* Esperando todas as threads executarem */
+    for (i = 0; i < num_p; i++)
+        if (pthread_join(tid[i], NULL)) {
+            printf("\n Erro ao juntar a thread!");
+            exit(1);
+        }
+
+    pthread_mutex_destroy(&mutex);
+    //pthread_mutex_destroy(&mutex2);
 
 }

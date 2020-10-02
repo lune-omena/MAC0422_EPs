@@ -188,9 +188,10 @@ void * thread1(void *a)
 }
 
 // antiga void * existe
-/*
+
 void * thread2(void *a)
 {
+    long int duracao = 5; /* convertendo parametro de entrada */
     printf("A duração é de %ld segundos\n", duracao);
     long int i;
     int x = 0;
@@ -204,7 +205,7 @@ void * thread2(void *a)
     }
 
     return NULL;
-}*/
+}
 
 void FCFS(Data * processos, int num_p) {
     /* ordena processos prontos em fila por ordem de chegada e executa nessa ordem */
@@ -216,13 +217,19 @@ void FCFS(Data * processos, int num_p) {
 
     pthread_mutex_init(&mutex, NULL);  
 
-    //pthread_mutex_init(&mutex2, NULL);  
+    pthread_mutex_init(&mutex2, NULL);  
 
-    for(i = 0; i < num_p; i++)
+    for(i = 0; i < num_p-1; i++)
         if (pthread_create(&tid[i], NULL, thread1, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
+
+
+    if (pthread_create(&tid[2], NULL, thread2, NULL)) {
+        printf("\n ERROR creating thread\n");
+        exit(1);
+    }
 
     /* enquanto não acabou de rodar todos os processos
      * o processo vai rodar por x quantidade de tempo - ou seja, faz operação
@@ -241,6 +248,6 @@ void FCFS(Data * processos, int num_p) {
         }
 
     pthread_mutex_destroy(&mutex);
-    //pthread_mutex_destroy(&mutex2);
+    pthread_mutex_destroy(&mutex2);
 
 }

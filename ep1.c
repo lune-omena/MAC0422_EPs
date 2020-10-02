@@ -210,7 +210,7 @@ void FCFS(Data * processos, int num_p) {
     /* ordena processos prontos em fila por ordem de chegada e executa nessa ordem */
 
     //int ind = 0;            // índice do processo no vetor processos
-    pthread_t tid[3];        // vetor de threads
+    pthread_t tid[num_p];        // vetor de threads
     //int * num = &num_p;
     int i;
 
@@ -219,7 +219,7 @@ void FCFS(Data * processos, int num_p) {
     //pthread_mutex_init(&mutex2, NULL);  
 
     for(i = 0; i < num_p; i++)
-        if (pthread_create(&tid[i], NULL, thread1(0), NULL)) {
+        if (pthread_create(&tid[i], NULL, thread1, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }

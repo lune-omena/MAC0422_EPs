@@ -37,3 +37,75 @@ R: sim.
 R: daniel recomenda que interrompa com semáforos. Inicializa todos os semáforos com zero, e passa pro escalonador para ver o primeiro da fila e da V no processo que é o primeiro da fila. todos os rpocessos tão num loop infinito, e como deu V ela começa a rodar. P  no final. Quando o escalonador for tirar porque deu quantum ou tempo menor, dá um P nessa thread para pará-la. não precisa usar syscalls, pode usar pthreads.
 • No caso do FCFS se passarem do deadline não tem o que a gente fazer, né?
 R: não, isso é pros gráficos.
+
+Dúvidas sobre EP
+Escalonador de processos -> como funcionaria a preeempção?
+• teríamos que criar 1 thread para cada um dos processos e revezar entre elas! (seu programa deve ter exatamente 10 threads, elas não precisam existir - as 10 - a todo tempo) -> você pode ler o arquivo inteiro e ir criando as threads em determinado tempo ou ir criando aos poucos
+• não posso destruir threads para quando houver preempção e criar outra! tenho que usar sempre as mesmas/revezar
+
+Professor, não tem um escalonador que ordena por deadline mais próxima?
+• sim, mas não vou conseguir cobrir esses escalonadores.
+
+Professor, aproveitando, no EP como a gente faz pra ter o controle de colocar as threads em cada CPU? 
+• não entendi sua pergunta. isso faz parte do trabalho. se estiver usando apenas 1 cpu. não precisar se preocupar com isso; eu tenho que limitar o número de threads máximo - vai ter que explicar se usou só uma cpu ou mais cpus e limitar quanto o escalonador estiver funcionar. vc não precisa se preocupar de usar cada cpu separada - se acontecer das cpus rodarem de uma vez n tem problema.
+
+Professor, quando eu crio uma thread, tem algum jeito de criar ela e ela ficar parada
+até a main desbloquear ela?
+• mais fácil usar semáforos. (sigatomic, qualquer coisa dentro da pthread;h)
+
+Professor, se eu assumir que meu escalonador só pode ter exatamente um processo executando a cada instante de tempo, posso ter uma única thread e chamá-la com os dados do processo correspondente a cada mudança de contexto?
+ao invés de ter n threads aguardando pra executar
+• não, precisa ter n threads esperando para executar
+
+Professor, a função passada para a thread na sua criação pode ser diferente dependendo do escalonador usado? 
+• sim. mas para quê? (o daniel achou isso bizarro)
+
+Os semáforos são suficientes para fazer todo o controle de todas as threads?
+• eu acho que sim
+
+Professor, o que é a arquitetura de um shell? (pergunto isso porque o enunciado pede para explicar a arquitetura do shell nos slides)
+• se criou parser, os tipos, etc. qual eh a base do negócio?
+
+• SJF -> você não ordena pela ordem chegada mas pelo tempo mais curto
+
+Professor dá pra uma thread bloquear a main ou é melhor fazer ume thread escalonadora tb?
+• é melhor (daniel) fazer uma thread separada escalonadora
+
+• daniel vai testar com milhares de threads talvez TT
+• tem que justificar na apresentação o pq de usar uma quantidade fixa de threads
+
+Professor, mas e aquele caso que a gente tinha falado lá no início do EP
+De alcançar o número máximo de threads?
+• daniel> vou testar no meu PC, vou ver quantas threads cosigo criar.
+
+professor, essa questão de deixa mais generico também vale pro shell tbm?
+por exemplo não limitar tamanho de argumentos e fazer o buffer que cuida de armazenar isso ser dinâmico
+• no shell não vou fazer nada além do que pedi!
+
+Intervalo de confiança baseado na quantidade de processos que não passaram? Processos que terminam antes e depois de deadline. 
+•  É a quantidade de processos (não o tempo). Fazer um histograma com barra de erro.
+
+Professor, eu e minha dupla temos uma dúvida sobre o EP. Os cores da CPU que a thread está usando/liberando devem ser exibidos. Para isso pesquisamos um pouco e pensamos em fazer o seguinte: definir uma "afinidade" da thread para um determinado core, assim, para cada thread, saberíamos em que núcleo ela está/estava rodando. Isso é uma solução válida?
+• tudo bem. tenha cuidado de não mandar mais de uma thread para a mesma CPU. supondo que tem uma lista de núcleos que estão livres, daniel supõe que vc faça isso de uma forma circular. também pode fazer: eu acho q tem uma função em C que fala o core virtual que a thread ta rodando. (diz em q CPU vc quer que a thread rode, e aí já tá pronto o controle). --> sched_getcpu() (PODE DEVOLVER O VALOR VIRTUAL) da sched.h 
+USE comando top para ver se o número da CPU bate.
+
+Estamos usando a função sleep para executar o trabalho da thread, e imprimindo o core que ela está rodando antes e depois do sleep. Mas as vezes, devido ao escalonador do SO,  as CPUs antes do sleep (entrada na CPU) e depois (saída da CPU) são diferentes. Isso seria um problema?
+• não tem problema! vc tem que confiar no valor que tá sendo devolvido.
+
+mas no ep é preciso sempre rodar no mesmo core?
+• não. se vc tiver condição de controlar (affinity), tudo bem, mas vc tbm pode jogar essa responsabilidade pro SO. supondo q vc faça um código que use apenas uma CPU (virtual, física, tanto faz) por vez (1 thread rodando por vez). (?????)se eu olhar pro sue simulador tem que ter no máximo 8 threads rodadno (??????) e o número esperado de retorno de CPU vai de 0 a 7.
+
+sobre essa quantidade de threads paralelas, podemos usar um #define em arquivo .h e colocar em instruções de compilação? Ou temos que detectar?
+• decisão de implementação. Se eu fro usar com uma quantidade maior, o daniel edita. pode tanto detextar quanto botar fixo (mas s ebotar fixo tem que avisar q ele vai mduar)
+
+Aproveitando professor, no nosso ep, pro round robin e srtn, a gente a cada segundo volta pro escalonador pra ele ver se tem que trocar a thread rodando no processador (por exemplo, se chegou alguma nesse t que tem menor tempo restante). Esse retorno pro escalonador a cada segundo seria considerado mudança de contexto?
+• (não precisa fazer assim), mas não precisa considerar mudança de contexto (dt em que teve mudança ininterrupta - assim que acaba um, o outro começa) obs: o round-robin vau ser grande, mas o srt e o sfcs?? não tanto)
+
+No meu escalonador eu dei um sleep(1) pra não exigir muito processamento porém as vezes o escalonador fica em idle por 1s pq ta executando o código de dentro do loop sendo que ele poderia estar executando um processo nesse 1s, esse erro é aceitável? Sem o sleep no escalonador isso não acontece
+• pode usar usleep() ou nanosleep() também. LEMBRE DE CONSERTAR OS VALORES PQ OVERFLOW!
+
+professor, se na implementação feita, as threads forem criadas antes de de fato começarem a rodar o processo (nesse meio tempo ela fica parada no semáforo, por exemplo), devemos notificar que essa thread está usando tal cpu quando ela é inicializada ou apenas quando começar a rodar o processo? 
+• so quando começar
+
+pthread_cond_wait, signal...
+

@@ -46,3 +46,7 @@ voltei o prompt pra versão antiga, mas as mudanças deixei comentadas
 no arquivo ep1, existe uma inicial implementação de leitura de arquivo.
 obs: para rodar o ep1 a partir do bccsh, escreva:
 ./ep1 (número equivalente ao tipo de escalonador - de 1 a 3) (arquivo de texto a ser lido) (mais coisas em breve)
+
+-//-
+1/10
+criei header

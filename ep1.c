@@ -6,8 +6,6 @@
  * 
  */
 
-#define MAX 200 // temporário
-
 /* ./ep1 <escalonador> <arquivo_trace> <novo_arquivo> <d>
  * sendo <d> opcional! */
 
@@ -23,19 +21,8 @@
  * 
  */
 
-/* Estruturas */
-typedef struct data {
-    char * processo; /* nome do processo tem até 30 caracteres. Devemos especificar aqui? o.o */
-    int d0, dt, deadline;
-} Data;
-
-/* Funções */
-// Conta o número de linhas do arquivo
-int  contaLinhas(char * arquivo);
-// Captação de texto em arquivo e armazenamento
-void armazenaProcessos(char * arquivo, Data * processos);
-
 /* Bibliotecas */
+#include "ep1.h"     /* header */
 #include <stdio.h>   /* printf(), fopen()... */
 #include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
@@ -73,27 +60,19 @@ int main(int argc, char ** argv)
 
     /* ESCALANDO PROCESSOS */
     switch(escalonador) {
-            case(1):
-                printf("ESCALONADOR: First Come, First Served\n");
-                break;
-            case(2):
-                printf("ESCALONADOR: Shortest Remaining Time Next\n");
-                break;
-            case(3):
-                printf("ESCALONADOR: Round-Robin\n");
-                break;
-            default:
-                printf("Escalonador não reconhecido.\n");
+        case(1):
+            printf("ESCALONADOR: First Come, First Served\n");
+            FCFS(processos);
+            break;
+        case(2):
+            printf("ESCALONADOR: Shortest Remaining Time Next\n");
+            break;
+        case(3):
+            printf("ESCALONADOR: Round-Robin\n");
+            break;
+        default:
+            printf("Escalonador não reconhecido.\n");
     }
-
-    printf("\n");
-
-    printf("batata\n");
-    sleep(1);
-    printf("jabuticaba\n"); 
-    sleep(1);
-    printf("morango\n"); 
-
 
     /* Liberando memória */
     for(int i = 0; i < num_p; i++)
@@ -174,4 +153,8 @@ void armazenaProcessos(char * arquivo, Data * processos)
     }
 
     fclose(f);
+}
+
+void FCFS(Data * processos) {
+    /* ordena processos prontos em fila por ordem de chegada e executa nessa ordem */
 }

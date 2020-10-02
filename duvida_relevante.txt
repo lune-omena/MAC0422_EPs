@@ -1,0 +1,9 @@
+A dúvida principal é: se cada processo é uma thread, então quando um processo novo chegar, bastaria criar mais 
+uma thread e passar a executar esse processo em paralelo com outros que já estariam possivelmente rodando? 
+
+Sim. Você tem que criar uma thread para cada processo novo. De novo, depende do escalonador, como escrevi 
+acima. Além disso, depende de se você vai fazer seu código usar todos os núcleos/processadores ou não. 
+Se você considerar apenas 1 processador e o escalonador for o FCFS, a chegada de um novo processo não pode
+fazer esse novo processo ser executado se houver outro em execução. Precisa olhar a fila atual de processos
+ e ordenar o novo no lugar certo.
+

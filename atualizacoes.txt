@@ -48,5 +48,5 @@ obs: para rodar o ep1 a partir do bccsh, escreva:
 ./ep1 (número equivalente ao tipo de escalonador - de 1 a 3) (arquivo de texto a ser lido) (mais coisas em breve)
 
 -//-
-1/10
-criei header
+2/10
+criei header + estou considerando que está rodando apenas com 1 CPU!!!!! por isso os processos entram numa espécie de fila.

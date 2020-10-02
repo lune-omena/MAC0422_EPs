@@ -20,3 +20,4 @@ void armazenaProcessos(char * arquivo, Data * processos); // Captação de texto
 void FCFS(Data * processos, int num_p);
 void * thread1(void *a);
 void * thread2(void *a);
+void * thread3(void *a);

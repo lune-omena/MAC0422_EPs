@@ -34,7 +34,7 @@
 /* VARIÁVEIS GLOBAIS */
 pthread_mutex_t mutex;
 pthread_mutex_t mutex2;
-
+pthread_mutex_t mutex3;
 
 int main(int argc, char ** argv)
 {
@@ -181,7 +181,7 @@ void * thread1(void *a)
         sleep(1);
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
-        printf("Rodando o %ld-ésimo processo...\n", i);
+        printf("Rodando por %ld de tempo...\n", i);
     }
 
     return NULL;
@@ -201,7 +201,25 @@ void * thread2(void *a)
         x++;
         sleep(1);
         pthread_mutex_unlock(&mutex2); // V() -> incrementa após P()
-        printf("Rodando o %ld-ésimo processo...\n", i);
+        printf("Rodando por %ld de tempo...\n", i);
+    }
+
+    return NULL;
+}
+
+void * thread3(void *a)
+{
+    long int duracao = 5; /* convertendo parametro de entrada */
+    printf("A duração é de %ld segundos\n", duracao);
+    long int i;
+    int x = 0;
+
+    for(i = 0; i < duracao; i++) {
+        pthread_mutex_lock(&mutex3); // P() -> espera valor de mutex 1 e decrementa
+        x++;
+        sleep(1);
+        pthread_mutex_unlock(&mutex3); // V() -> incrementa após P()
+        printf("Rodando por %ld de tempo...\n", i);
     }
 
     return NULL;
@@ -216,20 +234,26 @@ void FCFS(Data * processos, int num_p) {
     int i;
 
     pthread_mutex_init(&mutex, NULL);  
-
     pthread_mutex_init(&mutex2, NULL);  
+    pthread_mutex_init(&mutex3, NULL); 
 
-    for(i = 0; i < num_p-1; i++)
-        if (pthread_create(&tid[i], NULL, thread1, NULL)) {
-            printf("\n ERROR creating thread\n");
-            exit(1);
-        }
-
-
-    if (pthread_create(&tid[2], NULL, thread2, NULL)) {
+    if (pthread_create(&tid[0], NULL, thread1, NULL)) {
         printf("\n ERROR creating thread\n");
         exit(1);
     }
+
+
+    if (pthread_create(&tid[1], NULL, thread2, NULL)) {
+        printf("\n ERROR creating thread\n");
+        exit(1);
+    }
+
+
+    if (pthread_create(&tid[2], NULL, thread3, NULL)) {
+        printf("\n ERROR creating thread\n");
+        exit(1);
+    }
+
 
     /* enquanto não acabou de rodar todos os processos
      * o processo vai rodar por x quantidade de tempo - ou seja, faz operação
@@ -249,5 +273,6 @@ void FCFS(Data * processos, int num_p) {
 
     pthread_mutex_destroy(&mutex);
     pthread_mutex_destroy(&mutex2);
+    pthread_mutex_destroy(&mutex3);
 
 }

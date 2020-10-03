@@ -7,6 +7,7 @@
  */
 
 #define MAX 200 // temporário
+#define _GNU_SOURCE
 
 /* ESTRUTURAS */
 typedef struct data {
@@ -17,5 +18,7 @@ typedef struct data {
 /* PROTÓTIPOS */
 int  contaLinhas(char * arquivo); // Conta o número de linhas do arquivo
 void armazenaProcessos(char * arquivo, Data * processos); // Captação de texto em arquivo e armazenamento
-void FCFS(Data * processos, int num_p);
-void * thread(void *a);
+void FCFS(Data * processos, int num_p); // Escalonador first come, first serve
+void * thread(void *a); // operação de thread pro escalonador FCFS
+void SRTN(Data * processos, int num_p); // Escalonador Shortest Job First
+void RR(Data * processos, int num_p);

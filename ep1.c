@@ -30,10 +30,15 @@
 #include <pthread.h> /* pthread_init(), pthread_mutex_lock()...*/
 #include <stdlib.h>
 #include <unistd.h>
+#include <sched.h>  /* sched_getcpu() para pegar CPU */
 
 /* VARIÁVEIS GLOBAIS */
-pthread_mutex_t mutex;
-pthread_mutex_t mutex_proc; // para aguardar o processo atual terminar
+pthread_mutex_t mutex;          // aguardar proceso rodar sua seção crítica
+pthread_mutex_t mutex_proc;     // para aguardar o processo atual (da lista de processos) terminar
+long int tempo_decorrido = 0;   // tempo decorrido do processo
+long int tempo_dt = 0;          // tempo a decorrer do processo i.e. tf -t0
+long int tempo_prog;            // tempo decorrido do programa
+long int x = 0;                 // variável usada para consumir CPU
 
 int main(int argc, char ** argv)
 {
@@ -70,9 +75,11 @@ int main(int argc, char ** argv)
             break;
         case(2):
             printf("ESCALONADOR: Shortest Remaining Time Next\n");
+            SRTN(processos, num_p);
             break;
         case(3):
             printf("ESCALONADOR: Round-Robin\n");
+            RR(processos, num_p);
             break;
         default:
             printf("Escalonador não reconhecido.\n");
@@ -163,20 +170,16 @@ void armazenaProcessos(char * arquivo, Data * processos)
     fclose(f);
 }
 
-/* VARIÁVEIS GLOBAIS */
-long int tempo_decorrido = 0; //tempo decorrido do processo
-long int tempo_dt = 0;  //tempo a decorrer do processo i.e. tf -t0
-long int tempo_prog;
-long int x = 0;
-
 // antiga void * existe
 void * thread(void *a)
 {
-    /* quero receber a duração da thread*/
-    /* preciso receber o inicio dela e retornar o final? talvez sim, talvez não o.o*/
-    long int duracao = tempo_dt; /* convertendo parametro de entrada */
+    long int duracao = tempo_dt;
+    int CPU;
     printf("A duração é de %ld segundos\n", duracao);
     long int i;
+
+    /* CPU USADA NESTA THREAD */
+    CPU = sched_getcpu();
 
     for(i = 0; i < duracao; i++) {
         /* PROTOCOLO DE ENTRADA*/
@@ -184,7 +187,8 @@ void * thread(void *a)
         /* REGIÃO CRITICA */
         x++;
         sleep(1);
-        printf("Rodando por %ld de tempo...\n", i);
+        printf("Rodando por %ld de tempo...\n", i+1);
+        printf("Usando CPU %d\n", CPU);
         tempo_decorrido++;
         tempo_prog++;
         /* PROTOCOLO DE SAIDA */
@@ -202,7 +206,7 @@ void FCFS(Data * processos, int num_p) {
     int i;
     int terminou = 0;
     int iniciou = 0;
-    tempo_prog = 0;                  //tempo decorrido do programa
+    tempo_prog = 0;                  // tempo decorrido do programa
 
     /* enquanto não acabou de rodar todos os processos
      * eu vou esperando numa fila, vou atualizar a variável ind como representante
@@ -210,6 +214,15 @@ void FCFS(Data * processos, int num_p) {
      * e vou considerar que só tem 1 CPU, portanto só um processo pode ocorrer por
      * vez. (p.ex. 2 processos, um de 2 seg e outro de 5 seg, vai rodar no total
      * 7 segundos!)
+    */
+
+   /* caso a gente for respeitar deadlines pra processos de mesmo t0, sugiro
+    * que façamos um novo vetor de processos para rearranjar a partir de deadline 
+    * aí, seria só manter a mesma estrutura:
+    * 1. malloca novo_processos(tamanho do processos)
+    * 2. itera sobre processos:
+    * 3. checa os processos com mesmo t0 (while t0 de processos[ind] == t0 de ind +1)
+    * 4. ordena por deadline
     */
 
     pthread_mutex_init(&mutex, NULL);
@@ -221,7 +234,7 @@ void FCFS(Data * processos, int num_p) {
         terminou = 0;
         tempo_dt = processos[ind].dt;
         
-        // preciso esperar quanto tempo der até acionar a thread no t0 dela
+        // esperar até acionar a thread no t0 dela
         while(!iniciou) {
             if(tempo_prog >= processos[ind].d0)
                 iniciou = 1;
@@ -231,10 +244,13 @@ void FCFS(Data * processos, int num_p) {
             }
         }
 
+        // cria thread
         if (pthread_create(&tid[ind], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
+
+        // trava a thread
         while(!terminou) {
             //printf("VAI DESGRAÇA\n");
             /*
@@ -242,15 +258,19 @@ void FCFS(Data * processos, int num_p) {
             sleep(1);*/
             if(tempo_decorrido >= tempo_dt) {
                 printf("Esperou por %ld\n", tempo_decorrido);
+                if(!pthread_cancel(tid[ind]))
+                    printf("a thread foi destruída! c:\n"); // mata a thread
                 ind++;
                 tempo_decorrido = 0;
                 pthread_mutex_unlock(&mutex_proc);
                 terminou = 1;
+                //pthread_cleanup_push()??
             }
         }
     }
 
     /* Esperando todas as threads executarem */
+    // não sei se é necessário fazer o join...?aaaas
     for (i = 0; i < num_p; i++)
         if (pthread_join(tid[i], NULL)) {
             printf("\n Erro ao juntar a thread!");
@@ -259,5 +279,29 @@ void FCFS(Data * processos, int num_p) {
 
     pthread_mutex_destroy(&mutex);
     pthread_mutex_destroy(&mutex_proc);
+
+}
+
+void SRTN(Data * processos, int num_p) {
+    /* Ordena os processos prontos em uma fila por ordem do tempo de execução deles. 
+     * Do mais curto para o mais longo e executa nessa ordem */
+    /* O tempo de execução dele é comparado com o tempo que falta do processo que
+     * está sendo executando. Se o novo processo é mais curto, ele passa a executar 
+     * e o atual vai pra fila de prontos para continuar sua execução depois */
+
+    /* DECISÃO DE PROJETO: COLOCA NA FRENTE OU ATRÁS DA FILA? */
+    /* cria fila */
+
+
+    /* imagino que o algoritmo seja algo assim:
+     * checa os processos dados pelo tempo t0;
+     * se tiver no tempo t0, ordena "BLOCO" por deadline (vou precisar de um Data * auxiliar)
+     * se não, deixa lá
+     */
+
+
+}
+
+void RR(Data * processos, int num_p) {
 
 }

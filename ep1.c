@@ -203,7 +203,7 @@ void FCFS(Data * processos, int num_p) {
 
     int ind = 0;                     // índice do processo no vetor processos
     pthread_t tid[num_p];            // vetor de threads
-    int i;
+    int i;                           // iterando do join
     int terminou = 0;
     int iniciou = 0;
     tempo_prog = 0;                  // tempo decorrido do programa
@@ -286,19 +286,94 @@ void SRTN(Data * processos, int num_p) {
     /* Ordena os processos prontos em uma fila por ordem do tempo de execução deles. 
      * Do mais curto para o mais longo e executa nessa ordem */
     /* O tempo de execução dele é comparado com o tempo que falta do processo que
-     * está sendo executando. Se o novo processo é mais curto, ele passa a executar 
+     * está sendo executado. Se o novo processo é mais curto, ele passa a executar 
      * e o atual vai pra fila de prontos para continuar sua execução depois */
 
-    /* DECISÃO DE PROJETO: COLOCA NA FRENTE OU ATRÁS DA FILA? */
-    /* cria fila */
+    int ind = 0;                     // índice do processo no vetor processos
+    pthread_t tid[num_p];            // vetor de threads
+    tempo_prog = 0;                  // tempo decorrido do programa
+    int iniciou = 0;
+    int terminou = 0;
 
+    /* FILA */
+    int i;
+    Data * fila = (Data *) malloc(num_p*sizeof(Data));
+    int front = 0;
+    int rear = -1;
+    int num_prontos = 0;
 
-    /* imagino que o algoritmo seja algo assim:
-     * checa os processos dados pelo tempo t0;
-     * se tiver no tempo t0, ordena "BLOCO" por deadline (vou precisar de um Data * auxiliar)
-     * se não, deixa lá
+    /* DECISÃO DE PROJETO: COLOCA NA FRENTE OU ATRÁS DA FILA? acho melhor no começo da fila */
+    /* 
+     * 
+     * em tempo de execução, leio os processos que têm tempo t0 == tempo_prog
+     * coloco-os em ordem na fila;
+     * checo se o primeiro tem tempo de duração menor do que o tempo_decorrido do que roda;
+     * se sim, pauso o atual + troco dt dele para oq resta e troco a posição dos dois na fila;
+     * itera.
+     *   
      */
 
+    pthread_mutex_init(&mutex, NULL);
+    pthread_mutex_init(&mutex_proc, NULL);
+
+    while(!terminou) {
+
+        // ESPERA OS PROCESSOS DE T0 == TEMPO_PROG
+        while(!iniciou) {
+            if(tempo_prog >= processos[ind].d0)
+                iniciou = 1;
+            else {
+                sleep(1);
+                tempo_prog++;
+            }
+        }
+
+        // PEGA TODOS OS PROCESSOS DE T0 == TEMPO_PROG
+        while(tempo_prog >= processos[ind].d0) {
+            // adiciona na fila 
+            // atualiza o índice do último item da fila;
+            if( rear == -1 || rear == front ) {// fila vazia
+                // checa se o dt é menor que o do atual
+                // código aqui
+                // SE NÃO FOR, BOTA NA FILA 
+                fila[++rear] = processos[ind];
+            }
+            else {
+                // PRIMEIRO CHECA SE DT É MENOR QUE DO ATUAL 
+                // código aqui
+                // SE NÃO FOR, COMPARA COM O RESTO DA FILA
+                for(i = front; i < rear && processos[ind].dt < fila[i].dt; i++);
+                if(processos[ind].dt < fila[i].dt) {
+                    fila[++rear] = fila[i];
+                    fila[i] = processos[ind];
+                }
+            }
+
+            ind++;
+        }
+
+        // quando for botar de volta na fila, vou colocar na posição [front-1]
+        // pq n tem problema já que necessáriamente vai ser um número > 0
+
+        // cria thread se o atual morreu já
+        if (pthread_create(&tid[ind], NULL, thread, NULL)) {
+            printf("\n ERROR creating thread\n");
+            exit(1);
+        }
+
+        ind++;
+    }
+
+    /* Esperando todas as threads executarem */
+    // não sei se é necessário fazer o join...?aaaas
+    for (int i = 0; i < num_p; i++)
+        if (pthread_join(tid[i], NULL)) {
+            printf("\n Erro ao juntar a thread!");
+            exit(1);
+        }
+
+    pthread_mutex_destroy(&mutex);
+    pthread_mutex_destroy(&mutex_proc);
 
 }
 

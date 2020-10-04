@@ -286,6 +286,7 @@ void FCFS(Data * processos, int num_p) {
 pthread_mutex_t mutex_wait;
 pthread_mutex_t * m_procs;
 pthread_mutex_t m_escalonador;
+pthread_cond_t c_escalonador;
 pthread_cond_t cond_wait;
 pthread_cond_t * c_procs;
 pthread_mutex_t pare;
@@ -300,16 +301,16 @@ void * thread_srtn(void *a)
     long int i;
 
     pthread_mutex_lock(&pare);
-    if(!pthread_cond_wait(&cond_wait, &mutex_wait))
+    if(!pthread_cond_wait(&cond_wait, &pare))
         printf("THREAD PAUSADA\n");
     pthread_mutex_unlock(&pare);
 
-    /* CPU USADA NESTA THREAD */
-    CPU = sched_getcpu();
 
     for(i = 0; i < duracao; i++) {
         /* PROTOCOLO DE ENTRADA*/
-        pthread_mutex_lock(&mutex_wait); // P() -> espera valor de mutex 1 e decrementa
+        pthread_mutex_lock(&pare); // P() -> espera valor de mutex 1 e decrementa
+        /* CPU USADA NESTA THREAD */
+        CPU = sched_getcpu();
         /* REGIÃO CRITICA */
         x++;
         //sleep(1);
@@ -318,11 +319,13 @@ void * thread_srtn(void *a)
         //tempo_decorrido++;
         //tempo_prog++;
 
-        if(!pthread_cond_wait(&cond_wait, &mutex_wait))
+        pthread_cond_signal(&c_escalonador);
+
+        if(!pthread_cond_wait(&cond_wait, &pare))
             printf("THREAD PAUSADA");
 
         /* PROTOCOLO DE SAIDA */
-        pthread_mutex_unlock(&mutex_wait); // V() -> incrementa após P()
+        pthread_mutex_unlock(&pare); // V() -> incrementa após P()
     }
 
     return NULL;
@@ -431,10 +434,16 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
 
         //receber sinal da therad que rodou para poder fazer os próximos passos
+        pthread_cond_wait(&c_escalonador, &m_escalonador);
+
         
         // tempo de execução desse cara aumenta
-        if(ind_atual > -1 )
-            dt_exec[ind_atual]++; 
+        if(ind_atual > -1 ) {
+            if(processos[ind_atual].dt <= dt_exec[ind_atual])
+                ind_atual = -1; // acabou o processo
+            else
+                dt_exec[ind_atual]++; 
+        }
         
         // temos a fila, checamos se há necessidade de mudar a posição!
         if(fila) {

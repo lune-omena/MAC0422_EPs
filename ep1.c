@@ -287,20 +287,28 @@ pthread_mutex_t mutex_wait;
 pthread_mutex_t * m_procs;
 pthread_mutex_t m_escalonador;
 pthread_cond_t cond_wait;
+pthread_cond_t * c_procs;
+pthread_mutex_t pare;
+//int ind_proc;
 
 void * thread_srtn(void *a)
 {
     long int duracao = tempo_dt;
     int CPU;
-    printf("A duração é de %ld segundos\n", duracao);
+    //printf("A duração é de %ld segundos\n", duracao);
     long int i;
+
+    pthread_mutex_lock(&pare);
+    if(!pthread_cond_wait(&cond_wait, &mutex_wait))
+        printf("THREAD PAUSADA\n");
+    pthread_mutex_unlock(&pare);
 
     /* CPU USADA NESTA THREAD */
     CPU = sched_getcpu();
 
     for(i = 0; i < duracao; i++) {
         /* PROTOCOLO DE ENTRADA*/
-        pthread_mutex_lock(&mutex); // P() -> espera valor de mutex 1 e decrementa
+        pthread_mutex_lock(&mutex_wait); // P() -> espera valor de mutex 1 e decrementa
         /* REGIÃO CRITICA */
         x++;
         //sleep(1);
@@ -310,10 +318,10 @@ void * thread_srtn(void *a)
         //tempo_prog++;
 
         if(!pthread_cond_wait(&cond_wait, &mutex_wait))
-            printf("THREAD PAUSADA\n");
+            printf("THREAD PAUSADA");
 
         /* PROTOCOLO DE SAIDA */
-        pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
+        pthread_mutex_unlock(&mutex_wait); // V() -> incrementa após P()
     }
 
     return NULL;
@@ -334,8 +342,11 @@ void SRTN(Data * processos, int num_p) {
     Data proc_atual;
     int rodando = 0;
 
+    int ind_atual = -1;
+
     // aloca dinâmicamente os semáforos para controle 
     m_procs = (pthread_mutex_t *) malloc(num_p*sizeof(pthread_mutex_t));
+    c_procs = (pthread_cond_t *) malloc(num_p*sizeof(pthread_cond_t));
 
     /* FILA */
     Node * fila = NULL; // fila de processos prontos
@@ -350,11 +361,22 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_init(&m_procs[i], NULL);
 
         // criar todas as threads como locked!!!!!!!! e tem que esperar dar unlock 
+
+    // cria threads dormindo, serão acionadas com a condição de índice i
+    for(int i = 0; i < num_p; i++) {
+        tempo_dt = processos[i].dt;
+        pare = m_procs[i];
+        cond_wait = c_procs[i];
+        if (pthread_create(&tid[i], NULL, thread, NULL)) {
+            printf("\n ERROR creating thread\n");
+            exit(1);
+        }
+    }
         // chego no escalonador e dou unlock dependendo da thread
         // checo se tem alguem na fila + atualizo fila
         // e faço a preempção, usando condicionais eu dou unlock no thread específico
         // e atualizo tempo
-
+    
     int terminou = 0;
     while(!terminou/* ainda não foram todos os processos*/) {
 
@@ -397,20 +419,22 @@ void SRTN(Data * processos, int num_p) {
             ind_prontos++;
         }
 
+        pthread_mutex_lock(&m_escalonador);
+
+        //receber sinal da therad que rodou para poder fazer os próximos passos
+        // temos a fila, checamos se há necessidade de mudar a posição!
 
 
-        rodando = 1;
 
-        while(rodando) {
-            /* roda processo */
-            /* volta pra cá */
-            
-            /* checa fila */
-        }
+        // libera ou não a thread com
+        // indice do pra ser liberado == ind
+        //pthread_cond_signal(c_procs[ind]);
 
         tempo_decorrido++;
         tempo_prog++;
         sleep(1);
+
+        pthread_mutex_unlock(&m_escalonador);
 
         /* executa */
         /* CASO 1: existe thread rodando */

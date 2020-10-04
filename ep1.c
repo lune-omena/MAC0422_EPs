@@ -27,7 +27,7 @@
 #include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
 #include <time.h>    /* usado para ver quanto tempo decorreu no prorgrama */
-#include <pthread.h> /* pthread_init(), pthread_mutex_lock()...*/
+//#include <pthread.h> /* pthread_init(), pthread_mutex_lock()...*/
 #include <stdlib.h>
 #include <unistd.h>
 #include <sched.h>  /* sched_getcpu() para pegar CPU */
@@ -79,7 +79,7 @@ int main(int argc, char ** argv)
             break;
         case(3):
             printf("ESCALONADOR: Round-Robin\n");
-            RR(processos, num_p);
+            //RR(processos, num_p);
             break;
         default:
             printf("Escalonador não reconhecido.\n");
@@ -374,7 +374,7 @@ void SRTN(Data * processos, int num_p) {
         tempo_dt = processos[i].dt;
         pare = m_procs[i];
         cond_wait = c_procs[i];
-        if (pthread_create(&tid[i], NULL, thread, NULL)) {
+        if (pthread_create(&tid[i], NULL, thread_srtn, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
@@ -448,7 +448,7 @@ void SRTN(Data * processos, int num_p) {
         // temos a fila, checamos se há necessidade de mudar a posição!
         if(fila) {
             // EXISTE PROCESSO ROLANDO
-            if(ind_atual > -1)
+            if(ind_atual > -1) {
                 if( ( fila->estado == Espera && (processos[ind_atual].dt-dt_exec[ind_atual]) > fila->proc.dt )
                     ||
                     ( fila->estado == Dormindo && 
@@ -467,6 +467,7 @@ void SRTN(Data * processos, int num_p) {
                     // aciono novo thread
                     pthread_cond_signal(&c_procs[ind_atual]);
                 }
+            }
             else { //NÃO EXISTE PROCESSO ROLANDO
                 ind_atual = fila->indice;
                 aux = fila;
@@ -523,13 +524,4 @@ void insere(Data d_proc, Node * p) {
     novo->proc = d_proc;
     novo->prox = p->prox;
     p->prox = novo;
-}
-
-/* recebe o node anterior ao que vai ser removido */
-void remove(Node * ant) {
-    Node * lixo;
-    lixo = ant->prox;
-    ant->prox = lixo->prox;
-    free(lixo);
-    // talvez tenha que deletar info tbm
 }

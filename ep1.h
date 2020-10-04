@@ -9,6 +9,8 @@
 #define MAX 200 // temporário
 #define _GNU_SOURCE
 
+#include <pthread.h> /* pthread_cond_t, pthread_init(), pthread_mutex_lock()...*/
+
 enum state {Executando, Dormindo, Espera};
 
 /* ESTRUTURAS */
@@ -20,7 +22,7 @@ typedef struct data {
 typedef struct node {
     Data proc;
     int estado; // 0 = executando, 1 = dormindo, 2 = espera
-    Node * prox;
+    struct node * prox;
     int indice; // guarda indice do processo do vetor de threads
     pthread_cond_t resume;
 } Node;
@@ -36,4 +38,3 @@ void RR(Data * processos, int num_p);
 
 /* PROTÓTIPOS DE FILA */
 void insere(Data d_proc, Node * p);
-void remove(Node * ant);

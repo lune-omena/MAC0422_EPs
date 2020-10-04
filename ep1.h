@@ -9,6 +9,8 @@
 #define MAX 200 // temporário
 #define _GNU_SOURCE
 
+enum state {Executando, Dormindo, Espera};
+
 /* ESTRUTURAS */
 typedef struct data {
     char * processo; 
@@ -17,7 +19,8 @@ typedef struct data {
 
 typedef struct node {
     Data proc;
-    Data * next;
+    int estado; // 0 = executando, 1 = dormindo, 2 = espera
+    Data * prox;
 } Node;
 
 /* PROTÓTIPOS */
@@ -28,3 +31,7 @@ void * thread(void *a); // operação de thread pro escalonador FCFS
 void SRTN(Data * processos, int num_p); // Escalonador Shortest Job First
 void * thread_srtn(void *a); // operação de thread pro escalonador SRTN
 void RR(Data * processos, int num_p);
+
+/* PROTÓTIPOS DE FILA */
+void insere(Data d_proc, Node * p);
+void remove(Node * ant);

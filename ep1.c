@@ -316,229 +316,118 @@ void * thread_srtn(void *a)
 
 void SRTN(Data * processos, int num_p) {
     /* Ordena os processos prontos em uma fila por ordem do tempo de execução deles. 
-     * Do mais curto para o mais longo e executa nessa ordem */
-    /* O tempo de execução dele é comparado com o tempo que falta do processo que
+     * Do mais curto para o mais longo e executa nessa ordem;
+     * O tempo de execução dele é comparado com o tempo que falta do processo que
      * está sendo executado. Se o novo processo é mais curto, ele passa a executar 
      * e o atual vai pra fila de prontos para continuar sua execução depois */
 
-    int ind = 0;                     // índice do vetor de processos
+    int ind = 0;                     // índice do vetor de threads criadas
+    int ind_prontos = 0;             // número no vetor processos de processos prontos
     pthread_t tid[num_p];            // vetor de threads
     tempo_prog = 0;                  // tempo decorrido do programa
-    int terminou = 0;
     int existe = 0;                  // indica se existe thread em execução
 
-    /* FILA:
-    int ind = 0;                     // índice no vetor processos de processos lidos
-    int ind_prontos = 0;             // número de threads criadas
-    pthread_t tid[num_p];            // vetor de threads
-    tempo_prog = 0;                  // tempo decorrido do programa
-    int terminou = 0;
-    int existe = 0;                  // indica se existe thread em execução
-
-    int ind_prontos = 0;             // número de threads criadas
-    int i;
-    Data * fila = (Data *) malloc(num_p*sizeof(Data));
-    int front = 0;
-    int rear = -1;
-    int num_prontos = 0;*/
-
-    /* LISTA LIGADA */
-    Node * fila = NULL;
-    Node * atual = NULL;
-
-    /* DECISÃO DE PROJETO: COLOCA NA FRENTE OU ATRÁS DA FILA? acho melhor no começo da fila */
-    /* 
-     * 
-     * em tempo de execução, leio os processos que têm tempo t0 == tempo_prog
-     * coloco-os em ordem na fila;
-     * checo se o primeiro tem tempo de duração menor do que o tempo_decorrido do que roda;
-     * se sim, pauso o atual + troco dt dele para oq resta e troco a posição dos dois na fila;
-     * itera.
-     *   
-     */
+    /* FILA */
+    Node * fila = NULL; // fila de processos prontos
+    Node * aux; // iteração
+    Node * ant; // iteração
 
     pthread_mutex_init(&mutex, NULL);
-    pthread_mutex_init(&mutex_proc, NULL);
 
-    while(!terminou) {
+    int terminou = 0;
+    while(!terminou/* ainda não foram todos os processos*/) {
 
-        /* Preciso rodar este loop de forma que ele checa com o tempo
-         * talvez de um segundo em um segundo */
+        /* checa os processos prontos a serem adicionados à fila */
+        while(tempo_prog > processos[ind_prontos].d0) {
+            
+            if(!fila) { // fila vazia
+                fila->proc = processos[ind_prontos];
+                fila->prox = NULL;
+            }
+            else {
+                aux = fila;
+                ant = NULL;
 
-        if(!existe) {
-            if(fila) {
-                if(tempo_prog < fila->proc.d0) {
-                    tempo_prog++;
-                    sleep(1);
-                }
-                else {// preciso pensar no caso de ser o primeiro, aí a fila nem foi criada ainda...
-                    tempo_dt = fila->proc.dt;
-                    tempo_decorrido = 0;
-
-                    if (pthread_create(&tid[ind], NULL, thread, NULL)) {
-                        printf("\n ERROR creating thread\n");
-                        exit(1);
+                while(aux) {
+                    if(processos[ind_prontos].dt < aux->proc.dt) {
+                        if(ant)
+                            insere(processos[ind_prontos], ant);
+                        else { // primeiro termo
+                            Node * novo = (Node *) malloc(sizeof(Node));
+                            novo->proc = processos[ind_prontos];
+                            novo->prox = fila;
+                            fila = novo;
+                        }
+                        break;
                     }
-                    else {
-                        ind++;
-                        existe = 1;
-                    }
 
+                    ant = aux;
+                    aux = aux->prox;
                 }
             }
+
+            ind_prontos++;
         }
 
-        // PEGA TODOS OS PROCESSOS DE T0 == TEMPO_PROG
-        while(tempo_prog >= processos[ind].d0) {
-            // adiciona na fila 
-            // atualiza o índice do último item da fila;
-            if( fila == NULL ) { // fila vazia
-                // checa se o dt é menor que o do atual
-                if(!existe) {
+        /* checa se o processo morreu */
+        if(tempo_dt - tempo_decorrido <= 0) {
+            existe = 0;
+            //pega o indice dele
+            // destroi 
+        }
+
+        /* executa */
+        /* CASO 1: existe thread rodando */
+        if(existe) {
+            //vai ter que trocar
+            if(fila->proc.dt < tempo_dt - tempo_decorrido) {
+                // pausa o atual
+                // coloca como estado dormindo e atualiza dt
+                if(fila->estado == Espera) {
+                    tempo_dt = fila->proc.dt;
                     if (pthread_create(&tid[ind], NULL, thread, NULL)) {
                         printf("\n ERROR creating thread\n");
                         exit(1);
                     }
                     ind++;
-                    existe = 1;
                 }
-                else {
-                    if(processos[ind].dt < tempo_dt - tempo_decorrido) {
-                        // checo se a thread desse processo já existe TAMBÉM
+                else if(fila->estado == Dormindo) {
 
-                        //PAUSAR THREAD DO OUTRO E RESUMIR COM ESSA.
-                        if (pthread_create(&tid[ind], NULL, thread, NULL)) {
-                            printf("\n ERROR creating thread\n");
-                            exit(1);
-                        }
-                        else 
-                            ind++;
-                    }
-                    else { //inicia fila
-                        fila->proc = processos[ind];
-                        fila->next = NULL;
-                        atual = fila;
-                    }
                 }
+                // pusha o anterior pro início da fila
             }
-            // FILA NÃO VAZIA:
-            else {
-                // CHECA SE DT É MENOR QUE DO ATUAL QUE ESTÁ RODANDO 
-                if( (processos[ind].dt < tempo_dt - tempo_decorrido) && existe) {
-                    // adiciona processo no começo da fila, ou seja,
-                    // quando for botar de volta na fila, vou colocar na posição [front-1]
-                    // pq n tem problema já que necessáriamente vai ser um número > 0    
-                }
-                // SE NÃO FOR, COMPARA COM O RESTO DA FILA
-                else {
-                    Node *itr = fila;
-                    Node * ant = NULL;
-                    Node * novo = (Node *) malloc(sizeof(Node));
-                    novo->proc = processos[ind];
-
-                    while(itr != NULL) {
-
-                        if(processos[ind].dt < itr->proc.dt) {
-                            /* cria o processo */
-                            novo->next = itr;
-
-                            if(ant != NULL) {
-                                ant->next = novo;
-                            }
-                            else
-                                fila = novo;
-                            
-                            break;
-                        }
-                        
-                        ant = itr;
-                        itr = itr->next;
-                    }
-                    // ultimo e n tem menor
-                    if(itr == NULL) {
-                        ant->next = novo;
-                        atual = novo;
-                    }
-                }
-            }
-            //ind++;
         }
-
-        //ind++;
-
-        /* CASO NÃO HAJAM PROGRAMAS EM EXECUÇÃO: */
-        /*
-        if(!existe) {
-            if(tempo_prog < fila[front].d0) {
-                tempo_prog++;
-                sleep(1);
-            }
-            else {// preciso pensar no caso de ser o primeiro, aí a fila nem foi criada ainda...
-                tempo_dt = fila[front].dt;
-                tempo_decorrido = 0;
-
-                if (pthread_create(&tid[ind_prontos], NULL, thread, NULL)) {
+        /* CASO 2: não existe thread rodando */
+        else if(fila != NULL){ 
+            if(fila->estado == Espera) {
+                tempo_dt = fila->proc.dt;
+                // CÓDIGO A IMPLEMENTAR: remove primeiro e primeiro se torna o próximo
+                aux = fila;
+                fila = fila->prox;
+                free(aux);
+                fila = fila->prox;
+                if (pthread_create(&tid[ind], NULL, thread, NULL)) {
                     printf("\n ERROR creating thread\n");
                     exit(1);
                 }
-                else {
-                    front++;
-                    ind_prontos++;
-                    existe = 1;
-                }
+                ind++;
+                existe = 1;
             }
-        }
-
-        // PEGA TODOS OS PROCESSOS DE T0 == TEMPO_PROG
-        while(tempo_prog >= processos[ind].d0) {
-            // adiciona na fila 
-            // atualiza o índice do último item da fila;
-            if( rear == -1 ) { // fila vazia
-                // checa se o dt é menor que o do atual
-                if(!existe) {
-                    if (pthread_create(&tid[ind_prontos], NULL, thread, NULL)) {
-                        printf("\n ERROR creating thread\n");
-                        exit(1);
-                    }
-                    else {
-                        ind_prontos++;
-                        existe = 1;
-                    }
-                }
-                else {
-                    if(processos[ind].dt < tempo_dt - tempo_decorrido) {
-
-                        // checo se a thread desse processo já existe
-                        if (pthread_create(&tid[ind_prontos], NULL, thread, NULL)) {
-                            printf("\n ERROR creating thread\n");
-                            exit(1);
-                        }
-                        else 
-                            ind_prontos++;
-                    }
-                    else
-                        // SE NÃO FOR, BOTA NA FILA 
-                        fila[++rear] = processos[ind];
-                }
+            else if(fila->estado == Dormindo) {
+                // vai ter que reativar a thread
+                // vejo isso amanhã
             }
             else {
-                // CHECA SE DT É MENOR QUE DO ATUAL QUE ESTÁ RODANDO 
-                if( (processos[ind].dt < tempo_dt - tempo_decorrido) && existe) {
-                    // adiciona processo no começo da fila, ou seja,
-                    // quando for botar de volta na fila, vou colocar na posição [front-1]
-                    // pq n tem problema já que necessáriamente vai ser um número > 0    
-                }
-                // SE NÃO FOR, COMPARA COM O RESTO DA FILA
-                else {
-                    for(i = front; i < rear && processos[ind].dt < fila[i].dt; i++);
-                    if(processos[ind].dt < fila[i].dt) {
-                        fila[++rear] = fila[i];
-                        fila[i] = processos[ind];
-                    }
-                }
+                printf("Você não devia ter chegado aqui...\n");
             }
-            ind++;
-        }*/
+        }
+        else if(fila == NULL) {
+            // vai pro próximo tempo
+            sleep(1);
+            tempo_prog++;
+
+            //adicionar caso pra terminar o programa
+        }
 
     }
 
@@ -551,10 +440,31 @@ void SRTN(Data * processos, int num_p) {
         }
 
     pthread_mutex_destroy(&mutex);
-    pthread_mutex_destroy(&mutex_proc);
 
 }
 
-void RR(Data * processos, int num_p) {
+/* FILAS */
+//https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html
+/*
+void fila_init(Node * node) {
+    node = NULL;
+}*/
 
-};
+/* O estado inicial que vai receber é ESPERA e ele é inserido entre p != NULL e o próximo */
+void insere(Data d_proc, Node * p) {
+    Node * novo;
+    novo = (Node *) malloc(sizeof(Node));
+    novo->estado = Espera;
+    novo->proc = d_proc;
+    novo->prox = p->prox;
+    p->prox = novo;
+}
+
+/* recebe o node anterior ao que vai ser removido */
+void remove(Node * ant) {
+    Node * lixo;
+    lixo = ant->prox;
+    ant->prox = lixo->prox;
+    free(lixo);
+    // talvez tenha que deletar info tbm
+}

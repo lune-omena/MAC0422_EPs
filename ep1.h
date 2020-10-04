@@ -21,6 +21,7 @@ typedef struct node {
     Data proc;
     int estado; // 0 = executando, 1 = dormindo, 2 = espera
     Data * prox;
+    pthread_cond_t resume;
 } Node;
 
 /* PROTÓTIPOS */

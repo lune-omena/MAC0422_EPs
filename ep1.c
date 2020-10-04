@@ -282,6 +282,12 @@ void FCFS(Data * processos, int num_p) {
 
 }
 
+/* VARIÁVEIS GLOBAIS PRO SRTN */
+pthread_mutex_t mutex_wait;
+pthread_mutex_t * m_procs;
+pthread_mutex_t m_escalonador;
+pthread_cond_t cond_wait;
+
 void * thread_srtn(void *a)
 {
     long int duracao = tempo_dt;
@@ -297,16 +303,14 @@ void * thread_srtn(void *a)
         pthread_mutex_lock(&mutex); // P() -> espera valor de mutex 1 e decrementa
         /* REGIÃO CRITICA */
         x++;
-        sleep(1);
+        //sleep(1);
         printf("Rodando por %ld de tempo...\n", i+1);
         printf("Usando CPU %d\n", CPU);
-        tempo_decorrido++;
-        tempo_prog++;
+        //tempo_decorrido++;
+        //tempo_prog++;
 
-        /* if(sinal) {
-            pausa thread
-            break?
-            }*/
+        if(!pthread_cond_wait(&cond_wait, &mutex_wait))
+            printf("THREAD PAUSADA\n");
 
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
@@ -327,6 +331,11 @@ void SRTN(Data * processos, int num_p) {
     pthread_t tid[num_p];            // vetor de threads
     tempo_prog = 0;                  // tempo decorrido do programa
     int existe = 0;                  // indica se existe thread em execução
+    Data proc_atual;
+    int rodando = 0;
+
+    // aloca dinâmicamente os semáforos para controle 
+    m_procs = (pthread_mutex_t *) malloc(num_p*sizeof(pthread_mutex_t));
 
     /* FILA */
     Node * fila = NULL; // fila de processos prontos
@@ -334,6 +343,17 @@ void SRTN(Data * processos, int num_p) {
     Node * ant; // iteração
 
     pthread_mutex_init(&mutex, NULL);
+    pthread_mutex_init(&mutex_wait, NULL);
+    pthread_mutex_init(&m_escalonador, NULL);
+
+    for(int i = 0; i < num_p; i++)
+        pthread_mutex_init(&m_procs[i], NULL);
+
+        // criar todas as threads como locked!!!!!!!! e tem que esperar dar unlock 
+        // chego no escalonador e dou unlock dependendo da thread
+        // checo se tem alguem na fila + atualizo fila
+        // e faço a preempção, usando condicionais eu dou unlock no thread específico
+        // e atualizo tempo
 
     int terminou = 0;
     while(!terminou/* ainda não foram todos os processos*/) {
@@ -377,18 +397,27 @@ void SRTN(Data * processos, int num_p) {
             ind_prontos++;
         }
 
-        /* checa se o processo em execução morreu */
-        if(tempo_dt - tempo_decorrido <= 0) {
-            existe = 0;
-            //pega o indice dele
-            // destroi 
+
+
+        rodando = 1;
+
+        while(rodando) {
+            /* roda processo */
+            /* volta pra cá */
+            
+            /* checa fila */
         }
+
+        tempo_decorrido++;
+        tempo_prog++;
+        sleep(1);
 
         /* executa */
         /* CASO 1: existe thread rodando */
         if(existe) {
             //vai ter que trocar
             if(fila->proc.dt < tempo_dt - tempo_decorrido) {
+                Data aux_proc;
                 // pausa o atual
                 // coloca como estado dormindo e atualiza dt
                 if(fila->estado == Espera) {
@@ -397,19 +426,30 @@ void SRTN(Data * processos, int num_p) {
                         printf("\n ERROR creating thread\n");
                         exit(1);
                     }
+                    aux_proc = proc_atual;
+                    proc_atual = fila->proc;
                     ind++;
+                    fila = fila->prox;
                 }
                 else if(fila->estado == Dormindo) {
 
                 }
                 // pusha o anterior pro início da fila
+                Node * novo = (Node *) malloc(sizeof(Node));
+                novo->proc = aux_proc;
+                novo->estado = Dormindo;
+                novo->prox = fila;
+                fila = novo;
+            }
+            else {
+                // manda sinal para continuar
+                pthread_cond_signal(&cond_wait);
             }
         }
         /* CASO 2: não existe thread rodando */
         else if(fila != NULL){ 
             if(fila->estado == Espera) {
                 tempo_dt = fila->proc.dt;
-                // CÓDIGO A IMPLEMENTAR: remove primeiro e primeiro se torna o próximo
                 aux = fila;
                 fila = fila->prox;
                 free(aux);
@@ -446,7 +486,13 @@ void SRTN(Data * processos, int num_p) {
             exit(1);
         }
 
+
+    for(int i = 0; i < num_p; i++)
+        pthread_mutex_destroy(&m_procs[i]);
+
     pthread_mutex_destroy(&mutex);
+    pthread_mutex_destroy(&mutex_wait);
+    pthread_cond_destroy(&cond_wait);
 
 }
 

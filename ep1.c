@@ -434,8 +434,8 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
 
         //receber sinal da therad que rodou para poder fazer os próximos passos
-        pthread_cond_wait(&c_escalonador, &m_escalonador);
-
+        if(ind_atual > -1 )
+            pthread_cond_wait(&c_escalonador, &m_escalonador);
         
         // tempo de execução desse cara aumenta
         if(ind_atual > -1 ) {

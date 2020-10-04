@@ -305,6 +305,7 @@ void * thread_srtn(void *a)
 
         /* if(sinal) {
             pausa thread
+            break?
             }*/
 
         /* PROTOCOLO DE SAIDA */
@@ -364,12 +365,19 @@ void SRTN(Data * processos, int num_p) {
                     ant = aux;
                     aux = aux->prox;
                 }
+                
+                if(!aux && ant != NULL) { // último termo
+                    Node * novo = (Node *) malloc(sizeof(Node));
+                    novo->proc = processos[ind_prontos];
+                    novo->prox = NULL;
+                    ant->prox = novo;
+                }
             }
 
             ind_prontos++;
         }
 
-        /* checa se o processo morreu */
+        /* checa se o processo em execução morreu */
         if(tempo_dt - tempo_decorrido <= 0) {
             existe = 0;
             //pega o indice dele
@@ -405,7 +413,6 @@ void SRTN(Data * processos, int num_p) {
                 aux = fila;
                 fila = fila->prox;
                 free(aux);
-                fila = fila->prox;
                 if (pthread_create(&tid[ind], NULL, thread, NULL)) {
                     printf("\n ERROR creating thread\n");
                     exit(1);

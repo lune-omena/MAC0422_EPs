@@ -289,6 +289,7 @@ pthread_mutex_t m_escalonador;
 pthread_cond_t cond_wait;
 pthread_cond_t * c_procs;
 pthread_mutex_t pare;
+int * dt_exec;  // tempo de execução de cada uma das threads
 //int ind_proc;
 
 void * thread_srtn(void *a)
@@ -347,6 +348,7 @@ void SRTN(Data * processos, int num_p) {
     // aloca dinâmicamente os semáforos para controle 
     m_procs = (pthread_mutex_t *) malloc(num_p*sizeof(pthread_mutex_t));
     c_procs = (pthread_cond_t *) malloc(num_p*sizeof(pthread_cond_t));
+    dt_exec = (int *) malloc(num_p*sizeof(int));
 
     /* FILA */
     Node * fila = NULL; // fila de processos prontos
@@ -357,8 +359,10 @@ void SRTN(Data * processos, int num_p) {
     pthread_mutex_init(&mutex_wait, NULL);
     pthread_mutex_init(&m_escalonador, NULL);
 
-    for(int i = 0; i < num_p; i++)
+    for(int i = 0; i < num_p; i++) {
         pthread_mutex_init(&m_procs[i], NULL);
+        dt_exec[i] = 0;
+    }
 
         // criar todas as threads como locked!!!!!!!! e tem que esperar dar unlock 
 
@@ -385,6 +389,7 @@ void SRTN(Data * processos, int num_p) {
             
             if(!fila) { // fila vazia
                 fila->proc = processos[ind_prontos];
+                fila->indice = ind_prontos;
                 fila->prox = NULL;
             }
             else {
@@ -393,12 +398,15 @@ void SRTN(Data * processos, int num_p) {
 
                 while(aux) {
                     if(processos[ind_prontos].dt < aux->proc.dt) {
-                        if(ant)
+                        if(ant) {
                             insere(processos[ind_prontos], ant);
+                            ant->prox->indice = ind_prontos;
+                        }
                         else { // primeiro termo
                             Node * novo = (Node *) malloc(sizeof(Node));
                             novo->proc = processos[ind_prontos];
                             novo->prox = fila;
+                            novo->indice = ind_prontos;
                             fila = novo;
                         }
                         break;
@@ -412,6 +420,7 @@ void SRTN(Data * processos, int num_p) {
                     Node * novo = (Node *) malloc(sizeof(Node));
                     novo->proc = processos[ind_prontos];
                     novo->prox = NULL;
+                    novo->indice = ind_prontos;
                     ant->prox = novo;
                 }
             }
@@ -422,8 +431,33 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
 
         //receber sinal da therad que rodou para poder fazer os próximos passos
+        //dt_exec[ind_atual]++; // tempo de execução desse cara aumenta
         // temos a fila, checamos se há necessidade de mudar a posição!
 
+        if(fila) {
+            // EXISTE PROCESSO ROLANDO
+            if( ( fila->estado == Espera && (processos[ind_atual].dt-dt_exec[ind_atual]) > fila->proc.dt )
+                ||
+                ( fila->estado == Dormindo && 
+                ((processos[ind_atual].dt-dt_exec[ind_atual]) > (fila->proc.dt-dt_exec[fila->indice])) )
+                ) { // tempo de exec < q rolando
+                
+                Node * novo = (Node *) malloc(sizeof(Node));
+                novo->indice = ind_atual;
+                novo->prox = fila->prox;
+                novo->proc = processos[ind_atual];
+                novo->estado = Dormindo;
+                aux = fila;
+                ind_atual = fila->indice;
+                fila = novo;
+                free(aux);
+                // aciono novo thread
+                pthread_cond_signal(&c_procs[ind_atual]);
+            }
+        }
+        else {
+
+        }
 
 
         // libera ou não a thread com

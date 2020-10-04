@@ -20,7 +20,8 @@ typedef struct data {
 typedef struct node {
     Data proc;
     int estado; // 0 = executando, 1 = dormindo, 2 = espera
-    Data * prox;
+    Node * prox;
+    int indice; // guarda indice do processo do vetor de threads
     pthread_cond_t resume;
 } Node;
 

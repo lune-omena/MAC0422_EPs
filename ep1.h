@@ -15,10 +15,16 @@ typedef struct data {
     int d0, dt, deadline;
 } Data;
 
+typedef struct node {
+    Data proc;
+    Data * next;
+} Node;
+
 /* PROTÓTIPOS */
 int  contaLinhas(char * arquivo); // Conta o número de linhas do arquivo
 void armazenaProcessos(char * arquivo, Data * processos); // Captação de texto em arquivo e armazenamento
 void FCFS(Data * processos, int num_p); // Escalonador first come, first serve
 void * thread(void *a); // operação de thread pro escalonador FCFS
 void SRTN(Data * processos, int num_p); // Escalonador Shortest Job First
+void * thread_srtn(void *a); // operação de thread pro escalonador SRTN
 void RR(Data * processos, int num_p);

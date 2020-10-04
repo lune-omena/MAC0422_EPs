@@ -301,6 +301,7 @@ void * thread_srtn(void *a)
     long int i;
 
     pthread_mutex_lock(&pare);
+
     if(!pthread_cond_wait(&cond_wait, &pare))
         printf("THREAD PAUSADA\n");
     pthread_mutex_unlock(&pare);
@@ -391,6 +392,7 @@ void SRTN(Data * processos, int num_p) {
         while(tempo_prog > processos[ind_prontos].d0) {
             
             if(!fila) { // fila vazia
+                fila = (Node *) malloc(sizeof(Node));
                 fila->proc = processos[ind_prontos];
                 fila->indice = ind_prontos;
                 fila->prox = NULL;
@@ -434,8 +436,11 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
 
         //receber sinal da therad que rodou para poder fazer os próximos passos
-        if(ind_atual > -1 )
+        if(ind_atual > -1 ) {
+            printf("eita, atual é %d\n", ind_atual);
+
             pthread_cond_wait(&c_escalonador, &m_escalonador);
+        }
         
         // tempo de execução desse cara aumenta
         if(ind_atual > -1 ) {

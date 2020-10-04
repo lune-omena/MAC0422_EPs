@@ -431,108 +431,53 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
 
         //receber sinal da therad que rodou para poder fazer os próximos passos
-        //dt_exec[ind_atual]++; // tempo de execução desse cara aumenta
+        
+        // tempo de execução desse cara aumenta
+        if(ind_atual > -1 )
+            dt_exec[ind_atual]++; 
+        
         // temos a fila, checamos se há necessidade de mudar a posição!
-
         if(fila) {
             // EXISTE PROCESSO ROLANDO
-            if( ( fila->estado == Espera && (processos[ind_atual].dt-dt_exec[ind_atual]) > fila->proc.dt )
-                ||
-                ( fila->estado == Dormindo && 
-                ((processos[ind_atual].dt-dt_exec[ind_atual]) > (fila->proc.dt-dt_exec[fila->indice])) )
-                ) { // tempo de exec < q rolando
-                
-                Node * novo = (Node *) malloc(sizeof(Node));
-                novo->indice = ind_atual;
-                novo->prox = fila->prox;
-                novo->proc = processos[ind_atual];
-                novo->estado = Dormindo;
-                aux = fila;
+            if(ind_atual > -1)
+                if( ( fila->estado == Espera && (processos[ind_atual].dt-dt_exec[ind_atual]) > fila->proc.dt )
+                    ||
+                    ( fila->estado == Dormindo && 
+                    ((processos[ind_atual].dt-dt_exec[ind_atual]) > (fila->proc.dt-dt_exec[fila->indice])) )
+                    ) { // tempo de exec < q rolando
+
+                    Node * novo = (Node *) malloc(sizeof(Node));
+                    novo->indice = ind_atual;
+                    novo->prox = fila->prox;
+                    novo->proc = processos[ind_atual];
+                    novo->estado = Dormindo;
+                    aux = fila;
+                    ind_atual = fila->indice;
+                    fila = novo;
+                    free(aux);
+                    // aciono novo thread
+                    pthread_cond_signal(&c_procs[ind_atual]);
+                }
+            else { //NÃO EXISTE PROCESSO ROLANDO
                 ind_atual = fila->indice;
-                fila = novo;
+                aux = fila;
+                fila = fila->prox;
                 free(aux);
-                // aciono novo thread
-                pthread_cond_signal(&c_procs[ind_atual]);
+
+                pthread_cond_signal(&c_procs[ind_atual]);                
             }
         }
         else {
-
+            // continua rodando o atual se tiver
+            if(ind_atual > -1)
+                pthread_cond_signal(&c_procs[ind_atual]);
         }
-
-
-        // libera ou não a thread com
-        // indice do pra ser liberado == ind
-        //pthread_cond_signal(c_procs[ind]);
 
         tempo_decorrido++;
         tempo_prog++;
         sleep(1);
 
         pthread_mutex_unlock(&m_escalonador);
-
-        /* executa */
-        /* CASO 1: existe thread rodando */
-        if(existe) {
-            //vai ter que trocar
-            if(fila->proc.dt < tempo_dt - tempo_decorrido) {
-                Data aux_proc;
-                // pausa o atual
-                // coloca como estado dormindo e atualiza dt
-                if(fila->estado == Espera) {
-                    tempo_dt = fila->proc.dt;
-                    if (pthread_create(&tid[ind], NULL, thread, NULL)) {
-                        printf("\n ERROR creating thread\n");
-                        exit(1);
-                    }
-                    aux_proc = proc_atual;
-                    proc_atual = fila->proc;
-                    ind++;
-                    fila = fila->prox;
-                }
-                else if(fila->estado == Dormindo) {
-
-                }
-                // pusha o anterior pro início da fila
-                Node * novo = (Node *) malloc(sizeof(Node));
-                novo->proc = aux_proc;
-                novo->estado = Dormindo;
-                novo->prox = fila;
-                fila = novo;
-            }
-            else {
-                // manda sinal para continuar
-                pthread_cond_signal(&cond_wait);
-            }
-        }
-        /* CASO 2: não existe thread rodando */
-        else if(fila != NULL){ 
-            if(fila->estado == Espera) {
-                tempo_dt = fila->proc.dt;
-                aux = fila;
-                fila = fila->prox;
-                free(aux);
-                if (pthread_create(&tid[ind], NULL, thread, NULL)) {
-                    printf("\n ERROR creating thread\n");
-                    exit(1);
-                }
-                ind++;
-                existe = 1;
-            }
-            else if(fila->estado == Dormindo) {
-                // vai ter que reativar a thread
-                // vejo isso amanhã
-            }
-            else {
-                printf("Você não devia ter chegado aqui...\n");
-            }
-        }
-        else if(fila == NULL) {
-            // vai pro próximo tempo
-            sleep(1);
-            tempo_prog++;
-
-            //adicionar caso pra terminar o programa
-        }
 
     }
 

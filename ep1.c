@@ -40,6 +40,7 @@ long int tempo_decorrido = 0;   // tempo decorrido do processo
 long int tempo_dt = 0;          // tempo a decorrer do processo i.e. tf -t0
 long int tempo_prog;            // tempo decorrido do programa
 long int x = 0;                 // variável usada para consumir CPU
+char *arq_trace;
 
 int main(int argc, char ** argv)
 {
@@ -50,16 +51,32 @@ int main(int argc, char ** argv)
     /* TIPOS DE ESCALONADOR */
     int escalonador = -1;
 
+    if(argc < 3 || argc > 5)
+    {
+        printf("Entrada inválida!");
+        exit(EXIT_FAILURE);
+    }
+
     if(argv[2] == NULL) {
         printf("Você precisa inserir um arquivo txt como segundo parâmetro!\n");
         exit(EXIT_FAILURE);
+    }
+    else
+    {
+        arq_trace = argv[3];
+    }
+
+    if(argc == 5 && *argv[4] == 'd')
+    {
+        printf("Opção de exibição de eventos adicionais acionada!\n");
     }
 
     /* LEITURA DE ARQUIVO + PROCESSOS */
     num_p = contaLinhas(argv[2]);
     processos = (Data *) malloc(num_p*sizeof(Data));
     armazenaProcessos(argv[2], processos);
-
+    inicializaRegistros(arq_trace);
+    
     for(int i = 0; i < num_p; i++) 
         printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 
@@ -171,6 +188,35 @@ void armazenaProcessos(char * arquivo, Data * processos)
     fclose(f);
 }
 
+void inicializaRegistros(char * arquivo)
+{
+    FILE *arq;
+
+    arq = fopen(arquivo, "w");
+
+    fclose(arq);
+
+    return;  
+}
+
+void registraProcessos(char * arquivo, char * nome, int tf, int tr)
+{
+    FILE *arq;
+
+    arq = fopen(arquivo, "a");
+    
+    if (!arq)
+    {
+        printf("\n\tErro ao abrir ou criar arquivo!");
+		return;
+    }
+
+    fprintf(arq, "%s %d %d\n", nome, tf, tr);
+
+    fclose(arq);
+    return;   
+}
+
 // função de thread para FCFS
 void * thread(void *a)
 {
@@ -259,6 +305,8 @@ void FCFS(Data * processos, int num_p) {
             sleep(1);*/
             if(tempo_decorrido >= tempo_dt) {
                 printf("Esperou por %ld\n", tempo_decorrido);
+                /* Registrando valores */
+                registraProcessos(arq_trace, processos[ind].processo, tempo_prog, tempo_decorrido);
                 if(!pthread_cancel(tid[ind]))
                     printf("a thread foi destruída! c:\n"); // mata a thread
                 ind++;

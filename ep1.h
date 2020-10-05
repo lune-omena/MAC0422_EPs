@@ -30,6 +30,8 @@ typedef struct node {
 /* PROTÓTIPOS */
 int  contaLinhas(char * arquivo); // Conta o número de linhas do arquivo
 void armazenaProcessos(char * arquivo, Data * processos); // Captação de texto em arquivo e armazenamento
+void inicializaRegistros(char * arquivo); /* inicializa arquivo para escrita da saida */
+void registraProcessos(char * arquivo, char * nome, int tf, int tr); // Registra as saídas dos escalonadores em um arquivo
 void FCFS(Data * processos, int num_p); // Escalonador first come, first serve
 void * thread(void *a); // operação de thread pro escalonador FCFS
 void SRTN(Data * processos, int num_p); // Escalonador Shortest Job First

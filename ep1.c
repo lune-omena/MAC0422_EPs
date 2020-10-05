@@ -40,6 +40,7 @@ long int tempo_decorrido = 0;   // tempo decorrido do processo
 long int tempo_dt = 0;          // tempo a decorrer do processo i.e. tf -t0
 long int tempo_prog;            // tempo decorrido do programa
 long int x = 0;                 // variável usada para consumir CPU
+int d_option = 0;
 char *arq_trace;
 
 int main(int argc, char ** argv)
@@ -69,6 +70,7 @@ int main(int argc, char ** argv)
     if(argc == 5 && *argv[4] == 'd')
     {
         printf("Opção de exibição de eventos adicionais acionada!\n");
+        d_option = 1;
     }
 
     /* LEITURA DE ARQUIVO + PROCESSOS */
@@ -76,7 +78,7 @@ int main(int argc, char ** argv)
     processos = (Data *) malloc(num_p*sizeof(Data));
     armazenaProcessos(argv[2], processos);
     inicializaRegistros(arq_trace);
-    
+
     for(int i = 0; i < num_p; i++) 
         printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 

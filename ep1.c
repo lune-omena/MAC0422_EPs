@@ -26,7 +26,6 @@
 #include <string.h>  /* strlen(), strtok() */
 #include <stdlib.h>  /* atoi() */
 #include <time.h>    /* usado para ver quanto tempo decorreu no prorgrama */
-//#include <pthread.h> /* pthread_init(), pthread_mutex_lock()...*/
 #include <stdlib.h>
 #include <unistd.h>
 #include <sched.h>  /* sched_getcpu() para pegar CPU */
@@ -83,6 +82,7 @@ int main(int argc, char ** argv)
     armazenaProcessos(argv[2], processos);
     inicializaRegistros(arq_trace);
 
+    printf("\nProcessos lidos:\n")
     for(int i = 0; i < num_p; i++) 
         printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 
@@ -103,7 +103,7 @@ int main(int argc, char ** argv)
             break;
         case(3):
             printf("ESCALONADOR: Round-Robin\n");
-            //RR(processos, num_p);
+            printf("Não implementado.\n");
             break;
         default:
             printf("Escalonador não reconhecido.\n");
@@ -156,7 +156,6 @@ void armazenaProcessos(char * arquivo, Data * processos)
 
     /* abaixo lê as linhas do arquivo */
     while( fgets (buf, MAX, f)!= NULL ) {
-        //printf(".%s. tem tamanho %ld, é o processo %d\n", buf, strlen(buf), i);
         
         buf_break = strtok(buf, " ");
         
@@ -165,7 +164,6 @@ void armazenaProcessos(char * arquivo, Data * processos)
             switch(j) {
                 case 0: // nome do processo
                     size = strlen(buf_break)+1;
-                    //printf("%s, tamanho: %d\n", buf_break, size);
                     strcat(buf_break, "\0");
                     processos[i].processo = (char *) malloc(size*sizeof(char));
                     strcpy(processos[i].processo, buf_break);
@@ -303,7 +301,7 @@ void FCFS(Data * processos, int num_p) {
     }
 
     /* enquanto não acabou de rodar todos os processos
-     * eu vou esperando numa fila, vou atualizar a variável ind como representante
+     * espera numa fila, vou atualizar a variável ind como representante
      * do índice no vetor de processos. Como é o FCFS vai funcionar como uma fila,
      * e vou considerar que só tem 1 CPU, portanto só um processo pode ocorrer por
      * vez. (p.ex. 2 processos, um de 2 seg e outro de 5 seg, vai rodar no total
@@ -339,11 +337,6 @@ void FCFS(Data * processos, int num_p) {
         }
 
         // cria thread
-        /*
-        if (pthread_create(&tid[ind], NULL, thread, NULL)) {
-            printf("\n ERROR creating thread\n");
-            exit(1);
-        }*/
         if (pthread_create(&tid[ind], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
@@ -369,7 +362,6 @@ void FCFS(Data * processos, int num_p) {
                 tempo_decorrido = 0;
                 pthread_mutex_unlock(&mutex_proc);
                 terminou = 1;
-                //pthread_cleanup_push()??
             }
         }
     }
@@ -507,7 +499,6 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
         /* checa os processos prontos a serem adicionados à fila */
         while(tempo_prog >= processos[ind_prontos].d0 && ind_prontos < num_p) {
-            //printf("tempo: %d e tempo(%d): %d\n", tempo_prog, ind_prontos, processos[ind_prontos].d0);
 
             if(!fila) { // fila vazia
                 fila = (Node *) malloc(sizeof(Node));
@@ -660,7 +651,6 @@ void SRTN(Data * processos, int num_p) {
     }
 
     /* Esperando todas as threads executarem */
-    // não sei se é necessário fazer o join...?aaaas
     for (int i = 0; i < num_p; i++)
         if (pthread_join(tid[i], NULL)) {
             printf("\n Erro ao juntar a thread!");
@@ -686,10 +676,6 @@ void SRTN(Data * processos, int num_p) {
 
 /* FILAS */
 //https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html
-/*
-void fila_init(Node * node) {
-    node = NULL;
-}*/
 
 /* O estado inicial que vai receber é ESPERA e ele é inserido entre p != NULL e o próximo */
 void insere(Data d_proc, Node * p) {

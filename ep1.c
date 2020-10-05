@@ -40,6 +40,11 @@ long int tempo_dt = 0;          // tempo a decorrer do processo i.e. tf -t0
 long int tempo_prog;            // tempo decorrido do programa
 long int x = 0;                 // variável usada para consumir CPU
 int d_option = 0;
+long int thread_id_num = -1;    // id do processo
+Data *thread_c;                 // conteúdo dos processos
+int ind_espera = -1;
+int ind_proc_atual = -1;
+int total;                      //número total de processos
 char *arq_trace;
 
 int main(int argc, char ** argv)
@@ -234,13 +239,27 @@ void * thread(void *a)
         /* REGIÃO CRITICA */
         x++;
         sleep(1);
-        printf("Rodando por %ld de tempo...\n", i+1);
         CPU = sched_getcpu();
-        printf("Usando CPU %d\n", CPU);
+
+        if(d_option) {
+            if(ind_espera < total && thread_c[ind_espera].d0 <= tempo_prog) {
+                fprintf(stderr, "O processo %s de t0=%d dt=%d deadline=%d chegou.\n", 
+                thread_c[ind_espera].processo, thread_c[ind_espera].d0,
+                thread_c[ind_espera].dt, thread_c[ind_espera].deadline);
+                ind_espera++;
+            }
+            fprintf(stderr,"Processo %ld usando CPU %d\n", thread_id_num, CPU);
+        }
+        printf("Rodando por %ld de tempo...\n", i+1);
+
         tempo_decorrido++;
         tempo_prog++;
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&mutex); // V() -> incrementa após P()
+    }
+    if(d_option) {
+        fprintf(stderr, "Processo %ld deixou de usar a CPU %d.\n", thread_id_num, CPU);
+        fprintf(stderr, "Processo %ld acabou e se encontra na linha %d do arquivo trace.\n", thread_id_num, ind_proc_atual);
     }
 
     return NULL;
@@ -255,6 +274,15 @@ void FCFS(Data * processos, int num_p) {
     int terminou = 0;
     int iniciou = 0;
     tempo_prog = 0;                  // tempo decorrido do programa
+    ind_proc_atual = 0;
+    ind_espera = 0;
+    total = num_p;
+
+    if(d_option) {
+        thread_c = (Data *) malloc(num_p*sizeof(Data));
+        for(int j = 0; j < num_p; j++)
+            thread_c[j] = processos[j];
+    }
 
     /* enquanto não acabou de rodar todos os processos
      * eu vou esperando numa fila, vou atualizar a variável ind como representante
@@ -302,6 +330,7 @@ void FCFS(Data * processos, int num_p) {
             printf("\n ERROR creating thread\n");
             exit(1);
         } else {
+            thread_id_num = tid[ind];
             cpu_set_t cpuset;
             CPU_ZERO(&cpuset);
             CPU_SET(0, &cpuset);
@@ -322,6 +351,7 @@ void FCFS(Data * processos, int num_p) {
                 if(!pthread_cancel(tid[ind]))
                     printf("a thread foi destruída! c:\n"); // mata a thread
                 ind++;
+                ind_proc_atual = ind;
                 tempo_decorrido = 0;
                 pthread_mutex_unlock(&mutex_proc);
                 terminou = 1;
@@ -337,6 +367,9 @@ void FCFS(Data * processos, int num_p) {
             printf("\n Erro ao juntar a thread!");
             exit(1);
         }
+
+    if(d_option)
+        free(thread_c);
 
     pthread_mutex_destroy(&mutex);
     pthread_mutex_destroy(&mutex_proc);

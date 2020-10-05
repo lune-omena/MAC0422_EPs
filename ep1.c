@@ -82,7 +82,7 @@ int main(int argc, char ** argv)
     armazenaProcessos(argv[2], processos);
     inicializaRegistros(arq_trace);
 
-    printf("\nProcessos lidos:\n")
+    printf("\nProcessos lidos:\n");
     for(int i = 0; i < num_p; i++) 
         printf("%s %d %d %d\n", processos[i].processo, processos[i].d0, processos[i].dt, processos[i].deadline);
 

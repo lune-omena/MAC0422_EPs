@@ -403,6 +403,7 @@ void SRTN(Data * processos, int num_p) {
     pthread_t tid[num_p];            // vetor de threads
     tempo_prog = 0;                  // tempo decorrido do programa
     int tam_fila = 0;
+    int * t0_processos;
 
     int ind_atual = -1;
 
@@ -410,6 +411,7 @@ void SRTN(Data * processos, int num_p) {
     m_procs = (pthread_mutex_t *) malloc(num_p*sizeof(pthread_mutex_t));
     c_procs = (pthread_cond_t *) malloc(num_p*sizeof(pthread_cond_t));
     dt_exec = (int *) malloc(num_p*sizeof(int));
+    t0_processos = (int *) malloc(num_p*sizeof(int));
 
     /* FILA */
     Node * fila = NULL; // fila de processos prontos
@@ -514,6 +516,9 @@ void SRTN(Data * processos, int num_p) {
             if(processos[ind_atual].dt <= dt_exec[ind_atual]) {
                 if(!pthread_cancel(tid[ind_atual]))
                     printf("a thread foi destruída! c:\n"); // mata a thread
+                
+                int tr = tempo_prog - t0_processos[ind_atual];
+                registraProcessos(arq_trace, processos[ind_atual].processo, tempo_prog, tr);
                 ind_atual = -1; // acabou o processo
             }
             else
@@ -534,6 +539,9 @@ void SRTN(Data * processos, int num_p) {
                     ((processos[ind_atual].dt-dt_exec[ind_atual]) > (fila->proc.dt-dt_exec[fila->indice])) )
                     ) { // tempo de exec < q rolando
 
+                    if(fila->estado == Espera)
+                        t0_processos[fila->indice] = tempo_prog;
+
                     Node * novo = (Node *) malloc(sizeof(Node));
                     novo->indice = ind_atual;
                     novo->prox = fila->prox;
@@ -549,6 +557,8 @@ void SRTN(Data * processos, int num_p) {
                 pthread_cond_signal(&c_procs[ind_atual]);
             }
             else { //NÃO EXISTE PROCESSO ROLANDO
+                if(fila->estado == Espera)
+                    t0_processos[fila->indice] = tempo_prog;
                 ind_atual = fila->indice;
                 aux = fila;
                 fila = fila->prox;

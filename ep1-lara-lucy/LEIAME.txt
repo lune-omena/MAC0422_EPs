@@ -1,3 +1,6 @@
+NUSP: 9910568
+NUSP: 11221776
+
 Como compilar e executar os dois binários:
 1. rode:
 	make ep

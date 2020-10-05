@@ -228,7 +228,6 @@ void * thread(void *a)
     long int i;
 
     /* CPU USADA NESTA THREAD */
-    CPU = sched_getcpu();
 
     for(i = 0; i < duracao; i++) {
         /* PROTOCOLO DE ENTRADA*/
@@ -237,6 +236,7 @@ void * thread(void *a)
         x++;
         sleep(1);
         printf("Rodando por %ld de tempo...\n", i+1);
+        CPU = sched_getcpu();
         printf("Usando CPU %d\n", CPU);
         tempo_decorrido++;
         tempo_prog++;
@@ -447,6 +447,7 @@ void SRTN(Data * processos, int num_p) {
         // e atualizo tempo
     
     int terminou = 0;
+    tempo_prog++;
     while(!terminou/* ainda não foram todos os processos*/) {
 
         pthread_mutex_lock(&m_escalonador);
@@ -516,6 +517,10 @@ void SRTN(Data * processos, int num_p) {
         }
 
         printf("aaaa\n");
+
+        tempo_decorrido++;
+        tempo_prog++;
+        sleep(1);
         
         // tempo de execução desse cara aumenta
         if(ind_atual > -1 ) {
@@ -570,15 +575,21 @@ void SRTN(Data * processos, int num_p) {
                 pthread_cond_signal(&c_procs[ind_atual]);
                 printf("ainda estou rodando\n");
             }
+            // caso todos os processos prontos tenham sido lidos, acabou
+            else if(ind_prontos >= num_p) {
+                terminou = 1;
+                printf("funcione\n");
+            }
         }
 
         printf("uau\n");
-        printf("tempo do programa: %ld, ind_atual: %d\n", tempo_prog, ind_atual);
+        printf("tempo do programa: %ld, ind_atual: %d\n", tempo_prog-1, ind_atual);
         printf("tamanho da fila: %d\n", tam_fila);
 
+        /*
         tempo_decorrido++;
         tempo_prog++;
-        sleep(1);
+        sleep(1);*/
 
         pthread_mutex_unlock(&m_escalonador);
 
@@ -586,11 +597,14 @@ void SRTN(Data * processos, int num_p) {
 
     /* Esperando todas as threads executarem */
     // não sei se é necessário fazer o join...?aaaas
+    /*
     for (int i = 0; i < num_p; i++)
         if (pthread_join(tid[i], NULL)) {
             printf("\n Erro ao juntar a thread!");
             exit(1);
-        }
+        }*/
+
+    printf("ACABOU!!!!\n");
 
     for(int i = 0; i < num_p; i++)
         pthread_mutex_destroy(&m_procs[i]);

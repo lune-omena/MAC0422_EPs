@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sched.h>  /* sched_getcpu() para pegar CPU */
+#include <errno.h> /* número do erro*/
 
 /* VARIÁVEIS GLOBAIS */
 pthread_mutex_t mutex;          // aguardar proceso rodar sua seção crítica
@@ -286,25 +287,31 @@ void FCFS(Data * processos, int num_p) {
 pthread_mutex_t mutex_wait;
 pthread_mutex_t * m_procs;
 pthread_mutex_t m_escalonador;
-pthread_cond_t c_escalonador;
-pthread_cond_t cond_wait;
+pthread_cond_t c_escalonador = PTHREAD_COND_INITIALIZER;
+pthread_cond_t cond_wait = PTHREAD_COND_INITIALIZER;
 pthread_cond_t * c_procs;
 pthread_mutex_t pare;
 int * dt_exec;  // tempo de execução de cada uma das threads
-//int ind_proc;
+int ind_proc;
 
 void * thread_srtn(void *a)
 {
     long int duracao = tempo_dt;
+    int ret = -1;
     int CPU;
-    //printf("A duração é de %ld segundos\n", duracao);
+    int indice = ind_proc;
+    printf("A duração é de %ld segundos\n", duracao);
     long int i;
 
     pthread_mutex_lock(&pare);
-
-    if(!pthread_cond_wait(&cond_wait, &pare))
-        printf("THREAD PAUSADA\n");
+    printf("wtfwtf\n");
+    printf("O IDNICE É %d\n", indice);
+    pthread_cond_signal(&c_escalonador);
+    pthread_cond_wait(&c_procs[indice], &pare);
+    printf("DENTRO DA THREAD: %d\n", ret);
     pthread_mutex_unlock(&pare);
+
+    printf("ALUEḾ ENTROU/;?:::::::::::::::::::\n");
 
 
     for(i = 0; i < duracao; i++) {
@@ -346,6 +353,7 @@ void SRTN(Data * processos, int num_p) {
     int existe = 0;                  // indica se existe thread em execução
     Data proc_atual;
     int rodando = 0;
+    int tam_fila = 0;
 
     int ind_atual = -1;
 
@@ -372,13 +380,17 @@ void SRTN(Data * processos, int num_p) {
 
     // cria threads dormindo, serão acionadas com a condição de índice i
     for(int i = 0; i < num_p; i++) {
+        pthread_mutex_lock(&m_escalonador);
         tempo_dt = processos[i].dt;
-        pare = m_procs[i];
         cond_wait = c_procs[i];
+        ind_proc = i;
+        pare = m_procs[i];
         if (pthread_create(&tid[i], NULL, thread_srtn, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
+        pthread_cond_wait(&c_escalonador, &m_escalonador);
+        pthread_mutex_unlock(&m_escalonador);
     }
         // chego no escalonador e dou unlock dependendo da thread
         // checo se tem alguem na fila + atualizo fila
@@ -395,7 +407,9 @@ void SRTN(Data * processos, int num_p) {
                 fila = (Node *) malloc(sizeof(Node));
                 fila->proc = processos[ind_prontos];
                 fila->indice = ind_prontos;
+                fila->estado = Espera;
                 fila->prox = NULL;
+                tam_fila++;
             }
             else {
                 aux = fila;
@@ -406,14 +420,17 @@ void SRTN(Data * processos, int num_p) {
                         if(ant) {
                             insere(processos[ind_prontos], ant);
                             ant->prox->indice = ind_prontos;
+                            ant->prox->estado = Espera;
                         }
                         else { // primeiro termo
                             Node * novo = (Node *) malloc(sizeof(Node));
                             novo->proc = processos[ind_prontos];
                             novo->prox = fila;
+                            novo->estado = Espera;
                             novo->indice = ind_prontos;
                             fila = novo;
                         }
+                        tam_fila++;
                         break;
                     }
 
@@ -425,8 +442,10 @@ void SRTN(Data * processos, int num_p) {
                     Node * novo = (Node *) malloc(sizeof(Node));
                     novo->proc = processos[ind_prontos];
                     novo->prox = NULL;
+                    novo->estado = Espera;
                     novo->indice = ind_prontos;
                     ant->prox = novo;
+                    tam_fila++;
                 }
             }
 
@@ -439,11 +458,16 @@ void SRTN(Data * processos, int num_p) {
         if(ind_atual > -1 ) {
             printf("eita, atual é %d\n", ind_atual);
 
-            pthread_cond_wait(&c_escalonador, &m_escalonador);
+            //pthread_cond_wait(&c_escalonador, &m_escalonador);
+
+            printf("ué\n");
         }
+
+        printf("aaaa\n");
         
         // tempo de execução desse cara aumenta
         if(ind_atual > -1 ) {
+            printf("bbbbb\n");
             if(processos[ind_atual].dt <= dt_exec[ind_atual])
                 ind_atual = -1; // acabou o processo
             else
@@ -474,12 +498,16 @@ void SRTN(Data * processos, int num_p) {
                 }
             }
             else { //NÃO EXISTE PROCESSO ROLANDO
+                printf("entrou aqui\n");
                 ind_atual = fila->indice;
                 aux = fila;
                 fila = fila->prox;
                 free(aux);
 
-                pthread_cond_signal(&c_procs[ind_atual]);                
+                tam_fila--;
+
+                int res = pthread_cond_signal(&c_procs[ind_atual]);                
+                printf("%d\n", res);
             }
         }
         else {
@@ -491,6 +519,10 @@ void SRTN(Data * processos, int num_p) {
         tempo_decorrido++;
         tempo_prog++;
         sleep(1);
+
+        printf("uau\n");
+        printf("tempo do programa: %ld, ind_atual: %d\n", tempo_prog, ind_atual);
+        printf("tamanho da fila: %d\n", tam_fila);
 
         pthread_mutex_unlock(&m_escalonador);
 

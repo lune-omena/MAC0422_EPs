@@ -1,0 +1,4 @@
+- opção d 
+- implementar arq. de saída do srtn
+- ppt
+- leiame (ok)

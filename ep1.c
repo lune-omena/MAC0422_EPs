@@ -17,7 +17,6 @@
  * E NO FIM UMA LINHA CONTENDO UM ÚNICO NÚMERO QUE INFORMA A
  * QUANTIDADE DE MUDANÇAS DE CONTEXTO EFETUADAS NA SIMULAÇÃO
  * 
- * E SE O USUÁRIO OPTAR POR USAR O COMANDO "d", TEREMOS QUE INDICAR
  * 
  */
 
@@ -294,9 +293,20 @@ void FCFS(Data * processos, int num_p) {
         }
 
         // cria thread
+        /*
         if (pthread_create(&tid[ind], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
+        }*/
+        if (pthread_create(&tid[ind], NULL, thread, NULL)) {
+            printf("\n ERROR creating thread\n");
+            exit(1);
+        } else {
+            cpu_set_t cpuset;
+            CPU_ZERO(&cpuset);
+            CPU_SET(0, &cpuset);
+  
+            pthread_setaffinity_np(tid[ind], sizeof(cpu_set_t), &cpuset);
         }
 
         // trava a thread
@@ -334,35 +344,28 @@ void FCFS(Data * processos, int num_p) {
 }
 
 /* VARIÁVEIS GLOBAIS PRO SRTN */
-pthread_mutex_t mutex_wait;
 pthread_mutex_t * m_procs;
 pthread_mutex_t m_escalonador;
 pthread_cond_t c_escalonador = PTHREAD_COND_INITIALIZER;
-pthread_cond_t cond_wait = PTHREAD_COND_INITIALIZER;
 pthread_cond_t * c_procs;
 pthread_mutex_t pare;
+int mud_cont = 0;
 int * dt_exec;  // tempo de execução de cada uma das threads
 int ind_proc;
 
 void * thread_srtn(void *a)
 {
     long int duracao = tempo_dt;
-    int ret = -1;
     int CPU;
     int indice = ind_proc;
-    printf("A duração é de %ld segundos\n", duracao);
+    //printf("A duração é de %ld segundos\n", duracao);
     long int i;
 
     pthread_mutex_lock(&pare);
-    //printf("wtfwtf\n");
-    printf("O IDNICE É %d\n", indice);
     pthread_cond_signal(&c_escalonador);
     pthread_cond_wait(&c_procs[indice], &pare);
     printf("DENTRO DA THREAD: %d\n", indice);
     pthread_mutex_unlock(&pare);
-
-    printf("ALUEḾ ENTROU/;?:::::::::::::::::::\n");
-
 
     for(i = 0; i < duracao; i++) {
         /* PROTOCOLO DE ENTRADA*/
@@ -372,7 +375,7 @@ void * thread_srtn(void *a)
         /* REGIÃO CRITICA */
         x++;
         //sleep(1);
-        printf("Rodando por %ld de tempo...\n", i+1);
+        //printf("Rodando por %ld de tempo...\n", i+1);
         printf("Usando CPU %d\n", CPU);
         //tempo_decorrido++;
         //tempo_prog++;
@@ -399,9 +402,6 @@ void SRTN(Data * processos, int num_p) {
     int ind_prontos = 0;             // número no vetor processos de processos prontos
     pthread_t tid[num_p];            // vetor de threads
     tempo_prog = 0;                  // tempo decorrido do programa
-    int existe = 0;                  // indica se existe thread em execução
-    Data proc_atual;
-    int rodando = 0;
     int tam_fila = 0;
 
     int ind_atual = -1;
@@ -417,7 +417,6 @@ void SRTN(Data * processos, int num_p) {
     Node * ant; // iteração
 
     pthread_mutex_init(&mutex, NULL);
-    pthread_mutex_init(&mutex_wait, NULL);
     pthread_mutex_init(&m_escalonador, NULL);
 
     for(int i = 0; i < num_p; i++) {
@@ -425,26 +424,25 @@ void SRTN(Data * processos, int num_p) {
         dt_exec[i] = 0;
     }
 
-        // criar todas as threads como locked!!!!!!!! e tem que esperar dar unlock 
-
     // cria threads dormindo, serão acionadas com a condição de índice i
     for(int i = 0; i < num_p; i++) {
         pthread_mutex_lock(&m_escalonador);
         tempo_dt = processos[i].dt;
-        cond_wait = c_procs[i];
         ind_proc = i;
         pare = m_procs[i];
         if (pthread_create(&tid[i], NULL, thread_srtn, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
+        } else {
+            cpu_set_t cpuset;
+            CPU_ZERO(&cpuset);
+            CPU_SET(0, &cpuset);
+  
+            pthread_setaffinity_np(tid[ind], sizeof(cpu_set_t), &cpuset);
         }
         pthread_cond_wait(&c_escalonador, &m_escalonador);
         pthread_mutex_unlock(&m_escalonador);
     }
-        // chego no escalonador e dou unlock dependendo da thread
-        // checo se tem alguem na fila + atualizo fila
-        // e faço a preempção, usando condicionais eu dou unlock no thread específico
-        // e atualizo tempo
     
     int terminou = 0;
     tempo_prog++;
@@ -452,9 +450,8 @@ void SRTN(Data * processos, int num_p) {
 
         pthread_mutex_lock(&m_escalonador);
         /* checa os processos prontos a serem adicionados à fila */
-        printf("**********************************************************************\n");
         while(tempo_prog >= processos[ind_prontos].d0 && ind_prontos < num_p) {
-            printf("tempo: %d e tempo(%d): %d\n", tempo_prog, ind_prontos, processos[ind_prontos].d0);
+            //printf("tempo: %d e tempo(%d): %d\n", tempo_prog, ind_prontos, processos[ind_prontos].d0);
             
             if(!fila) { // fila vazia
                 fila = (Node *) malloc(sizeof(Node));
@@ -506,31 +503,25 @@ void SRTN(Data * processos, int num_p) {
         }
 
         //pthread_mutex_lock(&m_escalonador);
-
-        //receber sinal da therad que rodou para poder fazer os próximos passos
-        if(ind_atual > -1 ) {
-            printf("eita, atual é %d\n", ind_atual);
-
-            //pthread_cond_wait(&c_escalonador, &m_escalonador);
-
-            printf("ué\n");
-        }
-
-        printf("aaaa\n");
-
+        /*
         tempo_decorrido++;
         tempo_prog++;
         sleep(1);
+        */
         
         // tempo de execução desse cara aumenta
         if(ind_atual > -1 ) {
-            printf("bbbbb\n");
-            if(processos[ind_atual].dt <= dt_exec[ind_atual])
+            if(processos[ind_atual].dt <= dt_exec[ind_atual]) {
+                if(!pthread_cancel(tid[ind_atual]))
+                    printf("a thread foi destruída! c:\n"); // mata a thread
                 ind_atual = -1; // acabou o processo
+            }
             else
                 dt_exec[ind_atual]++;
             
+            // comentar este abaixo
             printf("%d é o tempo de exec até agr.\n", dt_exec[ind_atual]);
+            printf("\n");
         }
         
         // temos a fila, checamos se há necessidade de mudar a posição!
@@ -552,12 +543,12 @@ void SRTN(Data * processos, int num_p) {
                     ind_atual = fila->indice;
                     fila = novo;
                     free(aux);
-                    // aciono novo thread
-                    pthread_cond_signal(&c_procs[ind_atual]);
+                    mud_cont++;
                 }
+                
+                pthread_cond_signal(&c_procs[ind_atual]);
             }
             else { //NÃO EXISTE PROCESSO ROLANDO
-                printf("entrou aqui\n");
                 ind_atual = fila->indice;
                 aux = fila;
                 fila = fila->prox;
@@ -565,32 +556,35 @@ void SRTN(Data * processos, int num_p) {
 
                 tam_fila--;
 
-                int res = pthread_cond_signal(&c_procs[ind_atual]);                
-                printf("%d\n", res);
+                pthread_cond_signal(&c_procs[ind_atual]);
             }
         }
         else {
             // continua rodando o atual se tiver
             if(ind_atual > -1) {
                 pthread_cond_signal(&c_procs[ind_atual]);
-                printf("ainda estou rodando\n");
             }
             // caso todos os processos prontos tenham sido lidos, acabou
             else if(ind_prontos >= num_p) {
                 terminou = 1;
-                printf("funcione\n");
             }
         }
 
-        printf("uau\n");
+        printf("\n**********************************************************************\n");
         printf("tempo do programa: %ld, ind_atual: %d\n", tempo_prog-1, ind_atual);
         printf("tamanho da fila: %d\n", tam_fila);
+        aux = fila;
+        printf("FILA: ");
+        while(aux) {
+            printf("p%d->", aux->indice);
+            aux = aux->prox;
+        }
+        printf("\n");
 
-        /*
         tempo_decorrido++;
         tempo_prog++;
-        sleep(1);*/
-
+        sleep(1);
+        
         pthread_mutex_unlock(&m_escalonador);
 
     }
@@ -605,13 +599,13 @@ void SRTN(Data * processos, int num_p) {
         }*/
 
     printf("ACABOU!!!!\n");
+    printf("%d mudanças de contexto\n", mud_cont);
 
     for(int i = 0; i < num_p; i++)
         pthread_mutex_destroy(&m_procs[i]);
 
     pthread_mutex_destroy(&mutex);
-    pthread_mutex_destroy(&mutex_wait);
-    pthread_cond_destroy(&cond_wait);
+    pthread_mutex_destroy(&m_escalonador);
 
 }
 

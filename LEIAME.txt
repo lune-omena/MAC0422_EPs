@@ -1,1 +1,11 @@
-arquivo LEIAME em formato texto puro explicando como compilar e executar os dois binários;
+Como compilar e executar os dois binários:
+1. rode:
+	make ep
+
+2. Há três opções:
+- Para executar a PARTE 1 - SHELL:
+	./bccsh
+- Para executar a PARTE 2 - THREADS:
+	./ep1 <argumentos do EP1>
+- Para executar a PARTE 2 pela PARTE 1, basta rodar o mesmo comando acima dentro de ./bccsh
+

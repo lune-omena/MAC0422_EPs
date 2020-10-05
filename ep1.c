@@ -425,18 +425,17 @@ void * thread_srtn(void *a)
         CPU = sched_getcpu();
         /* REGIÃO CRITICA */
         x++;
-        //sleep(1);
-        //printf("Rodando por %ld de tempo...\n", i+1);
-        printf("Usando CPU %d\n", CPU);
-        //tempo_decorrido++;
-        //tempo_prog++;
-
-        //pthread_cond_signal(&c_escalonador);
+        if(d_option)
+            fprintf(stderr, "Processo %ld usando CPU %d\n", thread_id_num, CPU);
 
         pthread_cond_wait(&c_procs[indice], &pare);
 
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&pare); // V() -> incrementa após P()
+    }
+
+    if(d_option) {
+        fprintf(stderr, "Processo %ld deixou de usar a CPU %d.\n", thread_id_num, CPU);
     }
 
     return NULL;
@@ -455,6 +454,8 @@ void SRTN(Data * processos, int num_p) {
     tempo_prog = 0;                  // tempo decorrido do programa
     int tam_fila = 0;
     int * t0_processos;
+    int linhas = 1;
+    int d_ind_prontos = -1;
 
     int ind_atual = -1;
 
@@ -468,6 +469,12 @@ void SRTN(Data * processos, int num_p) {
     Node * fila = NULL; // fila de processos prontos
     Node * aux; // iteração
     Node * ant; // iteração
+
+    if(d_option) {
+        thread_c = (Data *) malloc(num_p*sizeof(Data));
+        for(int j = 0; j < num_p; j++)
+            thread_c[j] = processos[j];
+    }
 
     pthread_mutex_init(&mutex, NULL);
     pthread_mutex_init(&m_escalonador, NULL);
@@ -505,7 +512,7 @@ void SRTN(Data * processos, int num_p) {
         /* checa os processos prontos a serem adicionados à fila */
         while(tempo_prog >= processos[ind_prontos].d0 && ind_prontos < num_p) {
             //printf("tempo: %d e tempo(%d): %d\n", tempo_prog, ind_prontos, processos[ind_prontos].d0);
-            
+
             if(!fila) { // fila vazia
                 fila = (Node *) malloc(sizeof(Node));
                 fila->proc = processos[ind_prontos];
@@ -555,19 +562,24 @@ void SRTN(Data * processos, int num_p) {
             ind_prontos++;
         }
 
-        //pthread_mutex_lock(&m_escalonador);
-        /*
-        tempo_decorrido++;
-        tempo_prog++;
-        sleep(1);
-        */
+        if(d_option) {
+            while(d_ind_prontos != ind_prontos) {
+                if(d_ind_prontos >= 0)
+                    fprintf(stderr, "O processo %s de t0=%d dt=%d deadline=%d chegou.\n", 
+                    processos[d_ind_prontos].processo, processos[d_ind_prontos].d0,
+                    processos[d_ind_prontos].dt, processos[d_ind_prontos].deadline);
+                d_ind_prontos++;
+            }
+        }
         
         // tempo de execução desse cara aumenta
         if(ind_atual > -1 ) {
             if(processos[ind_atual].dt <= dt_exec[ind_atual]) {
                 if(!pthread_cancel(tid[ind_atual]))
                     printf("a thread foi destruída! c:\n"); // mata a thread
-                
+                if(d_option)
+                    fprintf(stderr, "Processo %ld acabou e será impresso na linha %d do trace.\n", tid[ind_atual],linhas);
+                linhas++;
                 int tr = tempo_prog - t0_processos[ind_atual];
                 registraProcessos(arq_trace, processos[ind_atual].processo, tempo_prog, tr);
                 ind_atual = -1; // acabou o processo
@@ -575,8 +587,6 @@ void SRTN(Data * processos, int num_p) {
             else
                 dt_exec[ind_atual]++;
             
-            // comentar este abaixo
-            printf("%d é o tempo de exec até agr.\n", dt_exec[ind_atual]);
             printf("\n");
         }
         
@@ -593,6 +603,7 @@ void SRTN(Data * processos, int num_p) {
                     if(fila->estado == Espera)
                         t0_processos[fila->indice] = tempo_prog;
 
+
                     Node * novo = (Node *) malloc(sizeof(Node));
                     novo->indice = ind_atual;
                     novo->prox = fila->prox;
@@ -600,6 +611,7 @@ void SRTN(Data * processos, int num_p) {
                     novo->estado = Dormindo;
                     aux = fila;
                     ind_atual = fila->indice;
+                    thread_id_num = tid[ind_atual];
                     fila = novo;
                     free(aux);
                     mud_cont++;
@@ -617,6 +629,7 @@ void SRTN(Data * processos, int num_p) {
 
                 tam_fila--;
 
+                thread_id_num = tid[ind_atual];
                 pthread_cond_signal(&c_procs[ind_atual]);
             }
         }
@@ -632,8 +645,8 @@ void SRTN(Data * processos, int num_p) {
         }
 
         printf("\n**********************************************************************\n");
-        printf("tempo do programa: %ld, ind_atual: %d\n", tempo_prog-1, ind_atual);
-        printf("tamanho da fila: %d\n", tam_fila);
+        printf("Tempo do programa: %ld\nÍndice do processo atual (em execução): %d\n", tempo_prog-1, ind_atual);
+        printf("Tamanho da fila: %d\n", tam_fila);
         aux = fila;
         printf("FILA: ");
         while(aux) {
@@ -652,15 +665,19 @@ void SRTN(Data * processos, int num_p) {
 
     /* Esperando todas as threads executarem */
     // não sei se é necessário fazer o join...?aaaas
-    /*
     for (int i = 0; i < num_p; i++)
         if (pthread_join(tid[i], NULL)) {
             printf("\n Erro ao juntar a thread!");
             exit(1);
-        }*/
+        }
+    
+    if(d_option)
+        free(thread_c);
 
     printf("ACABOU!!!!\n");
-    printf("%d mudanças de contexto\n", mud_cont);
+    if(d_option)
+        fprintf(stderr, "%d mudanças de contexto\n", mud_cont);
+
     registraFim(arq_trace, mud_cont);
     for(int i = 0; i < num_p; i++)
         pthread_mutex_destroy(&m_procs[i]);

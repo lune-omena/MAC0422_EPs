@@ -452,7 +452,7 @@ void SRTN(Data * processos, int num_p) {
         pthread_mutex_lock(&m_escalonador);
         /* checa os processos prontos a serem adicionados à fila */
         printf("**********************************************************************\n");
-        while(tempo_prog >= processos[ind_prontos].d0) {
+        while(tempo_prog >= processos[ind_prontos].d0 && ind_prontos < num_p) {
             printf("tempo: %d e tempo(%d): %d\n", tempo_prog, ind_prontos, processos[ind_prontos].d0);
             
             if(!fila) { // fila vazia

@@ -354,7 +354,7 @@ void * thread_srtn(void *a)
     long int i;
 
     pthread_mutex_lock(&pare);
-    printf("wtfwtf\n");
+    //printf("wtfwtf\n");
     printf("O IDNICE É %d\n", indice);
     pthread_cond_signal(&c_escalonador);
     pthread_cond_wait(&c_procs[indice], &pare);
@@ -449,10 +449,11 @@ void SRTN(Data * processos, int num_p) {
     int terminou = 0;
     while(!terminou/* ainda não foram todos os processos*/) {
 
+        pthread_mutex_lock(&m_escalonador);
         /* checa os processos prontos a serem adicionados à fila */
         printf("**********************************************************************\n");
         while(tempo_prog >= processos[ind_prontos].d0) {
-            printf("tempo: %d e tempo: %d\n", tempo_prog, processos[ind_prontos].d0);
+            printf("tempo: %d e tempo(%d): %d\n", tempo_prog, ind_prontos, processos[ind_prontos].d0);
             
             if(!fila) { // fila vazia
                 fila = (Node *) malloc(sizeof(Node));
@@ -503,7 +504,7 @@ void SRTN(Data * processos, int num_p) {
             ind_prontos++;
         }
 
-        pthread_mutex_lock(&m_escalonador);
+        //pthread_mutex_lock(&m_escalonador);
 
         //receber sinal da therad que rodou para poder fazer os próximos passos
         if(ind_atual > -1 ) {
@@ -522,7 +523,7 @@ void SRTN(Data * processos, int num_p) {
             if(processos[ind_atual].dt <= dt_exec[ind_atual])
                 ind_atual = -1; // acabou o processo
             else
-                dt_exec[ind_atual]++; 
+                dt_exec[ind_atual]++;
             
             printf("%d é o tempo de exec até agr.\n", dt_exec[ind_atual]);
         }
@@ -590,7 +591,6 @@ void SRTN(Data * processos, int num_p) {
             printf("\n Erro ao juntar a thread!");
             exit(1);
         }
-
 
     for(int i = 0; i < num_p; i++)
         pthread_mutex_destroy(&m_procs[i]);

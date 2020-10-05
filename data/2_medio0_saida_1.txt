@@ -1,0 +1,23 @@
+processo1 9 4
+processo0 16 15
+processo2 25 9
+processo6 34 9
+processo4 45 11
+processo10 49 4
+processo13 52 3
+
+ 55 1
+processo15 58 6
+processo11 66 8
+processo12 74 8
+processo17 82 8
+processo9 91 9
+processo5 102 11
+processo16 113 11
+processo18 124 11
+processo3 136 12
+processo7 148 12
+processo19 160 12
+processo14 173 13
+processo8 188 15
+2

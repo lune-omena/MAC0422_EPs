@@ -377,10 +377,9 @@ void * thread_srtn(void *a)
         //tempo_decorrido++;
         //tempo_prog++;
 
-        pthread_cond_signal(&c_escalonador);
+        //pthread_cond_signal(&c_escalonador);
 
-        if(!pthread_cond_wait(&cond_wait, &pare))
-            printf("THREAD PAUSADA");
+        pthread_cond_wait(&c_procs[indice], &pare);
 
         /* PROTOCOLO DE SAIDA */
         pthread_mutex_unlock(&pare); // V() -> incrementa após P()
@@ -451,7 +450,9 @@ void SRTN(Data * processos, int num_p) {
     while(!terminou/* ainda não foram todos os processos*/) {
 
         /* checa os processos prontos a serem adicionados à fila */
-        while(tempo_prog > processos[ind_prontos].d0) {
+        printf("**********************************************************************\n");
+        while(tempo_prog >= processos[ind_prontos].d0) {
+            printf("tempo: %d e tempo: %d\n", tempo_prog, processos[ind_prontos].d0);
             
             if(!fila) { // fila vazia
                 fila = (Node *) malloc(sizeof(Node));
@@ -522,6 +523,8 @@ void SRTN(Data * processos, int num_p) {
                 ind_atual = -1; // acabou o processo
             else
                 dt_exec[ind_atual]++; 
+            
+            printf("%d é o tempo de exec até agr.\n", dt_exec[ind_atual]);
         }
         
         // temos a fila, checamos se há necessidade de mudar a posição!
@@ -562,17 +565,19 @@ void SRTN(Data * processos, int num_p) {
         }
         else {
             // continua rodando o atual se tiver
-            if(ind_atual > -1)
+            if(ind_atual > -1) {
                 pthread_cond_signal(&c_procs[ind_atual]);
+                printf("ainda estou rodando\n");
+            }
         }
-
-        tempo_decorrido++;
-        tempo_prog++;
-        sleep(1);
 
         printf("uau\n");
         printf("tempo do programa: %ld, ind_atual: %d\n", tempo_prog, ind_atual);
         printf("tamanho da fila: %d\n", tam_fila);
+
+        tempo_decorrido++;
+        tempo_prog++;
+        sleep(1);
 
         pthread_mutex_unlock(&m_escalonador);
 
@@ -595,6 +600,7 @@ void SRTN(Data * processos, int num_p) {
     pthread_cond_destroy(&cond_wait);
 
 }
+
 
 /* FILAS */
 //https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html

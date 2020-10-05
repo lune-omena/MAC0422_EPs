@@ -356,7 +356,7 @@ void * thread_srtn(void *a)
     printf("O IDNICE É %d\n", indice);
     pthread_cond_signal(&c_escalonador);
     pthread_cond_wait(&c_procs[indice], &pare);
-    printf("DENTRO DA THREAD: %d\n", ret);
+    printf("DENTRO DA THREAD: %d\n", indice);
     pthread_mutex_unlock(&pare);
 
     printf("ALUEḾ ENTROU/;?:::::::::::::::::::\n");

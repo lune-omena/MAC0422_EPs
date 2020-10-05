@@ -205,6 +205,24 @@ void inicializaRegistros(char * arquivo)
     return;  
 }
 
+void registraFim(char * arquivo, int mudancas)
+{
+    FILE *arq;
+
+    arq = fopen(arquivo, "a");
+    
+    if (!arq)
+    {
+        printf("\n\tErro ao abrir ou criar arquivo!");
+		return;
+    }
+
+    fprintf(arq, "%d\n", mudancas);
+
+    fclose(arq);
+    return;   
+}
+
 void registraProcessos(char * arquivo, char * nome, int tf, int tr)
 {
     FILE *arq;
@@ -643,7 +661,7 @@ void SRTN(Data * processos, int num_p) {
 
     printf("ACABOU!!!!\n");
     printf("%d mudanças de contexto\n", mud_cont);
-
+    registraFim(arq_trace, mud_cont);
     for(int i = 0; i < num_p; i++)
         pthread_mutex_destroy(&m_procs[i]);
 

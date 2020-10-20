@@ -46,7 +46,7 @@ int main(int argc, char * argv[]) {
 
     /* a PISTA deve possuir 10 posições, mas no início da simulação apenas 5 estarão ocupadas */
     // lembrando que pthread_t = unsigned long int, estou zerando todas posições antes de ocupá-las
-    pista = (pthread_t **) malloc(d*sizeof(pthread_t *));
+    pista = (pthread_t **) malloc(d*sizeof(pthread_t *)); //[d][10]
 
     for(int i = 0; i < d; i++) {
         pista[i] = (pthread_t *) malloc(10*sizeof(pthread_t));
@@ -56,14 +56,9 @@ int main(int argc, char * argv[]) {
         }
     }
 
-    /* A cada duas voltas o ciclista que completar a última volta na última posição é eliminado.
-       A prova termina quando sobrar apenas um ciclista, que é o campeão.
-    */
-
     /* Seu simulador deve criar n threads “ciclista” iguais */
     pthread_t tid[n];
 
-    /*
     // Assim que houver a "largada", os ciclistas serão criados:
     // Os ciclistas largam em fila ordenados aleatoriamente com no máximo 5 ciclistas 
     // lado a lado em cada posição.
@@ -76,15 +71,30 @@ int main(int argc, char * argv[]) {
         //codigo associando a uma posição na pista, respeitando a condição de 5
         //ciclistas lado a lado
     }
-    */
 
+    /* A cada duas voltas o ciclista que completar a última volta na última posição é eliminado.
+       A prova termina quando sobrar apenas um ciclista, que é o campeão.
+    */
+    while(n > 1) {
+        
+    }
+
+    /* Fim da execução */
+
+    // liberando memória...
+    for(int i = 0; i < d; i++)
+        free(pista[i]);
+
+    free(pista);
 
     return 0;
 }
 
 void * thread(void * a) {
     /* a thread vai ser criada e vai rodar este código yay*/
+    //pthread_mutex_lock();
     printf("epa\n");
+    //pthread_mutex_unlock();
 
     /* INICIALMENTE: */
     // Os ciclistas largam em fila ordenados aleatoriamente com no máximo 5 ciclistas 

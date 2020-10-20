@@ -85,5 +85,20 @@ int main(int argc, char * argv[]) {
 void * thread(void * a) {
     /* a thread vai ser criada e vai rodar este código yay*/
     printf("epa\n");
+
+    /* INICIALMENTE: */
+    // Os ciclistas largam em fila ordenados aleatoriamente com no máximo 5 ciclistas 
+    // lado a lado em cada posição.
+    // obs: todos ciclistas começam com velocidade inicial 30Km/h (1m a cada 120ms)!!
+    // pensando em criar variável para checar se deu a volta ou não -> teria q colocar d global
+
+    /* LAÇO (provavelmente): */
+    /* pthread_wait? -> sinal de passar tempo*/
+    /* checa se precisa/dá pra ultrapassar outros amigos -> faz isso se possível com mutex */
+
+    /* quando a chegar na outra rodada: laço? enquanto não chegou na rodada n roda isso */
+    // checaria aqui a vairável se deu a volta ou não
+    /* sortear nova velocidade */
+
     return NULL;
 }

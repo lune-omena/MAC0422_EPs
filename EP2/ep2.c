@@ -20,8 +20,9 @@ pthread_cond_t wait_thread;         /* barreira (cond) para threads */
 pthread_mutex_t mutex;
 int volta = -1;                     /* número de voltas */
 int total = -1;                     /* variável para que a main espere todas threads */
-int ind_full = 0;                  /* índice da pista que se encontra "cheio" */
-
+int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
+int tam_pista = 0;                  /* é igual a d */
+ 
 int main(int argc, char * argv[]) {
     printf("EP2 - Ciclistas\n");
 
@@ -39,6 +40,7 @@ int main(int argc, char * argv[]) {
     
     int d = atoi(argv[1]);
     int n = atoi(argv[2]);
+    tam_pista = d;
     
     if(d < 250) {
         printf("Insira um comprimento de velódromo (d) maior ou igual a 250.\n");
@@ -136,6 +138,11 @@ void * thread(void * a) {
         total++;
         printf("[%d][%d], %d eh total\n", pos_i, pos_j, total);
         pthread_cond_wait(&wait_thread, &mutex);
+        
+        int a = atualizaPos(pthread_self(), pos_i, pos_j);
+        if(a)
+            pos_i++;
+        
         pthread_mutex_unlock(&mutex);
     }
 
@@ -146,6 +153,9 @@ void * thread(void * a) {
     // lado a lado em cada posição.
     // obs: todos ciclistas começam com velocidade inicial 30Km/h (1m a cada 120ms)!!
     // pensando em criar variável para checar se deu a volta ou não -> teria q colocar d global
+
+    // para as diferentes velocidades, pensei em rodar sempre o laço a uma dada velocidade e
+    // colocar barreiras a mais caso a velocidade de alguns seja menor que a de outros
 
     /* LAÇO (provavelmente): */
     /* pthread_wait? -> sinal de passar tempo*/
@@ -160,7 +170,6 @@ void * thread(void * a) {
 
 int insereNaPista(pthread_t thread) {
 
-    //pthread_mutex_lock(&mutex);
     int pos = 0;
     // checo se as posições em pista[ind_full][j] estão disponíveis
     while(pos < 5 && pista[ind_full][pos] != 0)
@@ -172,12 +181,24 @@ int insereNaPista(pthread_t thread) {
         ind_full++;
         pista[ind_full][0] = thread;
         pos = 0;
-        //pthread_mutex_unlock(&mutex);
     }
     else {
         pista[ind_full][pos] = thread;
-        //pthread_mutex_unlock(&mutex);
     }
     
     return pos;
+}
+
+
+int atualizaPos(pthread_t thread, int pos_i, int pos_j) {
+    // CONSIDERANDO TODOS COMO VELOCIDADE 30KM/H
+    // mutex?
+    if(pos_i < tam_pista && !pista[pos_i+1][pos_j]) {
+        pista[pos_i+1][pos_j] = thread;
+        pista[pos_i][pos_j] = 0;
+        return 1;
+    }
+    // mutex?
+
+    return 0;
 }

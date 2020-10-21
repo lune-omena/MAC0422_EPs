@@ -20,6 +20,7 @@ pthread_cond_t wait_thread;         /* barreira (cond) para threads */
 pthread_mutex_t mutex;
 int volta = -1;                     /* número de voltas */
 int total = -1;                     /* variável para que a main espere todas threads */
+int ind_full = 0;                  /* índice da pista que se encontra "cheio" */
 
 int main(int argc, char * argv[]) {
     printf("EP2 - Ciclistas\n");
@@ -86,7 +87,7 @@ int main(int argc, char * argv[]) {
        A prova termina quando sobrar apenas um ciclista, que é o campeão.
     */  //while(n > 1)
 
-    for(int j = 0; j < 5; ) { // Simulação com 5 voltas
+    for(int j = 0; j < 5; ) { // Simulação com 5 "voltas" (1 volta = 1 segundo)
         if(total == n) {
             pthread_mutex_lock(&mutex_main);
             sleep(1);
@@ -121,10 +122,17 @@ int main(int argc, char * argv[]) {
 
 void * thread(void * a) {
     /* a thread vai ser criada e vai rodar este código yay*/
+    int vel = 30;
+    int pos_i = -1; // primeiro termo (0 a d-1) da posição na pista[d][10]
+    int pos_j = -1; // segundo termo (0 a 9) da posição na pista[d][10]
+
+    pos_j = insereNaPista(pthread_self()); // mutex?
+    pos_i = ind_full;
+
     while(volta != 0) {
         pthread_mutex_lock(&mutex);
         total++;
-        printf("%d eh total\n", total);
+        printf("[%d][%d], %d eh total\n", pos_i, pos_j, total);
         pthread_cond_wait(&wait_thread, &mutex);
         pthread_mutex_unlock(&mutex);
     }
@@ -146,4 +154,25 @@ void * thread(void * a) {
     /* sortear nova velocidade */
 
     return NULL;
+}
+
+int insereNaPista(pthread_t thread) {
+
+    pthread_mutex_lock(&mutex);
+    int pos = 0;
+    // checo se as posições em pista[i][ind_full+1] estão disponíveis
+    while(pos < 5 && pista[ind_full][pos])
+        pos++;
+    
+    if( pos == 5 ) {
+        ind_full++;
+        pista[ind_full][0] = thread;
+        pthread_mutex_unlock(&mutex);
+    }
+    else {
+        pista[ind_full][pos] = thread;
+        pthread_mutex_unlock(&mutex);
+    }
+    
+    return 1;
 }

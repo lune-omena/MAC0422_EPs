@@ -126,8 +126,10 @@ void * thread(void * a) {
     int pos_i = -1; // primeiro termo (0 a d-1) da posição na pista[d][10]
     int pos_j = -1; // segundo termo (0 a 9) da posição na pista[d][10]
 
-    pos_j = insereNaPista(pthread_self()); // mutex?
+    pthread_mutex_lock(&mutex);
+    pos_j = insereNaPista(pthread_self()); 
     pos_i = ind_full;
+    pthread_mutex_unlock(&mutex);
 
     while(volta != 0) {
         pthread_mutex_lock(&mutex);
@@ -158,10 +160,10 @@ void * thread(void * a) {
 
 int insereNaPista(pthread_t thread) {
 
-    pthread_mutex_lock(&mutex);
+    //pthread_mutex_lock(&mutex);
     int pos = 0;
-    // checo se as posições em pista[i][ind_full+1] estão disponíveis
-    while(pos < 5 && pista[ind_full][pos])
+    // checo se as posições em pista[ind_full][j] estão disponíveis
+    while(pos < 5 && pista[ind_full][pos] != 0)
         pos++;
 
     printf("%d é a pos\n", pos);
@@ -169,11 +171,12 @@ int insereNaPista(pthread_t thread) {
     if( pos == 5 ) {
         ind_full++;
         pista[ind_full][0] = thread;
-        pthread_mutex_unlock(&mutex);
+        pos = 0;
+        //pthread_mutex_unlock(&mutex);
     }
     else {
         pista[ind_full][pos] = thread;
-        pthread_mutex_unlock(&mutex);
+        //pthread_mutex_unlock(&mutex);
     }
     
     return pos;

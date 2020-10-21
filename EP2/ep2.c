@@ -6,11 +6,6 @@
  * 
  *****************************************************************************************************/
 
-/* PROBLEMAS
- * 1. tudo bem utilizar o mesmo mutex para as chamadas de cada thread?
- * 2. como fazer com que a main espere que todas as threads rodem até que possam sinalizar? -> acho que consegui!
-*/
-
 /* Bibliotecas e Header */
 #include "ep2.h"            /* header */
 #include <stdio.h>          /* printf(), scanf(), ... */
@@ -20,11 +15,9 @@
 
 /* Variáveis globais */
 pthread_t ** pista;                 /* representa a pista dos ciclistas, possui [d][10] casas */
-pthread_mutex_t * mutex_threads;    /* vetor de mutex das threads */
 pthread_mutex_t mutex_main;         /* mutex usado para o escalonador */
 pthread_cond_t wait_thread;         /* barreira (cond) para threads */
-pthread_mutex_t mutex_bla;
-int indice = -1;                    /* variável usada para indicar com que thread estamos lidando */
+pthread_mutex_t mutex;
 int volta = -1;                     /* número de voltas */
 int total = -1;                     /* variável para que a main espere todas threads */
 
@@ -58,7 +51,7 @@ int main(int argc, char * argv[]) {
     /* SIMULAÇÃO */
 
     pthread_mutex_init(&mutex_main, NULL);
-    pthread_mutex_init(&mutex_bla, NULL);
+    pthread_mutex_init(&mutex, NULL);
     
     // número de voltas na simulação
     volta = 5;
@@ -66,7 +59,7 @@ int main(int argc, char * argv[]) {
     // todas threads precisam rodar
     total = 0;
 
-    /* a PISTA deve possuir 10 posições, mas no início da simulação apenas 5 estarão ocupadas */
+    /* A pista deve possuir 10 posições para cada d, mas no início da simulação apenas 5 estarão ocupadas */
     // lembrando que pthread_t = unsigned long int, estou zerando todas posições antes de ocupá-las
     pista = (pthread_t **) malloc(d*sizeof(pthread_t *)); //[d][10]
 
@@ -82,21 +75,12 @@ int main(int argc, char * argv[]) {
     // portanto, devo alocar n mutex (para cada thread)
     pthread_t tid[n];
 
-    mutex_threads = (pthread_mutex_t *) malloc(n*sizeof(pthread_mutex_t));
-    for(int i = 0; i < n; i++)
-        pthread_mutex_init(&mutex_threads[i], NULL);
-
     // Assim que houver a "largada", os ciclistas serão criados:
-    for(int i = 0; i < n; i++) {
-        pthread_mutex_lock(&mutex_main);
-        indice = i;
+    for(int i = 0; i < n; i++)
         if (pthread_create(&tid[i], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
-        pthread_mutex_unlock(&mutex_main);
-        
-    }
 
     /* A cada duas voltas o ciclista que completar a última volta na última posição é eliminado.
        A prova termina quando sobrar apenas um ciclista, que é o campeão.
@@ -137,24 +121,15 @@ int main(int argc, char * argv[]) {
 
 void * thread(void * a) {
     /* a thread vai ser criada e vai rodar este código yay*/
-    int i = indice;
-
     while(volta != 0) {
-        /*
-        pthread_mutex_lock(&mutex_threads[i]);
-        printf("%d\n", i);
-        pthread_cond_wait(&wait_thread, &mutex_threads[i]);
-        pthread_mutex_unlock(&mutex_threads[i]);
-        */
-        pthread_mutex_lock(&mutex_bla);
-        //printf("%d\n", i);
+        pthread_mutex_lock(&mutex);
         total++;
         printf("%d eh total\n", total);
-        pthread_cond_wait(&wait_thread, &mutex_bla);
-        pthread_mutex_unlock(&mutex_bla);
+        pthread_cond_wait(&wait_thread, &mutex);
+        pthread_mutex_unlock(&mutex);
     }
 
-    printf("a thread %d saiu\n", i);
+    printf("a thread %ld saiu\n", pthread_self());
 
     /* INICIALMENTE: */
     // Os ciclistas largam em fila ordenados aleatoriamente com no máximo 5 ciclistas 

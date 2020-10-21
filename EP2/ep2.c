@@ -6,6 +6,11 @@
  * 
  *****************************************************************************************************/
 
+/* PROBLEMAS
+ * 1. tudo bem utilizar o mesmo mutex para as chamadas de cada thread?
+ * 2. como fazer com que a main espere que todas as threads rodem até que possam sinalizar? -> acho que consegui!
+*/
+
 /* Bibliotecas e Header */
 #include "ep2.h"            /* header */
 #include <stdio.h>          /* printf(), scanf(), ... */
@@ -18,10 +23,11 @@ pthread_t ** pista;                 /* representa a pista dos ciclistas, possui 
 pthread_mutex_t * mutex_threads;    /* vetor de mutex das threads */
 pthread_mutex_t mutex_main;         /* mutex usado para o escalonador */
 pthread_cond_t wait_thread;         /* barreira (cond) para threads */
+pthread_mutex_t mutex_bla;
 int indice = -1;                    /* variável usada para indicar com que thread estamos lidando */
 int volta = -1;                     /* número de voltas */
+int total = -1;                     /* variável para que a main espere todas threads */
 
- 
 int main(int argc, char * argv[]) {
     printf("EP2 - Ciclistas\n");
 
@@ -52,9 +58,13 @@ int main(int argc, char * argv[]) {
     /* SIMULAÇÃO */
 
     pthread_mutex_init(&mutex_main, NULL);
+    pthread_mutex_init(&mutex_bla, NULL);
     
     // número de voltas na simulação
     volta = 5;
+
+    // todas threads precisam rodar
+    total = 0;
 
     /* a PISTA deve possuir 10 posições, mas no início da simulação apenas 5 estarão ocupadas */
     // lembrando que pthread_t = unsigned long int, estou zerando todas posições antes de ocupá-las
@@ -86,21 +96,26 @@ int main(int argc, char * argv[]) {
         }
         pthread_mutex_unlock(&mutex_main);
         
-        //codigo associando a uma posição na pista, respeitando a condição de 5
-        //ciclistas lado a lado
     }
 
     /* A cada duas voltas o ciclista que completar a última volta na última posição é eliminado.
        A prova termina quando sobrar apenas um ciclista, que é o campeão.
-    */
-    //while(n > 1)
+    */  //while(n > 1)
 
-    for(int j = 0; j < 5; j++) { //Simulação com 5 voltas
-        sleep(1);
-        printf("...\n");
-        pthread_cond_broadcast(&wait_thread);
-        volta--;
+    for(int j = 0; j < 5; ) { // Simulação com 5 voltas
+        if(total == n) {
+            pthread_mutex_lock(&mutex_main);
+            sleep(1);
+            printf("...\n");
+            total = 0;
+            volta--;
+            pthread_cond_broadcast(&wait_thread);
+            j++;
+            pthread_mutex_unlock(&mutex_main);   
+        }
     }
+
+    printf("OK!!\n");
 
     /* Unindo threads */
     for(int i = 0; i < n; i++)
@@ -124,12 +139,22 @@ void * thread(void * a) {
     /* a thread vai ser criada e vai rodar este código yay*/
     int i = indice;
 
-    while(volta) {
+    while(volta != 0) {
+        /*
         pthread_mutex_lock(&mutex_threads[i]);
         printf("%d\n", i);
         pthread_cond_wait(&wait_thread, &mutex_threads[i]);
         pthread_mutex_unlock(&mutex_threads[i]);
+        */
+        pthread_mutex_lock(&mutex_bla);
+        //printf("%d\n", i);
+        total++;
+        printf("%d eh total\n", total);
+        pthread_cond_wait(&wait_thread, &mutex_bla);
+        pthread_mutex_unlock(&mutex_bla);
     }
+
+    printf("a thread %d saiu\n", i);
 
     /* INICIALMENTE: */
     // Os ciclistas largam em fila ordenados aleatoriamente com no máximo 5 ciclistas 

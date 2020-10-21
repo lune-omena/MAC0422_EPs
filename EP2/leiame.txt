@@ -1,0 +1,3 @@
+decisões de implementação:
+1. para indicar que uma posição se encontra vazia na pista, indicamos com 0
+2. pista é uma matriz de tipo pthread_t **

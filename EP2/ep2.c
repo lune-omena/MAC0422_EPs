@@ -163,6 +163,8 @@ int insereNaPista(pthread_t thread) {
     // checo se as posições em pista[i][ind_full+1] estão disponíveis
     while(pos < 5 && pista[ind_full][pos])
         pos++;
+
+    printf("%d é a pos\n", pos);
     
     if( pos == 5 ) {
         ind_full++;
@@ -174,5 +176,5 @@ int insereNaPista(pthread_t thread) {
         pthread_mutex_unlock(&mutex);
     }
     
-    return 1;
+    return pos;
 }

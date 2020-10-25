@@ -18,12 +18,15 @@ pthread_t ** pista;                 /* representa a pista dos ciclistas, possui 
 pthread_mutex_t mutex_main;         /* mutex usado para o escalonador */
 pthread_cond_t wait_thread;         /* barreira (cond) para threads */
 pthread_mutex_t mutex;
-int volta = -1;                     /* número de voltas */
+int volta = -1;  
+int voltas = -1;                   /* número de voltas */
 int total = -1;                     /* variável para que a main espere todas threads */
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
- 
-int main(int argc, char * argv[]) {
+
+
+int main(int argc, char * argv[]) 
+{
     printf("EP2 - Ciclistas\n");
 
     /* Com relação à entrada, seu simulador deve receber como argumentos de linha de comando, nesta
@@ -57,7 +60,8 @@ int main(int argc, char * argv[]) {
     pthread_mutex_init(&mutex, NULL);
     
     // número de voltas na simulação
-    volta = 5;
+    volta = 10;
+    voltas = volta;
 
     // todas threads precisam rodar
     total = 0;
@@ -78,6 +82,7 @@ int main(int argc, char * argv[]) {
     // portanto, devo alocar n mutex (para cada thread)
     pthread_t tid[n];
 
+
     // Assim que houver a "largada", os ciclistas serão criados:
     for(int i = 0; i < n; i++)
         if (pthread_create(&tid[i], NULL, thread, NULL)) {
@@ -89,10 +94,10 @@ int main(int argc, char * argv[]) {
        A prova termina quando sobrar apenas um ciclista, que é o campeão.
     */  //while(n > 1)
 
-    for(int j = 0; j < 5; ) { // Simulação com 5 "voltas" (1 volta = 1 segundo)
+    for(int j = 0; j < voltas; ) { // Simulação com 5 "voltas" (1 volta = 1 segundo)
         if(total == n) {
             pthread_mutex_lock(&mutex_main);
-            sleep(1);
+            usleep(500000); /* um milhao = 1 sec */
             printf("...\n");
             total = 0;
             volta--;
@@ -102,7 +107,6 @@ int main(int argc, char * argv[]) {
         }
     }
 
-    printf("OK!!\n");
 
     /* Unindo threads */
     for(int i = 0; i < n; i++)
@@ -111,6 +115,7 @@ int main(int argc, char * argv[]) {
             exit(1);
         }
 
+    printf("OK!!\n");
     /* Fim da execução */
 
     // liberando memória...

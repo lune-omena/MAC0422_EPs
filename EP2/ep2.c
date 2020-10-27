@@ -18,11 +18,14 @@ pthread_t ** pista;                 /* representa a pista dos ciclistas, possui 
 pthread_mutex_t mutex_main;         /* mutex usado para o escalonador */
 pthread_cond_t wait_thread;         /* barreira (cond) para threads */
 pthread_mutex_t mutex;
-int volta = -1;  
-int voltas = -1;                   /* número de voltas */
+int volta = -1;                     /* número de voltas */
+int volta_total = -1;               /* número de voltas */
+int rodada = 0;                     /* rodadas -> voltas dadas na pista -> precisamos padronizar os nomes...*/
 int total = -1;                     /* variável para que a main espere todas threads */
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
+int final = 0;
+double tempo = 10000;                /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 
 
 int main(int argc, char * argv[]) 
@@ -54,14 +57,17 @@ int main(int argc, char * argv[])
         exit(EXIT_FAILURE);
     }
 
+    d = 10; /* excluir quando estiver pronto */
+    tam_pista = d;/* excluir quando estiver pronto */
     /* SIMULAÇÃO */
 
     pthread_mutex_init(&mutex_main, NULL);
     pthread_mutex_init(&mutex, NULL);
     
     // número de voltas na simulação
-    volta = 10;
-    voltas = volta;
+    volta = 0;
+    volta_total = 60;
+    int voltas = volta_total;
 
     // todas threads precisam rodar
     total = 0;
@@ -94,13 +100,23 @@ int main(int argc, char * argv[])
        A prova termina quando sobrar apenas um ciclista, que é o campeão.
     */  //while(n > 1)
 
-    for(int j = 0; j < voltas; ) { // Simulação com 5 "voltas" (1 volta = 1 segundo)
-        if(total == n) {
+    for(int j = 0; j < voltas; )
+    { // Simulação com 5 "voltas" (1 volta = 1 segundo)
+        if(total == n)
+        {
             pthread_mutex_lock(&mutex_main);
-            usleep(500000); /* um milhao = 1 sec */
+            usleep(tempo);
             printf("...\n");
             total = 0;
-            volta--;
+            if( (volta-rodada*10)%tam_pista == 0)
+            {
+                rodada++;
+                printf("*** RODADA %3d ***", rodada);
+            }
+            
+            volta++;
+            
+                
             pthread_cond_broadcast(&wait_thread);
             j++;
             pthread_mutex_unlock(&mutex_main);   
@@ -129,7 +145,7 @@ int main(int argc, char * argv[])
 
 void * thread(void * a) {
     /* a thread vai ser criada e vai rodar este código yay*/
-    int vel = 30;
+    /*int vel = 30;*/
     int pos_i = -1; // primeiro termo (0 a d-1) da posição na pista[d][10]
     int pos_j = -1; // segundo termo (0 a 9) da posição na pista[d][10]
 
@@ -138,7 +154,8 @@ void * thread(void * a) {
     pos_i = ind_full;
     pthread_mutex_unlock(&mutex);
 
-    while(volta != 0) {
+    while(volta != volta_total && !final)
+    {
         pthread_mutex_lock(&mutex);
         total++;
         printf("[%d][%d], %d eh total\n", pos_i, pos_j, total);
@@ -146,7 +163,13 @@ void * thread(void * a) {
         
         int a = atualizaPos(pthread_self(), pos_i, pos_j);
         if(a)
-            pos_i++;
+        {
+            if (pos_i < (tam_pista - 1))
+                pos_i++;
+            else 
+                pos_i = 0;
+        }
+            
         
         pthread_mutex_unlock(&mutex);
     }
@@ -198,11 +221,24 @@ int insereNaPista(pthread_t thread) {
 int atualizaPos(pthread_t thread, int pos_i, int pos_j) {
     // CONSIDERANDO TODOS COMO VELOCIDADE 30KM/H
     // mutex?
-    if(pos_i < tam_pista && !pista[pos_i+1][pos_j]) {
+   /* printf(" Posi : %d thread %ld\n", pos_i, thread);*/
+    if(pos_i < (tam_pista - 1)){
+        /* printf("Entrei - tam: %d posi: %d - thread %ld\n", tam_pista, pos_i, thread); */
+    if (!pista[pos_i+1][pos_j])
+    {
         pista[pos_i+1][pos_j] = thread;
         pista[pos_i][pos_j] = 0;
         return 1;
     }
+    }
+    else
+    if (!pista[0][pos_j]) /* Adicionando condição para mais de uma volta */
+    {
+        pista[0][pos_j] = thread;
+        pista[pos_i][pos_j] = 0;
+        return 1;
+    }
+    
     // mutex?
 
     return 0;

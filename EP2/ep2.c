@@ -27,7 +27,7 @@ int rodada = 0;                     /* rodadas -> voltas dadas na pista -> preci
 int total = -1;                     /* variável para que a main espere todas threads */
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
-int final = 0;
+//int final = 0;
 double tempo = 60000;                /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 
 int main(int argc, char * argv[]) 
@@ -61,6 +61,7 @@ int main(int argc, char * argv[])
 
     d = 10; /* excluir quando estiver pronto */
     tam_pista = d;/* excluir quando estiver pronto */
+
     /* SIMULAÇÃO */
     srand(21132344);
     pthread_mutex_init(&mutex_main, NULL);
@@ -90,7 +91,6 @@ int main(int argc, char * argv[])
     // portanto, devo alocar n mutex (para cada thread)
     pthread_t tid[n];
 
-
     // Assim que houver a "largada", os ciclistas serão criados:
     for(int i = 0; i < n; i++)
         if (pthread_create(&tid[i], NULL, thread, NULL)) {
@@ -102,15 +102,16 @@ int main(int argc, char * argv[])
        A prova termina quando sobrar apenas um ciclista, que é o campeão.
     */  //while(n > 1)
 
-    for(int j = 0; j < voltas; )
-    { // Simulação com 5 "voltas" (1 volta = 1 segundo)
-        if(total == n)
-        {
+    for(int j = 0; j < voltas; ) {
+        // Simulação com 5 "voltas" (1 volta = 1 segundo)
+        if(total == n) {
             pthread_mutex_lock(&mutex_main);
             usleep(tempo);
             printf("...\n");
             total = 0;
 
+            // pelo que entendi, o código abaixo serve para checar se chegou na n-ésima rodada
+            // isso significa que já teriam ocorrido um múltiplo do tamanho da pista de rodadas
             if((volta-rodada*10) % tam_pista == 0)
             {
                 rodada++;
@@ -165,7 +166,7 @@ void * thread(void * a)
     pos_i = ind_full;
     pthread_mutex_unlock(&mutex);
 
-    while(volta != volta_total && !final)
+    while(volta != volta_total /*&& !final*/)
     {
         pthread_mutex_lock(&mutex);
         total++;
@@ -174,8 +175,13 @@ void * thread(void * a)
         
         pthread_cond_wait(&wait_thread, &mutex);
         
+        if(*vel_atual == KM30) { // esperam 2 voltas
+            total++;
+            pthread_cond_wait(&wait_thread, &mutex);
+        }
+        
         int a = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
-        if(a)
+        if(a) // houve mudança -> importante já que ocorreram aquelas coisas da issue
         {
             if (pos_i < (tam_pista - 1))
                 pos_i += *vel_atual;
@@ -239,17 +245,47 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
     // CONSIDERANDO TODOS COMO VELOCIDADE 30KM/H
     // mutex?
 
-    /* Caso a velocidade seja 30km/h, bicicleta anda 1m por chamada*/
+    /* Caso a velocidade seja 30km/h, bicicleta anda 1m por chamada */
     /* Se estou na posição d-1 (final da pista), tenho que voltar ao inicio */
     /* Logo, todas as posições antes de d-1 eu faço uma atualização simples */
 
     /* Caso a velocidade seja 60km/h, bicicleta anda 2m por chamada*/
     /* Raciocínio acima se aplica. Temos uma condição para atualização simples: */
+
+    // INÍCIO NOVO CÓDIGO - edição
+    if(pos_i < (tam_pista - 1)) {   
+        if(!pista[pos_i + 1][pos_j])
+        {
+            // printf("Velocidadeede: %d - thread: %3ld\n", *vel_atual, pthread_self()%1000);
+            pista[pos_i + 1][pos_j] = thread;
+            pista[pos_i][pos_j] = 0;
+            return 1;
+        }
+    }
+    else // última posição
+    if (!pista[0][pos_j]) {
+        // Caso esteja terminando a volta, define nova velocidade para proxima rodada
+        // retornando ciclista para marcação do início da pista
+        pista[0][pos_j] = thread;
+        pista[pos_i][pos_j] = 0;
+
+        // registrando início de nova rodada pessoal
+        *rodada = *rodada+1;
+
+        // atualizando velocidade
+        *vel_atual = atualizaVel(*vel_atual, *rodada);
+        
+        return 1;
+    }
+    // FIM NOVO CÓDIGO - edição
+
+    // CÓDIGO ANTIGO
+    /*
     if(pos_i < (tam_pista - *vel_atual))
     {   
         if(!pista[pos_i + *vel_atual][pos_j])
         {
-            /* printf("Velocidadeede: %d - thread: %3ld\n", *vel_atual, pthread_self()%1000); */
+            // printf("Velocidadeede: %d - thread: %3ld\n", *vel_atual, pthread_self()%1000);
             pista[pos_i + *vel_atual][pos_j] = thread;
             pista[pos_i][pos_j] = 0;
             return 1;
@@ -259,18 +295,20 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
     else 
     if (!pista[0][pos_j])
     {
-        /* Caso esteja terminando a volta, define nova velocidade para proxima rodada */
-        /* retornando ciclista para marcação do início da pista */
+        // Caso esteja terminando a volta, define nova velocidade para proxima rodada
+        // retornando ciclista para marcação do início da pista
         pista[0][pos_j] = thread;
         pista[pos_i][pos_j] = 0;
 
-        /* registrando início de nova rodada pessoal */
+        // registrando início de nova rodada pessoal
         *rodada = *rodada+1;
 
-        /* atualizando velocidade*/
+        // atualizando velocidade
         *vel_atual = atualizaVel(*vel_atual, *rodada);
         return 1;
-    }
+    } */
+    // FIM DO CÓDIGO ANTIGO
+
     /* A ideia é que se algum ciclista andar a 90km/h, será o final da corrida 
        e a variável tempo poderá ser mudada sem nenhum problema > o incremento 
        na velocidade mudará, e a condição de ultrapassagem tbm */

@@ -14,5 +14,11 @@
 void * thread(void * a);
 // função INICIAL que insere o ciclista numa posição decente
 int  insereNaPista(pthread_t thread);
-// possivelmente função usada para atualizar posição do ciclista
-int atualizaPos(pthread_t thread, int pos_i, int pos_j);
+// função usada para atualizar posição do ciclista
+int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_atual);
+// função usada para atualizar velocidade do ciclista
+int atualizaVel(int vel_ant, int volta);
+
+/* funções a serem implementadas */
+//registraPosicao(pthread_self(), /* parametros para registro */);
+//verificaQuebra(pthread_self(), /* mesmos parametros para registrar posição */);

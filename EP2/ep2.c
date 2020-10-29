@@ -77,7 +77,7 @@ int main(int argc, char * argv[])
     
     // número de voltas na simulação
     volta = 0;
-    volta_total = 30;
+    volta_total = 46; //OBS PRECISA SER NÚMERO PAR PARA NÃO DAR MERDA
     int voltas = volta_total;
 
     // criando matriz de associação de id da thread para respectiva rodada
@@ -300,7 +300,7 @@ void * thread(void * a)
     }
 
     if(CHECK == 2)
-        printf("\na thread %ld foi eliminada... e ", pthread_self()%1000);
+        printf("\na thread %ld foi eliminada da corrida... e ", pthread_self()%1000);
     
     num_ciclistas--;
     printf("a thread %ld saiu\n", pthread_self());
@@ -321,6 +321,8 @@ void * thread(void * a)
     /* quando a chegar na outra rodada: laço? enquanto não chegou na rodada n roda isso */
     // checaria aqui a vairável se deu a volta ou não
     /* sortear nova velocidade */
+
+    pthread_cancel(pthread_self());
 
     return NULL;
 }
@@ -394,7 +396,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
            // OPCAO 1 - o PC tecnicamente sorteia aleatoriamente
 
-            if(*rodada == menor && cont == 1) {
+            if(*rodada%2 == 0 && *rodada == menor && cont == 1) {
 
                 printf("entrou AQUIII\n");
                 // zera posição na pista

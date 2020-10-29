@@ -45,3 +45,4 @@
 
 - Pista é uma matriz de tipo pthread_t **
 
+- MUDANÇA NA IMPLEMENTAÇÃO: rodadas começam a partir de 1, e não 0 (visto 0 representa threads já finalizadas)

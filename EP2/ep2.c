@@ -376,7 +376,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
             int cont = 1;
             int atual = 0;
             
-            for(int i = 0; i < total_ciclistas; i++) {
+            for(int i = 1; i < total_ciclistas; i++) {
                 printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
                 if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
                     if(assoc[i][1] < menor) {

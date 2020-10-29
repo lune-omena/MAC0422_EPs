@@ -224,9 +224,6 @@ int main(int argc, char * argv[])
             }
             
             volta++;
-
-            // AQUI VAI FICAR A FUNÇÃO QUE CHECA A POSIÇÃO DE CADA UMA DAS THREADS
-            // pthread_t aux = classifica(pista, tid);
                 
             pthread_cond_broadcast(&wait_thread);
             //j++;
@@ -283,18 +280,19 @@ void * thread(void * a)
     // CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos
     {
         pthread_mutex_lock(&mutex);
-        printf("oi\n");
         total++;
         printf("[%2d][%2d], %2d eh total - vel: %d - ", pos_i, pos_j, total, *vel_atual);
         printf("rodada: %d - thread: %3ld\n", *rodada, pthread_self()%1000);
         
         pthread_cond_wait(&wait_thread, &mutex);
+        printf("oi1\n");
         
         if(*vel_atual == KM30) { // esperam 2 voltas
             total++;
             pthread_cond_wait(&wait_thread, &mutex);
         }
         // se não, é 60km/h e roda normal
+        printf("oi2\n");
 
         CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
         if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue

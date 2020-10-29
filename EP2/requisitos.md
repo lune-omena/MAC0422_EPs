@@ -39,3 +39,8 @@
 > Considere ainda que nas 2 últimas voltas há a chance de 10% de 1 ciclista aleatório qualquer e respeitando as regras de ultrapassagem, fazer essas 2 últimas voltas a 90Km/h
 
 - Todo ciclista na ultima volta tem essa probabilidade. Em casos extremos, como nas ultimas duas voltas haverão dois ciclistas, ambos tem a chance de completar a volta a 90km/k. Isso é um grande problema? Está ruim assim?
+
+- Para indicar que uma posição se encontra vazia na pista, indicamos com 0
+
+- Pista é uma matriz de tipo pthread_t **
+

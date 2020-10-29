@@ -1,5 +1,9 @@
-decisões de implementação:
-1. para indicar que uma posição se encontra vazia na pista, indicamos com 0
-2. pista é uma matriz de tipo pthread_t **
-3. A velocidade do ciclista é mudada a cada rodada individual (não geral do programa, não importando sua classificação)
+Instruções de compilação e uso
 
+1. Para compilar, rode no terminal:
+        make ep2
+
+2. Para rodar, digite:
+        ./ep2 d n
+        
+    (sendo d o tamanho da pista e n o número de ciclistas)

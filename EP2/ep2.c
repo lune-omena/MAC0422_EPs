@@ -179,6 +179,7 @@ void * thread(void * a)
             total++;
             pthread_cond_wait(&wait_thread, &mutex);
         }
+        // se não, é 60km/h e roda normal
         
         int a = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
         if(a) // houve mudança -> importante já que ocorreram aquelas coisas da issue
@@ -274,7 +275,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
         // atualizando velocidade
         *vel_atual = atualizaVel(*vel_atual, *rodada);
-        
+
         return 1;
     }
     // FIM NOVO CÓDIGO - edição

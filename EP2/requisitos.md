@@ -2,6 +2,7 @@
 
 ###### Próximas a serem implementadas
 
+- [ ] Corrigir condições de iteração do programa (até quando irá rodar, determinação de volta/rodada etc.)
 - [ ] Eliminar ultimo ciclista a cada 2 rodadas
 - [ ] Registro posição/rank dos ciclistas a cada rodada
 - [x] Implementar mudança de velocidade aleatória

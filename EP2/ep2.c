@@ -193,7 +193,7 @@ int main(int argc, char * argv[])
             pthread_mutex_unlock(&mutex_main);   
         }
 
-        if(volta >= voltas) // temporário
+        if(volta > voltas) // temporário ou >=?
             acabou = 1;
     }
     //}
@@ -226,6 +226,7 @@ int main(int argc, char * argv[])
     }*/
     // FIM DO ANTIGO LAÇO DE ITERAÇÃO
 
+    printf("OK!!\n");
 
     /* Unindo threads */
     for(int i = 0; i < n; i++)
@@ -234,7 +235,6 @@ int main(int argc, char * argv[])
             exit(1);
         }
 
-    printf("OK!!\n");
     /* Fim da execução */
 
     // liberando memória...
@@ -301,6 +301,12 @@ void * thread(void * a)
 
     if(CHECK == 2)
         printf("\na thread %ld foi eliminada da corrida... e ", pthread_self()%1000);
+    else
+        for(int i = 0; i < total_ciclistas; i++)
+            if(assoc[i][0] == pthread_self()) {
+                assoc[i][1] = 0;
+                break;
+            }
     
     num_ciclistas--;
     printf("a thread %ld saiu\n", pthread_self());

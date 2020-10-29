@@ -11,6 +11,8 @@
 
 typedef struct node {
     pthread_t id;
+    int i; // posição em relação a d na pista
+    int j; // posição em relação às 10 posições dentro de cada d da pista
     struct node * prox;
 } Node;
 

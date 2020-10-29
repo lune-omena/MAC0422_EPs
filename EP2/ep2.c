@@ -121,7 +121,7 @@ int main(int argc, char * argv[])
         }
         else {
             assoc[i][0] = tid[i];
-            assoc[i][1] = rodada;
+            assoc[i][1] = rodada+1;
         }
 
     for(int i = 0; i < n; i++)
@@ -256,15 +256,18 @@ void * thread(void * a)
     rodada = (int*) malloc(sizeof(int));
     vel_atual = (int*) malloc(sizeof(int));
 
-    *rodada = 0;
+    //*rodada = 0;
+    *rodada = 1;
     *vel_atual = KM30;
 
     pthread_mutex_lock(&mutex);
     pos_j = insereNaPista(pthread_self()); 
     pos_i = ind_full;
     pthread_mutex_unlock(&mutex);
+    int CHECK = 0;
 
-    while(volta != volta_total /*&& !final*/)
+    while(volta != volta_total && CHECK != 2 /*&& !final*/) 
+    // CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos
     {
         pthread_mutex_lock(&mutex);
         total++;
@@ -279,8 +282,8 @@ void * thread(void * a)
         }
         // se não, é 60km/h e roda normal
 
-        int a = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
-        if(a) // houve mudança -> importante já que ocorreram aquelas coisas da issue
+        CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
+        if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue
         {
             if (pos_i < (tam_pista - 1))
                 pos_i += *vel_atual;
@@ -294,6 +297,10 @@ void * thread(void * a)
         
         pthread_mutex_unlock(&mutex);
     }
+
+    if(CHECK == 2)
+        printf("\na thread %ld foi eliminada... e ", pthread_self()%1000);
+    
 
     printf("a thread %ld saiu\n", pthread_self());
 
@@ -363,28 +370,58 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
     else // última posição
         if (!pista[0][pos_j]) {
 
-            /*  INCLUIR PARA QUALQUER UMA DAS OPÇÕES
-            
+            // INCLUIR PARA QUALQUER UMA DAS OPÇÕES
+
             int menor = assoc[0][1];
             int cont = 1;
-            for(int i = 0; i < n; i++)
-                if(assoc[i][2] != 0) {
-                    if(menor < assoc[i][2]) {
+            int atual = 0;
+            
+            for(int i = 0; i < num_ciclistas; i++) {
+                printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
+                if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
+                    if(assoc[i][1] < menor) {
+                        printf("entrou\n");
                         cont = 1; //OPCAO 1
-                        menor = assoc[i][2];
+                        menor = assoc[i][1];
+                        atual = i;
                     }
-                    else if(menor == assoc[i][2])
+                    else if(menor == assoc[i][1])
                         cont++; // OPCAO 1
                 }
-            */
+            }
 
-           /* OPCAO 1 - o PC tecnicamente sorteia aleatoriamente
+            printf("%d eh o menor valor com cont %d\n", menor, cont);
 
-            if(*rodada == menor && cont == 1)
-                DESTROI
-            else roda tudo abaixo ( menos OPCAO 2)
+           // OPCAO 1 - o PC tecnicamente sorteia aleatoriamente
 
-            */
+            if(*rodada == menor && cont == 1) {
+
+                printf("entrou AQUIII\n");
+                // zera posição na pista
+                pista[pos_i][pos_j] = 0;
+
+                // zera no vetor de associações
+                assoc[atual][1] = 0;
+
+                return 2; // 2 == SINAL QUE TEM QUE SAIR 
+            }    
+            else { //roda tudo abaixo ( menos OPCAO 2)
+
+                // Caso esteja terminando a volta, define nova velocidade para proxima rodada
+                // retornando ciclista para marcação do início da pista
+                pista[0][pos_j] = thread;
+                pista[pos_i][pos_j] = 0;
+
+                // registrando início de nova rodada pessoal
+                *rodada = *rodada+1;
+                atualizaRodada(thread, *rodada, num_ciclistas);
+
+                // atualizando velocidade
+                *vel_atual = atualizaVel(*vel_atual, *rodada);
+
+                return 1;
+            }
+            // FIM OPCAO 1
 
             /* OPCAO 2 - eu sorteio essa porra
                 // obs: tenho medo de dar segfault...
@@ -415,6 +452,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
             // Caso esteja terminando a volta, define nova velocidade para proxima rodada
             // retornando ciclista para marcação do início da pista
+            /*
             pista[0][pos_j] = thread;
             pista[pos_i][pos_j] = 0;
 
@@ -426,44 +464,8 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
             *vel_atual = atualizaVel(*vel_atual, *rodada);
 
             return 1;
+            */
         }
-    // FIM NOVO CÓDIGO - edição
-
-    // CÓDIGO ANTIGO
-    /*
-    if(pos_i < (tam_pista - *vel_atual))
-    {   
-        if(!pista[pos_i + *vel_atual][pos_j])
-        {
-            // printf("Velocidadeede: %d - thread: %3ld\n", *vel_atual, pthread_self()%1000);
-            pista[pos_i + *vel_atual][pos_j] = thread;
-            pista[pos_i][pos_j] = 0;
-            return 1;
-        }
-
-    }
-    else 
-    if (!pista[0][pos_j])
-    {
-        // Caso esteja terminando a volta, define nova velocidade para proxima rodada
-        // retornando ciclista para marcação do início da pista
-        pista[0][pos_j] = thread;
-        pista[pos_i][pos_j] = 0;
-
-        // registrando início de nova rodada pessoal
-        *rodada = *rodada+1;
-
-        // atualizando velocidade
-        *vel_atual = atualizaVel(*vel_atual, *rodada);
-        return 1;
-    } */
-    // FIM DO CÓDIGO ANTIGO
-
-    /* A ideia é que se algum ciclista andar a 90km/h, será o final da corrida 
-       e a variável tempo poderá ser mudada sem nenhum problema > o incremento 
-       na velocidade mudará, e a condição de ultrapassagem tbm */
-
-    // mutex?
 
     return 0;
 }

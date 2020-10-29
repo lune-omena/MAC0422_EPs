@@ -9,6 +9,11 @@
 /* BIBLIOTECAS */
 #include <pthread.h>        /* POSIX threads */
 
+typedef struct node {
+    pthread_t id;
+    struct node * prox;
+} Node;
+
 /* FUNÇÕES */
 // função chamada pela thread assim que ela é criada
 void * thread(void * a);

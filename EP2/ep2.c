@@ -22,6 +22,7 @@ pthread_mutex_t mutex_main;         /* mutex usado para o escalonador */
 pthread_cond_t wait_thread;         /* barreira (cond) para threads */
 pthread_mutex_t mutex;
 int volta = -1;                     /* número de voltas */
+int num_ciclistas = -1;             /* número de ciclistas */
 int volta_total = -1;               /* número de voltas */
 int rodada = 0;                     /* rodadas -> voltas dadas na pista -> precisamos padronizar os nomes...*/
 int total = -1;                     /* variável para que a main espere todas threads */
@@ -31,6 +32,9 @@ int tam_pista = 0;                  /* é igual a d */
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 pthread_t ** assoc;                  /* associação de id da thread com rodada */
+pthread_t * toBeDestroyed;           /* guarda id de threads que poderiam ter que ser destruídas OPCAO 2 */
+Node * toDestroy = NULL;
+int num_toDestroy = 0;
 
 int main(int argc, char * argv[]) 
 {
@@ -63,6 +67,7 @@ int main(int argc, char * argv[])
 
     d = 10; /* excluir quando estiver pronto */
     tam_pista = d;/* excluir quando estiver pronto */
+    num_ciclistas = n;
 
     /* SIMULAÇÃO */
     srand(21132344);
@@ -108,6 +113,7 @@ int main(int argc, char * argv[])
     pthread_t tid[n];
 
     // Assim que houver a "largada", os ciclistas serão criados:
+    // também ocorre a associação do ciclista à rodada em que está
     for(int i = 0; i < n; i++)
         if (pthread_create(&tid[i], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
@@ -133,6 +139,39 @@ int main(int argc, char * argv[])
             usleep(tempo);
             printf("...\n");
             total = 0;
+
+            /* OPCAO 2 
+                if(toDestroy && rodada%2 == 0) { //exceção rodada 0
+                    int choice = rand()%(num_toDestroy);
+                    Node * node_aux = toDestroy;
+                    pthread_t id_toDestroy = 0;
+                    
+                    while(choice) {
+                        node_aux = node_aux->prox;
+                        choice--;
+                    }
+
+                    id_toDestroy = aux->id;
+                    pthread_cancel(&id_toDestroy);
+                    
+                    node_aux = toDestroy;
+                    toDestroy = NULL;
+                    Node * aux2 = NULL;
+
+                    while(aux) { // liberando toDestroy
+                        aux2 = aux;
+                        aux = aux->prox;
+                        aux2->prox = NULL;
+                        free(aux2);
+                    }
+
+                    // zerar posições da pista também!!!!!!!!!!!!!!!!!!!
+                    // diminuir número de ciclistas correntes, provavelmente
+                    // atualizar ranking 
+
+                }
+                    
+            */
 
             // pelo que entendi, o código abaixo serve para checar se chegou na n-ésima rodada
             // isso significa que já teriam ocorrido um múltiplo do tamanho da pista de rodadas
@@ -239,14 +278,6 @@ void * thread(void * a)
             pthread_cond_wait(&wait_thread, &mutex);
         }
         // se não, é 60km/h e roda normal
-        
-        // CHECA SE PRECISA SER DESTRUÍDA
-        // ATUALIZA RODADA SE NECESSÁRIO
-        /*
-        if(ultimo da rodada)
-            DESTROI
-        */
-        // SE NÃO, ATUALIZAPOS
 
         int a = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
         if(a) // houve mudança -> importante já que ocorreram aquelas coisas da issue
@@ -330,20 +361,72 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
         }
     }
     else // última posição
-    if (!pista[0][pos_j]) {
-        // Caso esteja terminando a volta, define nova velocidade para proxima rodada
-        // retornando ciclista para marcação do início da pista
-        pista[0][pos_j] = thread;
-        pista[pos_i][pos_j] = 0;
+        if (!pista[0][pos_j]) {
 
-        // registrando início de nova rodada pessoal
-        *rodada = *rodada+1;
+            /*  INCLUIR PARA QUALQUER UMA DAS OPÇÕES
+            
+            int menor = assoc[0][1];
+            int cont = 1;
+            for(int i = 0; i < n; i++)
+                if(assoc[i][2] != 0) {
+                    if(menor < assoc[i][2]) {
+                        cont = 1; //OPCAO 1
+                        menor = assoc[i][2];
+                    }
+                    else if(menor == assoc[i][2])
+                        cont++; // OPCAO 1
+                }
+            */
 
-        // atualizando velocidade
-        *vel_atual = atualizaVel(*vel_atual, *rodada);
+           /* OPCAO 1 - o PC tecnicamente sorteia aleatoriamente
 
-        return 1;
-    }
+            if(*rodada == menor && cont == 1)
+                DESTROI
+            else roda tudo abaixo ( menos OPCAO 2)
+
+            */
+
+            /* OPCAO 2 - eu sorteio essa porra
+                // obs: tenho medo de dar segfault...
+                // e talvez necessidade de mutex...
+                if(*rodada == menor )
+                    if(!toDestroy) {
+                        toDestroy = (Node *) malloc(sizeof(Node));
+                        toDestroy->id = thread;
+                        toDestroy->prox = NULL;
+                    }
+                    else {
+                        Node * aux = toDestroy;
+                        Node * new = (Node *) malloc(sizeof(Node));
+                        new->id = thread;
+                        new->prox = NULL;
+
+                        while(aux->prox)
+                            aux = aux->prox;
+                        
+                        aux->prox = new;
+                    }
+                    toBeDestroyed é atualizado
+                    a decisão de deletar vai ser feita no escalonador ...
+
+                roda o código abaixo mesmo assim (no caso de n ser deletado)
+                    
+            */
+
+            // Caso esteja terminando a volta, define nova velocidade para proxima rodada
+            // retornando ciclista para marcação do início da pista
+            pista[0][pos_j] = thread;
+            pista[pos_i][pos_j] = 0;
+
+            // registrando início de nova rodada pessoal
+            *rodada = *rodada+1;
+            atualizaRodada(thread, *rodada, num_ciclistas);
+
+            // atualizando velocidade
+            *vel_atual = atualizaVel(*vel_atual, *rodada);
+
+            return 1;
+        }
     // FIM NOVO CÓDIGO - edição
 
     // CÓDIGO ANTIGO
@@ -428,3 +511,4 @@ int atualizaRodada(pthread_t thread, int rodada, int n) {
 
     return achou;
 }
+

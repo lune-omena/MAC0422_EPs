@@ -370,6 +370,7 @@ void * thread(void * a)
     return NULL;
 }
 
+/*
 int insereNaPista(pthread_t thread) {
 
     int pos = 0;
@@ -387,6 +388,34 @@ int insereNaPista(pthread_t thread) {
     else {
         pista[ind_full][pos] = thread;
     }
+    
+    return pos;
+}*/
+
+int insereNaPista(pthread_t thread)
+{
+    int pos = rand() % 2;
+    int posicoes_ocupadas = 0;
+    
+    
+    for (int i = 0; i < 10; i++)
+    {
+        if (pista[ind_full][i] != 0)
+            posicoes_ocupadas++;
+    }
+    printf("\nposicoes ocupadas: %d\n", posicoes_ocupadas);
+    if (posicoes_ocupadas == 5) 
+        ind_full++;
+
+    while(pos < 10 && pista[ind_full][pos] != 0)
+    {
+        pos= rand() % 10;
+        printf("Posicao sorteada: %d - thread: %ld\n", pos, pthread_self() % 1000);
+    }
+        
+    printf("A thread %03ld incia na posição %d\n", thread%1000, pos);
+    
+    pista[ind_full][pos] = thread;
     
     return pos;
 }

@@ -33,8 +33,7 @@ _Atomic int num_toDestroy = 0;
 //int final = 0;
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
-pthread_t ** assoc;                  /* associação de id da thread com rodada */
-pthread_t * toBeDestroyed;           /* guarda id de threads que poderiam ter que ser destruídas OPCAO 2 */
+pthread_t ** assoc;                 /* associação de id da thread com rodada */
 Node * toDestroy = NULL;
 
 int main(int argc, char * argv[]) 
@@ -80,17 +79,18 @@ int main(int argc, char * argv[])
     volta_total = 46; //OBS PRECISA SER NÚMERO PAR PARA NÃO DAR MERDA
     int voltas = volta_total;
 
-    // criando matriz de associação de id da thread para respectiva rodada
+    // ASSOC: criando matriz de associação de id da thread para respectiva rodada
     // em assoc[i][0] encontra-se a identificação da thread
     // em assoc[i][1] encontra-se a rodada da respectiva thread
+    // em assoc[i][2] encontra-se o status da respectiva thread
     assoc = (pthread_t **) malloc (n*sizeof(pthread_t *));
 
     for(int i = 0; i < n; i++) {
-        assoc[i] = (pthread_t *) malloc (2*sizeof(pthread_t));
+        assoc[i] = (pthread_t *) malloc (3*sizeof(pthread_t));
 
         // as posições inicialmente serão zero
-        for(int j = 0; j < 2; j++) {
-            assoc[i][j] = 0;
+        for(int j = 0; j < 3; j++) {
+            assoc[i][j] = 0; // ACTIVE  == 0
         }
     }
 
@@ -115,6 +115,7 @@ int main(int argc, char * argv[])
 
     // Assim que houver a "largada", os ciclistas serão criados:
     // também ocorre a associação do ciclista à rodada em que está
+    // mas como todos os ciclistas já estão ativos, não há necessidade de mudar
     for(int i = 0; i < n; i++)
         if (pthread_create(&tid[i], NULL, thread, NULL)) {
             printf("\n ERROR creating thread\n");
@@ -173,15 +174,18 @@ int main(int argc, char * argv[])
                 }
 
                 id_toDestroy = node_aux->id;
+
+                // encontro posição no vetor assoc da thread
+                int pos_assoc = findThread(id_toDestroy);
+                assoc[pos_assoc][2] = TOBEDELETED;
+
                 printf("a thread %ld será destruída!\n ", id_toDestroy);
                 // zerar posições da pista também!!!!!!!!!!!!!!!!!!!
                 pista[node_aux->i][node_aux->j] = 0;
                 // atualizar ranking  - PRECISA FAZER 
-                pthread_cancel(id_toDestroy);
+                //pthread_cancel(id_toDestroy);
 
-                // diminuir número de ciclistas correntes, provavelmente
-                num_ciclistas--;
-                printf("%d eh o número de ciclistas agora\n", num_ciclistas);
+                // diminuir número de ciclistas OCORRE NA FUNÇÃP THREAD
                 
                 node_aux = toDestroy;
                 num_toDestroy = 0;
@@ -227,7 +231,6 @@ int main(int argc, char * argv[])
                 
             pthread_cond_broadcast(&wait_thread);
             //j++;
-            printf("passou\n");
             pthread_mutex_unlock(&mutex_main);   
         }
 
@@ -262,6 +265,7 @@ void * thread(void * a)
     int pos_i = -1; // primeiro termo (0 a d-1) da posição na pista[d][10]
     int pos_j = -1; // segundo termo (0 a 9) da posição na pista[d][10]
     int *rodada, *vel_atual;
+    int pos_assoc = findThread(pthread_self());
     
     rodada = (int*) malloc(sizeof(int));
     vel_atual = (int*) malloc(sizeof(int));
@@ -269,6 +273,7 @@ void * thread(void * a)
     //*rodada = 0;
     *rodada = 1;
     *vel_atual = KM30;
+    int delete = 0;
 
     pthread_mutex_lock(&mutex);
     pos_j = insereNaPista(pthread_self()); 
@@ -276,33 +281,39 @@ void * thread(void * a)
     pthread_mutex_unlock(&mutex);
     int CHECK = 0;
 
-    while(volta != volta_total && CHECK != 2 /*&& !final*/) 
+    while(volta != volta_total && CHECK != 2 && !delete/*&& !final*/) 
     // CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos
     {
         pthread_mutex_lock(&mutex);
         total++;
         printf("[%2d][%2d], %2d eh total - vel: %d - ", pos_i, pos_j, total, *vel_atual);
         printf("rodada: %d - thread: %3ld\n", *rodada, pthread_self()%1000);
-        
+    
         pthread_cond_wait(&wait_thread, &mutex);
         printf("oi1\n");
-        
-        if(*vel_atual == KM30) { // esperam 2 voltas
-            total++;
-            pthread_cond_wait(&wait_thread, &mutex);
-        }
-        // se não, é 60km/h e roda normal
-        printf("oi2\n");
 
-        CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
-        if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue
-        {
-            if (pos_i < (tam_pista - 1))
-                pos_i++;
-            else 
-                pos_i = 0;
-        }
+        if(assoc[pos_assoc][2] == TOBEDELETED)
+            delete = 1;
 
+        if(!delete) {
+
+            if(*vel_atual == KM30) { // esperam 2 voltas
+                total++;
+                pthread_cond_wait(&wait_thread, &mutex);
+            }
+            // se não, é 60km/h e roda normal
+            printf("oi2\n");
+
+            CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
+            if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue
+            {
+                if (pos_i < (tam_pista - 1))
+                    pos_i++;
+                else 
+                    pos_i = 0;
+            }
+
+        }
         /* funções a serem implementadas */
         //registraPosicao(pthread_self(), /* parametros para registro: tempo, volta, id, rank*/);
         //verificaQuebra(pthread_self(), /* mesmos parametros para registrar posição */);
@@ -310,43 +321,18 @@ void * thread(void * a)
         pthread_mutex_unlock(&mutex);
     }
 
-    /* OPCAO 1
-    if(CHECK == 2)
+    // OPCAO 1 E 2
+    if(CHECK == 2 || delete)
         printf("\na thread %ld foi eliminada da corrida... e ", pthread_self()%1000);
-    else
-        for(int i = 0; i < total_ciclistas; i++)
-            if(assoc[i][0] == pthread_self()) {
-                assoc[i][1] = 0;
-                break;
-            }
-    */ 
-
-
-    for(int i = 0; i < total_ciclistas; i++)
-        if(assoc[i][0] == pthread_self()) {
-            assoc[i][1] = 0;
-            break;
-        }
+    
+    assoc[pos_assoc][1] = 0;
    
     num_ciclistas--;
     printf("a thread %ld saiu\n", pthread_self());
 
-    /* INICIALMENTE: */
-    // Os ciclistas largam em fila ordenados aleatoriamente com no máximo 5 ciclistas 
-    // lado a lado em cada posição.
-    // obs: todos ciclistas começam com velocidade inicial 30Km/h (1m a cada 120ms)!!
-    // pensando em criar variável para checar se deu a volta ou não -> teria q colocar d global
+    assoc[pos_assoc][2] = DELETED;
 
-    // para as diferentes velocidades, pensei em rodar sempre o laço a uma dada velocidade e
-    // colocar barreiras a mais caso a velocidade de alguns seja menor que a de outros
-
-    /* LAÇO (provavelmente): */
-    /* pthread_wait? -> sinal de passar tempo*/
-    /* checa se precisa/dá pra ultrapassar outros amigos -> faz isso se possível com mutex */
-
-    /* quando a chegar na outra rodada: laço? enquanto não chegou na rodada n roda isso */
-    // checaria aqui a vairável se deu a volta ou não
-    /* sortear nova velocidade */
+    printf("%d eh o número de ciclistas agora\n", num_ciclistas);
 
     pthread_cancel(pthread_self());
 
@@ -408,7 +394,6 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
                 if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
                     if(assoc[i][1] < menor) {
-                        printf("entrou\n");
                         cont = 1; //OPCAO 1
                         menor = assoc[i][1];
                         atual = i;
@@ -557,3 +542,10 @@ int atualizaRodada(pthread_t thread, int rodada, int n) {
     return achou;
 }
 
+int findThread(pthread_t thread) {
+    int value = -1;
+
+    for(value = 0; value < total_ciclistas && assoc[value][0] != thread; value++);
+
+    return value;  
+}

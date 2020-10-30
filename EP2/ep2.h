@@ -9,6 +9,8 @@
 /* BIBLIOTECAS */
 #include <pthread.h>        /* POSIX threads */
 
+enum status {ACTIVE, DELETED, TOBEDELETED};
+
 typedef struct node {
     pthread_t id;
     int i; // posição em relação a d na pista
@@ -27,6 +29,8 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 int atualizaVel(int vel_ant, int volta);
 // função que atualiza o número da rodada dado pelo vetor assoc (retorna 1 se pode mudar, 0 se não)
 int atualizaRodada(pthread_t thread, int rodada, int n);
+// função que cospe posição de elemento na thread
+int findThread(pthread_t thread);
 
 /* funções a serem implementadas */
 //registraPosicao(pthread_self(), /* parametros para registro */);

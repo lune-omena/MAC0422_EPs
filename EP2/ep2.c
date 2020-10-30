@@ -33,6 +33,7 @@ int tam_pista = 0;                  /* é igual a d */
 //int final = 0;
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
+int total_quebrados = 0;
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
 //Node * toDestroy = NULL;
 //int maior_rodada = 0;               /* indica rodada em que o primeiro colocado está */
@@ -136,7 +137,7 @@ int main(int argc, char * argv[])
         }
         else {
             assoc[i][0] = tid[i];
-            assoc[i][1] = rodada+1;
+            assoc[i][1] = 1;
         }
 
     for(int i = 0; i < n; i++)
@@ -158,12 +159,13 @@ int main(int argc, char * argv[])
 
             // pelo que entendi, o código abaixo serve para checar se chegou na n-ésima rodada
             // isso significa que já teriam ocorrido um múltiplo do tamanho da pista de rodadas
+            /*
             if((volta-rodada*10) % tam_pista == 0)
             {
                 rodada++;
                 getchar();
-                printf("*** RODADA %3d ***\n", rodada);
-            }
+                //printf("*** RODADA %3d ***\n", rodada);
+            }*/
             
             volta++;
                 
@@ -338,7 +340,11 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 rank_new->t_ranks = (pthread_t *) malloc(total_ciclistas*sizeof(pthread_t)); // TALVEZ MUDE PARA NUM_CICLISTAS
 
                 rank_aux->prox = rank_new;
+
                 // LEMBRAR DE LIBERAR MEMÓRIA DEPOIS!!!!! (n + 1 - x)?
+
+                printf("*** RODADA %3d ***\n", *rodada);
+                getchar();
 
                 // atualiza parâmetros etc.
             }
@@ -353,11 +359,12 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // Inserindo na posição correta do vetor t_ranks...
                 int i;
 
-                for(i = 0; (i < total_ciclistas + 1 - *rodada/2) && rank_aux->t_ranks[i] != 0; i++);
-                printf("%d eh total_ciclistas + 1 - *rodada\n", total_ciclistas + 1 - *rodada);
+                // tenho que considerar ciclistas quebrados aqui também! -> até essa volta, então vou ter que marcar num vetor e fazer func
+                for(i = 0; (i < total_ciclistas + 1 - *rodada/2 - total_quebrados) && rank_aux->t_ranks[i] != 0; i++);
+                printf("%d eh total_ciclistas + 1 - *rodada/2 - total_quebrados\n", total_ciclistas + 1 - *rodada/2 - total_quebrados);
 
-                if(*rodada%2 == 0 && i == total_ciclistas - *rodada/2) { // É O ÚLTIMO ELEMENTO DA RODADA X!!
-                    printf("já já lido com isso\n");
+                if(*rodada%2 == 0 && i == total_ciclistas - *rodada/2) { // É O ÚLTIMO ELEMENTO DA RODADA X!! pq começa de 0
+                    //printf("já já lido com isso\n");
 
                     // VAI TER QUE FAZER A CABEÇA DA LISTA DE CLASSIFICAÇÕES SER O PRÓXIMO
                     rank_aux = classThreads;

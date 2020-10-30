@@ -24,7 +24,8 @@ typedef struct node {
 // das pistas
 typedef struct rank {
     int rodada;              // número da rodada para classificações
-    pthread_t * t_ranks;           // classificações
+    int quebrados;           // número de ciclistas que quebraram
+    pthread_t * t_ranks;     // classificações
     struct rank * prox;      // aponta para próxima rodada
 } Ranking;
 

@@ -29,13 +29,13 @@ int rodada = 0;                     /* rodadas -> voltas dadas na pista -> preci
 int total = -1;                     /* variável para que a main espere todas threads */
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
-_Atomic int num_toDestroy = 0;
+//_Atomic int num_toDestroy = 0;
 //int final = 0;
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
-Node * toDestroy = NULL;
-int maior_rodada = 0;               /* indica rodada em que o primeiro colocado está */
+//Node * toDestroy = NULL;
+//int maior_rodada = 0;               /* indica rodada em que o primeiro colocado está */
 
 Ranking * classThreads = NULL;      /* guarda as classificações das threads para cada rodada */
 
@@ -154,95 +154,6 @@ int main(int argc, char * argv[])
             total = 0;
 
             // OPCAO 2 
-
-            // copiei e colei do q já fiz lá embaixo
-            // era melhor fazer copiar as posições, e precisa disso
-            // mas to com preguiça agr
-            int itr = 0;
-            long int menor = assoc[itr][1];
-
-            while(itr < n && !menor) {
-                itr++;
-                menor = assoc[itr][1];
-            }
-            
-            itr++;
-
-            int cont = 1;
-            
-            for(int i = itr; i < total_ciclistas; i++) {
-                //printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
-                if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
-                    if(assoc[i][1] < menor) {
-                        printf("entrou\n");
-                        cont = 1; //OPCAO 1
-                        menor = assoc[i][1];
-                    }
-                    else if(menor == assoc[i][1])
-                        cont++; // OPCAO 1
-                }
-            }
-
-            if(toDestroy && cont == num_toDestroy) { //exceção rodada 0
-                int choice = rand()%(num_toDestroy);
-                Node * node_aux = toDestroy;
-                pthread_t id_toDestroy = 0;
-                
-                while(choice) {
-                    node_aux = node_aux->prox;
-                    choice--;
-                }
-
-                id_toDestroy = node_aux->id;
-
-                printf("o número da rodada dele é %d\n", node_aux->rodada_pessoal);
-
-                if(node_aux->rodada_pessoal%2 == 0) {
-
-                    // encontro posição no vetor assoc da thread
-                    int pos_assoc = findThread(id_toDestroy);
-                    assoc[pos_assoc][2] = TOBEDELETED;
-
-                    printf("a thread %ld será destruída!\n ", id_toDestroy);
-                    // zerar posições da pista também!!!!!!!!!!!!!!!!!!!
-                    pista[node_aux->i][node_aux->j] = 0;
-                    // atualizar ranking  - PRECISA FAZER 
-                    // diminuir número de ciclistas OCORRE NA FUNÇÃP THREAD
-                    // assim como deletar a própria thread
-                }
-
-                node_aux = toDestroy;
-                num_toDestroy = 0;
-                toDestroy = NULL;
-                Node * aux2 = NULL;
-
-                while(node_aux) { // liberando toDestroy
-                    aux2 = node_aux;
-                    node_aux = node_aux->prox;
-                    aux2->prox = NULL;
-                    free(aux2);
-                }
-
-                if(!toDestroy)
-                    printf("ZEREI TODESTROy!!!\n");
-
-            } 
-            else if(toDestroy){
-
-                num_toDestroy = 0;
-
-                Node * node_aux = toDestroy;
-                toDestroy = NULL;
-                Node * aux2 = NULL;
-
-                while(node_aux) { // liberando toDestroy
-                    aux2 = node_aux;
-                    node_aux = node_aux->prox;
-                    aux2->prox = NULL;
-                    free(aux2);
-                }
-
-            }
             //fim opcao 2
 
             // pelo que entendi, o código abaixo serve para checar se chegou na n-ésima rodada
@@ -410,6 +321,8 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
             if(*rodada == maior()) { // primeiro elemento
 
+                printf("%ld EH O PRIMEIRO COLOCADO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n", thread%1000);
+
                 // ATUALIZA CLASSIFICAÇÃO 
                 Ranking * rank_aux = classThreads;
 
@@ -428,7 +341,6 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // LEMBRAR DE LIBERAR MEMÓRIA DEPOIS!!!!! (n + 1 - x)?
 
                 // atualiza parâmetros etc.
-                // maior_rodada = *rodada++;
             }
             else {
                 // ATUALIZA CLASSIFICAÇÃO
@@ -441,12 +353,28 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // Inserindo na posição correta do vetor t_ranks...
                 int i;
 
-                for(i = 0; (i < total_ciclistas + 1 - *rodada) && rank_aux->t_ranks[i] != 0; i++);
+                for(i = 0; (i < total_ciclistas + 1 - *rodada/2) && rank_aux->t_ranks[i] != 0; i++);
+                printf("%d eh total_ciclistas + 1 - *rodada\n", total_ciclistas + 1 - *rodada);
 
-                if(i == total_ciclistas - *rodada) { // É O ÚLTIMO ELEMENTO DA RODADA X!!
+                if(*rodada%2 == 0 && i == total_ciclistas - *rodada/2) { // É O ÚLTIMO ELEMENTO DA RODADA X!!
                     printf("já já lido com isso\n");
-                    // terá que ser deletado
+
                     // VAI TER QUE FAZER A CABEÇA DA LISTA DE CLASSIFICAÇÕES SER O PRÓXIMO
+                    rank_aux = classThreads;
+                    classThreads = classThreads->prox;
+
+                    free(rank_aux->t_ranks);
+                    free(rank_aux);
+
+                    // terá que ser deletado
+                    // zera posição na pista
+                    pista[pos_i][pos_j] = 0;
+
+                    // zera no vetor de associações
+                    assoc[findThread(thread)][1] = 0;
+
+                    return 2; // 2 == SINAL QUE TEM QUE SAIR 
+                    
                 }
                 else {
                     rank_aux->t_ranks[i] = thread;
@@ -454,9 +382,24 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
             }
 
-//VOUTER QUE MUDAR TODA ESSA MERDA
+            // Caso esteja terminando a volta, define nova velocidade para proxima rodada
+            // retornando ciclista para marcação do início da pista
+            pista[0][pos_j] = thread;
+            pista[pos_i][pos_j] = 0;
+
+            // registrando início de nova rodada pessoal
+            *rodada = *rodada+1;
+            atualizaRodada(thread, *rodada, total_ciclistas);
+
+            // atualizando velocidade
+            *vel_atual = atualizaVel(*vel_atual, *rodada);
+
+            return 1;
+
+            //VOUTER QUE MUDAR TODA ESSA MERDA
 
             // INCLUIR PARA QUALQUER UMA DAS OPÇÕES
+            /*
             int i = 0;
             int menor = assoc[i][1];
 
@@ -484,7 +427,6 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
             printf("%d eh o menor valor com cont %d\n", menor, cont);
 
            // OPCAO 1 - o PC tecnicamente sorteia aleatoriamente
-           /*
             if(*rodada%2 == 0 && *rodada == menor && cont == 1) {
 
                 printf("entrou AQUIII\n");
@@ -513,67 +455,6 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 return 1;
             }*/
             // FIM OPCAO 1
-
-            //OPCAO 2 - eu sorteio essa porra
-                // obs: tenho medo de dar segfault...
-                // e talvez necessidade de mutex...
-            if(*rodada == menor) {
-                printf("A LISTA ESTA SENDO FORMADA\n");
-                if(!toDestroy) {
-                    toDestroy = (Node *) malloc(sizeof(Node));
-                    toDestroy->id = thread;
-                    toDestroy->i = pos_i;
-                    toDestroy->j = pos_j;
-                    toDestroy->rodada_pessoal = menor;
-                    toDestroy->prox = NULL;
-                }
-                else {
-                    Node * aux = toDestroy;
-                    Node * new = (Node *) malloc(sizeof(Node));
-                    new->id = thread;
-                    new->prox = NULL;
-                    new->i = pos_i;
-                    new->j = pos_j;
-                    new->rodada_pessoal = menor;
-
-                    while(aux->prox)
-                        aux = aux->prox;
-                    
-                    aux->prox = new;
-                } // a decisão de deletar vai ser feita no escalonador ...
-
-                num_toDestroy++;
-            }
-
-            pista[0][pos_j] = thread;
-            pista[pos_i][pos_j] = 0;
-
-            // registrando início de nova rodada pessoal
-            *rodada = *rodada+1;
-            atualizaRodada(thread, *rodada, total_ciclistas);
-
-            // atualizando velocidade
-            *vel_atual = atualizaVel(*vel_atual, *rodada);
-
-            return 1;
-                    
-            //fim opcao 2
-
-            // Caso esteja terminando a volta, define nova velocidade para proxima rodada
-            // retornando ciclista para marcação do início da pista
-            /*
-            pista[0][pos_j] = thread;
-            pista[pos_i][pos_j] = 0;
-
-            // registrando início de nova rodada pessoal
-            *rodada = *rodada+1;
-            atualizaRodada(thread, *rodada, num_ciclistas);
-
-            // atualizando velocidade
-            *vel_atual = atualizaVel(*vel_atual, *rodada);
-
-            return 1;
-            */
         }
 
     return 0;

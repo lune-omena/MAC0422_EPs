@@ -19,6 +19,7 @@ typedef struct node {
     struct node * prox;
 } Node;
 
+    //bla
 /* FUNÇÕES */
 // função chamada pela thread assim que ela é criada
 void * thread(void * a);

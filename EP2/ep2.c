@@ -329,10 +329,13 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                         rank_aux = rank_aux->prox;
 
                     rank_aux->quebrados++;
+
+                    // preciso manter uma contagem dos ciclistas quebrados até a iteraão tal
                     
                 }
 
             }
+            // s rodar o de cima, abaixo sera else e vai retornar 2!!!!!!!!!!!!!!!!!!!!!
 
             if(*rodada == maior()) { // primeiro elemento
 

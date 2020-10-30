@@ -147,11 +147,20 @@ int main(int argc, char * argv[])
             // copiei e colei do q já fiz lá embaixo
             // era melhor fazer copiar as posições, e precisa disso
             // mas to com preguiça agr
-            long int menor = assoc[0][1];
+            int itr = 0;
+            long int menor = assoc[itr][1];
+
+            while(itr < n && !menor) {
+                itr++;
+                menor = assoc[itr][1];
+            }
+            
+            itr++;
+
             int cont = 1;
             
-            for(int i = 1; i < total_ciclistas; i++) {
-                printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
+            for(int i = itr; i < total_ciclistas; i++) {
+                //printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
                 if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
                     if(assoc[i][1] < menor) {
                         printf("entrou\n");
@@ -163,7 +172,7 @@ int main(int argc, char * argv[])
                 }
             }
 
-            if(toDestroy && cont == num_toDestroy && rodada%2 == 0) { //exceção rodada 0
+            if(toDestroy && cont == num_toDestroy) { //exceção rodada 0
                 int choice = rand()%(num_toDestroy);
                 Node * node_aux = toDestroy;
                 pthread_t id_toDestroy = 0;
@@ -175,18 +184,35 @@ int main(int argc, char * argv[])
 
                 id_toDestroy = node_aux->id;
 
-                // encontro posição no vetor assoc da thread
-                int pos_assoc = findThread(id_toDestroy);
-                assoc[pos_assoc][2] = TOBEDELETED;
+                printf("o número da rodada dele é %d\n", node_aux->rodada_pessoal);
 
-                printf("a thread %ld será destruída!\n ", id_toDestroy);
-                // zerar posições da pista também!!!!!!!!!!!!!!!!!!!
-                pista[node_aux->i][node_aux->j] = 0;
-                // atualizar ranking  - PRECISA FAZER 
-                //pthread_cancel(id_toDestroy);
+                if(node_aux->rodada_pessoal%2 == 0) {
 
-                // diminuir número de ciclistas OCORRE NA FUNÇÃP THREAD
-                
+                    // encontro posição no vetor assoc da thread
+                    int pos_assoc = findThread(id_toDestroy);
+                    assoc[pos_assoc][2] = TOBEDELETED;
+
+                    printf("a thread %ld será destruída!\n ", id_toDestroy);
+                    // zerar posições da pista também!!!!!!!!!!!!!!!!!!!
+                    pista[node_aux->i][node_aux->j] = 0;
+                    // atualizar ranking  - PRECISA FAZER 
+                    //pthread_cancel(id_toDestroy);
+
+                    // diminuir número de ciclistas OCORRE NA FUNÇÃP THREAD
+                    /*
+                    node_aux = toDestroy;
+                    num_toDestroy = 0;
+                    toDestroy = NULL;
+                    Node * aux2 = NULL;
+
+                    while(node_aux) { // liberando toDestroy
+                        aux2 = node_aux;
+                        node_aux = node_aux->prox;
+                        aux2->prox = NULL;
+                        free(aux2);
+                    }*/
+                }
+
                 node_aux = toDestroy;
                 num_toDestroy = 0;
                 toDestroy = NULL;
@@ -198,6 +224,9 @@ int main(int argc, char * argv[])
                     aux2->prox = NULL;
                     free(aux2);
                 }
+
+                if(!toDestroy)
+                    printf("ZEREI TODESTROU!!!\n");
 
             } 
             else if(toDestroy){
@@ -234,9 +263,12 @@ int main(int argc, char * argv[])
             pthread_mutex_unlock(&mutex_main);   
         }
 
-        if(volta > voltas) // temporário ou >=?
+        if(/*volta > voltas ||*/ num_ciclistas == 1) {// temporário ou >=?
             acabou = 1;
+            pthread_cond_broadcast(&wait_thread);
+        }
     }
+
 
     printf("OK!!\n");
 
@@ -281,7 +313,7 @@ void * thread(void * a)
     pthread_mutex_unlock(&mutex);
     int CHECK = 0;
 
-    while(volta != volta_total && CHECK != 2 && !delete/*&& !final*/) 
+    while(/*volta != volta_total &&*/ CHECK != 2 && !delete/*&& !final*/) 
     // CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos
     {
         pthread_mutex_lock(&mutex);
@@ -290,10 +322,10 @@ void * thread(void * a)
         printf("rodada: %d - thread: %3ld\n", *rodada, pthread_self()%1000);
     
         pthread_cond_wait(&wait_thread, &mutex);
-        printf("oi1\n");
 
-        if(assoc[pos_assoc][2] == TOBEDELETED)
+        if(assoc[pos_assoc][2] == TOBEDELETED || acabou) {
             delete = 1;
+        }
 
         if(!delete) {
 
@@ -302,7 +334,6 @@ void * thread(void * a)
                 pthread_cond_wait(&wait_thread, &mutex);
             }
             // se não, é 60km/h e roda normal
-            printf("oi2\n");
 
             CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
             if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue
@@ -385,13 +416,19 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
         if (!pista[0][pos_j]) {
 
             // INCLUIR PARA QUALQUER UMA DAS OPÇÕES
+            int i = 0;
+            int menor = assoc[i][1];
 
-            int menor = assoc[0][1];
+            while(i < total_ciclistas && menor == 0) {
+                i++;
+                menor = assoc[i][1];
+            }
+
             int cont = 1;
             int atual = 0;
             
-            for(int i = 1; i < total_ciclistas; i++) {
-                printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
+            for(; i < total_ciclistas; i++) {
+                //printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
                 if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
                     if(assoc[i][1] < menor) {
                         cont = 1; //OPCAO 1
@@ -440,11 +477,13 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // obs: tenho medo de dar segfault...
                 // e talvez necessidade de mutex...
             if(*rodada == menor) {
+                printf("A LISTA ESTA SENDO FORMADA\n");
                 if(!toDestroy) {
                     toDestroy = (Node *) malloc(sizeof(Node));
                     toDestroy->id = thread;
                     toDestroy->i = pos_i;
                     toDestroy->j = pos_j;
+                    toDestroy->rodada_pessoal = menor;
                     toDestroy->prox = NULL;
                 }
                 else {
@@ -454,6 +493,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                     new->prox = NULL;
                     new->i = pos_i;
                     new->j = pos_j;
+                    new->rodada_pessoal = menor;
 
                     while(aux->prox)
                         aux = aux->prox;
@@ -469,7 +509,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
             // registrando início de nova rodada pessoal
             *rodada = *rodada+1;
-            atualizaRodada(thread, *rodada, num_ciclistas);
+            atualizaRodada(thread, *rodada, total_ciclistas);
 
             // atualizando velocidade
             *vel_atual = atualizaVel(*vel_atual, *rodada);

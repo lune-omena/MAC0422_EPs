@@ -29,15 +29,10 @@ int rodada = 0;                     /* rodadas -> voltas dadas na pista -> preci
 int total = -1;                     /* variável para que a main espere todas threads */
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
-//_Atomic int num_toDestroy = 0;
-//int final = 0;
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 int total_quebrados = 0;
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
-//Node * toDestroy = NULL;
-//int maior_rodada = 0;               /* indica rodada em que o primeiro colocado está */
-
 Ranking * classThreads = NULL;      /* guarda as classificações das threads para cada rodada */
 
 int main(int argc, char * argv[]) 
@@ -154,11 +149,6 @@ int main(int argc, char * argv[])
             printf("...\n");
             total = 0;
 
-            // OPCAO 2 
-            //fim opcao 2
-
-            // pelo que entendi, o código abaixo serve para checar se chegou na n-ésima rodada
-            // isso significa que já teriam ocorrido um múltiplo do tamanho da pista de rodadas
             /*
             if((volta-rodada*10) % tam_pista == 0)
             {
@@ -321,6 +311,29 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
     else // última posição
         if (!pista[0][pos_j]) {
 
+            // POSSIBILIDADE DE QUEBRA...
+            if((*rodada+1)%6 == 0 && num_ciclistas > 5) { //tem a chance de 5% de quebrar. 
+                int r_num =  rand()%100;
+
+                if(r_num <= 5) {
+                    printf("A THREAD %ld QUEBROU NA VOLTA %d!", thread, *rodada+1);
+                    int pos = findThread(thread);
+                    assoc[pos][2] = TOBEDELETED;
+                    assoc[pos][1] = 0;
+
+                    total_quebrados++;
+
+                    Ranking * rank_aux = classThreads;
+
+                    while(rank_aux != NULL && rank_aux->rodada != *rodada)
+                        rank_aux = rank_aux->prox;
+
+                    rank_aux->quebrados++;
+                    
+                }
+
+            }
+
             if(*rodada == maior()) { // primeiro elemento
 
                 printf("%ld EH O PRIMEIRO COLOCADO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n", thread%1000);
@@ -328,7 +341,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // ATUALIZA CLASSIFICAÇÃO 
                 Ranking * rank_aux = classThreads;
 
-                while(rank_aux->prox != NULL /*&& rank_aux->rodada = *rodada*/)
+                while(rank_aux->prox != NULL)
                     rank_aux = rank_aux->prox;
 
                 rank_aux->t_ranks[0] = thread;
@@ -366,7 +379,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
                 Ranking * rank_2 = rank_aux;
 
-                for(int j = 0; j < total_ciclistas; j++) {                    
+                for(int j = 0; j < total_ciclistas; j++) {
                     printf("%ld ", rank_2->t_ranks[j]%1000);
                 }
 
@@ -414,65 +427,6 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
             return 1;
 
-            //VOUTER QUE MUDAR TODA ESSA MERDA
-
-            // INCLUIR PARA QUALQUER UMA DAS OPÇÕES
-            /*
-            int i = 0;
-            int menor = assoc[i][1];
-
-            while(i < total_ciclistas && menor == 0) {
-                i++;
-                menor = assoc[i][1];
-            }
-
-            int cont = 1;
-            int atual = 0;
-            
-            for(; i < total_ciclistas; i++) {
-                //printf("%ld é a rodada de %ld\n", assoc[i][1], assoc[i][0]);
-                if(assoc[i][1] != 0) { // apenas checando associações não eliminadas
-                    if(assoc[i][1] < menor) {
-                        cont = 1; //OPCAO 1
-                        menor = assoc[i][1];
-                        atual = i;
-                    }
-                    else if(menor == assoc[i][1])
-                        cont++; // OPCAO 1
-                }
-            }
-
-            printf("%d eh o menor valor com cont %d\n", menor, cont);
-
-           // OPCAO 1 - o PC tecnicamente sorteia aleatoriamente
-            if(*rodada%2 == 0 && *rodada == menor && cont == 1) {
-
-                printf("entrou AQUIII\n");
-                // zera posição na pista
-                pista[pos_i][pos_j] = 0;
-
-                // zera no vetor de associações
-                assoc[atual][1] = 0;
-
-                return 2; // 2 == SINAL QUE TEM QUE SAIR 
-            }    
-            else { //roda tudo abaixo ( menos OPCAO 2)
-
-                // Caso esteja terminando a volta, define nova velocidade para proxima rodada
-                // retornando ciclista para marcação do início da pista
-                pista[0][pos_j] = thread;
-                pista[pos_i][pos_j] = 0;
-
-                // registrando início de nova rodada pessoal
-                *rodada = *rodada+1;
-                atualizaRodada(thread, *rodada, total_ciclistas);
-
-                // atualizando velocidade
-                *vel_atual = atualizaVel(*vel_atual, *rodada);
-
-                return 1;
-            }*/
-            // FIM OPCAO 1
         }
 
     return 0;
@@ -538,4 +492,12 @@ int maior() { // devolve o número da rodada do primeiro colocado
             maior = assoc[i][1];
 
     return maior;
+}
+
+int quebrou() {
+    /* Considere que a cada vez que um ciclista completa múltiplos de 6 voltas, ele tem a chance de 5% de quebrar.*/
+    int num = rand()%10;
+
+
+
 }

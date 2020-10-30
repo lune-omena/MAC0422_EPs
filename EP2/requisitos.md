@@ -3,13 +3,13 @@
 ###### Próximas a serem implementadas
 
 - [ ] Corrigir condições de iteração do programa (até quando irá rodar, determinação de volta/rodada etc.)
-- [ ] Eliminar ultimo ciclista a cada 2 rodadas
+- [x] Eliminar ultimo ciclista a cada 2 rodadas
 - [ ] Registro posição/rank dos ciclistas a cada rodada
 - [x] Implementar mudança de velocidade aleatória
 - [ ] Ultrapassagem
 - [ ] Condição de não aumento de velocidade (acho que a Lara já fez)
-- [ ] Quebra de ciclistas
-- [ ] Ciclistas largam ordenados aleatoriamente com no maximo 5 lado a lado a cada metro
+- [ ] Quebra de ciclistas (trabalhando nisso)
+- [x] Ciclistas largam ordenados aleatoriamente com no maximo 5 lado a lado a cada metro
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
 
 ---
@@ -20,8 +20,8 @@
 - [x] a posição i da pista deve possuir os identificadores de todos os ciclistas que estão naquele trecho naquele instante
 - [ ] simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
 - [x] Cada thread deve escrever seu identificador na posição correta do vetor pista a cada momento
-- [ ] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou
-- [ ] Destruir threads de ciclistas eliminados ou quebrados
+- [ ] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou (trabalhando nisso)
+- [x] Destruir threads de ciclistas eliminados ou quebrados
 - [ ] Relatório da saída do programa
 - [ ] Implementar opção de debug (já meio implementada)
 - [x] receber argumentos d e n da linha de comando

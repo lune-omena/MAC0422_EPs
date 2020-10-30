@@ -46,3 +46,5 @@
 - Pista é uma matriz de tipo pthread_t **
 
 - MUDANÇA NA IMPLEMENTAÇÃO: rodadas começam a partir de 1, e não 0 (visto 0 representa threads já finalizadas)
+
+- Na eliminação dos ciclistas, caso alguns ciclistas estejam muito na frente, e os últimos muito atrás, podem ocorrer situações em que rodadas pares sejam puladas - ou seja, não haja eliminação em rodadas pares. 

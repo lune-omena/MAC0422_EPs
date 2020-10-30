@@ -11,6 +11,7 @@
 
 enum status {ACTIVE, DELETED, TOBEDELETED};
 
+// a estrutura abaixo era usada para remoção - provavelmente vou recicl=a-la
 typedef struct node {
     pthread_t id;
     int i; // posição em relação a d na pista
@@ -18,6 +19,14 @@ typedef struct node {
     int rodada_pessoal; // número da rodada pessoal
     struct node * prox;
 } Node;
+
+// a estrutura abaixo será usada para guardar uma lista ligada de classificações
+// das pistas
+typedef struct rank {
+    int rodada;              // número da rodada para classificações
+    pthread_t * t_ranks;           // classificações
+    struct rank * prox;      // aponta para próxima rodada
+} Ranking;
 
     //bla
 /* FUNÇÕES */
@@ -31,8 +40,10 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 int atualizaVel(int vel_ant, int volta);
 // função que atualiza o número da rodada dado pelo vetor assoc (retorna 1 se pode mudar, 0 se não)
 int atualizaRodada(pthread_t thread, int rodada, int n);
-// função que cospe posição de elemento na thread
+// função que cospe posição da thread no vetor asoc
 int findThread(pthread_t thread);
+// função que retorna a rodada do primeiro colocado
+int maior();
 
 /* funções a serem implementadas */
 //registraPosicao(pthread_self(), /* parametros para registro */);

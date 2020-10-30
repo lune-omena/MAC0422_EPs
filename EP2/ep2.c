@@ -328,7 +328,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // ATUALIZA CLASSIFICAÇÃO 
                 Ranking * rank_aux = classThreads;
 
-                while(/*rank_aux->prox != NULL &&*/ rank_aux->rodada != *rodada)
+                while(rank_aux->prox != NULL /*&& rank_aux->rodada = *rodada*/)
                     rank_aux = rank_aux->prox;
 
                 rank_aux->t_ranks[0] = thread;
@@ -360,10 +360,21 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 int i;
 
                 // tenho que considerar ciclistas quebrados aqui também! -> até essa volta, então vou ter que marcar num vetor e fazer func
-                for(i = 0; (i < total_ciclistas + 1 - *rodada/2 - total_quebrados) && rank_aux->t_ranks[i] != 0; i++);
-                printf("%d eh total_ciclistas + 1 - *rodada/2 - total_quebrados\n", total_ciclistas + 1 - *rodada/2 - total_quebrados);
+                for(i = 1; (i < total_ciclistas + 1 - *rodada/2 - total_quebrados) && rank_aux->t_ranks[i] != 0; i++);
+
+                printf("%d eh o valor dado\n", i);
+
+                Ranking * rank_2 = rank_aux;
+
+                for(int j = 0; j < total_ciclistas; j++) {                    
+                    printf("%ld ", rank_2->t_ranks[j]%1000);
+                }
+
+                printf("\n");
 
                 if(*rodada%2 == 0 && i == total_ciclistas - *rodada/2) { // É O ÚLTIMO ELEMENTO DA RODADA X!! pq começa de 0
+
+                    printf("%d eh total_ciclistas + 1 - *rodada/2 - total_quebrados\n", total_ciclistas + 1 - *rodada/2 - total_quebrados);
                     //printf("já já lido com isso\n");
 
                     // VAI TER QUE FAZER A CABEÇA DA LISTA DE CLASSIFICAÇÕES SER O PRÓXIMO

@@ -41,13 +41,9 @@
 > Considere ainda que nas 2 últimas voltas há a chance de 10% de 1 ciclista aleatório qualquer e respeitando as regras de ultrapassagem, fazer essas 2 últimas voltas a 90Km/h
 
 - Todo ciclista na ultima volta tem essa probabilidade. Em casos extremos, como nas ultimas duas voltas haverão dois ciclistas, ambos tem a chance de completar a volta a 90km/k. Isso é um grande problema? Está ruim assim? não acho problemático
-
 - Para indicar que uma posição se encontra vazia na pista, indicamos com 0
-
 - Pista é uma matriz de tipo pthread_t **
-
 - MUDANÇA NA IMPLEMENTAÇÃO: rodadas começam a partir de 1, e não 0 (visto 0 representa threads já finalizadas)
-
 - A eliminação dos ciclistas é feita de 2 em 2 voltas - isso é feito a partir de uma lista ligada em que registramos a classificação de cada ciclista associada a cada rodada (portanto, guardamos em cada célula da lista ligada o registro da classificação da rodada)
-
 - no momento em que a célula não tem mais uso, eu descarto ela e assumo uma nova cabeça para a lista ligada (a próxima célula)
+-  decidimos que a aleatoriedade no sorteio da thread a ser eliminada (caso esteja na mesma rodada e mesma posição final na mesma velocidade que outras tantas threads) se dá pela escolha do escalonador

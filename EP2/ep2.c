@@ -312,6 +312,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
         if (!pista[0][pos_j]) {
 
             // POSSIBILIDADE DE QUEBRA...
+            /*
             if((*rodada+1)%6 == 0 && num_ciclistas > 5) { //tem a chance de 5% de quebrar. 
                 int r_num =  rand()%100;
 
@@ -330,11 +331,11 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
                     rank_aux->quebrados++;
 
-                    // preciso manter uma contagem dos ciclistas quebrados até a iteraão tal
+                    // preciso manter uma contagem dos ciclistas quebrados até a iteração tal
                     
                 }
 
-            }
+            }*/
             // s rodar o de cima, abaixo sera else e vai retornar 2!!!!!!!!!!!!!!!!!!!!!
 
             if(*rodada == maior()) { // primeiro elemento
@@ -497,10 +498,9 @@ int maior() { // devolve o número da rodada do primeiro colocado
     return maior;
 }
 
+/*
 int quebrou() {
-    /* Considere que a cada vez que um ciclista completa múltiplos de 6 voltas, ele tem a chance de 5% de quebrar.*/
+    // Considere que a cada vez que um ciclista completa múltiplos de 6 voltas, ele tem a chance de 5% de quebrar.
     int num = rand()%10;
 
-
-
-}
+}*/

@@ -141,7 +141,7 @@ int main(int argc, char * argv[])
     /* A cada duas voltas o ciclista que completar a última volta na última posição é eliminado.
        A prova termina quando sobrar apenas um ciclista, que é o campeão. */
 
-    while (!acabou) {
+    while (num_ciclistas > 1) {
 
         if(total == num_ciclistas) { 
             pthread_mutex_lock(&mutex_main);
@@ -163,12 +163,12 @@ int main(int argc, char * argv[])
             pthread_mutex_unlock(&mutex_main);   
         }
 
-        if(num_ciclistas == 1) { // temporário ou >=?
-            acabou = 1;
-            pthread_cond_broadcast(&wait_thread);
-        }
     }
 
+    while(num_ciclistas == 1) { // isso é meio gambiarra mas wtv
+        acabou = 1;             // sinaliza para a última thread finalizar 
+        pthread_cond_broadcast(&wait_thread);
+    }
 
     printf("OK!!\n");
 
@@ -347,7 +347,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
                 while(rank_aux->prox != NULL)
                     rank_aux = rank_aux->prox;
-
+                    
                 rank_aux->t_ranks[0] = thread;
 
                 // Alocando novo bloco da próxima rodada
@@ -355,6 +355,10 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 rank_new->prox = NULL;
                 rank_new->rodada = *rodada+1;
                 rank_new->t_ranks = (pthread_t *) malloc(total_ciclistas*sizeof(pthread_t)); // TALVEZ MUDE PARA NUM_CICLISTAS
+
+                // zerando todas as posições fora a primeira!
+                for(int j = 0; j < total_ciclistas; j++)
+                    rank_new->t_ranks[j] = 0;
 
                 rank_aux->prox = rank_new;
 
@@ -373,13 +377,16 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 while(rank_aux->rodada != *rodada)
                     rank_aux = rank_aux->prox;
 
+
                 // Inserindo na posição correta do vetor t_ranks...
                 int i;
 
                 // tenho que considerar ciclistas quebrados aqui também! -> até essa volta, então vou ter que marcar num vetor e fazer func
+                // começa do 1 porque no 0 se encontra o primeiro a passar na rodada
                 for(i = 1; (i < total_ciclistas + 1 - *rodada/2 - total_quebrados) && rank_aux->t_ranks[i] != 0; i++);
 
                 printf("%d eh o valor dado\n", i);
+                printf("%d eh a rodada/2 \n", *rodada/2);
 
                 Ranking * rank_2 = rank_aux;
 

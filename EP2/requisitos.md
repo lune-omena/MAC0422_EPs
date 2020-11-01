@@ -7,8 +7,8 @@
 - [x] Eliminar ultimo ciclista a cada 2 rodadas
 - [ ] Registro posição/rank dos ciclistas a cada rodada
 - [x] Implementar mudança de velocidade aleatória
-- [ ] Ultrapassagem
-- [ ] Condição de não aumento de velocidade (acho que a Lara já fez)
+- [x] Ultrapassagem
+- [x] Condição de não aumento de velocidade (acho que a Lara já fez)
 - [ ] Quebra de ciclistas (trabalhando nisso)
 - [x] Ciclistas largam ordenados aleatoriamente com no maximo 5 lado a lado a cada metro
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
@@ -47,3 +47,4 @@
 - A eliminação dos ciclistas é feita de 2 em 2 voltas - isso é feito a partir de uma lista ligada em que registramos a classificação de cada ciclista associada a cada rodada (portanto, guardamos em cada célula da lista ligada o registro da classificação da rodada)
 - no momento em que a célula não tem mais uso, eu descarto ela e assumo uma nova cabeça para a lista ligada (a próxima célula)
 -  decidimos que a aleatoriedade no sorteio da thread a ser eliminada (caso esteja na mesma rodada e mesma posição final na mesma velocidade que outras tantas threads) se dá pela escolha do escalonador
+-  Quando o primeiro ciclista completar a quantidade ideal de voltas na pista, ele é retirado de pódio e tem sua posição regristrada na volta indicada.

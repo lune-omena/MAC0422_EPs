@@ -24,7 +24,6 @@ pthread_mutex_t mutex;
 
 int volta = -1;                     /* número de voltas */
 int voltas_max = -1;                /* numero maximo de voltas da corrida */
-int volta_total = -1;               /* número de voltas */
 int rodada = 0;                     /* rodadas: Voltas dadas na pista*/
 
 int total_ciclistas = -1;           /* número total de ciclistas, é igual a (n) */
@@ -70,7 +69,7 @@ int main(int argc, char * argv[])
         exit(EXIT_FAILURE);
     }
 
-    d = 10; /* excluir quando estiver pronto */
+    d = 250; /* excluir quando estiver pronto */
     tam_pista = d;/* excluir quando estiver pronto */
     total_ciclistas = num_ciclistas = n;
 
@@ -82,7 +81,6 @@ int main(int argc, char * argv[])
     
     // número de voltas na simulação
     volta = 0;
-    volta_total = 46; //OBS PRECISA SER NÚMERO PAR PARA NÃO DAR MERDA
 
     // CLASSTHREADS: inicia a lista de classificação de threads
     classThreads = (Ranking *) malloc(sizeof(Ranking));
@@ -161,9 +159,7 @@ int main(int argc, char * argv[])
             pthread_mutex_unlock(&mutex_main);   
         }
 
-    
-
-   // while(num_ciclistas == 1) // isso é meio gambiarra mas wtv
+   // while(num_ciclistas == 1) // isso é meio gambiarra mas wtv // Lucy: Acho que não precisamos mais!
    // { 
    //     acabou = 1;             // sinaliza para a última thread finalizar 
    //     pthread_cond_broadcast(&wait_thread);
@@ -228,14 +224,15 @@ void * thread(void * a)
             delete = 1;
         }
 
-        if(!delete) {
-
-            if(*vel_atual == KM30) { // esperam 2 voltas
+        if(!delete)
+        {
+            if(*vel_atual == KM30)
+            { // esperam 2 voltas
                 ciclistas_atuais++;
                 pthread_cond_wait(&wait_thread, &mutex);
             }
+            
             // se não, é 60km/h e roda normal
-
             CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual);
             if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue
             {
@@ -311,9 +308,8 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
         }
         else /* condições de ultrapassagem */
         {
-            if ((*pos_j + 1 < 10))
+            if (*pos_j + 1 < 10)
             {
-                
                 if(!pista[pos_i][*pos_j + 1] && !pista[pos_i + 1][*pos_j + 1])
                 {
                     printf("\n\nCONDIÇÃO DE ULTRAPASSAGEM UTILIZADA - THREAD: %ld\n",  pthread_self()%1000);
@@ -324,12 +320,11 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
                 }
             }
             else
-            if ((*pos_j - 1 >= 0))
+            if (*pos_j - 1 >= 0)
             {
-                
                 if (!pista[pos_i][*pos_j - 1] && !pista[pos_i + 1][*pos_j - 1])
                 {
-                    printf("\n\nCONDIÇÃO DE ULTRAPASSAGEM UTILIZADA - THREAD: %ld\n",  pthread_self()%1000);
+                    printf("\nCONDIÇÃO DE ULTRAPASSAGEM UTILIZADA - THREAD: %ld\n\n",  pthread_self()%1000);
                     pista[pos_i + 1][*pos_j - 1] = thread;
                     pista[pos_i][*pos_j] = 0;
                     *pos_j = *pos_j - 1;
@@ -420,7 +415,7 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
               //  printf("%d eh a rodada/2 \n", *rodada/2);
 
                 Ranking * rank_2 = rank_aux;
-
+                printf("\nRanking %d :", *rodada);
                 for(int j = 0; j < total_ciclistas; j++) {
                     printf("%ld ", rank_2->t_ranks[j]%1000);
                 }

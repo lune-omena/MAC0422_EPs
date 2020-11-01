@@ -36,7 +36,7 @@ void * thread(void * a);
 // função INICIAL que insere o ciclista numa posição decente
 int insereNaPista(pthread_t thread);
 // função usada para atualizar posição do ciclista
-int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_atual);
+int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_atual);
 // função usada para atualizar velocidade do ciclista
 int atualizaVel(int vel_ant, int volta);
 // função que atualiza o número da rodada dado pelo vetor assoc (retorna 1 se pode mudar, 0 se não)

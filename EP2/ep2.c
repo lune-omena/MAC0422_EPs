@@ -21,17 +21,22 @@ pthread_t ** pista;                 /* representa a pista dos ciclistas, possui 
 pthread_mutex_t mutex_main;         /* mutex usado para o escalonador */
 pthread_cond_t wait_thread;         /* barreira (cond) para threads */
 pthread_mutex_t mutex;
+
 int volta = -1;                     /* número de voltas */
-int total_ciclistas = -1;           /* número total de ciclistas (n) */
-int num_ciclistas = -1;             /* número de ciclistas ATUAL */
+int voltas_max = -1;                /* numero maximo de voltas da corrida */
 int volta_total = -1;               /* número de voltas */
-int rodada = 0;                     /* rodadas -> voltas dadas na pista -> precisamos padronizar os nomes...*/
-int total = -1;                     /* variável para que a main espere todas threads */
+int rodada = 0;                     /* rodadas: Voltas dadas na pista*/
+
+int total_ciclistas = -1;           /* número total de ciclistas, é igual a (n) */
+int num_ciclistas = -1;             /* número de ciclistas em cada rodada corrente*/
+int ciclistas_atuais = -1;          /* variável para que a main espere todas threads */
+
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 int total_quebrados = 0;
+
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
 Ranking * classThreads = NULL;      /* guarda as classificações das threads para cada rodada */
 
@@ -54,6 +59,7 @@ int main(int argc, char * argv[])
     int d = atoi(argv[1]);
     int n = atoi(argv[2]);
     tam_pista = d;
+    voltas_max = 2*(n-1);
     
     if(d < 250) {
         printf("Insira um comprimento de velódromo (d) maior ou igual a 250.\n");
@@ -68,6 +74,7 @@ int main(int argc, char * argv[])
     tam_pista = d;/* excluir quando estiver pronto */
     total_ciclistas = num_ciclistas = n;
 
+
     /* SIMULAÇÃO */
     srand(21132344);
     pthread_mutex_init(&mutex_main, NULL);
@@ -76,7 +83,6 @@ int main(int argc, char * argv[])
     // número de voltas na simulação
     volta = 0;
     volta_total = 46; //OBS PRECISA SER NÚMERO PAR PARA NÃO DAR MERDA
-    int voltas = volta_total;
 
     // CLASSTHREADS: inicia a lista de classificação de threads
     classThreads = (Ranking *) malloc(sizeof(Ranking));
@@ -87,35 +93,34 @@ int main(int argc, char * argv[])
     for(int i = 0; i < n; i++) // nenhuma thread associada ao ranking, ainda
         classThreads->t_ranks[i] = 0;
 
-
     // ASSOC: criando matriz de associação de id da thread para respectiva rodada
     // em assoc[i][0] encontra-se a identificação da thread
     // em assoc[i][1] encontra-se a rodada da respectiva thread
     // em assoc[i][2] encontra-se o status da respectiva thread
     assoc = (pthread_t **) malloc (n*sizeof(pthread_t *));
 
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
+    {
         assoc[i] = (pthread_t *) malloc (3*sizeof(pthread_t));
 
         // as posições inicialmente serão zero
-        for(int j = 0; j < 3; j++) {
+        for(int j = 0; j < 3; j++) 
             assoc[i][j] = 0; // ACTIVE  == 0
-        }
     }
 
     // todas threads precisam rodar
-    total = 0;
+    ciclistas_atuais = 0;
 
     /* A pista deve possuir 10 posições para cada d, mas no início da simulação apenas 5 estarão ocupadas */
     // lembrando que pthread_t = unsigned long int, estou zerando todas posições antes de ocupá-las
     pista = (pthread_t **) malloc(d*sizeof(pthread_t *)); //[d][10]
 
-    for(int i = 0; i < d; i++) {
+    for(int i = 0; i < d; i++)
+    {
         pista[i] = (pthread_t *) malloc(10*sizeof(pthread_t));
 
-        for(int j = 0; j < 10; j++) {
+        for(int j = 0; j < 10; j++) 
             pista[i][j] = 0;
-        }
     }
 
     /* Seu simulador deve criar n threads “ciclista” iguais */
@@ -126,49 +131,43 @@ int main(int argc, char * argv[])
     // também ocorre a associação do ciclista à rodada em que está
     // mas como todos os ciclistas já estão ativos, não há necessidade de mudar
     for(int i = 0; i < n; i++)
-        if (pthread_create(&tid[i], NULL, thread, NULL)) {
+        if (pthread_create(&tid[i], NULL, thread, NULL))
+        {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
-        else {
+        else
+        {
             assoc[i][0] = tid[i];
             assoc[i][1] = 1;
         }
 
-    for(int i = 0; i < n; i++)
-        printf("a thread %03ld está na rodada %ld\n", assoc[i][0]%1000, assoc[i][1]);
+    //for(int i = 0; i < n; i++)
+    //    printf("a thread %03ld está na rodada %ld\n", assoc[i][0]%1000, assoc[i][1]);
 
     /* A cada duas voltas o ciclista que completar a última volta na última posição é eliminado.
        A prova termina quando sobrar apenas um ciclista, que é o campeão. */
-
-    while (num_ciclistas > 1) {
-
-        if(total == num_ciclistas) { 
+    /* Começo da corrida*/
+    while (num_ciclistas >= 1) 
+        if(ciclistas_atuais == num_ciclistas)
+        { 
             pthread_mutex_lock(&mutex_main);
             usleep(tempo);
             printf("...\n");
-            total = 0;
-
-            /*
-            if((volta-rodada*10) % tam_pista == 0)
-            {
-                rodada++;
-                getchar();
-                //printf("*** RODADA %3d ***\n", rodada);
-            }*/
-            
+            ciclistas_atuais = 0;            
             volta++;
                 
             pthread_cond_broadcast(&wait_thread);
             pthread_mutex_unlock(&mutex_main);   
         }
 
-    }
+    
 
-    while(num_ciclistas == 1) { // isso é meio gambiarra mas wtv
-        acabou = 1;             // sinaliza para a última thread finalizar 
-        pthread_cond_broadcast(&wait_thread);
-    }
+   // while(num_ciclistas == 1) // isso é meio gambiarra mas wtv
+   // { 
+   //     acabou = 1;             // sinaliza para a última thread finalizar 
+   //     pthread_cond_broadcast(&wait_thread);
+   // }
 
     printf("OK!!\n");
 
@@ -181,7 +180,7 @@ int main(int argc, char * argv[])
 
     /* Fim da execução */
 
-    // liberando memória...
+    // liberando memória
     for(int i = 0; i < d; i++)
         free(pista[i]);
 
@@ -195,42 +194,44 @@ void * thread(void * a)
     /* a thread vai ser criada e vai rodar este código yay <3*/
 
     int pos_i = -1;               // primeiro termo (0 a d-1) da posição na pista[d][10]
-    int pos_j = -1;               // segundo termo (0 a 9) da posição na pista[d][10]
+    int *pos_j;               // segundo termo (0 a 9) da posição na pista[d][10]
     int *rodada, *vel_atual;
     int pos_assoc = findThread(pthread_self());
-    
+    int CHECK = 0;
+
     rodada = (int*) malloc(sizeof(int));
     vel_atual = (int*) malloc(sizeof(int));
-
-    //*rodada = 0;
+    pos_j = (int*) malloc(sizeof(int));
     *rodada = 1;
     *vel_atual = KM30;
     int delete = 0;
 
     pthread_mutex_lock(&mutex);
-    pos_j = insereNaPista(pthread_self()); 
+    *pos_j = insereNaPista(pthread_self()); 
     pos_i = ind_full;
     pthread_mutex_unlock(&mutex);
-    int CHECK = 0;
 
-    while(CHECK != 2 && !delete) 
-    // CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos
+    /* Enquanto thread não foi marcada para ser eliminada ou 
+       não terminou a quantidade máxima de volta possível na corrida 
+       > CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos */
+    while(CHECK != 2 && !delete && *rodada <= voltas_max) 
     {
         pthread_mutex_lock(&mutex);
-        total++;
-        printf("[%2d][%2d], %2d eh total - vel: %d - ", pos_i, pos_j, total, *vel_atual);
+        ciclistas_atuais++;
+        printf("[%3d][%2d], %2d eh total - vel: %d - ", pos_i, *pos_j, ciclistas_atuais, *vel_atual);
         printf("rodada: %d - thread: %3ld\n", *rodada, pthread_self()%1000);
     
         pthread_cond_wait(&wait_thread, &mutex);
 
-        if(assoc[pos_assoc][2] == TOBEDELETED || acabou) {
+        if(pos_assoc != -1 && (assoc[pos_assoc][2] == TOBEDELETED || acabou))
+        {
             delete = 1;
         }
 
         if(!delete) {
 
             if(*vel_atual == KM30) { // esperam 2 voltas
-                total++;
+                ciclistas_atuais++;
                 pthread_cond_wait(&wait_thread, &mutex);
             }
             // se não, é 60km/h e roda normal
@@ -253,17 +254,19 @@ void * thread(void * a)
     }
 
     // OPCAO 1 E 2
-    if(CHECK == 2 || delete)
-        printf("\na thread %ld foi eliminada da corrida... e ", pthread_self()%1000);
+    if(*rodada > voltas_max)
+        printf("\nA thread %ld completou a corrida e espera pelos seus concorrentes.\n", pthread_self()%1000);
+    else if(CHECK == 2 || delete)
+        printf("\na thread %ld foi eliminada da corrida... e \n", pthread_self()%1000);
     
     assoc[pos_assoc][1] = 0;
    
     num_ciclistas--;
-    printf("a thread %ld saiu\n", pthread_self());
+    //printf("a thread %ld saiu\n", pthread_self());
 
     assoc[pos_assoc][2] = DELETED;
 
-    printf("%d eh o número de ciclistas agora\n", num_ciclistas);
+    //printf("%d eh o número de ciclistas agora\n", num_ciclistas);
 
     pthread_cancel(pthread_self());
 
@@ -280,37 +283,65 @@ int insereNaPista(pthread_t thread)
         if (pista[ind_full][i] != 0)
             posicoes_ocupadas++;
     }
-    printf("\nposicoes ocupadas: %d\n", posicoes_ocupadas);
+    //printf("\nposicoes ocupadas: %d\n", posicoes_ocupadas);
     if (posicoes_ocupadas == 5) 
         ind_full++;
 
     while(pos < 10 && pista[ind_full][pos] != 0)
     {
-        pos= rand() % 10;
-        printf("Posicao sorteada: %d - thread: %ld\n", pos, pthread_self() % 1000);
+        pos = rand() % 10;
+       // printf("Posicao sorteada: %d - thread: %ld\n", pos, pthread_self() % 1000);
     }
         
-    printf("A thread %03ld incia na posição %d\n", thread%1000, pos);
-    
+   // printf("A thread %03ld incia na posição %d\n", thread%1000, pos);
     pista[ind_full][pos] = thread;
     
     return pos;
 }
 
 
-int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_atual) {
+int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_atual) {
 
     if(pos_i < (tam_pista - 1)) {   
-        if(!pista[pos_i + 1][pos_j]) {
+        if(!pista[pos_i + 1][*pos_j]) {
             // printf("Velocidadeede: %d - thread: %3ld\n", *vel_atual, pthread_self()%1000);
-            pista[pos_i + 1][pos_j] = thread;
-            pista[pos_i][pos_j] = 0;
+            pista[pos_i + 1][*pos_j] = thread;
+            pista[pos_i][*pos_j] = 0;
             return 1;
         }
+        else /* condições de ultrapassagem */
+        {
+            if ((*pos_j + 1 < 10))
+            {
+                
+                if(!pista[pos_i][*pos_j + 1] && !pista[pos_i + 1][*pos_j + 1])
+                {
+                    printf("\n\nCONDIÇÃO DE ULTRAPASSAGEM UTILIZADA - THREAD: %ld\n",  pthread_self()%1000);
+                    pista[pos_i + 1][*pos_j + 1] = thread;
+                    pista[pos_i][*pos_j] = 0;
+                    *pos_j = *pos_j + 1;
+                    return 1;
+                }
+            }
+            else
+            if ((*pos_j - 1 >= 0))
+            {
+                
+                if (!pista[pos_i][*pos_j - 1] && !pista[pos_i + 1][*pos_j - 1])
+                {
+                    printf("\n\nCONDIÇÃO DE ULTRAPASSAGEM UTILIZADA - THREAD: %ld\n",  pthread_self()%1000);
+                    pista[pos_i + 1][*pos_j - 1] = thread;
+                    pista[pos_i][*pos_j] = 0;
+                    *pos_j = *pos_j - 1;
+                    return 1;
+                }
+            }
+        }
+        
     }
     else // última posição
-        if (!pista[0][pos_j]) {
-
+        if (!pista[0][*pos_j])
+        {
             // POSSIBILIDADE DE QUEBRA...
             /*
             if((*rodada+1)%6 == 0 && num_ciclistas > 5) { //tem a chance de 5% de quebrar. 
@@ -320,7 +351,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                     printf("A THREAD %ld QUEBROU NA VOLTA %d!", thread, *rodada+1);
                     int pos = findThread(thread);
                     assoc[pos][2] = TOBEDELETED;
-                    assoc[pos][1] = 0;
+                     que assoc[pos][1] = 0;
 
                     total_quebrados++;
 
@@ -347,7 +378,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
                 while(rank_aux->prox != NULL)
                     rank_aux = rank_aux->prox;
-                    
+
                 rank_aux->t_ranks[0] = thread;
 
                 // Alocando novo bloco da próxima rodada
@@ -385,8 +416,8 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
                 // começa do 1 porque no 0 se encontra o primeiro a passar na rodada
                 for(i = 1; (i < total_ciclistas + 1 - *rodada/2 - total_quebrados) && rank_aux->t_ranks[i] != 0; i++);
 
-                printf("%d eh o valor dado\n", i);
-                printf("%d eh a rodada/2 \n", *rodada/2);
+              //  printf("%d eh o valor dado\n", i);
+              //  printf("%d eh a rodada/2 \n", *rodada/2);
 
                 Ranking * rank_2 = rank_aux;
 
@@ -398,7 +429,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
                 if(*rodada%2 == 0 && i == total_ciclistas - *rodada/2) { // É O ÚLTIMO ELEMENTO DA RODADA X!! pq começa de 0
 
-                    printf("%d eh total_ciclistas + 1 - *rodada/2 - total_quebrados\n", total_ciclistas + 1 - *rodada/2 - total_quebrados);
+                //   printf("%d eh total_ciclistas + 1 - *rodada/2 - total_quebrados\n", total_ciclistas + 1 - *rodada/2 - total_quebrados);
                     //printf("já já lido com isso\n");
 
                     // VAI TER QUE FAZER A CABEÇA DA LISTA DE CLASSIFICAÇÕES SER O PRÓXIMO
@@ -410,7 +441,7 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
                     // terá que ser deletado
                     // zera posição na pista
-                    pista[pos_i][pos_j] = 0;
+                    pista[pos_i][*pos_j] = 0;
 
                     // zera no vetor de associações
                     assoc[findThread(thread)][1] = 0;
@@ -426,8 +457,8 @@ int atualizaPos(pthread_t thread, int pos_i, int pos_j, int *rodada, int *vel_at
 
             // Caso esteja terminando a volta, define nova velocidade para proxima rodada
             // retornando ciclista para marcação do início da pista
-            pista[0][pos_j] = thread;
-            pista[pos_i][pos_j] = 0;
+            pista[0][*pos_j] = thread;
+            pista[pos_i][*pos_j] = 0;
 
             // registrando início de nova rodada pessoal
             *rodada = *rodada+1;

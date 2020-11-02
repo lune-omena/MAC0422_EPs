@@ -179,7 +179,7 @@ int main(int argc, char * argv[])
         }
 
     /* Fim da execução */
-
+    mostra_Classificacoes();
     // liberando memória
     for(int i = 0; i < d; i++)
         free(pista[i]);
@@ -483,6 +483,40 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     if (rank_aux == NULL)
         return DELETED;
     
+    if(assoc[findThread(thread)][2] == BROKEN)
+    {
+        printf("Ops! O ciclista %ld quebrou na rodada %d! e será eliminado", thread%1000, *rodada);
+        rank_aux->quebrados++;
+
+        /* Adiciona na classificação geral */
+        general->status[general->ultimo_inserido] = BROKEN;
+        general->rodada_tempo[general->ultimo_inserido] = *rodada;
+        general->t_ranks[general->ultimo_inserido] = thread;
+        general->ultimo_inserido++;
+
+        /* Caso quebre e seja o ultimo que tinha que completar a rodada */
+        if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados] && verbose)
+        {
+            // exibindo ranking da rodada
+            printf("\nRanking %d :", *rodada);
+        
+            for(int j = 0; j < rank_aux->ideal_ciclistas; j++) 
+            printf("%ld ", rank_aux->t_ranks[j]%1000);
+    
+            printf("\n");
+
+
+            /* Liberando lista de rankings anteriores */
+            rank_aux = classThreads;
+            classThreads = classThreads->prox;
+
+            free(rank_aux->t_ranks);
+            free(rank_aux);
+        }
+
+        return TOBEDELETED;
+    }
+    else
     if(assoc[findThread(thread)][2] == LATEDELETION)
     {
         printf("Oi! eu, thread %ld, devia ter sido eliminada antes (cheguei em último)...\n", thread);
@@ -535,7 +569,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     
     /* Caso tenha completado a lista de participantes da rodada,
        exibe classificações */
-    if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1])
+    if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados])
     {
         if (verbose)
         {
@@ -547,20 +581,26 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
             printf("\n");
         }
 
-        /*   Se for último elemento de uma rodada par -> será eliminado */
-        if (*rodada%2 == 0)
-        {
-            printf("Ciclista %ld será deletado...\n", thread%1000);
-            /* Adiciona na classificação geral */
-            return TOBEDELETED; 
-        }
-
         /* Liberando lista de rankings anteriores */
             rank_aux = classThreads;
             classThreads = classThreads->prox;
 
             free(rank_aux->t_ranks);
             free(rank_aux);
+
+        /*   Se for último elemento de uma rodada par -> será eliminado */
+        if (*rodada%2 == 0)
+        {
+            printf("Ciclista %ld será deletado...\n", thread%1000);
+
+            /* Adiciona na classificação geral */
+            general->status[general->ultimo_inserido] = DELETED;
+            general->rodada_tempo[general->ultimo_inserido] = *rodada; /* trocar pelo tempo*/
+            general->t_ranks[general->ultimo_inserido] = thread;
+            general->ultimo_inserido++;
+
+            return TOBEDELETED; 
+        }
     }
     
     return ACTIVE;
@@ -675,6 +715,17 @@ void inicializa_Rankings()
         general->t_ranks[i] = 0;
         general->status[i] = -1;
         general->rodada_tempo[i] = -1;
+    }
+
+    return;
+}
+
+void mostra_Classificacoes()
+{
+    printf("Classificação: \n");
+    for(int i = total_ciclistas - 1; i >= 0; i--)
+    {
+        printf("Posicao: %f - Thread: %ld - status: %d\n", general->rodada_tempo[i], general->t_ranks[i], general->status[i]);
     }
 
     return;

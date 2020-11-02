@@ -59,6 +59,8 @@ int quebrou(Node * toDestroy);
 int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose);
 
 void inicializa_Rankings();
+
+void mostra_Classificacoes();
 /* funções a serem implementadas */
 //registraPosicao(pthread_self(), /* parametros para registro */);
 //verificaQuebra(pthread_self(), /* mesmos parametros para registrar posição */);

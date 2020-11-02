@@ -262,18 +262,18 @@ void * thread(void * a)
     if(*rodada > voltas_max)
         printf("\nA thread %ld completou a corrida e espera pelos seus concorrentes.\n", pthread_self()%1000);
     else if(assoc[*i][2] == BROKEN)
-        printf("A thread %ld quebrou na rodada %d!\n", pthread_self()%1000, *rodada+1);
+        printf("A thread %ld quebrou na rodada %d!\n", pthread_self()%1000, *rodada);
     else if(CHECK == LATEDELETION)
         printf("O ciclista %ld foi eliminada da corrida de forma atrasada\n", pthread_self()%1000);
     else if(CHECK == 2 || delete)
         printf("\nO ciclista %ld foi eliminada da corrida...\n", pthread_self()%1000);
     
     //assoc[*i][1] = 0;
-   
-    num_ciclistas--;
-    //printf("a thread %ld saiu\n", pthread_self());
 
     assoc[*i][2] = DELETED;
+
+    num_ciclistas--;
+    //printf("a thread %ld saiu\n", pthread_self());
 
     //printf("%d eh o número de ciclistas agora\n", num_ciclistas);
 
@@ -350,25 +350,37 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
         if (!pista[0][*pos_j])
         {
             // POSSIBILIDADE DE QUEBRA...
-            if((*rodada+1)%6 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
+            if((*rodada+1)%4 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
                 int r_num = rand()%100;
 
-                if(r_num < 5) { // o ciclista irá quebrar! :(
+                printf("entrou aqui...\n");
+
+                if(r_num > 50) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
                     // adiciona na lista de threads a serem quebradas
                     // precisa saber em qual rodada está e quantos ciclistas poderão passar pra próxima rodada
+
+                    printf("\nA thread %ld iniciou o processo de quebra.\n", pthread_self()%1000);
 
                     Node * new = (Node *)malloc(sizeof(Node));
                     new->id = pthread_self();
                     new->prox = NULL;
                     new->rodada_pessoal = *rodada+1;
 
-                    if(!toDestroy)
+                    if(!toDestroy) {
+                        printf("A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...\n");
                         toDestroy = new;
+                    }
                     else {
                         Node * aux = toDestroy;
+
+                        //printf("\nLISTA A DELETAR: ");
                         
-                        while(aux->prox)
+                        while(aux->prox) {
+                            //printf("%ld (%d) - ", aux->id, aux->rodada_pessoal );
                             aux = aux->prox;
+                        }
+
+                        //printf("\n");
                         
                         aux->prox = new;
                     }
@@ -483,18 +495,20 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     if (rank_aux == NULL)
         return DELETED;
     
-    if(assoc[findThread(thread)][2] == BROKEN)
+    if(assoc[findThread(thread)][2] == BROKEN)  // para ser sincera nem vai entrar aqui
     {
-        printf("Ops! O ciclista %ld quebrou na rodada %d! e será eliminado", thread%1000, *rodada);
-        rank_aux->quebrados++;
+        //printf("Ops! O ciclista %ld quebrou na rodada %d! e será eliminado", thread%1000, *rodada);
+        //rank_aux->quebrados++;
 
         /* Adiciona na classificação geral */
+        /*
         general->status[general->ultimo_inserido] = BROKEN;
         general->rodada_tempo[general->ultimo_inserido] = *rodada;
         general->t_ranks[general->ultimo_inserido] = thread;
-        general->ultimo_inserido++;
+        general->ultimo_inserido++;*/
 
         /* Caso quebre e seja o ultimo que tinha que completar a rodada */
+        /*
         if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados] && verbose)
         {
             // exibindo ranking da rodada
@@ -505,8 +519,9 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     
             printf("\n");
 
-
+            */
             /* Liberando lista de rankings anteriores */
+            /*
             rank_aux = classThreads;
             classThreads = classThreads->prox;
 
@@ -514,9 +529,9 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
             free(rank_aux);
         }
 
-        return TOBEDELETED;
+        return TOBEDELETED;*/
     }
-    else
+
     if(assoc[findThread(thread)][2] == LATEDELETION)
     {
         printf("Oi! eu, thread %ld, devia ter sido eliminada antes (cheguei em último)...\n", thread);
@@ -533,7 +548,8 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
         /* Reservando espaço para a próxima rodada */
         Ranking * rank_new = (Ranking *) malloc(sizeof(Ranking));
         rank_new->prox = NULL;
-        rank_new->quebrados = total_quebrados;
+        //rank_new->quebrados = total_quebrados;
+        rank_new->quebrados = rank_aux->quebrados; // tem que ser o total do antes desse
         rank_new->ideal_ciclistas = rank_aux->ideal_ciclistas - ((int) (*rodada + 1)%2);
         rank_new->rodada = *rodada + 1;
         rank_new->t_ranks = (pthread_t *) malloc(rank_new->ideal_ciclistas * sizeof(pthread_t));
@@ -615,9 +631,20 @@ int quebrou(Node * toDestroy) {
 
     if(toDestroy) { // as threads a serem destruídas entram aqui
         Node * d_aux = toDestroy;
+        Node * AUX = d_aux;
         Ranking * r_aux = classThreads;
 
-        int ** quebra_rodada = (int **) malloc(total_ciclistas*sizeof(int));
+        // DEBUG
+        printf("\n LISTA A DELETAR: ");
+        while(AUX){
+            printf("%ld (%d) ", AUX->id%1000, AUX->rodada_pessoal);
+            AUX = AUX->prox;
+        }
+
+        printf("\n");
+        //FIM DEBUG
+
+        int ** quebra_rodada = (int **) malloc(total_ciclistas*sizeof(int *));
 
         for(int i = 0; i < total_ciclistas; i++) {
             quebra_rodada[i] = (int *) malloc(2*sizeof(int));
@@ -645,7 +672,7 @@ int quebrou(Node * toDestroy) {
             assoc[findThread(d_aux->id)][2] = BROKEN;
 
             j++;
-            d_aux->prox;
+            d_aux = d_aux->prox;
         }
 
         if(j < total_ciclistas) // -1 para último elemento sinaliza fim da lista de rodadas
@@ -657,10 +684,15 @@ int quebrou(Node * toDestroy) {
         while(r_aux && j < total_ciclistas && quebra_rodada[j][0] != -1) {
 
             if(r_aux->rodada == quebra_rodada[j][0]) {
-                r_aux->quebrados = quebra_rodada[j][1];
+                r_aux->quebrados += quebra_rodada[j][1];
+
+                printf("número de TOTAL (até agora) de quebrados da rodada %d: %d\n", r_aux->rodada, r_aux->quebrados);
 
                 // CHECO SE EXISTE THREAD QUE JÁ PASSOU QUE SERIA A ÚLTIMA (TOBEDELETED)
                 int i = total_ciclistas - r_aux->rodada/2 - r_aux->quebrados;
+
+                printf("o número de elementos a passar dessa rodada atualizado: %d\n", i);
+                printf("(ou seja: %d (total) - %d (r/2) - %d (queb)\n", total_ciclistas, r_aux->rodada/2, r_aux->quebrados);
 
                 if(i > -1 && r_aux->t_ranks[i] != 0) { // vou ter que mudar isso...
                     assoc[findThread(r_aux->t_ranks[i])][2] = LATEDELETION;
@@ -678,11 +710,26 @@ int quebrou(Node * toDestroy) {
             r_aux = r_aux->prox;
         }
 
-
-        for(int i = 0; i < total_ciclistas; i++)
+        for(int i = 0; i < 2; i++)
             free(quebra_rodada[i]);
         
         free(quebra_rodada); 
+
+        // LIBERANDO A LISTA DE DELETADOS
+        d_aux = toDestroy;
+        AUX = NULL;
+
+        while(d_aux) {
+            AUX = d_aux;
+            d_aux = d_aux->prox;
+            AUX->prox = NULL;
+            free(AUX);
+        }
+
+        toDestroy = NULL;
+
+        if(!toDestroy)
+            printf("LISTA DELETADA\n");
 
         return 1;
 

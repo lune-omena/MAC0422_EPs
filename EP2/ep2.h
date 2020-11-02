@@ -25,6 +25,7 @@ typedef struct node {
 typedef struct rank {
     int rodada;              // número da rodada para classificações
     int quebrados;           // número de ciclistas que quebraram
+    int ideal_ciclistas;     // número de ciclistas ideais para a rodada
     pthread_t * t_ranks;     // classificações
     struct rank * prox;      // aponta para próxima rodada
 } Ranking;
@@ -46,6 +47,7 @@ int findThread(pthread_t thread);
 // função que retorna a rodada do primeiro colocado
 int maior();
 
+int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose);
 /* funções a serem implementadas */
 //registraPosicao(pthread_self(), /* parametros para registro */);
 //verificaQuebra(pthread_self(), /* mesmos parametros para registrar posição */);

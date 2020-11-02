@@ -5,7 +5,7 @@
 - [ ] Inserir relógio no programa
 - [ ] Ajustar condições de corrida
 - [ ] Inserir identificador para cada thread
-- [ ] Registro posição/rank dos ciclistas a cada rodada
+- [x] Registro posição/rank dos ciclistas a cada rodada
 - [ ] Quebra de ciclistas (trabalhando nisso)
 - [ ] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou (trabalhando nisso)
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
@@ -48,4 +48,4 @@
 - A eliminação dos ciclistas é feita de 2 em 2 voltas - isso é feito a partir de uma lista ligada em que registramos a classificação de cada ciclista associada a cada rodada (portanto, guardamos em cada célula da lista ligada o registro da classificação da rodada)
 - no momento em que a célula não tem mais uso, eu descarto ela e assumo uma nova cabeça para a lista ligada (a próxima célula)
 -  decidimos que a aleatoriedade no sorteio da thread a ser eliminada (caso esteja na mesma rodada e mesma posição final na mesma velocidade que outras tantas threads) se dá pela escolha do escalonador
--  Quando o primeiro ciclista completar a quantidade ideal de voltas na pista, ele é retirado de pódio e tem sua posição regristrada na volta indicada.
+-  Quando o primeiro ciclista completar a quantidade ideal de voltas na pista, ele é retirado de pódio e tem sua posição registrada na volta indicada.

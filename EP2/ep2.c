@@ -87,6 +87,8 @@ int main(int argc, char * argv[])
     classThreads = (Ranking *) malloc(sizeof(Ranking));
     classThreads->t_ranks = (pthread_t *) malloc(n*sizeof(pthread_t));
     classThreads->rodada = 1;
+    classThreads->quebrados = total_quebrados;
+    classThreads->ideal_ciclistas = total_ciclistas;
     classThreads->prox = NULL;
 
     for(int i = 0; i < n; i++) // nenhuma thread associada ao ranking, ainda
@@ -228,7 +230,7 @@ int main(int argc, char * argv[])
                 for(int i = 0; i < n; i++)
                     free(quebra_rodada[i]);
                 
-                free(quebra_rodada);
+                free(quebra_rodada); 
 
             }
                 
@@ -293,7 +295,7 @@ void * thread(void * a)
     /* Enquanto thread não foi marcada para ser eliminada ou 
        não terminou a quantidade máxima de volta possível na corrida 
        > CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos */
-    while(CHECK != 2 && !delete && *rodada <= voltas_max) 
+    while(CHECK != TOBEDELETED && !delete && *rodada <= voltas_max) 
     {
         pthread_mutex_lock(&mutex);
         ciclistas_atuais++;
@@ -341,7 +343,7 @@ void * thread(void * a)
     else if(assoc[*i][2] == BROKEN)
         printf("A thread %ld quebrou na rodada %d!\n", pthread_self(), *rodada);
     
-    assoc[pos_assoc][1] = 0;
+    //assoc[pos_assoc][1] = 0;
    
     num_ciclistas--;
     //printf("a thread %ld saiu\n", pthread_self());
@@ -451,91 +453,17 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
             }
             // FIM QUEBRA
 
-            if(*rodada == maior()) { // primeiro elemento
-
-                printf("%ld EH O PRIMEIRO COLOCADO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n", thread%1000);
-
-                // ATUALIZA CLASSIFICAÇÃO 
-                Ranking * rank_aux = classThreads;
-
-                while(rank_aux->prox != NULL)
-                    rank_aux = rank_aux->prox;
-
-                rank_aux->t_ranks[0] = thread;
-
-                // Alocando novo bloco da próxima rodada
-                Ranking * rank_new = (Ranking *) malloc(sizeof(Ranking));
-                rank_new->prox = NULL;
-                rank_new->rodada = *rodada+1;
-                rank_new->t_ranks = (pthread_t *) malloc(total_ciclistas*sizeof(pthread_t)); // TALVEZ MUDE PARA NUM_CICLISTAS
-
-                // zerando todas as posições fora a primeira!
-                for(int j = 0; j < total_ciclistas; j++)
-                    rank_new->t_ranks[j] = 0;
-
-                rank_aux->prox = rank_new;
-
-                // LEMBRAR DE LIBERAR MEMÓRIA DEPOIS!!!!! (n + 1 - x)?
-
+            if (atualiza_Classificacao(thread, rodada, 1) == TOBEDELETED)
+            {
+                pista[pos_i][*pos_j] = 0;
+                assoc[findThread(thread)][2] = TOBEDELETED;
+                return TOBEDELETED; // return 2
+            }
+            
+            if(*rodada == maior())
+            {                   
                 printf("*** RODADA %3d ***\n", *rodada);
                 getchar();
-
-                // atualiza parâmetros etc.
-            }
-            else {
-                // ATUALIZA CLASSIFICAÇÃO
-                // invariante: independente do vetor estar completo ou não, a posição sempre vai ser a próxima na rodada
-                Ranking * rank_aux = classThreads;
-
-                while(rank_aux->rodada != *rodada)
-                    rank_aux = rank_aux->prox;
-
-
-                // Inserindo na posição correta do vetor t_ranks...
-                int i;
-
-                // tenho que considerar ciclistas quebrados aqui também! -> até essa volta, então vou ter que marcar num vetor e fazer func
-                // começa do 1 porque no 0 se encontra o primeiro a passar na rodada
-                for(i = 1; (i < total_ciclistas + 1 - *rodada/2 - total_quebrados) && rank_aux->t_ranks[i] != 0; i++);
-
-              //  printf("%d eh o valor dado\n", i);
-              //  printf("%d eh a rodada/2 \n", *rodada/2);
-
-                Ranking * rank_2 = rank_aux;
-                printf("\nRanking %d :", *rodada);
-                for(int j = 0; j < total_ciclistas; j++) {
-                    printf("%ld ", rank_2->t_ranks[j]%1000);
-                }
-
-                printf("\n");
-
-                if(*rodada%2 == 0 && i == total_ciclistas - *rodada/2) { // É O ÚLTIMO ELEMENTO DA RODADA X!! pq começa de 0
-
-                //   printf("%d eh total_ciclistas + 1 - *rodada/2 - total_quebrados\n", total_ciclistas + 1 - *rodada/2 - total_quebrados);
-                    //printf("já já lido com isso\n");
-
-                    // VAI TER QUE FAZER A CABEÇA DA LISTA DE CLASSIFICAÇÕES SER O PRÓXIMO
-                    rank_aux = classThreads;
-                    classThreads = classThreads->prox;
-
-                    free(rank_aux->t_ranks);
-                    free(rank_aux);
-
-                    // terá que ser deletado
-                    // zera posição na pista
-                    pista[pos_i][*pos_j] = 0;
-
-                    // zera no vetor de associações
-                    //assoc[findThread(thread)][1] = 0;
-                    assoc[findThread(thread)][2] = DELETED;
-
-                    return 2; // 2 == SINAL QUE TEM QUE SAIR 
-                    
-                }
-                else {
-                    rank_aux->t_ranks[i] = thread;
-                }
-
             }
 
             // Caso esteja terminando a volta, define nova velocidade para proxima rodada
@@ -617,6 +545,91 @@ int maior() { // devolve o número da rodada do primeiro colocado
             maior = assoc[i][1];
 
     return maior;
+}
+
+int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
+{
+    Ranking * rank_aux = classThreads;
+    int i, j;
+
+    while(rank_aux != NULL && rank_aux->rodada != *rodada)
+        rank_aux = rank_aux->prox;
+    
+    if (rank_aux == NULL)
+        return DELETED;
+
+    // Caso seja primeiro ciclista a iniciar a rodada
+    if (*rodada == maior() && !rank_aux->t_ranks[0])
+    {
+        printf("%ld EH O PRIMEIRO COLOCADO!!!!!!!\n", thread%1000);
+
+        rank_aux->t_ranks[0] = thread;
+
+        /* Reservando espaço para a próxima rodada */
+        Ranking * rank_new = (Ranking *) malloc(sizeof(Ranking));
+        rank_new->prox = NULL;
+        rank_new->quebrados = total_quebrados;
+        rank_new->ideal_ciclistas = total_ciclistas - ((int) (*rodada + 1)/2);
+        rank_new->rodada = *rodada + 1;
+        rank_new->t_ranks = (pthread_t *) malloc(rank_new->ideal_ciclistas * sizeof(pthread_t));
+
+        // zerando todas as posições fora a primeira
+        for(j = 0; j < rank_new->ideal_ciclistas; j++)
+            rank_new->t_ranks[j] = 0;
+
+        rank_aux->prox = rank_new;
+
+        //printf("Ideal ciclistas: %d\n", rank_aux->ideal_ciclistas);
+        /* Caso seja a única posição disponível - apagar depois de pronto */
+        if (rank_aux->ideal_ciclistas - rank_aux->quebrados == 1)
+        {
+            // mostrarRanking com vencedor;
+            printf("%ld EH O VENCEDOR!!!!!!!\n", thread%1000);
+        }
+    }
+    else
+    {
+        /* caso não seja primeiro ciclista a iniciar a rodada */
+
+        /* Encontrando posição livre em t_ranks 
+           começa do 1 porque no 0 se encontra o primeiro a passar na rodada */
+        for(i = 1;(i < total_ciclistas + 1 - *rodada/2 - total_quebrados)
+               && (rank_aux->t_ranks[i] != 0); i++);
+
+        /* Inserindo na posição correta do vetor t_ranks 
+           Se for último elemento de uma rodada par -> será eliminado */
+        if(i == total_ciclistas - *rodada/2 && *rodada%2 == 0)
+        { 
+            /* Liberando lista de rankings anteriores */
+            rank_aux = classThreads;
+            classThreads = classThreads->prox;
+
+            free(rank_aux->t_ranks);
+            free(rank_aux);
+ 
+            printf("Ciclista %ld será deletado...\n", thread%1000);
+
+            return TOBEDELETED; 
+        }
+        else
+        {
+            rank_aux->t_ranks[i] = thread;
+        }            
+    }
+    
+    /* Caso tenha completado a lista de participantes da rodada,
+       exibe classificações */
+    if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1] && verbose)
+    {
+        printf("\nRanking %d :", *rodada);
+        
+        for(int j = 0; j < rank_aux->ideal_ciclistas; j++) 
+            printf("%ld ", rank_aux->t_ranks[j]%1000);
+    
+        printf("\n");
+    }
+    
+    return ACTIVE;
 }
 
 /*

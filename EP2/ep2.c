@@ -206,14 +206,20 @@ int main(int argc, char * argv[])
 
                 // INSIRO EM CLASSTHREADS PARA CADA RODADA IDENTIFICADA O NÚMERO DE QUEBRADOS
                 j = 0;
+
                 while(r_aux && j < n && quebra_rodada[j][0] != -1) {
+
                     if(r_aux->rodada == quebra_rodada[j][0]) {
                         r_aux->quebrados = quebra_rodada[j][1];
 
                         // CHECO SE EXISTE THREAD QUE JÁ PASSOU QUE SERIA A ÚLTIMA (TOBEDELETED)
                         int i = total_ciclistas - r_aux->rodada/2 - r_aux->quebrados;
-                        if(r_aux->t_ranks[i] != 0) {
+
+                        if(i > -1 && r_aux->t_ranks[i] != 0) { // vou ter que mudar isso...
                             assoc[findThread(r_aux->t_ranks[i])][2] = TOBEDELETED;
+                        }
+                        else if(i < 0){
+                            printf("Algo deu errado. Valor inválido da soma!\n");
                         }
 
                         j++;
@@ -221,7 +227,6 @@ int main(int argc, char * argv[])
 
                     // TRATAR COMO DELETAR ESSAS QUE QUEBRARAM
                     // TRATAR O VETOR DE CÉLULAS QUE CONTÉM OS NÚMEROS VAGOS COMO 0!
-                    
 
                     r_aux = r_aux->prox;
                 }
@@ -269,7 +274,7 @@ void * thread(void * a)
     /* a thread vai ser criada e vai rodar este código yay <3*/
 
     int pos_i = -1;               // primeiro termo (0 a d-1) da posição na pista[d][10]
-    int *pos_j;               // segundo termo (0 a 9) da posição na pista[d][10]
+    int *pos_j;                   // segundo termo (0 a 9) da posição na pista[d][10]
     int *rodada, *vel_atual;
     int CHECK = 0;
     int * i = (int *) a;
@@ -277,8 +282,6 @@ void * thread(void * a)
     assoc[*i][1] = 1;
 
     //printf("Thread %ld associada ao índice %d\n", assoc[*i][0]%1000, *i);
-
-    int pos_assoc = *i;
 
     rodada = (int*) malloc(sizeof(int));
     vel_atual = (int*) malloc(sizeof(int));
@@ -304,7 +307,7 @@ void * thread(void * a)
     
         pthread_cond_wait(&wait_thread, &mutex);
 
-        if(pos_assoc != -1 && (assoc[pos_assoc][2] == TOBEDELETED || acabou))
+        if(*i != -1 && (assoc[*i][2] == TOBEDELETED || acabou))
         {
             delete = 1;
         }
@@ -343,12 +346,12 @@ void * thread(void * a)
     else if(assoc[*i][2] == BROKEN)
         printf("A thread %ld quebrou na rodada %d!\n", pthread_self(), *rodada);
     
-    //assoc[pos_assoc][1] = 0;
+    //assoc[*i][1] = 0;
    
     num_ciclistas--;
     //printf("a thread %ld saiu\n", pthread_self());
 
-    assoc[pos_assoc][2] = DELETED;
+    assoc[*i][2] = DELETED;
 
     //printf("%d eh o número de ciclistas agora\n", num_ciclistas);
 

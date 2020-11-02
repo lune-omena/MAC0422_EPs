@@ -38,6 +38,7 @@ int total_quebrados = 0;
 
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
 Ranking * classThreads = NULL;      /* guarda as classificações das threads para cada rodada */
+Node * toDestroy;                   /* guarda as threads que quebraram para serem eliminadas pelo escalonador*/
 
 int main(int argc, char * argv[]) 
 {
@@ -90,6 +91,9 @@ int main(int argc, char * argv[])
 
     for(int i = 0; i < n; i++) // nenhuma thread associada ao ranking, ainda
         classThreads->t_ranks[i] = 0;
+
+    // TODESTROY: inicia a lista de quebrados
+    toDestroy = NULL;
 
     // ASSOC: criando matriz de associação de id da thread para respectiva rodada
     // em assoc[i][0] encontra-se a identificação da thread
@@ -157,8 +161,76 @@ int main(int argc, char * argv[])
             pthread_mutex_lock(&mutex_main);
             usleep(tempo);
             printf("...\n");
-            ciclistas_atuais = 0;            
+            ciclistas_atuais = 0;     
             volta++;
+
+            if(toDestroy) { // as threads a serem destruídas entram aqui
+                Node * d_aux = toDestroy;
+                Ranking * r_aux = classThreads;
+
+                int ** quebra_rodada = (int **) malloc(n*sizeof(int));
+
+                for(int i = 0; i < n; i++) {
+                    quebra_rodada[i] = (int *) malloc(2*sizeof(int));
+                    quebra_rodada[i][0] = 0;
+                }
+
+                int j = 0;
+
+                while(d_aux) {
+                    // ATUALIZO O NÚMERO DE QUEBRADOS DE CADA RODADA
+                    // lembrando que as threads que quebraram "estão" numa rodada anterior
+                    int i;
+                    for(i = 0; i < n && quebra_rodada[i][0] != 0 &&
+                    quebra_rodada[i][0] != d_aux->rodada_pessoal; i++);
+
+                    if(quebra_rodada[i][0] ==  d_aux->rodada_pessoal) {
+                        quebra_rodada[i][1]++;
+                    }
+                    else if(quebra_rodada[i][0] == 0) {
+                        quebra_rodada[i][0] = d_aux->rodada_pessoal;
+                        quebra_rodada[i][1] = 1;
+                    }
+
+                    // ATUALIZA STATUS DA THREAD
+                    assoc[findThread(d_aux->id)][2] = BROKEN;
+
+                    j++;
+                    d_aux->prox;
+                }
+
+                if(j < n) // -1 para último elemento sinaliza fim da lista de rodadas
+                    quebra_rodada[j][0] = quebra_rodada[j][1] = -1;
+
+                // INSIRO EM CLASSTHREADS PARA CADA RODADA IDENTIFICADA O NÚMERO DE QUEBRADOS
+                j = 0;
+                while(r_aux && j < n && quebra_rodada[j][0] != -1) {
+                    if(r_aux->rodada == quebra_rodada[j][0]) {
+                        r_aux->quebrados = quebra_rodada[j][1];
+
+                        // CHECO SE EXISTE THREAD QUE JÁ PASSOU QUE SERIA A ÚLTIMA (TOBEDELETED)
+                        int i = total_ciclistas - r_aux->rodada/2 - r_aux->quebrados;
+                        if(r_aux->t_ranks[i] != 0) {
+                            assoc[findThread(r_aux->t_ranks[i])][2] = TOBEDELETED;
+                        }
+
+                        j++;
+                    }
+
+                    // TRATAR COMO DELETAR ESSAS QUE QUEBRARAM
+                    // TRATAR O VETOR DE CÉLULAS QUE CONTÉM OS NÚMEROS VAGOS COMO 0!
+                    
+
+                    r_aux = r_aux->prox;
+                }
+
+
+                for(int i = 0; i < n; i++)
+                    free(quebra_rodada[i]);
+                
+                free(quebra_rodada);
+
+            }
                 
             pthread_cond_broadcast(&wait_thread);
             pthread_mutex_unlock(&mutex_main);   
@@ -266,6 +338,8 @@ void * thread(void * a)
         printf("\nA thread %ld completou a corrida e espera pelos seus concorrentes.\n", pthread_self()%1000);
     else if(CHECK == 2 || delete)
         printf("\na thread %ld foi eliminada da corrida... e \n", pthread_self()%1000);
+    else if(assoc[*i][2] == BROKEN)
+        printf("A thread %ld quebrou na rodada %d!\n", pthread_self(), *rodada);
     
     assoc[pos_assoc][1] = 0;
    
@@ -349,31 +423,33 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
         if (!pista[0][*pos_j])
         {
             // POSSIBILIDADE DE QUEBRA...
-            /*
-            if((*rodada+1)%6 == 0 && num_ciclistas > 5) { //tem a chance de 5% de quebrar. 
-                int r_num =  rand()%100;
+            if((*rodada+1)%6 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
+                int r_num = rand()%100;
 
-                if(r_num <= 5) {
-                    printf("A THREAD %ld QUEBROU NA VOLTA %d!", thread, *rodada+1);
-                    int pos = findThread(thread);
-                    assoc[pos][2] = TOBEDELETED;
-                     que assoc[pos][1] = 0;
+                if(r_num < 5) { // o ciclista irá quebrar! :(
+                    // adiciona na lista de threads a serem quebradas
+                    // precisa saber em qual rodada está e quantos ciclistas poderão passar pra próxima rodada
 
-                    total_quebrados++;
+                    Node * new = (Node *)malloc(sizeof(Node));
+                    new->id = pthread_self();
+                    new->prox = NULL;
+                    new->rodada_pessoal = *rodada+1;
 
-                    Ranking * rank_aux = classThreads;
+                    if(!toDestroy)
+                        toDestroy = new;
+                    else {
+                        Node * aux = toDestroy;
+                        
+                        while(aux->prox)
+                            aux = aux->prox;
+                        
+                        aux->prox = new;
+                    }
 
-                    while(rank_aux != NULL && rank_aux->rodada != *rodada)
-                        rank_aux = rank_aux->prox;
-
-                    rank_aux->quebrados++;
-
-                    // preciso manter uma contagem dos ciclistas quebrados até a iteração tal
-                    
                 }
 
-            }*/
-            // s rodar o de cima, abaixo sera else e vai retornar 2!!!!!!!!!!!!!!!!!!!!!
+            }
+            // FIM QUEBRA
 
             if(*rodada == maior()) { // primeiro elemento
 

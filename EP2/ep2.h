@@ -14,8 +14,8 @@ enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN};
 // a estrutura abaixo era usada para remoção - provavelmente vou recicl=a-la
 typedef struct node {
     pthread_t id;
-    int i; // posição em relação a d na pista
-    int j; // posição em relação às 10 posições dentro de cada d da pista
+    //int i; // posição em relação a d na pista
+    //int j; // posição em relação às 10 posições dentro de cada d da pista
     int rodada_pessoal; // número da rodada pessoal
     struct node * prox;
 } Node;

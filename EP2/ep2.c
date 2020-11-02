@@ -128,17 +128,22 @@ int main(int argc, char * argv[])
     // Assim que houver a "largada", os ciclistas serão criados:
     // também ocorre a associação do ciclista à rodada em que está
     // mas como todos os ciclistas já estão ativos, não há necessidade de mudar
-    for(int i = 0; i < n; i++)
-        if (pthread_create(&tid[i], NULL, thread, NULL))
+    for(int i = 0; i < n; i++) {
+        pthread_mutex_lock(&mutex_main);
+
+        int * aux = malloc(sizeof(int));
+        *aux = i;
+        
+        //if (pthread_create(&tid[i], NULL, thread, NULL))
+        if (pthread_create(&tid[i], NULL, thread, aux))
         {
             printf("\n ERROR creating thread\n");
             exit(1);
         }
-        else
-        {
-            assoc[i][0] = tid[i];
-            assoc[i][1] = 1;
-        }
+
+        pthread_mutex_unlock(&mutex_main);
+
+    }
 
     //for(int i = 0; i < n; i++)
     //    printf("a thread %03ld está na rodada %ld\n", assoc[i][0]%1000, assoc[i][1]);
@@ -147,7 +152,7 @@ int main(int argc, char * argv[])
        A prova termina quando sobrar apenas um ciclista, que é o campeão. */
     /* Começo da corrida*/
     while (num_ciclistas >= 1) 
-        if(ciclistas_atuais == num_ciclistas)
+        if(ciclistas_atuais == num_ciclistas)  // ciclistas atuais
         { 
             pthread_mutex_lock(&mutex_main);
             usleep(tempo);
@@ -192,8 +197,14 @@ void * thread(void * a)
     int pos_i = -1;               // primeiro termo (0 a d-1) da posição na pista[d][10]
     int *pos_j;               // segundo termo (0 a 9) da posição na pista[d][10]
     int *rodada, *vel_atual;
-    int pos_assoc = findThread(pthread_self());
     int CHECK = 0;
+    int * i = (int *) a;
+    assoc[*i][0] = pthread_self();
+    assoc[*i][1] = 1;
+
+    //printf("Thread %ld associada ao índice %d\n", assoc[*i][0]%1000, *i);
+
+    int pos_assoc = *i;
 
     rodada = (int*) malloc(sizeof(int));
     vel_atual = (int*) malloc(sizeof(int));

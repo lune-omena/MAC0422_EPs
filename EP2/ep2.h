@@ -11,7 +11,7 @@
 
 enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN, LATEDELETION};
 
-// a estrutura abaixo era usada para remoção - provavelmente vou recicl=a-la
+// a estrutura abaixo era usada para remoção - provavelmente vou recicla-la
 typedef struct node {
     pthread_t id;
     //int i; // posição em relação a d na pista
@@ -30,7 +30,14 @@ typedef struct rank {
     struct rank * prox;      // aponta para próxima rodada
 } Ranking;
 
-    //bla
+typedef struct rankG {
+    int * status;            // armazena status ao sair da corrida
+    pthread_t * t_ranks;     // classificações gerais dos ciclistas - de traz para frente
+    int ultimo_inserido;     // posicao do ultimo inserido na lista
+    double * rodada_tempo;   // armazena tempo ou rodada de quebra
+} RankingGeral;
+
+
 /* FUNÇÕES */
 // função chamada pela thread assim que ela é criada
 void * thread(void * a);
@@ -48,8 +55,10 @@ int findThread(pthread_t thread);
 int maior();
 // função para gerenciar quebra de ciclistas
 int quebrou(Node * toDestroy);
-
+/* Função para atualizar rankeamento a cada rodada finalizada e exibir ranking */
 int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose);
+
+void inicializa_Rankings();
 /* funções a serem implementadas */
 //registraPosicao(pthread_self(), /* parametros para registro */);
 //verificaQuebra(pthread_self(), /* mesmos parametros para registrar posição */);

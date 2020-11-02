@@ -69,7 +69,7 @@ int main(int argc, char * argv[])
         exit(EXIT_FAILURE);
     }
 
-    d = 250; /* excluir quando estiver pronto */
+    d = 10; /* excluir quando estiver pronto */
     tam_pista = d;/* excluir quando estiver pronto */
     total_ciclistas = num_ciclistas = n;
 
@@ -450,7 +450,8 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
                     pista[pos_i][*pos_j] = 0;
 
                     // zera no vetor de associações
-                    assoc[findThread(thread)][1] = 0;
+                    //assoc[findThread(thread)][1] = 0;
+                    assoc[findThread(thread)][2] = DELETED;
 
                     return 2; // 2 == SINAL QUE TEM QUE SAIR 
                     
@@ -536,7 +537,7 @@ int maior() { // devolve o número da rodada do primeiro colocado
     int maior = 0;
 
     for(int i = 0; i < total_ciclistas; i++)
-        if(assoc[i][1] != 0 && maior < assoc[i][1])
+        if((assoc[i][2] == ACTIVE) && (assoc[i][1] != 0 && maior < assoc[i][1]))
             maior = assoc[i][1];
 
     return maior;

@@ -2,29 +2,30 @@
 
 ###### Próximas a serem implementadas
 
-- [ ] Corrigir condições de iteração do programa (até quando irá rodar, determinação de volta/rodada etc.)
 - [ ] Inserir relógio no programa
-- [x] Eliminar ultimo ciclista a cada 2 rodadas
+- [ ] Ajustar condições de corrida
+- [ ] Inserir identificador para cada thread
 - [ ] Registro posição/rank dos ciclistas a cada rodada
-- [x] Implementar mudança de velocidade aleatória
-- [x] Ultrapassagem
-- [x] Condição de não aumento de velocidade (acho que a Lara já fez)
 - [ ] Quebra de ciclistas (trabalhando nisso)
-- [x] Ciclistas largam ordenados aleatoriamente com no maximo 5 lado a lado a cada metro
+- [ ] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou (trabalhando nisso)
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
-
----
-
+- [ ] simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
+- [ ] Relatório da saída do programa informando a cada volta completada, as posições de
+  todos os ciclistas naquela volta
+- [ ] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.
+- [x] Ultrapassagem
+- [x] Implementar mudança de velocidade aleatória
+- [x] Eliminar ultimo ciclista a cada 2 rodadas
+- [x] Condição de não aumento de velocidade
+- [x] Corrigir condições de iteração do programa (até quando irá rodar, determinação de volta/rodada etc.)
 - [x] criar n threads “ciclista” iguais
+- [x] Ciclistas largam ordenados aleatoriamente com no maximo 5 lado a lado a cada metro
+
 - [x] Todos os ciclistas fazem a primeira volta a 30Km/h
 - [x] vetor compartilhado “pista” que tem um tamanho igual a d
 - [x] a posição i da pista deve possuir os identificadores de todos os ciclistas que estão naquele trecho naquele instante
-- [ ] simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
 - [x] Cada thread deve escrever seu identificador na posição correta do vetor pista a cada momento
-- [ ] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou (trabalhando nisso)
 - [x] Destruir threads de ciclistas eliminados ou quebrados
-- [ ] Relatório da saída do programa
-- [ ] Implementar opção de debug (já meio implementada)
 - [x] receber argumentos d e n da linha de comando
 
 ### Exibição de resultados

@@ -9,7 +9,7 @@
 /* BIBLIOTECAS */
 #include <pthread.h>        /* POSIX threads */
 
-enum status {ACTIVE, DELETED, TOBEDELETED};
+enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN};
 
 // a estrutura abaixo era usada para remoção - provavelmente vou recicl=a-la
 typedef struct node {

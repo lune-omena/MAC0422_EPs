@@ -166,78 +166,7 @@ int main(int argc, char * argv[])
             ciclistas_atuais = 0;     
             volta++;
 
-            if(toDestroy) { // as threads a serem destruídas entram aqui
-                Node * d_aux = toDestroy;
-                Ranking * r_aux = classThreads;
-
-                int ** quebra_rodada = (int **) malloc(n*sizeof(int));
-
-                for(int i = 0; i < n; i++) {
-                    quebra_rodada[i] = (int *) malloc(2*sizeof(int));
-                    quebra_rodada[i][0] = 0;
-                }
-
-                int j = 0;
-
-                while(d_aux) {
-                    // ATUALIZO O NÚMERO DE QUEBRADOS DE CADA RODADA
-                    // lembrando que as threads que quebraram "estão" numa rodada anterior
-                    int i;
-                    for(i = 0; i < n && quebra_rodada[i][0] != 0 &&
-                    quebra_rodada[i][0] != d_aux->rodada_pessoal; i++);
-
-                    if(quebra_rodada[i][0] ==  d_aux->rodada_pessoal) {
-                        quebra_rodada[i][1]++;
-                    }
-                    else if(quebra_rodada[i][0] == 0) {
-                        quebra_rodada[i][0] = d_aux->rodada_pessoal;
-                        quebra_rodada[i][1] = 1;
-                    }
-
-                    // ATUALIZA STATUS DA THREAD
-                    assoc[findThread(d_aux->id)][2] = BROKEN;
-
-                    j++;
-                    d_aux->prox;
-                }
-
-                if(j < n) // -1 para último elemento sinaliza fim da lista de rodadas
-                    quebra_rodada[j][0] = quebra_rodada[j][1] = -1;
-
-                // INSIRO EM CLASSTHREADS PARA CADA RODADA IDENTIFICADA O NÚMERO DE QUEBRADOS
-                j = 0;
-
-                while(r_aux && j < n && quebra_rodada[j][0] != -1) {
-
-                    if(r_aux->rodada == quebra_rodada[j][0]) {
-                        r_aux->quebrados = quebra_rodada[j][1];
-
-                        // CHECO SE EXISTE THREAD QUE JÁ PASSOU QUE SERIA A ÚLTIMA (TOBEDELETED)
-                        int i = total_ciclistas - r_aux->rodada/2 - r_aux->quebrados;
-
-                        if(i > -1 && r_aux->t_ranks[i] != 0) { // vou ter que mudar isso...
-                            assoc[findThread(r_aux->t_ranks[i])][2] = TOBEDELETED;
-                        }
-                        else if(i < 0){
-                            printf("Algo deu errado. Valor inválido da soma!\n");
-                        }
-
-                        j++;
-                    }
-
-                    // TRATAR COMO DELETAR ESSAS QUE QUEBRARAM
-                    // TRATAR O VETOR DE CÉLULAS QUE CONTÉM OS NÚMEROS VAGOS COMO 0!
-
-                    r_aux = r_aux->prox;
-                }
-
-
-                for(int i = 0; i < n; i++)
-                    free(quebra_rodada[i]);
-                
-                free(quebra_rodada); 
-
-            }
+            quebrou(toDestroy);
                 
             pthread_cond_broadcast(&wait_thread);
             pthread_mutex_unlock(&mutex_main);   
@@ -298,7 +227,7 @@ void * thread(void * a)
     /* Enquanto thread não foi marcada para ser eliminada ou 
        não terminou a quantidade máxima de volta possível na corrida 
        > CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos */
-    while(CHECK != TOBEDELETED && !delete && *rodada <= voltas_max) 
+    while(CHECK != TOBEDELETED && CHECK != LATEDELETION &&  !delete && *rodada <= voltas_max) 
     {
         pthread_mutex_lock(&mutex);
         ciclistas_atuais++;
@@ -307,7 +236,7 @@ void * thread(void * a)
     
         pthread_cond_wait(&wait_thread, &mutex);
 
-        if(*i != -1 && (assoc[*i][2] == TOBEDELETED || acabou))
+        if(*i != -1 && (assoc[*i][2] == TOBEDELETED || acabou || assoc[*i][2] == BROKEN))
         {
             delete = 1;
         }
@@ -341,10 +270,12 @@ void * thread(void * a)
     // OPCAO 1 E 2
     if(*rodada > voltas_max)
         printf("\nA thread %ld completou a corrida e espera pelos seus concorrentes.\n", pthread_self()%1000);
+    else if(assoc[*i][2] == BROKEN)
+        printf("A thread %ld quebrou na rodada %d!\n", pthread_self()%1000, *rodada+1);
+    else if(CHECK == LATEDELETION)
+        printf("A thread %ld foi eliminada da corrida de forma atrasada\n", pthread_self()%1000);
     else if(CHECK == 2 || delete)
         printf("\na thread %ld foi eliminada da corrida... e \n", pthread_self()%1000);
-    else if(assoc[*i][2] == BROKEN)
-        printf("A thread %ld quebrou na rodada %d!\n", pthread_self(), *rodada);
     
     //assoc[*i][1] = 0;
    
@@ -560,9 +491,14 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     
     if (rank_aux == NULL)
         return DELETED;
-
+    
+    if(assoc[findThread(thread)][2] == LATEDELETION) {
+        printf("Oi! eu, thread %ld, devia ter sido eliminada antes (cheguei em último)...\n", thread);
+        // possivelmente imprimir qual rodada que chegou por último.
+        return LATEDELETION;
+    }
     // Caso seja primeiro ciclista a iniciar a rodada
-    if (*rodada == maior() && !rank_aux->t_ranks[0])
+    else if (*rodada == maior() && !rank_aux->t_ranks[0])
     {
         printf("%ld EH O PRIMEIRO COLOCADO!!!!!!!\n", thread%1000);
 
@@ -596,12 +532,12 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
 
         /* Encontrando posição livre em t_ranks 
            começa do 1 porque no 0 se encontra o primeiro a passar na rodada */
-        for(i = 1;(i < total_ciclistas + 1 - *rodada/2 - total_quebrados)
+        for(i = 1;(i < total_ciclistas + 1 - *rodada/2 - rank_aux->quebrados)
                && (rank_aux->t_ranks[i] != 0); i++);
 
         /* Inserindo na posição correta do vetor t_ranks 
            Se for último elemento de uma rodada par -> será eliminado */
-        if(i == total_ciclistas - *rodada/2 && *rodada%2 == 0)
+        if(i == total_ciclistas - *rodada/2 - rank_aux->quebrados && *rodada%2 == 0)
         { 
             /* Liberando lista de rankings anteriores */
             rank_aux = classThreads;
@@ -635,9 +571,88 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     return ACTIVE;
 }
 
-/*
-int quebrou() {
-    // Considere que a cada vez que um ciclista completa múltiplos de 6 voltas, ele tem a chance de 5% de quebrar.
-    int num = rand()%10;
+int quebrou(Node * toDestroy) {
 
-}*/
+    // PRECISO CONSIDERAR QUANTOS QUEBRARAM ANTES DESSE TBM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    // ZERAR QUEBRADOS NO MOMENTO QUE FOR ALOCADO O PRIMEIRO
+    // RECEBE O VALOR DE QUEBRADOS DO ANTERIOR
+    // AQUI ATUALIZA NÚMERO DE QUEBRADOS PROS PŔOXIMOS
+
+    if(toDestroy) { // as threads a serem destruídas entram aqui
+        Node * d_aux = toDestroy;
+        Ranking * r_aux = classThreads;
+
+        int ** quebra_rodada = (int **) malloc(total_ciclistas*sizeof(int));
+
+        for(int i = 0; i < total_ciclistas; i++) {
+            quebra_rodada[i] = (int *) malloc(2*sizeof(int));
+            quebra_rodada[i][0] = 0;
+        }
+
+        int j = 0;
+
+        while(d_aux) {
+            // ATUALIZO O NÚMERO DE QUEBRADOS DE CADA RODADA
+            // lembrando que as threads que quebraram "estão" numa rodada anterior
+            int i;
+            for(i = 0; i < total_ciclistas && quebra_rodada[i][0] != 0 &&
+            quebra_rodada[i][0] != d_aux->rodada_pessoal; i++);
+
+            if(quebra_rodada[i][0] ==  d_aux->rodada_pessoal) {
+                quebra_rodada[i][1]++;
+            }
+            else if(quebra_rodada[i][0] == 0) {
+                quebra_rodada[i][0] = d_aux->rodada_pessoal;
+                quebra_rodada[i][1] = 1;
+            }
+
+            // ATUALIZA STATUS DA THREAD
+            assoc[findThread(d_aux->id)][2] = BROKEN;
+
+            j++;
+            d_aux->prox;
+        }
+
+        if(j < total_ciclistas) // -1 para último elemento sinaliza fim da lista de rodadas
+            quebra_rodada[j][0] = quebra_rodada[j][1] = -1;
+
+        // INSIRO EM CLASSTHREADS PARA CADA RODADA IDENTIFICADA O NÚMERO DE QUEBRADOS
+        j = 0;
+
+        while(r_aux && j < total_ciclistas && quebra_rodada[j][0] != -1) {
+
+            if(r_aux->rodada == quebra_rodada[j][0]) {
+                r_aux->quebrados = quebra_rodada[j][1];
+
+                // CHECO SE EXISTE THREAD QUE JÁ PASSOU QUE SERIA A ÚLTIMA (TOBEDELETED)
+                int i = total_ciclistas - r_aux->rodada/2 - r_aux->quebrados;
+
+                if(i > -1 && r_aux->t_ranks[i] != 0) { // vou ter que mudar isso...
+                    assoc[findThread(r_aux->t_ranks[i])][2] = LATEDELETION;
+                }
+                else if(i < 0){
+                    printf("Algo deu errado. Valor inválido da soma!\n");
+                }
+
+                j++;
+            }
+
+            // TRATAR COMO DELETAR ESSAS QUE QUEBRARAM
+            // TRATAR O VETOR DE CÉLULAS QUE CONTÉM OS NÚMEROS VAGOS COMO 0!
+
+            r_aux = r_aux->prox;
+        }
+
+
+        for(int i = 0; i < total_ciclistas; i++)
+            free(quebra_rodada[i]);
+        
+        free(quebra_rodada); 
+
+        return 1;
+
+    }
+
+    return 0;
+
+}

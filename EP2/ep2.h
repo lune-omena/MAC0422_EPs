@@ -9,7 +9,7 @@
 /* BIBLIOTECAS */
 #include <pthread.h>        /* POSIX threads */
 
-enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN};
+enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN, LATEDELETION};
 
 // a estrutura abaixo era usada para remoção - provavelmente vou recicl=a-la
 typedef struct node {
@@ -46,6 +46,8 @@ int atualizaRodada(pthread_t thread, int rodada, int n);
 int findThread(pthread_t thread);
 // função que retorna a rodada do primeiro colocado
 int maior();
+// função para gerenciar quebra de ciclistas
+int quebrou(Node * toDestroy);
 
 int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose);
 /* funções a serem implementadas */

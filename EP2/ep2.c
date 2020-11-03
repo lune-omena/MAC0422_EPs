@@ -157,7 +157,28 @@ int main(int argc, char * argv[])
             ciclistas_atuais = 0;     
             volta++;
 
-            quebrou(toDestroy);
+            int teste = 0;
+
+            if(toDestroy) {
+                teste = quebrou();
+
+                if(!toDestroy)
+                    printf("LISTA DELETADA 2\n");
+                else {
+                    printf("Por algum motivo isso não funcionou...\n");
+                    Node * aux = toDestroy;
+
+                    printf("Ainda possui: ");
+
+                    while(aux) {
+                        printf("%ld (%d) ", aux->id%1000, aux->rodada_pessoal);
+                        aux = aux->prox;
+                    }
+
+                    printf("\n");
+                    toDestroy = NULL;
+                }
+            }
                 
             pthread_cond_broadcast(&wait_thread);
             pthread_mutex_unlock(&mutex_main);   
@@ -560,6 +581,9 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
 
         rank_aux->prox = rank_new;
 
+
+        printf("NÚMERO DE QUEBRADOS DA RODADA %d: %d\n", *rodada, rank_new->quebrados);
+
         //printf("Ideal ciclistas: %d  - ranking: %d\n", rank_new->ideal_ciclistas, *rodada + 1);
 
         /* Caso seja a única posição disponível - apagar depois de pronto */
@@ -622,14 +646,14 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     return ACTIVE;
 }
 
-int quebrou(Node * toDestroy) {
+int quebrou() {
 
     // PRECISO CONSIDERAR QUANTOS QUEBRARAM ANTES DESSE TBM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     // ZERAR QUEBRADOS NO MOMENTO QUE FOR ALOCADO O PRIMEIRO
     // RECEBE O VALOR DE QUEBRADOS DO ANTERIOR
     // AQUI ATUALIZA NÚMERO DE QUEBRADOS PROS PŔOXIMOS
 
-    if(toDestroy) { // as threads a serem destruídas entram aqui
+    if(toDestroy != NULL) { // as threads a serem destruídas entram aqui
         Node * d_aux = toDestroy;
         Node * AUX = d_aux;
         Ranking * r_aux = classThreads;
@@ -729,7 +753,7 @@ int quebrou(Node * toDestroy) {
         toDestroy = NULL;
 
         if(!toDestroy)
-            printf("LISTA DELETADA\n");
+            printf("LISTA DELETADA 1\n");
 
         return 1;
 

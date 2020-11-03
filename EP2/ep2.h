@@ -54,7 +54,8 @@ int findThread(pthread_t thread);
 // função que retorna a rodada do primeiro colocado
 int maior();
 // função para gerenciar quebra de ciclistas
-int quebrou(Node * toDestroy);
+//int quebrou(Node * toDestroy);
+int quebrou();
 /* Função para atualizar rankeamento a cada rodada finalizada e exibir ranking */
 int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose);
 

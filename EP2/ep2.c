@@ -164,10 +164,8 @@ int main(int argc, char * argv[])
             ciclistas_atuais = 0;     
             volta++;
 
-            int teste = 0;
-
             if(toDestroy) {
-                teste = quebrou();
+                quebrou();
 
                 if(!toDestroy)
                     printf("LISTA DELETADA 2\n");
@@ -649,7 +647,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         {
             printf("\nRanking - Rodada %d:\n", *rodada);
         
-            for(int j = 0; j < rank_aux->ideal_ciclistas; j++) 
+            for(int j = 0; j < rank_aux->ideal_ciclistas - rank_aux->quebrados; j++) 
             printf("%4do - %04d \n", j+1, findThread(rank_aux->t_ranks[j]));
     
             printf("\n");
@@ -686,7 +684,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
 
             for(int i = general->ultimo_inserido; i > itr; i--) {
                 general->status[i] = general->status[i-1];
-                general->tempo[i] = general->status[i-1];
+                general->tempo[i] = general->tempo[i-1];
                 general->rodada_tempo[i] = general->rodada_tempo[i-1];
                 general->t_ranks[i] = general->t_ranks[i-1];
             }

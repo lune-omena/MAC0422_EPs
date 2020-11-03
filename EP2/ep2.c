@@ -288,7 +288,7 @@ void * thread(void * a)
         printf("\nA thread %ld completou a corrida e espera pelos seus concorrentes.\n", pthread_self()%1000);
     else if(assoc[*i][2] == BROKEN)
         printf("A thread %ld quebrou na rodada %d!\n", pthread_self()%1000, *rodada);
-    else if(CHECK == LATEDELETION)
+    else if(assoc[*i][2] == LATEDELETION)
         printf("O ciclista %ld foi eliminada da corrida de forma atrasada\n", pthread_self()%1000);
     else if(CHECK == 2 || delete)
         printf("\nO ciclista %ld foi eliminada da corrida...\n", pthread_self()%1000);
@@ -375,7 +375,8 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
         if (!pista[0][*pos_j])
         {
             // POSSIBILIDADE DE QUEBRA...
-            if((*rodada+1)%4 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
+            if( assoc[findThread(pthread_self())][2] != LATEDELETION && 
+                (*rodada+1)%4 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
                 int r_num = rand()%100;
 
                 if(r_num > 50) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
@@ -565,9 +566,9 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
 
     if(assoc[findThread(thread)][2] == LATEDELETION)
     {
-        printf("Oi! eu, thread %ld, devia ter sido eliminada antes (cheguei em último)...\n", thread);
+        printf("Oi! eu, thread %ld, devia ter sido eliminada antes (cheguei em último)...\n", thread%1000);
         // possivelmente imprimir qual rodada que chegou por último.
-        return LATEDELETION;
+        return TOBEDELETED;
     }
     else// Caso seja primeiro ciclista a iniciar a rodada
     if (*rodada == maior() && !rank_aux->t_ranks[0])

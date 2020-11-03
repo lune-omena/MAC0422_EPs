@@ -200,7 +200,7 @@ int main(int argc, char * argv[])
         }
 
     /* Fim da execução */
-    mostra_Classificacoes();
+    //mostra_Classificacoes();
     // liberando memória
     for(int i = 0; i < d; i++)
         free(pista[i]);
@@ -247,6 +247,10 @@ void * thread(void * a)
         printf("rodada: %d - thread: %3ld\n", *rodada, pthread_self()%1000);
     
         pthread_cond_wait(&wait_thread, &mutex);
+
+        if(assoc[*i][2] == BROKEN) {
+            pista[pos_i][*pos_j] = 0;
+        }
 
         if(*i != -1 && (assoc[*i][2] == TOBEDELETED || acabou || assoc[*i][2] == BROKEN))
         {
@@ -374,8 +378,6 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
             if((*rodada+1)%4 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
                 int r_num = rand()%100;
 
-                printf("entrou aqui...\n");
-
                 if(r_num > 50) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
                     // adiciona na lista de threads a serem quebradas
                     // precisa saber em qual rodada está e quantos ciclistas poderão passar pra próxima rodada
@@ -386,6 +388,9 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
                     new->id = pthread_self();
                     new->prox = NULL;
                     new->rodada_pessoal = *rodada+1;
+                    
+                    // ATUALIZA STATUS DA THREAD, NÃO DELETAR AINDA
+                    assoc[findThread(pthread_self())][2] = BROKEN;
 
                     if(!toDestroy) {
                         printf("A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...\n");
@@ -518,8 +523,9 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     
     if(assoc[findThread(thread)][2] == BROKEN)  // para ser sincera nem vai entrar aqui
     {
+        printf("oie\n");
         //printf("Ops! O ciclista %ld quebrou na rodada %d! e será eliminado", thread%1000, *rodada);
-        //rank_aux->quebrados++;
+        //rank_aux->quebrados++; ->> isso não
 
         /* Adiciona na classificação geral */
         /*
@@ -550,8 +556,12 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
             free(rank_aux);
         }
 
-        return TOBEDELETED;*/
+        return TOBEDELETED; ->>> ISSO NÃO */
     }
+
+    /* IMPORTANTE: LEIA ISSO *************************************************************************/
+    // mesmo que broken ele tem que rodar o código abaixo na possibilidade de ser o primeiro termo
+    // para poder marcar em classThreads qual é o número de elementos quebrados da rodada x
 
     if(assoc[findThread(thread)][2] == LATEDELETION)
     {
@@ -564,25 +574,37 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     {
         printf("%ld EH O PRIMEIRO COLOCADO!!!!!!!\n", thread%1000);
 
-        rank_aux->t_ranks[0] = thread;
+        // SE NÃO FOR QUEBRADO -> tudo bem
+        if(assoc[findThread(thread)][2] != BROKEN) {
+            rank_aux->t_ranks[0] = thread;
+        }
+        // SE FOR QUEBRADO -> atualizo para 0
+        else {
+            rank_aux->t_ranks[0] = 0;
+        }
 
-        /* Reservando espaço para a próxima rodada */
-        Ranking * rank_new = (Ranking *) malloc(sizeof(Ranking));
-        rank_new->prox = NULL;
-        //rank_new->quebrados = total_quebrados;
-        rank_new->quebrados = rank_aux->quebrados; // tem que ser o total do antes desse
-        rank_new->ideal_ciclistas = rank_aux->ideal_ciclistas - ((int) (*rodada + 1)%2);
-        rank_new->rodada = *rodada + 1;
-        rank_new->t_ranks = (pthread_t *) malloc(rank_new->ideal_ciclistas * sizeof(pthread_t));
+        // ZERAR ACIMA
 
-        // zerando todas as posições fora a primeira
-        for(j = 0; j < rank_new->ideal_ciclistas; j++)
-            rank_new->t_ranks[j] = 0;
+        // ATUALIZANDO NÚMERO DE QUEBRADOS CASO JÁ TENHA SIDO CRIADO
+        if(rank_aux->prox == NULL) {
+            /* Reservando espaço para a próxima rodada */
+            Ranking * rank_new = (Ranking *) malloc(sizeof(Ranking));
+            rank_new->prox = NULL;
+            //rank_new->quebrados = rank_aux->quebrados; // tem que ser o total do antes desse
+            rank_new->ideal_ciclistas = rank_aux->ideal_ciclistas - ((int) (*rodada + 1)%2);
+            rank_new->rodada = *rodada + 1;
+            rank_new->t_ranks = (pthread_t *) malloc(rank_new->ideal_ciclistas * sizeof(pthread_t));
+            rank_new->quebrados = rank_aux->quebrados;
 
-        rank_aux->prox = rank_new;
+            // zerando todas as posições fora a primeira
+            for(j = 0; j < rank_new->ideal_ciclistas; j++)
+                rank_new->t_ranks[j] = 0;
 
+            rank_aux->prox = rank_new;
 
-        printf("NÚMERO DE QUEBRADOS DA RODADA %d: %d\n", *rodada, rank_new->quebrados);
+        } 
+        // senão já existiu primeiro termo mas foi deletado (então não precisa alocar mais memória)
+        // eu não aloco mais, também, porque quero guardar o valor de quebrados
 
         //printf("Ideal ciclistas: %d  - ranking: %d\n", rank_new->ideal_ciclistas, *rodada + 1);
 
@@ -693,7 +715,7 @@ int quebrou() {
             }
 
             // ATUALIZA STATUS DA THREAD
-            assoc[findThread(d_aux->id)][2] = BROKEN;
+            //assoc[findThread(d_aux->id)][2] = BROKEN;
 
             j++;
             d_aux = d_aux->prox;
@@ -707,8 +729,21 @@ int quebrou() {
 
         while(r_aux && j < total_ciclistas && quebra_rodada[j][0] != -1) {
 
+            Ranking * itr_rank = r_aux->prox; // para atualizar o número de quebrados dos próximos
+            int CONTA = 0;
+
             if(r_aux->rodada == quebra_rodada[j][0]) {
                 r_aux->quebrados += quebra_rodada[j][1];
+
+                while(itr_rank) {
+                    itr_rank->quebrados += quebra_rodada[j][1];
+                    itr_rank = itr_rank->prox;
+                    CONTA++;
+                }
+
+                if(!itr_rank) {
+                    printf("%d RODADAS ATUALIZADAS!\n", CONTA);
+                }
 
                 printf("número de TOTAL (até agora) de quebrados da rodada %d: %d\n", r_aux->rodada, r_aux->quebrados);
 

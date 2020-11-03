@@ -48,3 +48,4 @@
 - no momento em que a célula não tem mais uso, eu descarto ela e assumo uma nova cabeça para a lista ligada (a próxima célula)
 -  decidimos que a aleatoriedade no sorteio da thread a ser eliminada (caso esteja na mesma rodada e mesma posição final na mesma velocidade que outras tantas threads) se dá pela escolha do escalonador
 -  Quando o primeiro ciclista completar a quantidade ideal de voltas na pista, ele é retirado de pódio e tem sua posição registrada na volta indicada.
+- a quebra do ciclista é determinada na última posição da volta anterior à volta%6, visto que dessa forma há possibilidade de se organizar a quantidade de ciclistas que quebraram naquele turno pelo escalonador. Isso impossibilita a ocorrência de condições de corrida pois a atualização de ciclistas quebrados pra cada rodada é feita na área restrita à thread do escalonador

@@ -216,7 +216,7 @@ int main(int argc, char * argv[])
     free(pista);
 
     clock_gettime(CLOCK_MONOTONIC, &t_end);
-    printf("\n\nTempo de execução: %f", (double) (t_end.tv_sec - t_start.tv_sec) +
+    printf("\n\nTempo de execução: %f\n", (double) (t_end.tv_sec - t_start.tv_sec) +
                (double) (t_end.tv_nsec - t_start.tv_nsec) / 1000000000.0);
     return 0;
 }
@@ -254,8 +254,8 @@ void * thread(void * a)
     {
         pthread_mutex_lock(&mutex);
         ciclistas_atuais++;
-        printf("[%3d][%2d], %2d eh total - vel: %d - ", pos_i, *pos_j, ciclistas_atuais, *vel_atual);
-        printf("rodada: %d - thread: %04d\n", *rodada, *id);
+        //printf("[%3d][%2d], %2d eh total - vel: %d - ", pos_i, *pos_j, ciclistas_atuais, *vel_atual);
+        //printf("rodada: %d - thread: %04d\n", *rodada, *id);
     
         pthread_cond_wait(&wait_thread, &mutex);
 
@@ -392,7 +392,7 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
                 (*rodada+1)%6 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
                 int r_num = rand()%100;
 
-                if(r_num < 5) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+                if(r_num > 100) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
                     // adiciona na lista de threads a serem quebradas
                     // precisa saber em qual rodada está e quantos ciclistas poderão passar pra próxima rodada
 
@@ -547,7 +547,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         general->t_ranks[general->ultimo_inserido] = thread;
         general->ultimo_inserido++;
 
-        /* Caso quebre e seja o ultimo que tinha que completar a rodada */
+        /* Caso quebre e seja o ultimo que tinha que completar a rodada "anterior" */
         if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados] && verbose)
         {
             // exibindo ranking da rodada
@@ -558,12 +558,16 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
     
             printf("\n");
 
+
             /* Liberando lista de rankings anteriores */
             rank_aux = classThreads;
-            classThreads = classThreads->prox;
 
-            free(rank_aux->t_ranks);
-            free(rank_aux);
+            if(classThreads->rodada == *rodada) {
+                classThreads = classThreads->prox;
+                free(rank_aux->t_ranks);
+                free(rank_aux);
+            }
+
         }
 
         //return TOBEDELETED; ->>> não pode dar esse return porque ele precisa passsar pelo escalonador ainda 
@@ -593,14 +597,12 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
             rank_aux->t_ranks[0] = 0;
         }
 
-        // ZERAR ACIMA
 
         // ATUALIZANDO NÚMERO DE QUEBRADOS CASO JÁ TENHA SIDO CRIADO
         if(rank_aux->prox == NULL) {
             /* Reservando espaço para a próxima rodada */
             Ranking * rank_new = (Ranking *) malloc(sizeof(Ranking));
             rank_new->prox = NULL;
-            //rank_new->quebrados = rank_aux->quebrados; // tem que ser o total do antes desse
             rank_new->ideal_ciclistas = rank_aux->ideal_ciclistas - ((int) (*rodada + 1)%2);
             rank_new->rodada = *rodada + 1;
             rank_new->t_ranks = (pthread_t *) malloc(rank_new->ideal_ciclistas * sizeof(pthread_t));
@@ -654,11 +656,13 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         }
 
         /* Liberando lista de rankings anteriores */
-            rank_aux = classThreads;
-            classThreads = classThreads->prox;
+        rank_aux = classThreads;
 
+        if(classThreads->rodada == *rodada) {
+            classThreads = classThreads->prox;
             free(rank_aux->t_ranks);
             free(rank_aux);
+        }
 
         /*   Se for último elemento de uma rodada par -> será eliminado */
         if (*rodada%2 == 0)

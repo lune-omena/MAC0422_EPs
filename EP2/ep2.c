@@ -43,7 +43,7 @@ Node * toDestroy;                   /* guarda as threads que quebraram para sere
 
 int main(int argc, char * argv[]) 
 {
-    printf("EP2 - Ciclistas\n");
+    printf("EP2 - Ciclistas!\n");
 
     /* Com relação à entrada, seu simulador deve receber como argumentos de linha de comando, nesta
        ordem, os dois números inteiros: d e n (i.e. vai rodar ./ep2 d n) */

@@ -255,6 +255,8 @@ void * thread(void * a)
         if(*i != -1 && (assoc[*i][2] == TOBEDELETED || acabou || assoc[*i][2] == BROKEN))
         {
             delete = 1;
+
+            // a parte de classificação de caras que quebraram seria melhor se estivesse aqui
         }
 
         if(!delete)
@@ -376,10 +378,10 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
         {
             // POSSIBILIDADE DE QUEBRA...
             if( assoc[findThread(pthread_self())][2] != LATEDELETION && 
-                (*rodada+1)%4 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
+                (*rodada+1)%6 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
                 int r_num = rand()%100;
 
-                if(r_num > 50) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+                if(r_num < 5) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
                     // adiciona na lista de threads a serem quebradas
                     // precisa saber em qual rodada está e quantos ciclistas poderão passar pra próxima rodada
 
@@ -522,21 +524,18 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     if (rank_aux == NULL)
         return DELETED;
     
-    if(assoc[findThread(thread)][2] == BROKEN)  // para ser sincera nem vai entrar aqui
+    if(assoc[findThread(thread)][2] == BROKEN)  // agora sim vai entrar aqui
     {
-        printf("oie\n");
-        //printf("Ops! O ciclista %ld quebrou na rodada %d! e será eliminado", thread%1000, *rodada);
-        //rank_aux->quebrados++; ->> isso não
+        printf("Ops! O ciclista %ld quebrou na rodada %d! e será eliminado\n", thread%1000, *rodada+1);
+        //rank_aux->quebrados++; ->> isso zoa a quebra dos ciclistas
 
         /* Adiciona na classificação geral */
-        /*
         general->status[general->ultimo_inserido] = BROKEN;
         general->rodada_tempo[general->ultimo_inserido] = *rodada;
         general->t_ranks[general->ultimo_inserido] = thread;
-        general->ultimo_inserido++;*/
+        general->ultimo_inserido++;
 
         /* Caso quebre e seja o ultimo que tinha que completar a rodada */
-        /*
         if (rank_aux->t_ranks[rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados] && verbose)
         {
             // exibindo ranking da rodada
@@ -547,9 +546,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
     
             printf("\n");
 
-            */
             /* Liberando lista de rankings anteriores */
-            /*
             rank_aux = classThreads;
             classThreads = classThreads->prox;
 
@@ -557,7 +554,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int verbose)
             free(rank_aux);
         }
 
-        return TOBEDELETED; ->>> ISSO NÃO */
+        //return TOBEDELETED; ->>> não pode dar esse return porque ele precisa passsar pelo escalonador ainda 
     }
 
     /* IMPORTANTE: LEIA ISSO *************************************************************************/

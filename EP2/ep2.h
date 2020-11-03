@@ -34,7 +34,8 @@ typedef struct rankG {
     int * status;            // armazena status ao sair da corrida
     pthread_t * t_ranks;     // classificações gerais dos ciclistas - de traz para frente
     int ultimo_inserido;     // posicao do ultimo inserido na lista
-    double * rodada_tempo;   // armazena tempo ou rodada de quebra
+    int * rodada_tempo;         // armazena tempo ou rodada de quebra
+    double * tempo;          // armazena tempo da quebra
 } RankingGeral;
 
 

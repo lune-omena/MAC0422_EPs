@@ -544,6 +544,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         /* Adiciona na classificação geral */
         general->status[general->ultimo_inserido] = BROKEN;
         general->rodada_tempo[general->ultimo_inserido] = *rodada + 1;
+        general->tempo[general->ultimo_inserido] = 0;
         general->t_ranks[general->ultimo_inserido] = thread;
         general->ultimo_inserido++;
 
@@ -668,12 +669,38 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         {
             printf("Ciclista %4d será deletado...\n", *id);
 
+            int itr = general->ultimo_inserido;
+            int achou = 0;
+
             /* Adiciona na classificação geral */
             clock_gettime(CLOCK_MONOTONIC, &aux);
-            general->status[general->ultimo_inserido] = DELETED;
-            //general->rodada_tempo[general->ultimo_inserido] = (aux.tv_sec - t_start.tv_sec) + (aux.tv_nsec - t_start.tv_nsec)/1000000000.0; /* trocar pelo tempo*/
-            general->rodada_tempo[general->ultimo_inserido] = *rodada;
-            general->t_ranks[general->ultimo_inserido] = thread;
+
+            while(itr > -1 && !achou) {
+                if(general->status[itr] == DELETED && general->rodada_tempo[itr] < *rodada) 
+                    achou = 1;
+                else 
+                    itr--;
+            }
+
+            itr++; // itr precisa estar depois do menor que ele
+
+            for(int i = general->ultimo_inserido; i > itr; i--) {
+                general->status[i] = general->status[i-1];
+                general->tempo[i] = general->status[i-1];
+                general->rodada_tempo[i] = general->rodada_tempo[i-1];
+                general->t_ranks[i] = general->t_ranks[i-1];
+            }
+
+            general->status[itr] = DELETED;
+            general->tempo[itr] = (aux.tv_sec - t_start.tv_sec) + (aux.tv_nsec - t_start.tv_nsec)/1000000000.0; /* trocar pelo tempo*/
+            general->rodada_tempo[itr] = *rodada;
+            general->t_ranks[itr] = thread;
+
+            //general->status[general->ultimo_inserido] = DELETED;
+            //general->tempo[general->ultimo_inserido] = (aux.tv_sec - t_start.tv_sec) + (aux.tv_nsec - t_start.tv_nsec)/1000000000.0; /* trocar pelo tempo*/
+            //general->rodada_tempo[general->ultimo_inserido] = *rodada;
+            //general->t_ranks[general->ultimo_inserido] = thread;
+
             general->ultimo_inserido++;
 
             return TOBEDELETED; 
@@ -827,7 +854,8 @@ void inicializa_Rankings()
     general = (RankingGeral *) malloc(sizeof(RankingGeral));
     general->status = (int *) malloc(total_ciclistas * sizeof(int));
     general->t_ranks = (pthread_t *) malloc(total_ciclistas * sizeof(pthread_t));
-    general->rodada_tempo = (double *) malloc(total_ciclistas * sizeof(double));
+    general->rodada_tempo = (int *) malloc(total_ciclistas * sizeof(int));
+    general->tempo = (double *) malloc(total_ciclistas*sizeof(double));
     general->ultimo_inserido = 0;
 
     for(int i = 0; i < total_ciclistas; i++)
@@ -836,6 +864,7 @@ void inicializa_Rankings()
         general->t_ranks[i] = -1;
         general->status[i] = -1;
         general->rodada_tempo[i] = -1;
+        general->tempo[i] = -1;
     }
 
     return;
@@ -851,13 +880,14 @@ void mostra_Ranking()
         if (general->status[i] == BROKEN)
         {
             printf("Ciclista: %4d - ", findThread(general->t_ranks[i]));
-            printf("Status: Quebrado - Rodada: %.0f\n", general->rodada_tempo[i]);
+            printf("Status: Quebrado - Rodada: %3d\n", general->rodada_tempo[i]);
         }
         else {
             printf("Posicao: %4do - ", posicao);
             printf("Ciclista: %04d - ", findThread(general->t_ranks[i]));
             printf("Status: Eliminado - ");
-            printf("Tempo: %.3fs\n", general->rodada_tempo[i]);
+            printf("Rodada: %3d ", general->rodada_tempo[i]);
+            printf("Tempo: %.3fs\n", general->tempo[i]);
         }
         
         if (general->status[i] != BROKEN)

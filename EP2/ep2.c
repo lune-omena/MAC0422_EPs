@@ -793,10 +793,19 @@ void inicializa_Rankings()
 
 void mostra_Classificacoes()
 {
-    printf("Classificação: \n");
+    int posicao = 1;
+
+    printf("******************* RANKING ******************* \n\n");
     for(int i = total_ciclistas - 1; i >= 0; i--)
     {
-        printf("Posicao: %f - Thread: %ld - status: %d\n", general->rodada_tempo[i], general->t_ranks[i], general->status[i]);
+        printf("Posicao: %3d - Ciclista: %ld - ", (general->status[i] == BROKEN) ? 0 : posicao, general->t_ranks[i]%1000);
+        
+        printf("Status: %s - ", (general->status[i] == BROKEN) ? "Quebrado": "Eliminado" );
+        
+        printf("%s: %.0f\n",  (general->status[i] == BROKEN) ? "Rodada": "Tempo", general->rodada_tempo[i]);
+        
+        if (general->status[i] != BROKEN)
+            posicao++;
     }
 
     return;

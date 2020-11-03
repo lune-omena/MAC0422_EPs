@@ -3,7 +3,7 @@
 ###### Próximas a serem implementadas
 
 - [ ] Resolver bug de último colocado não ser colocado no ranking geral (caso sem quebras) (em desenvolvimento)
-- [ ] Resolver bug de rankings de rodadas serem "Pulados" (caso com >2 quebras e >10 rodadas)
+- [x] Resolver bug de rankings de rodadas serem "Pulados" (caso com >2 quebras e >10 rodadas)
 - [ ] simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
 - [ ] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.

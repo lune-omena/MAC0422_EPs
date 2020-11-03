@@ -3,15 +3,14 @@
 ###### Próximas a serem implementadas
 
 - [ ] Inserir relógio no programa
-- [ ] Ajustar condições de corrida
+- [x] Ajustar condições de corrida
 - [ ] Inserir identificador para cada thread
 - [x] Registro posição/rank dos ciclistas a cada rodada
-- [ ] Quebra de ciclistas (trabalhando nisso)
-- [ ] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou (trabalhando nisso)
+- [x] Quebra de ciclistas
+- [x] Caso algum ciclista quebre, essa informação deve ser exibida na tela no momento exato em que ele quebrou
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
 - [ ] simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
-- [ ] Relatório da saída do programa informando a cada volta completada, as posições de
-  todos os ciclistas naquela volta
+- [ ] Relatório da saída do programa informando a cada volta completada, as posições de todos os ciclistas naquela volta
 - [ ] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.
 - [x] Ultrapassagem
 - [x] Implementar mudança de velocidade aleatória

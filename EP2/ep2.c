@@ -233,7 +233,7 @@ void * thread(void * a)
        não terminou a quantidade máxima de volta possível na corrida 
        > CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos */
     while(CHECK != TOBEDELETED && CHECK != LATEDELETION && !delete && CHECK != CHAMPION
-     && *rodada <= voltas_max) 
+     /*&& *rodada <= voltas_max*/) 
     {
         pthread_mutex_lock(&mutex);
         ciclistas_atuais++;

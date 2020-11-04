@@ -9,7 +9,7 @@
 /* BIBLIOTECAS */
 #include <pthread.h>        /* POSIX threads */
 
-enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN, LATEDELETION, VENCEDOR};
+enum status {ACTIVE, DELETED, TOBEDELETED, BROKEN, LATEDELETION, CHAMPION};
 
 // a estrutura abaixo era usada para remoção - provavelmente vou recicla-la
 typedef struct node {
@@ -55,14 +55,19 @@ int findThread(pthread_t thread);
 // função que retorna a rodada do primeiro colocado
 int maior();
 // função para gerenciar quebra de ciclistas
-//int quebrou(Node * toDestroy);
 int quebrou();
 /* Função para atualizar rankeamento a cada rodada finalizada e exibir ranking */
 int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose);
 
 void inicializa_Rankings();
 
+void inicializa_assoc_pista();
+
 void mostra_Ranking();
+
+void mostra_Pista();
+
+void free_program();
+
 /* funções a serem implementadas */
-//registraPosicao(pthread_self(), /* parametros para registro */);
 //verificaQuebra(pthread_self(), /* mesmos parametros para registrar posição */);

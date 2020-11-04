@@ -3,7 +3,7 @@
 ###### Próximas a serem implementadas
 
 - [x] Parece que uma rodada após o primeiro colocado ser determinado ainda roda (corrigida a situação do primeiro - MUDEI A IMPLEMENTAÇÃO PARA PODER ESCREVER NO RANKING!! veja decisões de implementação)
-- [ ] Resolver bug de último colocado não ser colocado no ranking geral (olhar decisão de implementação) (ainda não está funcionando com poucos ciclistas (10 :/ ainda não sei pq))
+- [x] Resolver bug de último colocado não ser colocado no ranking geral (olhar decisão de implementação) (ainda não está funcionando com poucos ciclistas (10 :/ ainda não sei pq))
 - [não] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
 ^(eu não fiz isso, ele só atualiza a velocidade na hora que chegar na função de velocidade)
 - [x] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.
@@ -33,7 +33,7 @@
 
 ### Exibição de resultados
 
-- [ ] Selecionar 3 tamanhos de pista (pequena, média e grande) e 3 quantidades de ciclistas (poucos, normal e muitos) -> (10, 100, 1000) e (250, 400, 550) ?
+- [x] Selecionar 3 tamanhos de pista (pequena, média e grande) e 3 quantidades de ciclistas (poucos, normal e muitos) -> (10, 100, 1000) e (250, 400, 550) 
 - [ ] Gráficos de barra que facilitem observar qual foi o impacto no uso de memória e no tempo de execução do programa ao aumentar tanto o tempo de simulação quanto o nro de threads
 - [ ] Intervalo de confiança de 30 medições com nı́vel de confiança de 95%
 - [ ] Discuta se os resultados saı́ram conforme o esperado

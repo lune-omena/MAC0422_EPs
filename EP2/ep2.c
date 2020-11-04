@@ -34,7 +34,6 @@ int ciclistas_atuais = -1;          /* variável para que a main espere todas th
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
 double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
-int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 int total_quebrados = 0;
 
 int t_ultimos = 0;                  /* identifica se são os últimos a passar para permitir rodar */
@@ -90,7 +89,7 @@ int main(int argc, char * argv[])
     ciclistas_atuais = 0;
 
     /* SIMULAÇÃO */
-    srand(21132344);
+    srand( clock() );
 
     /* Registrando tempo de início do programa */
     clock_gettime(CLOCK_MONOTONIC, &t_start);
@@ -248,7 +247,7 @@ void * thread(void * a)
             pista[pos_i][*pos_j] = 0;
         }
 
-        if(*id != -1 && (assoc[*id][2] == TOBEDELETED || acabou || assoc[*id][2] == BROKEN))
+        if(*id != -1 && (assoc[*id][2] == TOBEDELETED || assoc[*id][2] == BROKEN))
         {
             delete = 1;
 
@@ -567,7 +566,7 @@ int atualizaVel(int vel_ant, int volta, pthread_t t)
             you = 0;
         }
          
-        if (number < 1)     /* 10% de chance de ser 90Km/h */ 
+        if (number < 5)     /* 10% de chance de ser 90Km/h */ 
         {
             t_ultimos = 1; // esta variável pode chegar aqui como 0, ela precisa ser atualizada sempre aqui
             printf("a thread %ld está a 90km/h\n", t%1000);

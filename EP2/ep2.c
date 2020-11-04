@@ -15,7 +15,7 @@
 #include <time.h>
 #define KM30 1
 #define KM60 2
-#define KM90 1
+#define KM90 3
 
 /* Variáveis globais */
 pthread_t ** pista;                 /* representa a pista dos ciclistas, possui [d][10] casas */
@@ -37,6 +37,9 @@ double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; 
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 int total_quebrados = 0;
 
+int t_ultimos = 0;                  /* identifica se são os últimos a passar para permitir rodar */
+int segundo_acabou = 0;             /* usado para checar se há necessidade de manter possibilidade de 90km/h */
+int vel_ultimos[2];                 /* guarda velocidade dos 2 finalistas*/
 pthread_t finalistas[2];            /* guarda id dos 2 finalistas*/
 
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
@@ -99,6 +102,9 @@ int main(int argc, char * argv[])
 
     // TODESTROY: inicia a lista de quebrados
     toDestroy = NULL;
+
+    // inicializando velocidade dos ultimos como 0
+    vel_ultimos[0] = vel_ultimos[1] = 0;
 
     // ASSOC: criando matriz de associação de id da thread para respectiva rodada
     // em assoc[i][0] encontra-se a identificação da thread
@@ -253,7 +259,8 @@ void * thread(void * a)
     /* Enquanto thread não foi marcada para ser eliminada ou 
        não terminou a quantidade máxima de volta possível na corrida 
        > CHECK é a condição de eliminação, se for 2 foi pq foi atuaizada em atualizaPos */
-    while(CHECK != TOBEDELETED && CHECK != LATEDELETION &&  !delete && *rodada <= voltas_max) 
+    while(CHECK != TOBEDELETED && CHECK != LATEDELETION && !delete && CHECK != VENCEDOR
+     && *rodada <= voltas_max) 
     {
         pthread_mutex_lock(&mutex);
         ciclistas_atuais++;
@@ -275,15 +282,41 @@ void * thread(void * a)
 
         if(!delete)
         {
-            if(*vel_atual == KM30) // OU VELOCIDADE 60 E NAS 2 ULTIMAS VOLTAS
-            { // esperam 2 voltas
+            // se for t_ultimos são 2 para 90, 3 para 60, 6 para 30
+            
+            if(t_ultimos) {
+                int itr = -1;
+
+                switch(*vel_atual) {
+                    case KM30:
+                        itr = 5;  // 5 + 1 = 6
+                        break;
+                    case KM60:
+                        itr = 2;  // 2 + 1 = 3
+                        break;
+                    case KM90:
+                        itr = 1;  // 1 + 1 = 2
+                        break;
+                    default:
+                        printf("Algo deu errado.\n");
+                        exit(EXIT_FAILURE);
+                };
+
+                for(int i = 0; i < itr; i++) { 
+                    ciclistas_atuais++;
+                    pthread_cond_wait(&wait_thread, &mutex);
+
+                    if(!t_ultimos) // pode ocorrer de não estar mais a 20ms
+                        break;
+                }
+
+            }
+            else if(*vel_atual == KM30) { // esperam 2 voltas
                 ciclistas_atuais++;
                 pthread_cond_wait(&wait_thread, &mutex);
-            }
 
-            // SE VELOCIDADE 30 E NAS 2 ULTIMAS VOLTAS, OUTRO SINAL
-            
-            // se não, é 60km/h e roda normal
+            }   // se não, é 60km/h e roda normal
+
             CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual, id);
             if(CHECK == 1) // houve mudança -> importante já que ocorreram aquelas coisas da issue
             {
@@ -302,6 +335,9 @@ void * thread(void * a)
     }
 
     // OPCAO 1 E 2
+    if(CHECK == VENCEDOR)
+        printf("A thread %04d é a VENCEDORA da corrida na rodada %d!\n", *id, *rodada);
+
     if(*rodada > voltas_max)
         printf("\nA thread %04d completou a corrida e espera pelos seus concorrentes.\n", *id);
     else if(assoc[*id][2] == BROKEN)
@@ -466,13 +502,28 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
             }
             
             // FIM QUEBRA
-            
+
+            int check = atualiza_Classificacao(thread, rodada, id, 1);
          
-            if (atualiza_Classificacao(thread, rodada, id, 1) == TOBEDELETED)
+            if (check == TOBEDELETED)
             {
                 pista[pos_i][*pos_j] = 0;
                 assoc[*id][2] = TOBEDELETED;
                 return TOBEDELETED; // return 2
+            }
+            else if(check == VENCEDOR) {
+                // EITA CARALHA
+
+                *vel_atual = KM60;
+
+                // preciso atualizar para não ter chance de correr a 90km/h
+                // se o segundo não estivr a 90km/h
+                if(vel_ultimos[0] == pthread_self())
+                    vel_ultimos[0] = KM60;
+                else
+                    vel_ultimos[1] = KM60;
+                
+                return VENCEDOR;
             }
             
             if(*rodada == maior())
@@ -507,29 +558,62 @@ int atualizaVel(int vel_ant, int volta, pthread_t t)
     /* 1 = 60ms = 60Km/h */
     /* 2 = 120ms = 30Km/h */
     /* 1 = 40ms = 90Km/k - Caso seja sorteado, tempo do programa será reduzido em 2*/
-    int number;
+    int number = rand() % 10;;
 
-    //volta = 1;
-
-    if(finalistas[0] == t || finalistas[1] == t) {
+    if((finalistas[0] == t || finalistas[1] == t) && !segundo_acabou){
         // recebe velocidade 90km/h se sorteado
         printf("*************************************************************\n");
         printf("entrou aqui: A THREAD %ld É UMA DAS 2 FINALISTAS (RODADA: %d)!\n", t%1000, volta);
         printf("*************************************************************\n");
 
+        int me, you;
+
+        if(finalistas[0] == t) {
+            me = 0;
+            you = 1;
+        }
+        else {
+            me = 1;
+            you = 0;
+        }
+         
+        if (number < 1)     /* 10% de chance de ser 90Km/h */ 
+        {
+            t_ultimos = 1; // esta variável pode chegar aqui como 0, ela precisa ser atualizada sempre aqui
+            printf("a thread %ld está a 90km/h\n", t%1000);
+            vel_ultimos[me] = KM90;
+            tempo = 20000;
+            return KM90;
+        }
+        else if(vel_ultimos[you] != KM90) { /* checo se os dois não estão */
+            tempo = 60000;
+            t_ultimos = 0;
+
+            printf("As duas threads estão a menos que 90km/h (possivelmente) \n");
+
+            if (vel_ant == KM30) {    /* 80% de chance de ser 60km/h*/
+                if(number < 8) {
+                    vel_ultimos[me] = KM60;
+                    return KM60;
+                }
+                else {
+                    vel_ultimos[me] = KM30;
+                    return KM30;
+                }
+            }
+            else if (vel_ant == KM60) {   /* 60% de chance de ser 60km/h*/
+                if(number < 6) {
+                    vel_ultimos[me] = KM60;
+                    return KM60;
+                }
+                else {
+                    vel_ultimos[me] = KM30;
+                    return KM30;
+                }
+            }
+            
+        }
     }
-
-    volta = 0; /* retirar qnd colocar condição das 2 ultimas voltas */
-
-    number = rand() % 10;
-
-    //if (volta) /* 2 ultimas voltas */             
-    //    if (number < 1)     /* 10% de chance de ser 90Km/h */ 
-    //    {
-    //        tempo = 20000;
-    //        /* precisa atualizar a velocidade do outro ciclista amigo */
-    //        return KM90;
-    //    }
 
     if (vel_ant == KM30)    /* 80% de chance de ser 60km/h*/
         return (number < 8) ? KM60: KM30; 
@@ -537,10 +621,7 @@ int atualizaVel(int vel_ant, int volta, pthread_t t)
     if (vel_ant == KM60)    /* 60% de chance de ser 60km/h*/
         return (number < 6) ? KM60: KM30;
     
-
-    /* Só entrará nesse caso caso tenha sido sorteado como 90km/h
-       nas 2 ultimas voltas, e essa será a ultima volta */
-    return KM90;
+    return KM90; // pro comp. não reclamar
 }
 
 int atualizaRodada(pthread_t thread, int rodada, int n) {
@@ -656,6 +737,46 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
     {
         printf("%4d EH O PRIMEIRO COLOCADO!!!!!!!\n", *id);
 
+        /* É O VENCEDOR!!!!!!!!!!!!!!!! */
+        if (rank_aux->ideal_ciclistas - rank_aux->quebrados == 1)
+        {
+            printf("%4d EH O VENCEDOR!!!!!!!\n", *id);
+            // preciso indicar que ele vai morrer basicamente
+
+            int itr = general->ultimo_inserido;
+            int achou = 0;
+
+            /* Adiciona na classificação geral */
+            clock_gettime(CLOCK_MONOTONIC, &aux);
+
+            while(itr > -1 && !achou) {
+                if(general->status[itr] == DELETED && general->rodada_tempo[itr] < *rodada) 
+                    achou = 1;
+                else 
+                    itr--;
+            }
+
+            itr++; // itr precisa estar depois do menor que ele
+
+            for(int i = general->ultimo_inserido; i > itr; i--) {
+                general->status[i] = general->status[i-1];
+                general->tempo[i] = general->tempo[i-1];
+                general->rodada_tempo[i] = general->rodada_tempo[i-1];
+                general->t_ranks[i] = general->t_ranks[i-1];
+            }
+
+            general->status[itr] = DELETED;
+            general->tempo[itr] = (aux.tv_sec - t_start.tv_sec) + (aux.tv_nsec - t_start.tv_nsec)/1000000000.0; /* trocar pelo tempo*/
+            general->rodada_tempo[itr] = *rodada;
+            general->t_ranks[itr] = thread;
+
+            general->ultimo_inserido++;
+
+            return VENCEDOR;
+        }
+
+        // posso checar se é o primeiro aqui - o que seria legal ;D
+
         // SE NÃO FOR QUEBRADO -> tudo bem
         if(assoc[*id][2] != BROKEN) {
             rank_aux->t_ranks[0] = thread;
@@ -686,13 +807,6 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         // eu não aloco mais, também, porque quero guardar o valor de quebrados
 
         //printf("Ideal ciclistas: %d  - ranking: %d\n", rank_new->ideal_ciclistas, *rodada + 1);
-
-        /* Caso seja a única posição disponível - apagar depois de pronto */
-        if (rank_aux->ideal_ciclistas - rank_aux->quebrados == 1)
-        {
-            // mostrarRanking com vencedor;
-            printf("%4d EH O VENCEDOR!!!!!!!\n", *id);
-        }
     }
     else
     {
@@ -736,6 +850,14 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         {
             printf("Ciclista %4d será deletado...\n", *id);
 
+            // Checando se é o penultimo
+            if(finalistas[0] == pthread_self() || finalistas[1] == pthread_self()) {
+                printf("A VELOCIDADE VAI VOLTAR AO NORMAL COM CERTEZA AGORA!\n");
+                tempo = 60000;
+                t_ultimos = 0;
+                segundo_acabou = 1;
+            }
+
             int itr = general->ultimo_inserido;
             int achou = 0;
 
@@ -762,6 +884,8 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
             general->tempo[itr] = (aux.tv_sec - t_start.tv_sec) + (aux.tv_nsec - t_start.tv_nsec)/1000000000.0; /* trocar pelo tempo*/
             general->rodada_tempo[itr] = *rodada;
             general->t_ranks[itr] = thread;
+
+
 
             //general->status[general->ultimo_inserido] = DELETED;
             //general->tempo[general->ultimo_inserido] = (aux.tv_sec - t_start.tv_sec) + (aux.tv_nsec - t_start.tv_nsec)/1000000000.0; /* trocar pelo tempo*/

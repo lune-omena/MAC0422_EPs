@@ -37,6 +37,8 @@ double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; 
 int acabou = 0;                     /* o programa roda até essa variável se tornar 1 */
 int total_quebrados = 0;
 
+pthread_t finalistas[2];            /* guarda id dos 2 finalistas*/
+
 pthread_t ** assoc;                 /* associação de id da thread com rodada */
 Ranking * classThreads = NULL;      /* guarda as classificações das threads para cada rodada */
 RankingGeral * general = NULL;           /* Guarda informações de quando uma thread sai da rodada */
@@ -78,6 +80,9 @@ int main(int argc, char * argv[])
     d = 10; /* excluir quando estiver pronto */
     tam_pista = d;/* excluir quando estiver pronto */
     total_ciclistas = num_ciclistas = n;
+
+    // inicializa como se finalistas fossem de id 0
+    finalistas[0] = finalistas[1] = 0;
 
     /* SIMULAÇÃO */
     srand(21132344);
@@ -161,7 +166,7 @@ int main(int argc, char * argv[])
             pthread_mutex_lock(&mutex_main);
             usleep(tempo);
             printf("...\n");
-            ciclistas_atuais = 0;     
+            ciclistas_atuais = 0;
             volta++;
 
             if(toDestroy) {
@@ -270,11 +275,13 @@ void * thread(void * a)
 
         if(!delete)
         {
-            if(*vel_atual == KM30)
+            if(*vel_atual == KM30) // OU VELOCIDADE 60 E NAS 2 ULTIMAS VOLTAS
             { // esperam 2 voltas
                 ciclistas_atuais++;
                 pthread_cond_wait(&wait_thread, &mutex);
             }
+
+            // SE VELOCIDADE 30 E NAS 2 ULTIMAS VOLTAS, OUTRO SINAL
             
             // se não, é 60km/h e roda normal
             CHECK = atualizaPos(pthread_self(), pos_i, pos_j, rodada, vel_atual, id);
@@ -385,49 +392,82 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
     else // última posição
         if (!pista[0][*pos_j])
         {
+
             // POSSIBILIDADE DE QUEBRA...
-            if( assoc[*id][2] != LATEDELETION && 
-                (*rodada+1)%6 == 0 && num_ciclistas > 5) { // rodada multipla de 6 deve possibilitar quebra de ciclista
-                int r_num = rand()%100; // mudar para quantidade de ciclistas da rodada
+            if( assoc[*id][2] != LATEDELETION && (*rodada+1)%6 == 0) {
 
-                if(r_num < 5) { // o ciclista irá quebrar! :( /////////MUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
-                    // adiciona na lista de threads a serem quebradas
-                    // precisa saber em qual rodada está e quantos ciclistas poderão passar pra próxima rodada
+                Ranking * r = classThreads;
+                int quebrados;
 
-                    printf("\nA thread %04d iniciou o processo de quebra.\n", *id);
+                // Considerando ciclistas quebrados
+                while(r && r->rodada != *rodada)
+                    r = r->prox;
 
-                    Node * new = (Node *)malloc(sizeof(Node));
-                    new->id = pthread_self();
-                    new->prox = NULL;
-                    new->rodada_pessoal = *rodada+1;
-                    
-                    // ATUALIZA STATUS DA THREAD, NÃO DELETAR AINDA
-                    assoc[*id][2] = BROKEN;
+                if(r && r->prox)  // existem rodadas a frente
+                    quebrados = r->prox->quebrados;
+                else
+                    quebrados = r->quebrados;
 
-                    if(!toDestroy) {
-                        printf("A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...\n");
-                        toDestroy = new;
-                    }
-                    else {
-                        Node * aux = toDestroy;
+                // Preciso considerar as threads que estão quebrando agora, também!
+                if(toDestroy) {
+                    //UGH
+                    Node * d_aux = toDestroy;
 
-                        //printf("\nLISTA A DELETAR: ");
+                    while(d_aux) {
+                        if(d_aux->rodada_pessoal == *rodada + 1)
+                            quebrados++;
                         
-                        while(aux->prox) {
-                            //printf("%ld (%d) - ", aux->id, aux->rodada_pessoal );
-                            aux = aux->prox;
+                        d_aux = d_aux->prox;
+                    }
+                }
+
+                // r->ideal_ciclistas - 1 - 0 == "filtro" original de quantos passam (a rodada sempre é par)
+                // quebrados == quantos quebraram até agora e vão quebrar ainda, nessa iteração
+                // -1 == ESTA THREAD LOL
+                int min = r->ideal_ciclistas - 1 - quebrados - 1;
+                        
+                if(min > 5) { 
+
+                    //printf("Dados sobre a rodada %d: %d (esperado), %d (quebrados)\n", *rodada+1, r->ideal_ciclistas, quebrados);
+
+                    int r_num = rand()%100; // mudar para quantidade de ciclistas da rodada
+
+                    if(r_num < 5) { // o ciclista irá quebrar! :(
+                                    // adiciona na lista de threads a serem quebradas
+                                    // precisa saber em qual rodada está e quantos ciclistas 
+                                    // poderão passar pra próxima rodada
+
+                        printf("\nA thread %04d iniciou o processo de quebra.\n", *id);
+
+                        Node * new = (Node *)malloc(sizeof(Node));
+                        new->id = pthread_self();
+                        new->prox = NULL;
+                        new->rodada_pessoal = *rodada+1;
+                        
+                        // ATUALIZA STATUS DA THREAD, NÃO DELETAR AINDA
+                        assoc[*id][2] = BROKEN;
+
+                        if(!toDestroy) {
+                            printf("A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...\n");
+                            toDestroy = new;
+                        }
+                        else {
+                            Node * aux = toDestroy;
+                            
+                            while(aux->prox)
+                                aux = aux->prox;
+                            
+                            aux->prox = new;
                         }
 
-                        //printf("\n");
-                        
-                        aux->prox = new;
                     }
 
                 }
-
             }
+            
             // FIM QUEBRA
-
+            
+         
             if (atualiza_Classificacao(thread, rodada, id, 1) == TOBEDELETED)
             {
                 pista[pos_i][*pos_j] = 0;
@@ -451,7 +491,7 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
             atualizaRodada(thread, *rodada, total_ciclistas);
 
             // atualizando velocidade
-            *vel_atual = atualizaVel(*vel_atual, *rodada);
+            *vel_atual = atualizaVel(*vel_atual, *rodada, pthread_self());
 
             return 1;
 
@@ -460,7 +500,7 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
     return 0;
 }
 
-int atualizaVel(int vel_ant, int volta)
+int atualizaVel(int vel_ant, int volta, pthread_t t)
 {
     /* pensar em como identificar que estamos nas duas ultimas voltas */
     /* -> quando possuímos somente 2 ciclistas */
@@ -468,17 +508,28 @@ int atualizaVel(int vel_ant, int volta)
     /* 2 = 120ms = 30Km/h */
     /* 1 = 40ms = 90Km/k - Caso seja sorteado, tempo do programa será reduzido em 2*/
     int number;
+
+    //volta = 1;
+
+    if(finalistas[0] == t || finalistas[1] == t) {
+        // recebe velocidade 90km/h se sorteado
+        printf("*************************************************************\n");
+        printf("entrou aqui: A THREAD %ld É UMA DAS 2 FINALISTAS (RODADA: %d)!\n", t%1000, volta);
+        printf("*************************************************************\n");
+
+    }
+
     volta = 0; /* retirar qnd colocar condição das 2 ultimas voltas */
 
     number = rand() % 10;
 
-    if (volta) /* 2 ultimas voltas */             
-        if (number < 1)     /* 10% de chance de ser 90Km/h */ 
-        {
-            tempo = 20000;
-            /* precisa atualizar a velocidade do outro ciclista amigo */
-            return KM90;
-        }
+    //if (volta) /* 2 ultimas voltas */             
+    //    if (number < 1)     /* 10% de chance de ser 90Km/h */ 
+    //    {
+    //        tempo = 20000;
+    //        /* precisa atualizar a velocidade do outro ciclista amigo */
+    //        return KM90;
+    //    }
 
     if (vel_ant == KM30)    /* 80% de chance de ser 60km/h*/
         return (number < 8) ? KM60: KM30; 
@@ -533,6 +584,24 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
     
     if (rank_aux == NULL)
         return DELETED;
+
+    
+    // se nesta rodada o número de caras a serem friltrados for 2, a rodada ainda vai ser atualizada
+    // até chegar na atualizaVel, então preciso estar na rodada impar cuka filtragem de ciclistas seria 2
+    if( rank_aux->rodada%2 == 1 && rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados == 2) {
+        if(!finalistas[0]) {
+            finalistas[0] = pthread_self();
+            printf("Na rodada %d foi decidido que a thread %ld seria uma das finalistas(0)!\n", *rodada, thread);
+        }
+        else if(!finalistas[1]) {
+            finalistas[1] = pthread_self();
+            printf("Na rodada %d foi decidido que a thread %ld seria uma das finalistas(1)!\n", *rodada, thread);
+        }
+        else {
+            printf("O ciclista %ld chegou tarde demais na rodada %d !\n", thread, *rodada);
+        }
+
+    }
     
     if(assoc[*id][2] == BROKEN)  // agora sim vai entrar aqui
     {

@@ -4,10 +4,10 @@
 
 - [ ] Parece que uma rodada após o primeiro colocado ser determinado ainda roda (fiquei com preguiça de arrumar mas acho que não é grande problema, porque o ranking funciona)
 - [ ] Resolver bug de último colocado não ser colocado no ranking geral (caso sem quebras) (em desenvolvimento)
-- [ ] simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
 - [ ] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
 - [ ] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.
 - [ ] Inserir valores de consumo de memória! (ai)
+- [x] Simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
 - [x] Resolver bug de rankings de rodadas serem "Pulados" (caso com >2 quebras e >10 rodadas)
 - [x] Relatório da saída do programa informando a cada volta completada, as posições de todos os ciclistas naquela volta
 - [x] Inserir relógio no programa
@@ -52,3 +52,4 @@
 -  decidimos que a aleatoriedade no sorteio da thread a ser eliminada (caso esteja na mesma rodada e mesma posição final na mesma velocidade que outras tantas threads) se dá pela escolha do escalonador
 -  Quando o primeiro ciclista completar a quantidade ideal de voltas na pista, ele é retirado de pódio e tem sua posição registrada na volta indicada.
 - a quebra do ciclista é determinada na última posição da volta anterior à volta%6, visto que dessa forma há possibilidade de se organizar a quantidade de ciclistas que quebraram naquele turno pelo escalonador. Isso impossibilita a ocorrência de condições de corrida pois a atualização de ciclistas quebrados pra cada rodada é feita na área restrita à thread do escalonador
+- A quebra dos ciclistas considera a quantidade de ciclistas na VOLTA e não no programa. Isso permite que a quebra só ocorra nos casos em que "existem" 5 ciclistas de fato e não causa problemas quando, por exemplo, ainda existem mais de 5 ciclistas no programa mas o primeiro colocado já está chegando na última iteração (se fosse permitido quebrar com 5 ciclistas no programa, o primeiro colocado poderia ser quebrado, o que não é muito interessante)

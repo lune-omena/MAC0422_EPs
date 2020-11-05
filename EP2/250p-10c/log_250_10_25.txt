@@ -1,0 +1,186 @@
+EP2 - Ciclistas!
+
+Ranking - Rodada 1:
+   1o - 0009 
+   2o - 0008 
+   3o - 0005 
+   4o - 0007 
+   5o - 0006 
+   6o - 0004 
+   7o - 0003 
+   8o - 0002 
+   9o - 0000 
+  10o - 0001 
+
+
+Ranking - Rodada 2:
+   1o - 0006 
+   2o - 0008 
+   3o - 0007 
+   4o - 0005 
+   5o - 0009 
+   6o - 0004 
+   7o - 0001 
+   8o - 0003 
+   9o - 0000 
+  10o - 0002 
+
+
+Ranking - Rodada 3:
+   1o - 0006 
+   2o - 0009 
+   3o - 0005 
+   4o - 0008 
+   5o - 0007 
+   6o - 0001 
+   7o - 0004 
+   8o - 0003 
+   9o - 0000 
+
+
+Ranking - Rodada 4:
+   1o - 0009 
+   2o - 0006 
+   3o - 0008 
+   4o - 0004 
+   5o - 0001 
+   6o - 0005 
+   7o - 0007 
+   8o - 0003 
+   9o - 0000 
+
+Ops! O ciclista    3 quebrou na rodada 6! e será eliminado
+
+Ranking - Rodada 5:
+   1o - 0006 
+   2o - 0008 
+   3o - 0004 
+   4o - 0009 
+   5o - 0005 
+   6o - 0007 
+   7o - 0001 
+   8o - 0003 
+
+LISTA DELETADA 2
+
+Ranking - Rodada 6:
+   1o - 0006 
+   2o - 0008 
+   3o - 0004 
+   4o - 0005 
+   5o - 0009 
+   6o - 0001 
+   7o - 0007 
+
+
+Ranking - Rodada 7:
+   1o - 0004 
+   2o - 0008 
+   3o - 0006 
+   4o - 0001 
+   5o - 0009 
+   6o - 0005 
+
+
+Ranking - Rodada 8:
+   1o - 0004 
+   2o - 0008 
+   3o - 0006 
+   4o - 0001 
+   5o - 0005 
+   6o - 0009 
+
+
+Ranking - Rodada 9:
+   1o - 0004 
+   2o - 0006 
+   3o - 0001 
+   4o - 0005 
+   5o - 0008 
+
+
+Ranking - Rodada 10:
+   1o - 0004 
+   2o - 0001 
+   3o - 0008 
+   4o - 0006 
+   5o - 0005 
+
+
+Ranking - Rodada 11:
+   1o - 0004 
+   2o - 0001 
+   3o - 0006 
+   4o - 0008 
+
+
+Ranking - Rodada 12:
+   1o - 0004 
+   2o - 0001 
+   3o - 0006 
+   4o - 0008 
+
+Na rodada 13 foi decidido que a thread 140246632654592 seria uma das finalistas(0)!
+Na rodada 13 foi decidido que a thread 140246657832704 seria uma das finalistas(1)!
+O ciclista 140246615869184 chegou tarde demais na rodada 13 !
+
+Ranking - Rodada 13:
+   1o - 0004 
+   2o - 0001 
+   3o - 0006 
+
+
+Ranking - Rodada 14:
+   1o - 0001 
+   2o - 0004 
+   3o - 0006 
+
+
+Ranking - Rodada 15:
+   1o - 0001 
+   2o - 0004 
+
+
+Ranking - Rodada 16:
+   1o - 0001 
+   2o - 0004 
+
+OK!!
+********************************* RANKING ********************************* 
+
+Ciclista:    3 - Status: Quebrado - Rodada:   6
+Posicao:    1o - Ciclista: 0001 - Status: Eliminado - Rodada:  17 Tempo: 288.902s
+Posicao:    2o - Ciclista: 0004 - Status: Eliminado - Rodada:  16 Tempo: 304.108s
+Posicao:    3o - Ciclista: 0006 - Status: Eliminado - Rodada:  14 Tempo: 288.821s
+Posicao:    4o - Ciclista: 0008 - Status: Eliminado - Rodada:  12 Tempo: 242.875s
+Posicao:    5o - Ciclista: 0005 - Status: Eliminado - Rodada:  10 Tempo: 197.329s
+Posicao:    6o - Ciclista: 0009 - Status: Eliminado - Rodada:   8 Tempo: 166.946s
+Posicao:    7o - Ciclista: 0007 - Status: Eliminado - Rodada:   6 Tempo: 136.519s
+Posicao:    8o - Ciclista: 0000 - Status: Eliminado - Rodada:   4 Tempo: 90.939s
+Posicao:    9o - Ciclista: 0002 - Status: Eliminado - Rodada:   2 Tempo: 60.510s
+
+
+Tempo de execução: 304.167926
+	Command being timed: "./ep2 250 10"
+	User time (seconds): 2.58
+	System time (seconds): 1.18
+	Percent of CPU this job got: 1%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:04.17
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2048
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 120
+	Voluntary context switches: 45144
+	Involuntary context switches: 3230
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

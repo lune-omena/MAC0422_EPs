@@ -16,6 +16,9 @@
 #define KM30 1
 #define KM60 2
 #define KM90 3
+#define TEMPO60 600         /* ideal: 60000 */
+#define TEMPO90 200         /* ideal: 20000 */
+
 
 /* Variáveis globais */
 pthread_t ** pista;                 /* representa a pista dos ciclistas, possui [d][10] casas */
@@ -33,7 +36,7 @@ int ciclistas_atuais = -1;          /* variável para que a main espere todas th
 
 int ind_full = 0;                   /* índice da pista que se encontra "cheio" */
 int tam_pista = 0;                  /* é igual a d */
-double tempo = 60000;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
+double tempo = TEMPO60;               /* 1.000.000 = 1seg. Ideal: 60.000 = 60ms ; */
 int total_quebrados = 0;
 
 int t_ultimos = 0;                  /* identifica se são os últimos a passar para permitir rodar */
@@ -504,6 +507,7 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
             {   // EITA CARALHA
                 *vel_atual = KM60;
 
+                pista[pos_i][*pos_j] = 0;
                 // preciso atualizar para não ter chance de correr a 90km/h
                 // se o segundo não estiver a 90km/h
                 if(vel_ultimos[0] == pthread_self())
@@ -572,12 +576,12 @@ int atualizaVel(int vel_ant, int volta, pthread_t t)
             t_ultimos = 1; // esta variável pode chegar aqui como 0, ela precisa ser atualizada sempre aqui
             /* printf("a thread %ld está a 90km/h\n", t%1000); */
             vel_ultimos[me] = KM90;
-            tempo = 20000;
+            tempo = TEMPO90;
             return KM90;
         }
         else if(vel_ultimos[you] != KM90)
         { /* checo se os dois não estão */
-            tempo = 60000;
+            tempo = TEMPO60;
             t_ultimos = 0;
 
             /* printf("As duas threads estão a menos que 90km/h \n"); */
@@ -843,7 +847,7 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
             if(finalistas[0] == pthread_self() || finalistas[1] == pthread_self())
             {
                 /* printf("A VELOCIDADE VAI VOLTAR AO NORMAL COM CERTEZA AGORA!\n"); */
-                tempo = 60000;
+                tempo = TEMPO60;
                 t_ultimos = 0;
                 segundo_acabou = 1;
             }

@@ -3,11 +3,11 @@
 ###### Próximas a serem implementadas
 
 - [x] Parece que uma rodada após o primeiro colocado ser determinado ainda roda (corrigida a situação do primeiro - MUDEI A IMPLEMENTAÇÃO PARA PODER ESCREVER NO RANKING!! veja decisões de implementação)
-- [ ] Resolver bug de último colocado não ser colocado no ranking geral (olhar decisão de implementação) (ainda não está funcionando com poucos ciclistas (10 :/ ainda não sei pq))
+- [x] Resolver bug de último colocado não ser colocado no ranking geral (olhar decisão de implementação)
 - [não] Atualizar velocidade de ciclista amigo que não teve sua velocidade alterada para 90km/h nas 2 ultimas voltas.
 ^(eu não fiz isso, ele só atualiza a velocidade na hora que chegar na função de velocidade)
-- [x] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.
-- [x] Inserir valores de consumo de memória! Comando: /usr/bin/time -v ./ep2 250 10 &> log_250_10_1.txt &
+- [ ] Implementar opção de debug (já meio implementada) que informa a cada 60ms (e 20ms nas duas últimas voltas, caso alguém pedale a 90Km/h) o status de cada posição da pista, ou seja, o identificador do(s) ciclista(s) naquela posição ou a informação de que não há nenhum ciclista ali.
+- [ ] Inserir valores de consumo de memória! (ai)
 - [x] Simular a corrida em intervalos de 60ms até as duas últimas voltas. Caso 90km/h...
 - [x] Resolver bug de rankings de rodadas serem "Pulados" (caso com >2 quebras e >10 rodadas)
 - [x] Relatório da saída do programa informando a cada volta completada, as posições de todos os ciclistas naquela volta
@@ -33,7 +33,7 @@
 
 ### Exibição de resultados
 
-- [ ] Selecionar 3 tamanhos de pista (pequena, média e grande) e 3 quantidades de ciclistas (poucos, normal e muitos) -> (10, 100, 1000) e (250, 400, 550) ?
+- [ ] Selecionar 3 tamanhos de pista (pequena, média e grande) e 3 quantidades de ciclistas (poucos, normal e muitos) -> (250, 500, 750) e (250, 500, 750) ?
 - [ ] Gráficos de barra que facilitem observar qual foi o impacto no uso de memória e no tempo de execução do programa ao aumentar tanto o tempo de simulação quanto o nro de threads
 - [ ] Intervalo de confiança de 30 medições com nı́vel de confiança de 95%
 - [ ] Discuta se os resultados saı́ram conforme o esperado
@@ -56,5 +56,3 @@
 - A quebra dos ciclistas considera a quantidade de ciclistas na VOLTA e não no programa. Isso permite que a quebra só ocorra nos casos em que "existem" 5 ciclistas de fato e não causa problemas quando, por exemplo, ainda existem mais de 5 ciclistas no programa mas o primeiro colocado já está chegando na última iteração (se fosse permitido quebrar com 5 ciclistas no programa, o primeiro colocado poderia ser quebrado, o que não é muito interessante)
 - para incluir a thread vencedora no ranking, tive que adicionar o código das linhas 730 - 766 para já tratar do primeiro colocado se ele for vencedor. para isso eu acabo checando na próxima volta da rodada em que é determinado que ele é o único correndo (p. exemplo  na rodada 74 o penúltimo ciclista foi retirado, então será impresso que na rodada 75 o ciclista x é o vencedor)
 - caso haja mudança de velocidade repentina de 20ms para 60ms, ocorre quebra do la\ço e pode ser que alguns ciclistas de 30 ou 60km/h esperem menos do que deveriam
-- Ultrapassagem verifica se há trecho para ultrapassegem em qualquer posição da pista para o ciclista. Caso haja, verifica se ele consegue se mover para a posicao a esquerda à frente ou à direita a frente. Se não conseguir, ele vai para a posição mais proxima possível.
-

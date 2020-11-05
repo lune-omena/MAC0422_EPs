@@ -16,8 +16,8 @@
 #define KM30 1
 #define KM60 2
 #define KM90 3
-#define TEMPO60 600         /* ideal: 60000 */
-#define TEMPO90 200         /* ideal: 20000 */
+#define TEMPO60 60000         /* ideal: 60000 */
+#define TEMPO90 20000         /* ideal: 20000 */
 
 
 /* Variáveis globais */
@@ -72,12 +72,12 @@ int main(int argc, char * argv[])
     tam_pista = d;
     voltas_max = 2*(n-1);
     total_ciclistas = num_ciclistas = n;
-
+/*
     if(d < 250) {
         printf("Insira um comprimento de velódromo (d) maior ou igual a 250.\n");
         exit(EXIT_FAILURE);
     }
-    else if(n < 5 || n > 5*d ) {
+    else */if(n < 5 || n > 5*d ) {
         printf("Insira um número de ciclistas (n) maior que 5 e menor ou igual a (d*5).\n");
         exit(EXIT_FAILURE);
     }
@@ -156,21 +156,15 @@ int main(int argc, char * argv[])
             if(toDestroy) {
                 quebrou();
 
-                if(!toDestroy)
-                    printf("LISTA DELETADA 2\n");
-                else {
-                    printf("Por algum motivo isso não funcionou...\n");
+                if(toDestroy)
+                {
                     Node * aux = toDestroy;
-
-                    printf("Ainda possui: ");
 
                     while(aux)
                     {
-                        printf("%ld (%d) ", aux->id%1000, aux->rodada_pessoal);
                         aux = aux->prox;
                     }
 
-                    printf("\n");
                     toDestroy = NULL;
                 }
             }
@@ -188,8 +182,6 @@ int main(int argc, char * argv[])
             printf("\n Erro ao juntar a thread!");
             exit(1);
         }
-
-    printf("OK!!\n");
 
     /* Fim da execução */
     mostra_Ranking();
@@ -573,7 +565,7 @@ int atualizaVel(int vel_ant, int volta, pthread_t t)
             you = 0;
         }
          
-        if (number < 5)     /* 10% de chance de ser 90Km/h */ 
+        if (number < 1)     /* 10% de chance de ser 90Km/h */ 
         {
             t_ultimos = 1; // esta variável pode chegar aqui como 0, ela precisa ser atualizada sempre aqui
             /* printf("a thread %ld está a 90km/h\n", t%1000); */
@@ -669,21 +661,21 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
     if( rank_aux->rodada%2 == 1 && rank_aux->ideal_ciclistas - 1 - rank_aux->quebrados == 2) {
         if(!finalistas[0]) {
             finalistas[0] = pthread_self();
-            printf("Na rodada %d foi decidido que a thread %ld seria uma das finalistas(0)!\n", *rodada, thread);
+            //printf("Na rodada %d foi decidido que a thread %ld seria uma das finalistas(0)!\n", *rodada, thread);
         }
         else if(!finalistas[1]) {
             finalistas[1] = pthread_self();
-            printf("Na rodada %d foi decidido que a thread %ld seria uma das finalistas(1)!\n", *rodada, thread);
+            //printf("Na rodada %d foi decidido que a thread %ld seria uma das finalistas(1)!\n", *rodada, thread);
         }
         else {
-            printf("O ciclista %ld chegou tarde demais na rodada %d !\n", thread, *rodada);
+            //printf("O ciclista %ld chegou tarde demais na rodada %d !\n", thread, *rodada);
         }
 
     }
     
     if(assoc[*id][2] == BROKEN)  
     {
-        printf("Ops! O ciclista %4d quebrou na rodada %d! e será eliminado\n", *id, *rodada+1);
+        printf("Ops! O ciclista %04d quebrou na rodada %d! e será eliminado\n", *id, *rodada+1);
 
         /* Adiciona na classificação geral */
         general->status[general->ultimo_inserido] = BROKEN;
@@ -801,7 +793,6 @@ int atualiza_Classificacao(pthread_t thread, int * rodada, int * id, int verbose
         // senão já existiu primeiro termo mas foi deletado (então não precisa alocar mais memória)
         // eu não aloco mais, também, porque quero guardar o valor de quebrados
 
-        //printf("Ideal ciclistas: %d  - ranking: %d\n", rank_new->ideal_ciclistas, *rodada + 1);
     }
     else
     {
@@ -936,9 +927,6 @@ int quebrou() {
                 quebra_rodada[i][1] = 1;
             }
 
-            // ATUALIZA STATUS DA THREAD
-            //assoc[findThread(d_aux->id)][2] = BROKEN;
-
             j++;
             d_aux = d_aux->prox;
         }
@@ -985,9 +973,6 @@ int quebrou() {
                 j++;
             }
 
-            // TRATAR COMO DELETAR ESSAS QUE QUEBRARAM
-            // TRATAR O VETOR DE CÉLULAS QUE CONTÉM OS NÚMEROS VAGOS COMO 0!
-
             r_aux = r_aux->prox;
         }
 
@@ -1009,7 +994,7 @@ int quebrou() {
 
         toDestroy = NULL;
 
-        if(!toDestroy)
+        //if(!toDestroy)
             /* printf("LISTA DELETADA 1\n"); */
 
         return 1;

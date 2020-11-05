@@ -1,0 +1,6430 @@
+EP2 - Ciclistas!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   1 ***
+
+Ranking - Rodada 1:
+   1o - 0096 
+   2o - 0095 
+   3o - 0097 
+   4o - 0099 
+   5o - 0098 
+   6o - 0092 
+   7o - 0091 
+   8o - 0090 
+   9o - 0093 
+  10o - 0094 
+  11o - 0087 
+  12o - 0086 
+  13o - 0085 
+  14o - 0089 
+  15o - 0088 
+  16o - 0082 
+  17o - 0081 
+  18o - 0083 
+  19o - 0080 
+  20o - 0079 
+  21o - 0084 
+  22o - 0075 
+  23o - 0078 
+  24o - 0073 
+  25o - 0074 
+  26o - 0070 
+  27o - 0077 
+  28o - 0065 
+  29o - 0068 
+  30o - 0071 
+  31o - 0066 
+  32o - 0076 
+  33o - 0067 
+  34o - 0060 
+  35o - 0069 
+  36o - 0061 
+  37o - 0072 
+  38o - 0062 
+  39o - 0063 
+  40o - 0056 
+  41o - 0064 
+  42o - 0057 
+  43o - 0059 
+  44o - 0055 
+  45o - 0058 
+  46o - 0054 
+  47o - 0053 
+  48o - 0046 
+  49o - 0050 
+  50o - 0047 
+  51o - 0045 
+  52o - 0051 
+  53o - 0052 
+  54o - 0048 
+  55o - 0040 
+  56o - 0049 
+  57o - 0044 
+  58o - 0036 
+  59o - 0041 
+  60o - 0039 
+  61o - 0037 
+  62o - 0035 
+  63o - 0042 
+  64o - 0038 
+  65o - 0033 
+  66o - 0043 
+  67o - 0034 
+  68o - 0031 
+  69o - 0028 
+  70o - 0030 
+  71o - 0026 
+  72o - 0025 
+  73o - 0029 
+  74o - 0027 
+  75o - 0032 
+  76o - 0022 
+  77o - 0021 
+  78o - 0023 
+  79o - 0019 
+  80o - 0015 
+  81o - 0024 
+  82o - 0020 
+  83o - 0018 
+  84o - 0016 
+  85o - 0009 
+  86o - 0013 
+  87o - 0017 
+  88o - 0012 
+  89o - 0011 
+  90o - 0005 
+  91o - 0008 
+  92o - 0014 
+  93o - 0010 
+  94o - 0001 
+  95o - 0007 
+  96o - 0003 
+  97o - 0000 
+  98o - 0004 
+  99o - 0006 
+ 100o - 0002 
+
+  98 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   2 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   3 ***
+
+Ranking - Rodada 2:
+   1o - 0098 
+   2o - 0096 
+   3o - 0095 
+   4o - 0099 
+   5o - 0097 
+   6o - 0090 
+   7o - 0094 
+   8o - 0091 
+   9o - 0092 
+  10o - 0088 
+  11o - 0089 
+  12o - 0085 
+  13o - 0086 
+  14o - 0087 
+  15o - 0081 
+  16o - 0078 
+  17o - 0075 
+  18o - 0080 
+  19o - 0084 
+  20o - 0079 
+  21o - 0077 
+  22o - 0073 
+  23o - 0070 
+  24o - 0067 
+  25o - 0068 
+  26o - 0065 
+  27o - 0066 
+  28o - 0071 
+  29o - 0061 
+  30o - 0060 
+  31o - 0072 
+  32o - 0069 
+  33o - 0059 
+  34o - 0064 
+  35o - 0057 
+  36o - 0063 
+  37o - 0056 
+  38o - 0054 
+  39o - 0055 
+  40o - 0058 
+  41o - 0051 
+  42o - 0050 
+  43o - 0047 
+  44o - 0045 
+  45o - 0049 
+  46o - 0048 
+  47o - 0052 
+  48o - 0040 
+  49o - 0044 
+  50o - 0042 
+  51o - 0041 
+  52o - 0035 
+  53o - 0033 
+  54o - 0043 
+  55o - 0038 
+  56o - 0034 
+  57o - 0029 
+  58o - 0025 
+  59o - 0026 
+  60o - 0031 
+  61o - 0030 
+  62o - 0021 
+  63o - 0023 
+  64o - 0022 
+  65o - 0027 
+  66o - 0032 
+  67o - 0020 
+  68o - 0024 
+  69o - 0016 
+  70o - 0018 
+  71o - 0019 
+  72o - 0012 
+  73o - 0017 
+  74o - 0009 
+  75o - 0014 
+  76o - 0008 
+  77o - 0011 
+  78o - 0010 
+  79o - 0001 
+  80o - 0007 
+  81o - 0000 
+  82o - 0006 
+  83o - 0003 
+  84o - 0002 
+  85o - 0004 
+  86o - 0093 
+  87o - 0082 
+  88o - 0083 
+  89o - 0074 
+  90o - 0076 
+  91o - 0062 
+  92o - 0053 
+  93o - 0046 
+  94o - 0036 
+  95o - 0039 
+  96o - 0037 
+  97o - 0028 
+  98o - 0015 
+  99o - 0013 
+ 100o - 0005 
+
+Ciclista    5 será deletado...
+
+O ciclista 0005 foi eliminado da corrida...
+  94 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   4 ***
+  94 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   5 ***
+
+Ranking - Rodada 3:
+   1o - 0096 
+   2o - 0097 
+   3o - 0094 
+   4o - 0092 
+   5o - 0087 
+   6o - 0085 
+   7o - 0081 
+   8o - 0078 
+   9o - 0079 
+  10o - 0075 
+  11o - 0084 
+  12o - 0080 
+  13o - 0077 
+  14o - 0073 
+  15o - 0067 
+  16o - 0071 
+  17o - 0065 
+  18o - 0066 
+  19o - 0060 
+  20o - 0072 
+  21o - 0059 
+  22o - 0057 
+  23o - 0056 
+  24o - 0055 
+  25o - 0054 
+  26o - 0045 
+  27o - 0050 
+  28o - 0051 
+  29o - 0047 
+  30o - 0049 
+  31o - 0040 
+  32o - 0044 
+  33o - 0035 
+  34o - 0033 
+  35o - 0034 
+  36o - 0025 
+  37o - 0026 
+  38o - 0031 
+  39o - 0029 
+  40o - 0030 
+  41o - 0021 
+  42o - 0023 
+  43o - 0020 
+  44o - 0024 
+  45o - 0019 
+  46o - 0018 
+  47o - 0016 
+  48o - 0014 
+  49o - 0003 
+  50o - 0004 
+  51o - 0002 
+  52o - 0099 
+  53o - 0095 
+  54o - 0098 
+  55o - 0090 
+  56o - 0091 
+  57o - 0086 
+  58o - 0088 
+  59o - 0089 
+  60o - 0082 
+  61o - 0083 
+  62o - 0074 
+  63o - 0070 
+  64o - 0068 
+  65o - 0076 
+  66o - 0069 
+  67o - 0061 
+  68o - 0064 
+  69o - 0063 
+  70o - 0062 
+  71o - 0058 
+  72o - 0053 
+  73o - 0052 
+  74o - 0048 
+  75o - 0039 
+  76o - 0036 
+  77o - 0041 
+  78o - 0042 
+  79o - 0043 
+  80o - 0038 
+  81o - 0028 
+  82o - 0032 
+  83o - 0027 
+  84o - 0022 
+  85o - 0015 
+  86o - 0012 
+  87o - 0013 
+  88o - 0017 
+  89o - 0009 
+  90o - 0011 
+  91o - 0008 
+  92o - 0010 
+  93o - 0007 
+  94o - 0006 
+  95o - 0001 
+  96o - 0000 
+  97o - 0093 
+  98o - 0046 
+  99o - 0037 
+
+  66 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   6 ***
+
+A thread 0019 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   19 quebrou na rodada 6! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 6: 1
+o número de elementos a passar dessa rodada atualizado: 96
+(ou seja: 100 (total) - 3 (r/2) - 1 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0019 quebrou na rodada 6!
+  59 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   7 ***
+
+Ranking - Rodada 4:
+   1o - 0094 
+   2o - 0092 
+   3o - 0087 
+   4o - 0081 
+   5o - 0075 
+   6o - 0084 
+   7o - 0078 
+   8o - 0073 
+   9o - 0079 
+  10o - 0077 
+  11o - 0066 
+  12o - 0059 
+  13o - 0057 
+  14o - 0056 
+  15o - 0055 
+  16o - 0054 
+  17o - 0047 
+  18o - 0051 
+  19o - 0044 
+  20o - 0034 
+  21o - 0026 
+  22o - 0030 
+  23o - 0023 
+  24o - 0021 
+  25o - 0024 
+  26o - 0018 
+  27o - 0019 
+  28o - 0014 
+  29o - 0002 
+  30o - 0004 
+  31o - 0095 
+  32o - 0098 
+  33o - 0099 
+  34o - 0096 
+  35o - 0097 
+  36o - 0085 
+  37o - 0086 
+  38o - 0089 
+  39o - 0088 
+  40o - 0082 
+  41o - 0080 
+  42o - 0065 
+  43o - 0068 
+  44o - 0071 
+  45o - 0067 
+  46o - 0060 
+  47o - 0069 
+  48o - 0072 
+  49o - 0061 
+  50o - 0064 
+  51o - 0058 
+  52o - 0045 
+  53o - 0050 
+  54o - 0053 
+  55o - 0049 
+  56o - 0040 
+  57o - 0052 
+  58o - 0035 
+  59o - 0039 
+  60o - 0036 
+  61o - 0042 
+  62o - 0033 
+  63o - 0041 
+  64o - 0043 
+  65o - 0025 
+  66o - 0028 
+  67o - 0031 
+  68o - 0029 
+  69o - 0022 
+  70o - 0038 
+  71o - 0020 
+  72o - 0015 
+  73o - 0016 
+  74o - 0013 
+  75o - 0012 
+  76o - 0009 
+  77o - 0010 
+  78o - 0008 
+  79o - 0027 
+  80o - 0001 
+  81o - 0000 
+  82o - 0006 
+  83o - 0007 
+  84o - 0003 
+  85o - 0091 
+  86o - 0093 
+  87o - 0090 
+  88o - 0083 
+  89o - 0070 
+  90o - 0074 
+  91o - 0076 
+  92o - 0063 
+  93o - 0062 
+  94o - 0046 
+  95o - 0048 
+  96o - 0032 
+  97o - 0017 
+  98o - 0011 
+  99o - 0037 
+
+Ciclista   37 será deletado...
+
+O ciclista 0037 foi eliminado da corrida...
+
+A thread 0033 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   33 quebrou na rodada 6! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 6: 2
+o número de elementos a passar dessa rodada atualizado: 95
+(ou seja: 100 (total) - 3 (r/2) - 2 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0033 quebrou na rodada 6!
+
+A thread 0017 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   17 quebrou na rodada 6! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 6: 3
+o número de elementos a passar dessa rodada atualizado: 94
+(ou seja: 100 (total) - 3 (r/2) - 3 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0017 quebrou na rodada 6!
+  59 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   8 ***
+
+Ranking - Rodada 5:
+   1o - 0094 
+   2o - 0087 
+   3o - 0081 
+   4o - 0075 
+   5o - 0073 
+   6o - 0079 
+   7o - 0066 
+   8o - 0059 
+   9o - 0055 
+  10o - 0051 
+  11o - 0044 
+  12o - 0034 
+  13o - 0026 
+  14o - 0023 
+  15o - 0021 
+  16o - 0018 
+  17o - 0024 
+  18o - 0004 
+  19o - 0097 
+  20o - 0092 
+  21o - 0086 
+  22o - 0088 
+  23o - 0080 
+  24o - 0084 
+  25o - 0077 
+  26o - 0078 
+  27o - 0068 
+  28o - 0067 
+  29o - 0071 
+  30o - 0065 
+  31o - 0060 
+  32o - 0069 
+  33o - 0072 
+  34o - 0061 
+  35o - 0057 
+  36o - 0056 
+  37o - 0064 
+  38o - 0054 
+  39o - 0047 
+  40o - 0053 
+  41o - 0045 
+  42o - 0040 
+  43o - 0049 
+  44o - 0039 
+  45o - 0035 
+  46o - 0042 
+  47o - 0043 
+  48o - 0029 
+  49o - 0030 
+  50o - 0031 
+  51o - 0028 
+  52o - 0022 
+  53o - 0038 
+  54o - 0015 
+  55o - 0019 
+  56o - 0020 
+  57o - 0012 
+  58o - 0013 
+  59o - 0016 
+  60o - 0008 
+  61o - 0014 
+  62o - 0010 
+  63o - 0000 
+  64o - 0007 
+  65o - 0002 
+  66o - 0099 
+  67o - 0096 
+  68o - 0095 
+  69o - 0098 
+  70o - 0093 
+  71o - 0090 
+  72o - 0091 
+  73o - 0085 
+  74o - 0089 
+  75o - 0082 
+  76o - 0083 
+  77o - 0070 
+  78o - 0074 
+  79o - 0076 
+  80o - 0062 
+  81o - 0063 
+  82o - 0058 
+  83o - 0046 
+  84o - 0050 
+  85o - 0048 
+  86o - 0052 
+  87o - 0036 
+  88o - 0033 
+  89o - 0041 
+  90o - 0025 
+  91o - 0032 
+  92o - 0009 
+  93o - 0017 
+  94o - 0027 
+  95o - 0006 
+  96o - 0001 
+  97o - 0003 
+  98o - 0011 
+
+  59 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA   9 ***
+
+Ranking - Rodada 6:
+   1o - 0066 
+   2o - 0059 
+   3o - 0055 
+   4o - 0051 
+   5o - 0044 
+   6o - 0034 
+   7o - 0021 
+   8o - 0018 
+   9o - 0024 
+  10o - 0004 
+  11o - 0097 
+  12o - 0094 
+  13o - 0092 
+  14o - 0086 
+  15o - 0087 
+  16o - 0081 
+  17o - 0075 
+  18o - 0084 
+  19o - 0080 
+  20o - 0078 
+  21o - 0073 
+  22o - 0079 
+  23o - 0065 
+  24o - 0067 
+  25o - 0068 
+  26o - 0069 
+  27o - 0060 
+  28o - 0061 
+  29o - 0056 
+  30o - 0057 
+  31o - 0054 
+  32o - 0047 
+  33o - 0045 
+  34o - 0040 
+  35o - 0049 
+  36o - 0039 
+  37o - 0035 
+  38o - 0043 
+  39o - 0028 
+  40o - 0030 
+  41o - 0026 
+  42o - 0023 
+  43o - 0038 
+  44o - 0013 
+  45o - 0012 
+  46o - 0010 
+  47o - 0016 
+  48o - 0014 
+  49o - 0007 
+  50o - 0000 
+  51o - 0002 
+  52o - 0095 
+  53o - 0096 
+  54o - 0098 
+  55o - 0099 
+  56o - 0091 
+  57o - 0090 
+  58o - 0085 
+  59o - 0088 
+  60o - 0082 
+  61o - 0077 
+  62o - 0071 
+  63o - 0072 
+  64o - 0063 
+  65o - 0064 
+  66o - 0050 
+  67o - 0046 
+  68o - 0053 
+  69o - 0048 
+  70o - 0036 
+  71o - 0042 
+  72o - 0031 
+  73o - 0029 
+  74o - 0025 
+  75o - 0022 
+  76o - 0015 
+  77o - 0020 
+  78o - 0027 
+  79o - 0008 
+  80o - 0001 
+  81o - 0006 
+  82o - 0003 
+  83o - 0093 
+  84o - 0089 
+  85o - 0083 
+  86o - 0070 
+  87o - 0074 
+  88o - 0076 
+  89o - 0062 
+  90o - 0058 
+  91o - 0052 
+  92o - 0041 
+  93o - 0032 
+  94o - 0009 
+  95o - 0011 
+
+Ciclista   11 será deletado...
+
+O ciclista 0011 foi eliminado da corrida...
+  59 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  10 ***
+
+Ranking - Rodada 7:
+   1o - 0059 
+   2o - 0055 
+   3o - 0044 
+   4o - 0034 
+   5o - 0021 
+   6o - 0024 
+   7o - 0097 
+   8o - 0094 
+   9o - 0092 
+  10o - 0087 
+  11o - 0084 
+  12o - 0080 
+  13o - 0075 
+  14o - 0078 
+  15o - 0079 
+  16o - 0065 
+  17o - 0068 
+  18o - 0066 
+  19o - 0067 
+  20o - 0069 
+  21o - 0057 
+  22o - 0054 
+  23o - 0051 
+  24o - 0045 
+  25o - 0040 
+  26o - 0049 
+  27o - 0043 
+  28o - 0030 
+  29o - 0026 
+  30o - 0028 
+  31o - 0038 
+  32o - 0018 
+  33o - 0013 
+  34o - 0012 
+  35o - 0014 
+  36o - 0010 
+  37o - 0016 
+  38o - 0004 
+  39o - 0000 
+  40o - 0099 
+  41o - 0098 
+  42o - 0095 
+  43o - 0091 
+  44o - 0090 
+  45o - 0086 
+  46o - 0088 
+  47o - 0081 
+  48o - 0077 
+  49o - 0073 
+  50o - 0071 
+  51o - 0060 
+  52o - 0072 
+  53o - 0061 
+  54o - 0064 
+  55o - 0056 
+  56o - 0047 
+  57o - 0050 
+  58o - 0053 
+  59o - 0048 
+  60o - 0035 
+  61o - 0039 
+  62o - 0042 
+  63o - 0031 
+  64o - 0023 
+  65o - 0022 
+  66o - 0015 
+  67o - 0020 
+  68o - 0007 
+  69o - 0001 
+  70o - 0003 
+  71o - 0002 
+  72o - 0006 
+  73o - 0096 
+  74o - 0093 
+  75o - 0085 
+  76o - 0089 
+  77o - 0082 
+  78o - 0083 
+  79o - 0070 
+  80o - 0076 
+  81o - 0063 
+  82o - 0058 
+  83o - 0046 
+  84o - 0052 
+  85o - 0036 
+  86o - 0041 
+  87o - 0029 
+  88o - 0025 
+  89o - 0032 
+  90o - 0009 
+  91o - 0027 
+  92o - 0008 
+  93o - 0074 
+  94o - 0062 
+
+  59 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  11 ***
+
+Ranking - Rodada 8:
+   1o - 0059 
+   2o - 0094 
+   3o - 0092 
+   4o - 0087 
+   5o - 0075 
+   6o - 0084 
+   7o - 0080 
+   8o - 0065 
+   9o - 0066 
+  10o - 0068 
+  11o - 0055 
+  12o - 0054 
+  13o - 0045 
+  14o - 0044 
+  15o - 0040 
+  16o - 0034 
+  17o - 0043 
+  18o - 0026 
+  19o - 0030 
+  20o - 0021 
+  21o - 0038 
+  22o - 0018 
+  23o - 0013 
+  24o - 0012 
+  25o - 0014 
+  26o - 0010 
+  27o - 0024 
+  28o - 0000 
+  29o - 0004 
+  30o - 0097 
+  31o - 0095 
+  32o - 0098 
+  33o - 0090 
+  34o - 0088 
+  35o - 0081 
+  36o - 0078 
+  37o - 0073 
+  38o - 0077 
+  39o - 0079 
+  40o - 0071 
+  41o - 0067 
+  42o - 0069 
+  43o - 0060 
+  44o - 0072 
+  45o - 0056 
+  46o - 0061 
+  47o - 0057 
+  48o - 0051 
+  49o - 0047 
+  50o - 0053 
+  51o - 0048 
+  52o - 0049 
+  53o - 0035 
+  54o - 0039 
+  55o - 0042 
+  56o - 0028 
+  57o - 0023 
+  58o - 0015 
+  59o - 0016 
+  60o - 0002 
+  61o - 0003 
+  62o - 0099 
+  63o - 0096 
+  64o - 0091 
+  65o - 0093 
+  66o - 0085 
+  67o - 0086 
+  68o - 0082 
+  69o - 0083 
+  70o - 0070 
+  71o - 0076 
+  72o - 0063 
+  73o - 0064 
+  74o - 0058 
+  75o - 0050 
+  76o - 0041 
+  77o - 0031 
+  78o - 0029 
+  79o - 0025 
+  80o - 0022 
+  81o - 0020 
+  82o - 0009 
+  83o - 0008 
+  84o - 0027 
+  85o - 0007 
+  86o - 0001 
+  87o - 0006 
+  88o - 0089 
+  89o - 0074 
+  90o - 0062 
+  91o - 0046 
+  92o - 0052 
+  93o - 0036 
+  94o - 0032 
+
+Ciclista   32 será deletado...
+
+O ciclista 0032 foi eliminado da corrida...
+  66 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  12 ***
+
+A thread 0048 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   48 quebrou na rodada 12! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 12: 4
+o número de elementos a passar dessa rodada atualizado: 90
+(ou seja: 100 (total) - 6 (r/2) - 4 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0048 quebrou na rodada 12!
+
+Ranking - Rodada 9:
+   1o - 0059 
+   2o - 0066 
+   3o - 0054 
+   4o - 0040 
+   5o - 0045 
+   6o - 0021 
+   7o - 0013 
+   8o - 0004 
+   9o - 0095 
+  10o - 0097 
+  11o - 0094 
+  12o - 0090 
+  13o - 0092 
+  14o - 0087 
+  15o - 0075 
+  16o - 0084 
+  17o - 0078 
+  18o - 0077 
+  19o - 0080 
+  20o - 0065 
+  21o - 0079 
+  22o - 0069 
+  23o - 0072 
+  24o - 0068 
+  25o - 0057 
+  26o - 0056 
+  27o - 0055 
+  28o - 0061 
+  29o - 0048 
+  30o - 0051 
+  31o - 0044 
+  32o - 0035 
+  33o - 0034 
+  34o - 0043 
+  35o - 0026 
+  36o - 0028 
+  37o - 0030 
+  38o - 0015 
+  39o - 0038 
+  40o - 0018 
+  41o - 0012 
+  42o - 0014 
+  43o - 0010 
+  44o - 0024 
+  45o - 0003 
+  46o - 0002 
+  47o - 0000 
+  48o - 0096 
+  49o - 0098 
+  50o - 0093 
+  51o - 0091 
+  52o - 0086 
+  53o - 0085 
+  54o - 0088 
+  55o - 0081 
+  56o - 0073 
+  57o - 0071 
+  58o - 0067 
+  59o - 0060 
+  60o - 0063 
+  61o - 0064 
+  62o - 0058 
+  63o - 0047 
+  64o - 0053 
+  65o - 0049 
+  66o - 0039 
+  67o - 0050 
+  68o - 0042 
+  69o - 0041 
+  70o - 0031 
+  71o - 0029 
+  72o - 0023 
+  73o - 0020 
+  74o - 0009 
+  75o - 0008 
+  76o - 0016 
+  77o - 0007 
+  78o - 0006 
+  79o - 0099 
+  80o - 0082 
+  81o - 0083 
+  82o - 0070 
+  83o - 0074 
+  84o - 0076 
+  85o - 0062 
+  86o - 0052 
+  87o - 0046 
+  88o - 0036 
+  89o - 0025 
+  90o - 0022 
+  91o - 0027 
+  92o - 0001 
+  93o - 0089 
+
+  66 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  13 ***
+
+A thread 0038 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   38 quebrou na rodada 12! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 12: 5
+o número de elementos a passar dessa rodada atualizado: 89
+(ou seja: 100 (total) - 6 (r/2) - 5 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0038 quebrou na rodada 12!
+
+A thread 0016 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   16 quebrou na rodada 12! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 12: 6
+o número de elementos a passar dessa rodada atualizado: 88
+(ou seja: 100 (total) - 6 (r/2) - 6 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0016 quebrou na rodada 12!
+
+A thread 0070 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   70 quebrou na rodada 12! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 12: 7
+o número de elementos a passar dessa rodada atualizado: 87
+(ou seja: 100 (total) - 6 (r/2) - 7 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0070 quebrou na rodada 12!
+  66 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  14 ***
+
+A thread 0025 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   25 quebrou na rodada 12! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 12: 8
+o número de elementos a passar dessa rodada atualizado: 86
+(ou seja: 100 (total) - 6 (r/2) - 8 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0025 quebrou na rodada 12!
+
+A thread 0027 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   27 quebrou na rodada 12! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 12: 9
+o número de elementos a passar dessa rodada atualizado: 85
+(ou seja: 100 (total) - 6 (r/2) - 9 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0027 quebrou na rodada 12!
+
+Ranking - Rodada 10:
+   1o - 0059 
+   2o - 0066 
+   3o - 0054 
+   4o - 0045 
+   5o - 0021 
+   6o - 0013 
+   7o - 0004 
+   8o - 0097 
+   9o - 0095 
+  10o - 0092 
+  11o - 0087 
+  12o - 0084 
+  13o - 0078 
+  14o - 0080 
+  15o - 0065 
+  16o - 0068 
+  17o - 0055 
+  18o - 0061 
+  19o - 0048 
+  20o - 0051 
+  21o - 0040 
+  22o - 0044 
+  23o - 0043 
+  24o - 0034 
+  25o - 0030 
+  26o - 0028 
+  27o - 0026 
+  28o - 0038 
+  29o - 0018 
+  30o - 0014 
+  31o - 0024 
+  32o - 0003 
+  33o - 0002 
+  34o - 0098 
+  35o - 0096 
+  36o - 0090 
+  37o - 0094 
+  38o - 0091 
+  39o - 0085 
+  40o - 0088 
+  41o - 0086 
+  42o - 0081 
+  43o - 0075 
+  44o - 0073 
+  45o - 0077 
+  46o - 0079 
+  47o - 0067 
+  48o - 0069 
+  49o - 0072 
+  50o - 0063 
+  51o - 0057 
+  52o - 0056 
+  53o - 0047 
+  54o - 0053 
+  55o - 0049 
+  56o - 0050 
+  57o - 0039 
+  58o - 0035 
+  59o - 0042 
+  60o - 0041 
+  61o - 0031 
+  62o - 0029 
+  63o - 0023 
+  64o - 0020 
+  65o - 0012 
+  66o - 0015 
+  67o - 0010 
+  68o - 0016 
+  69o - 0000 
+  70o - 0006 
+  71o - 0099 
+  72o - 0093 
+  73o - 0082 
+  74o - 0083 
+  75o - 0074 
+  76o - 0070 
+  77o - 0071 
+  78o - 0076 
+  79o - 0060 
+  80o - 0062 
+  81o - 0064 
+  82o - 0058 
+  83o - 0046 
+  84o - 0036 
+  85o - 0025 
+  86o - 0022 
+  87o - 0009 
+  88o - 0008 
+  89o - 0027 
+  90o - 0001 
+  91o - 0007 
+  92o - 0052 
+  93o - 0089 
+
+Ciclista   89 será deletado...
+
+O ciclista 0089 foi eliminado da corrida...
+
+Ranking - Rodada 11:
+   1o - 0059 
+   2o - 0066 
+   3o - 0054 
+   4o - 0045 
+   5o - 0013 
+   6o - 0004 
+   7o - 0087 
+   8o - 0065 
+   9o - 0068 
+  10o - 0055 
+  11o - 0061 
+  12o - 0048 
+  13o - 0051 
+  14o - 0044 
+  15o - 0040 
+  16o - 0043 
+  17o - 0026 
+  18o - 0028 
+  19o - 0030 
+  20o - 0021 
+  21o - 0018 
+  22o - 0014 
+  23o - 0024 
+  24o - 0095 
+  25o - 0097 
+  26o - 0096 
+  27o - 0090 
+  28o - 0094 
+  29o - 0086 
+  30o - 0088 
+  31o - 0092 
+  32o - 0081 
+  33o - 0084 
+  34o - 0075 
+  35o - 0080 
+  36o - 0078 
+  37o - 0077 
+  38o - 0079 
+  39o - 0069 
+  40o - 0072 
+  41o - 0057 
+  42o - 0056 
+  43o - 0053 
+  44o - 0047 
+  45o - 0049 
+  46o - 0039 
+  47o - 0035 
+  48o - 0042 
+  49o - 0034 
+  50o - 0031 
+  51o - 0038 
+  52o - 0015 
+  53o - 0010 
+  54o - 0016 
+  55o - 0003 
+  56o - 0000 
+  57o - 0002 
+  58o - 0006 
+  59o - 0098 
+  60o - 0099 
+  61o - 0091 
+  62o - 0093 
+  63o - 0085 
+  64o - 0073 
+  65o - 0070 
+  66o - 0071 
+  67o - 0067 
+  68o - 0060 
+  69o - 0063 
+  70o - 0062 
+  71o - 0064 
+  72o - 0058 
+  73o - 0046 
+  74o - 0050 
+  75o - 0041 
+  76o - 0025 
+  77o - 0029 
+  78o - 0022 
+  79o - 0023 
+  80o - 0020 
+  81o - 0009 
+  82o - 0012 
+  83o - 0008 
+  84o - 0027 
+  85o - 0001 
+  86o - 0007 
+  87o - 0082 
+  88o - 0083 
+  89o - 0074 
+  90o - 0076 
+  91o - 0052 
+  92o - 0036 
+
+  66 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  15 ***
+
+Ranking - Rodada 12:
+   1o - 0066 
+   2o - 0059 
+   3o - 0054 
+   4o - 0045 
+   5o - 0087 
+   6o - 0065 
+   7o - 0055 
+   8o - 0061 
+   9o - 0051 
+  10o - 0044 
+  11o - 0040 
+  12o - 0043 
+  13o - 0026 
+  14o - 0028 
+  15o - 0030 
+  16o - 0021 
+  17o - 0013 
+  18o - 0024 
+  19o - 0004 
+  20o - 0097 
+  21o - 0096 
+  22o - 0094 
+  23o - 0092 
+  24o - 0086 
+  25o - 0084 
+  26o - 0078 
+  27o - 0077 
+  28o - 0080 
+  29o - 0079 
+  30o - 0072 
+  31o - 0068 
+  32o - 0056 
+  33o - 0049 
+  34o - 0035 
+  35o - 0039 
+  36o - 0034 
+  37o - 0031 
+  38o - 0018 
+  39o - 0010 
+  40o - 0015 
+  41o - 0014 
+  42o - 0003 
+  43o - 0006 
+  44o - 0095 
+  45o - 0098 
+  46o - 0093 
+  47o - 0090 
+  48o - 0085 
+  49o - 0088 
+  50o - 0081 
+  51o - 0075 
+  52o - 0073 
+  53o - 0071 
+  54o - 0069 
+  55o - 0060 
+  56o - 0064 
+  57o - 0057 
+  58o - 0058 
+  59o - 0053 
+  60o - 0047 
+  61o - 0042 
+  62o - 0041 
+  63o - 0022 
+  64o - 0029 
+  65o - 0023 
+  66o - 0020 
+  67o - 0012 
+  68o - 0009 
+  69o - 0001 
+  70o - 0007 
+  71o - 0002 
+  72o - 0000 
+  73o - 0099 
+  74o - 0091 
+  75o - 0082 
+  76o - 0083 
+  77o - 0076 
+  78o - 0067 
+  79o - 0063 
+  80o - 0062 
+  81o - 0046 
+  82o - 0052 
+  83o - 0050 
+  84o - 0036 
+  85o - 0008 
+  86o - 0074 
+
+Ciclista   74 será deletado...
+
+O ciclista 0074 foi eliminado da corrida...
+  66 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  16 ***
+
+Ranking - Rodada 13:
+   1o - 0066 
+   2o - 0059 
+   3o - 0054 
+   4o - 0087 
+   5o - 0065 
+   6o - 0055 
+   7o - 0043 
+   8o - 0045 
+   9o - 0026 
+  10o - 0030 
+  11o - 0021 
+  12o - 0013 
+  13o - 0024 
+  14o - 0004 
+  15o - 0096 
+  16o - 0097 
+  17o - 0092 
+  18o - 0086 
+  19o - 0080 
+  20o - 0078 
+  21o - 0077 
+  22o - 0079 
+  23o - 0072 
+  24o - 0068 
+  25o - 0061 
+  26o - 0051 
+  27o - 0049 
+  28o - 0044 
+  29o - 0039 
+  30o - 0035 
+  31o - 0040 
+  32o - 0034 
+  33o - 0031 
+  34o - 0028 
+  35o - 0018 
+  36o - 0014 
+  37o - 0003 
+  38o - 0006 
+  39o - 0098 
+  40o - 0090 
+  41o - 0094 
+  42o - 0088 
+  43o - 0081 
+  44o - 0084 
+  45o - 0073 
+  46o - 0071 
+  47o - 0069 
+  48o - 0060 
+  49o - 0064 
+  50o - 0057 
+  51o - 0058 
+  52o - 0056 
+  53o - 0047 
+  54o - 0042 
+  55o - 0041 
+  56o - 0029 
+  57o - 0023 
+  58o - 0022 
+  59o - 0012 
+  60o - 0009 
+  61o - 0015 
+  62o - 0010 
+  63o - 0002 
+  64o - 0000 
+  65o - 0095 
+  66o - 0099 
+  67o - 0093 
+  68o - 0091 
+  69o - 0085 
+  70o - 0082 
+  71o - 0075 
+  72o - 0083 
+  73o - 0076 
+  74o - 0067 
+  75o - 0063 
+  76o - 0053 
+  77o - 0050 
+  78o - 0052 
+  79o - 0036 
+  80o - 0020 
+  81o - 0008 
+  82o - 0001 
+  83o - 0007 
+  84o - 0062 
+  85o - 0046 
+
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  17 ***
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  18 ***
+
+Ranking - Rodada 14:
+   1o - 0066 
+   2o - 0059 
+   3o - 0054 
+   4o - 0043 
+   5o - 0045 
+   6o - 0030 
+   7o - 0013 
+   8o - 0004 
+   9o - 0096 
+  10o - 0087 
+  11o - 0080 
+  12o - 0077 
+  13o - 0079 
+  14o - 0065 
+  15o - 0068 
+  16o - 0055 
+  17o - 0061 
+  18o - 0044 
+  19o - 0035 
+  20o - 0040 
+  21o - 0031 
+  22o - 0026 
+  23o - 0028 
+  24o - 0021 
+  25o - 0018 
+  26o - 0014 
+  27o - 0024 
+  28o - 0003 
+  29o - 0006 
+  30o - 0097 
+  31o - 0098 
+  32o - 0094 
+  33o - 0088 
+  34o - 0092 
+  35o - 0086 
+  36o - 0084 
+  37o - 0078 
+  38o - 0071 
+  39o - 0072 
+  40o - 0058 
+  41o - 0056 
+  42o - 0051 
+  43o - 0049 
+  44o - 0039 
+  45o - 0042 
+  46o - 0034 
+  47o - 0041 
+  48o - 0022 
+  49o - 0012 
+  50o - 0009 
+  51o - 0010 
+  52o - 0015 
+  53o - 0095 
+  54o - 0099 
+  55o - 0091 
+  56o - 0093 
+  57o - 0090 
+  58o - 0085 
+  59o - 0081 
+  60o - 0075 
+  61o - 0073 
+  62o - 0069 
+  63o - 0060 
+  64o - 0067 
+  65o - 0064 
+  66o - 0057 
+  67o - 0047 
+  68o - 0053 
+  69o - 0052 
+  70o - 0029 
+  71o - 0023 
+  72o - 0008 
+  73o - 0001 
+  74o - 0000 
+  75o - 0002 
+  76o - 0082 
+  77o - 0083 
+  78o - 0076 
+  79o - 0063 
+  80o - 0062 
+  81o - 0046 
+  82o - 0050 
+  83o - 0036 
+  84o - 0020 
+  85o - 0007 
+
+Ciclista    7 será deletado...
+
+O ciclista 0007 foi eliminado da corrida...
+
+A thread 0078 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   78 quebrou na rodada 18! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 18: 10
+o número de elementos a passar dessa rodada atualizado: 81
+(ou seja: 100 (total) - 9 (r/2) - 10 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0078 quebrou na rodada 18!
+
+A thread 0061 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   61 quebrou na rodada 18! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 18: 11
+o número de elementos a passar dessa rodada atualizado: 80
+(ou seja: 100 (total) - 9 (r/2) - 11 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0061 quebrou na rodada 18!
+
+A thread 0040 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   40 quebrou na rodada 18! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 18: 12
+o número de elementos a passar dessa rodada atualizado: 79
+(ou seja: 100 (total) - 9 (r/2) - 12 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0040 quebrou na rodada 18!
+
+A thread 0071 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   71 quebrou na rodada 18! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 18: 13
+o número de elementos a passar dessa rodada atualizado: 78
+(ou seja: 100 (total) - 9 (r/2) - 13 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0071 quebrou na rodada 18!
+
+Ranking - Rodada 15:
+   1o - 0066 
+   2o - 0054 
+   3o - 0059 
+   4o - 0030 
+   5o - 0096 
+   6o - 0077 
+   7o - 0080 
+   8o - 0065 
+   9o - 0079 
+  10o - 0068 
+  11o - 0055 
+  12o - 0061 
+  13o - 0044 
+  14o - 0035 
+  15o - 0045 
+  16o - 0043 
+  17o - 0031 
+  18o - 0026 
+  19o - 0021 
+  20o - 0013 
+  21o - 0024 
+  22o - 0014 
+  23o - 0004 
+  24o - 0006 
+  25o - 0097 
+  26o - 0094 
+  27o - 0092 
+  28o - 0086 
+  29o - 0088 
+  30o - 0087 
+  31o - 0084 
+  32o - 0078 
+  33o - 0072 
+  34o - 0056 
+  35o - 0051 
+  36o - 0049 
+  37o - 0039 
+  38o - 0040 
+  39o - 0041 
+  40o - 0034 
+  41o - 0028 
+  42o - 0018 
+  43o - 0009 
+  44o - 0010 
+  45o - 0015 
+  46o - 0003 
+  47o - 0098 
+  48o - 0099 
+  49o - 0081 
+  50o - 0075 
+  51o - 0073 
+  52o - 0071 
+  53o - 0069 
+  54o - 0060 
+  55o - 0067 
+  56o - 0058 
+  57o - 0057 
+  58o - 0047 
+  59o - 0053 
+  60o - 0052 
+  61o - 0042 
+  62o - 0029 
+  63o - 0022 
+  64o - 0023 
+  65o - 0012 
+  66o - 0002 
+  67o - 0095 
+  68o - 0093 
+  69o - 0091 
+  70o - 0090 
+  71o - 0085 
+  72o - 0082 
+  73o - 0083 
+  74o - 0064 
+  75o - 0046 
+  76o - 0050 
+  77o - 0036 
+  78o - 0020 
+  79o - 0008 
+  80o - 0001 
+  81o - 0000 
+  82o - 0076 
+  83o - 0063 
+  84o - 0062 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  19 ***
+
+A thread 0099 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   99 quebrou na rodada 18! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 18: 14
+o número de elementos a passar dessa rodada atualizado: 77
+(ou seja: 100 (total) - 9 (r/2) - 14 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0099 quebrou na rodada 18!
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  20 ***
+
+Ranking - Rodada 16:
+   1o - 0066 
+   2o - 0059 
+   3o - 0030 
+   4o - 0096 
+   5o - 0079 
+   6o - 0065 
+   7o - 0054 
+   8o - 0055 
+   9o - 0044 
+  10o - 0061 
+  11o - 0035 
+  12o - 0031 
+  13o - 0045 
+  14o - 0014 
+  15o - 0006 
+  16o - 0092 
+  17o - 0086 
+  18o - 0088 
+  19o - 0084 
+  20o - 0080 
+  21o - 0077 
+  22o - 0078 
+  23o - 0068 
+  24o - 0056 
+  25o - 0051 
+  26o - 0049 
+  27o - 0040 
+  28o - 0034 
+  29o - 0041 
+  30o - 0043 
+  31o - 0026 
+  32o - 0028 
+  33o - 0021 
+  34o - 0018 
+  35o - 0013 
+  36o - 0024 
+  37o - 0015 
+  38o - 0004 
+  39o - 0097 
+  40o - 0094 
+  41o - 0087 
+  42o - 0069 
+  43o - 0072 
+  44o - 0071 
+  45o - 0058 
+  46o - 0060 
+  47o - 0057 
+  48o - 0052 
+  49o - 0039 
+  50o - 0042 
+  51o - 0022 
+  52o - 0009 
+  53o - 0010 
+  54o - 0003 
+  55o - 0002 
+  56o - 0095 
+  57o - 0098 
+  58o - 0099 
+  59o - 0091 
+  60o - 0093 
+  61o - 0082 
+  62o - 0081 
+  63o - 0075 
+  64o - 0083 
+  65o - 0073 
+  66o - 0064 
+  67o - 0067 
+  68o - 0053 
+  69o - 0047 
+  70o - 0046 
+  71o - 0036 
+  72o - 0029 
+  73o - 0012 
+  74o - 0023 
+  75o - 0001 
+  76o - 0008 
+  77o - 0090 
+  78o - 0085 
+  79o - 0076 
+  80o - 0063 
+  81o - 0062 
+  82o - 0050 
+  83o - 0020 
+  84o - 0000 
+
+Ciclista    0 será deletado...
+
+O ciclista 0000 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  21 ***
+
+Ranking - Rodada 17:
+   1o - 0030 
+   2o - 0096 
+   3o - 0065 
+   4o - 0066 
+   5o - 0054 
+   6o - 0059 
+   7o - 0044 
+   8o - 0031 
+   9o - 0014 
+  10o - 0080 
+  11o - 0077 
+  12o - 0078 
+  13o - 0079 
+  14o - 0056 
+  15o - 0055 
+  16o - 0061 
+  17o - 0049 
+  18o - 0035 
+  19o - 0040 
+  20o - 0045 
+  21o - 0043 
+  22o - 0028 
+  23o - 0015 
+  24o - 0006 
+  25o - 0097 
+  26o - 0094 
+  27o - 0092 
+  28o - 0086 
+  29o - 0088 
+  30o - 0087 
+  31o - 0084 
+  32o - 0071 
+  33o - 0072 
+  34o - 0060 
+  35o - 0068 
+  36o - 0058 
+  37o - 0051 
+  38o - 0052 
+  39o - 0039 
+  40o - 0034 
+  41o - 0041 
+  42o - 0026 
+  43o - 0021 
+  44o - 0018 
+  45o - 0009 
+  46o - 0010 
+  47o - 0013 
+  48o - 0024 
+  49o - 0003 
+  50o - 0002 
+  51o - 0004 
+  52o - 0099 
+  53o - 0098 
+  54o - 0093 
+  55o - 0075 
+  56o - 0073 
+  57o - 0069 
+  58o - 0067 
+  59o - 0057 
+  60o - 0047 
+  61o - 0053 
+  62o - 0046 
+  63o - 0036 
+  64o - 0042 
+  65o - 0022 
+  66o - 0029 
+  67o - 0012 
+  68o - 0001 
+  69o - 0008 
+  70o - 0095 
+  71o - 0091 
+  72o - 0090 
+  73o - 0085 
+  74o - 0082 
+  75o - 0081 
+  76o - 0083 
+  77o - 0063 
+  78o - 0062 
+  79o - 0064 
+  80o - 0050 
+  81o - 0020 
+  82o - 0023 
+  83o - 0076 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  22 ***
+
+Ranking - Rodada 18:
+   1o - 0030 
+   2o - 0065 
+   3o - 0059 
+   4o - 0044 
+   5o - 0096 
+   6o - 0077 
+   7o - 0080 
+   8o - 0079 
+   9o - 0066 
+  10o - 0054 
+  11o - 0055 
+  12o - 0049 
+  13o - 0035 
+  14o - 0045 
+  15o - 0043 
+  16o - 0031 
+  17o - 0028 
+  18o - 0015 
+  19o - 0014 
+  20o - 0006 
+  21o - 0097 
+  22o - 0094 
+  23o - 0092 
+  24o - 0086 
+  25o - 0088 
+  26o - 0087 
+  27o - 0084 
+  28o - 0058 
+  29o - 0056 
+  30o - 0068 
+  31o - 0041 
+  32o - 0034 
+  33o - 0021 
+  34o - 0018 
+  35o - 0009 
+  36o - 0013 
+  37o - 0010 
+  38o - 0003 
+  39o - 0004 
+  40o - 0098 
+  41o - 0093 
+  42o - 0075 
+  43o - 0073 
+  44o - 0069 
+  45o - 0072 
+  46o - 0060 
+  47o - 0047 
+  48o - 0046 
+  49o - 0051 
+  50o - 0052 
+  51o - 0036 
+  52o - 0039 
+  53o - 0042 
+  54o - 0026 
+  55o - 0022 
+  56o - 0029 
+  57o - 0012 
+  58o - 0024 
+  59o - 0001 
+  60o - 0008 
+  61o - 0002 
+  62o - 0090 
+  63o - 0091 
+  64o - 0082 
+  65o - 0081 
+  66o - 0083 
+  67o - 0063 
+  68o - 0067 
+  69o - 0064 
+  70o - 0057 
+  71o - 0053 
+  72o - 0020 
+  73o - 0023 
+  74o - 0095 
+  75o - 0085 
+  76o - 0076 
+  77o - 0062 
+  78o - 0050 
+
+Ciclista   50 será deletado...
+
+O ciclista 0050 foi eliminado da corrida...
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  23 ***
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  24 ***
+
+Ranking - Rodada 19:
+   1o - 0044 
+   2o - 0030 
+   3o - 0096 
+   4o - 0077 
+   5o - 0065 
+   6o - 0079 
+   7o - 0054 
+   8o - 0059 
+   9o - 0055 
+  10o - 0035 
+  11o - 0045 
+  12o - 0043 
+  13o - 0031 
+  14o - 0028 
+  15o - 0015 
+  16o - 0097 
+  17o - 0094 
+  18o - 0092 
+  19o - 0086 
+  20o - 0087 
+  21o - 0080 
+  22o - 0066 
+  23o - 0049 
+  24o - 0034 
+  25o - 0041 
+  26o - 0021 
+  27o - 0018 
+  28o - 0013 
+  29o - 0003 
+  30o - 0014 
+  31o - 0004 
+  32o - 0006 
+  33o - 0098 
+  34o - 0093 
+  35o - 0088 
+  36o - 0084 
+  37o - 0075 
+  38o - 0072 
+  39o - 0058 
+  40o - 0056 
+  41o - 0060 
+  42o - 0068 
+  43o - 0047 
+  44o - 0046 
+  45o - 0051 
+  46o - 0052 
+  47o - 0036 
+  48o - 0039 
+  49o - 0026 
+  50o - 0022 
+  51o - 0029 
+  52o - 0009 
+  53o - 0010 
+  54o - 0024 
+  55o - 0001 
+  56o - 0002 
+  57o - 0090 
+  58o - 0091 
+  59o - 0082 
+  60o - 0081 
+  61o - 0083 
+  62o - 0073 
+  63o - 0069 
+  64o - 0067 
+  65o - 0053 
+  66o - 0042 
+  67o - 0023 
+  68o - 0012 
+  69o - 0020 
+  70o - 0008 
+  71o - 0095 
+  72o - 0085 
+  73o - 0063 
+  74o - 0062 
+  75o - 0064 
+  76o - 0057 
+  77o - 0076 
+
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  25 ***
+
+A thread 0056 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   56 quebrou na rodada 24! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 24: 15
+o número de elementos a passar dessa rodada atualizado: 73
+(ou seja: 100 (total) - 12 (r/2) - 15 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0056 quebrou na rodada 24!
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  26 ***
+
+Ranking - Rodada 20:
+   1o - 0044 
+   2o - 0030 
+   3o - 0096 
+   4o - 0059 
+   5o - 0055 
+   6o - 0035 
+   7o - 0045 
+   8o - 0031 
+   9o - 0028 
+  10o - 0015 
+  11o - 0092 
+  12o - 0086 
+  13o - 0087 
+  14o - 0077 
+  15o - 0080 
+  16o - 0065 
+  17o - 0079 
+  18o - 0066 
+  19o - 0054 
+  20o - 0049 
+  21o - 0034 
+  22o - 0041 
+  23o - 0043 
+  24o - 0018 
+  25o - 0013 
+  26o - 0014 
+  27o - 0004 
+  28o - 0006 
+  29o - 0098 
+  30o - 0097 
+  31o - 0093 
+  32o - 0094 
+  33o - 0088 
+  34o - 0084 
+  35o - 0072 
+  36o - 0058 
+  37o - 0056 
+  38o - 0068 
+  39o - 0046 
+  40o - 0051 
+  41o - 0036 
+  42o - 0039 
+  43o - 0022 
+  44o - 0021 
+  45o - 0009 
+  46o - 0010 
+  47o - 0024 
+  48o - 0003 
+  49o - 0090 
+  50o - 0091 
+  51o - 0082 
+  52o - 0075 
+  53o - 0073 
+  54o - 0069 
+  55o - 0067 
+  56o - 0060 
+  57o - 0047 
+  58o - 0052 
+  59o - 0042 
+  60o - 0026 
+  61o - 0029 
+  62o - 0023 
+  63o - 0012 
+  64o - 0020 
+  65o - 0001 
+  66o - 0008 
+  67o - 0002 
+  68o - 0085 
+  69o - 0081 
+  70o - 0083 
+  71o - 0062 
+  72o - 0064 
+  73o - 0057 
+  74o - 0053 
+  75o - 0095 
+  76o - 0063 
+  77o - 0076 
+
+Ciclista   76 será deletado...
+
+O ciclista 0076 foi eliminado da corrida...
+
+Ranking - Rodada 21:
+   1o - 0044 
+   2o - 0030 
+   3o - 0096 
+   4o - 0055 
+   5o - 0035 
+   6o - 0045 
+   7o - 0028 
+   8o - 0031 
+   9o - 0015 
+  10o - 0087 
+  11o - 0080 
+  12o - 0065 
+  13o - 0079 
+  14o - 0054 
+  15o - 0059 
+  16o - 0034 
+  17o - 0041 
+  18o - 0043 
+  19o - 0004 
+  20o - 0097 
+  21o - 0094 
+  22o - 0092 
+  23o - 0086 
+  24o - 0084 
+  25o - 0077 
+  26o - 0066 
+  27o - 0056 
+  28o - 0046 
+  29o - 0049 
+  30o - 0022 
+  31o - 0021 
+  32o - 0018 
+  33o - 0009 
+  34o - 0013 
+  35o - 0003 
+  36o - 0014 
+  37o - 0006 
+  38o - 0098 
+  39o - 0093 
+  40o - 0088 
+  41o - 0082 
+  42o - 0075 
+  43o - 0069 
+  44o - 0072 
+  45o - 0067 
+  46o - 0058 
+  47o - 0068 
+  48o - 0047 
+  49o - 0052 
+  50o - 0051 
+  51o - 0039 
+  52o - 0042 
+  53o - 0036 
+  54o - 0026 
+  55o - 0029 
+  56o - 0010 
+  57o - 0024 
+  58o - 0001 
+  59o - 0002 
+  60o - 0090 
+  61o - 0091 
+  62o - 0081 
+  63o - 0073 
+  64o - 0083 
+  65o - 0064 
+  66o - 0062 
+  67o - 0060 
+  68o - 0057 
+  69o - 0053 
+  70o - 0020 
+  71o - 0012 
+  72o - 0023 
+  73o - 0008 
+  74o - 0095 
+  75o - 0085 
+  76o - 0063 
+
+
+A thread 0051 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   51 quebrou na rodada 24! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 24: 16
+o número de elementos a passar dessa rodada atualizado: 72
+(ou seja: 100 (total) - 12 (r/2) - 16 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0051 quebrou na rodada 24!
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  27 ***
+
+A thread 0093 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   93 quebrou na rodada 24! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 24: 17
+o número de elementos a passar dessa rodada atualizado: 71
+(ou seja: 100 (total) - 12 (r/2) - 17 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0093 quebrou na rodada 24!
+
+A thread 0081 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   81 quebrou na rodada 24! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 24: 18
+o número de elementos a passar dessa rodada atualizado: 70
+(ou seja: 100 (total) - 12 (r/2) - 18 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0081 quebrou na rodada 24!
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  28 ***
+
+Ranking - Rodada 22:
+   1o - 0044 
+   2o - 0030 
+   3o - 0096 
+   4o - 0055 
+   5o - 0045 
+   6o - 0031 
+   7o - 0087 
+   8o - 0079 
+   9o - 0054 
+  10o - 0059 
+  11o - 0035 
+  12o - 0034 
+  13o - 0043 
+  14o - 0041 
+  15o - 0028 
+  16o - 0015 
+  17o - 0004 
+  18o - 0094 
+  19o - 0092 
+  20o - 0086 
+  21o - 0084 
+  22o - 0065 
+  23o - 0080 
+  24o - 0066 
+  25o - 0056 
+  26o - 0046 
+  27o - 0049 
+  28o - 0022 
+  29o - 0021 
+  30o - 0018 
+  31o - 0009 
+  32o - 0013 
+  33o - 0003 
+  34o - 0014 
+  35o - 0006 
+  36o - 0097 
+  37o - 0098 
+  38o - 0093 
+  39o - 0077 
+  40o - 0069 
+  41o - 0072 
+  42o - 0058 
+  43o - 0067 
+  44o - 0068 
+  45o - 0047 
+  46o - 0051 
+  47o - 0039 
+  48o - 0042 
+  49o - 0036 
+  50o - 0026 
+  51o - 0010 
+  52o - 0024 
+  53o - 0001 
+  54o - 0002 
+  55o - 0090 
+  56o - 0091 
+  57o - 0088 
+  58o - 0082 
+  59o - 0081 
+  60o - 0075 
+  61o - 0073 
+  62o - 0083 
+  63o - 0062 
+  64o - 0060 
+  65o - 0057 
+  66o - 0053 
+  67o - 0052 
+  68o - 0029 
+  69o - 0012 
+  70o - 0023 
+  71o - 0085 
+  72o - 0064 
+  73o - 0020 
+  74o - 0008 
+  75o - 0095 
+  76o - 0063 
+
+Ciclista   63 será deletado...
+
+O ciclista 0063 foi eliminado da corrida...
+
+Ranking - Rodada 23:
+   1o - 0030 
+   2o - 0096 
+   3o - 0055 
+   4o - 0044 
+   5o - 0045 
+   6o - 0031 
+   7o - 0087 
+   8o - 0079 
+   9o - 0059 
+  10o - 0035 
+  11o - 0041 
+  12o - 0043 
+  13o - 0028 
+  14o - 0015 
+  15o - 0004 
+  16o - 0094 
+  17o - 0084 
+  18o - 0080 
+  19o - 0066 
+  20o - 0056 
+  21o - 0054 
+  22o - 0046 
+  23o - 0049 
+  24o - 0034 
+  25o - 0021 
+  26o - 0018 
+  27o - 0006 
+  28o - 0098 
+  29o - 0097 
+  30o - 0092 
+  31o - 0086 
+  32o - 0065 
+  33o - 0069 
+  34o - 0058 
+  35o - 0067 
+  36o - 0047 
+  37o - 0051 
+  38o - 0036 
+  39o - 0026 
+  40o - 0022 
+  41o - 0009 
+  42o - 0013 
+  43o - 0003 
+  44o - 0014 
+  45o - 0002 
+  46o - 0093 
+  47o - 0088 
+  48o - 0082 
+  49o - 0075 
+  50o - 0081 
+  51o - 0077 
+  52o - 0083 
+  53o - 0072 
+  54o - 0060 
+  55o - 0068 
+  56o - 0052 
+  57o - 0042 
+  58o - 0039 
+  59o - 0029 
+  60o - 0010 
+  61o - 0024 
+  62o - 0001 
+  63o - 0091 
+  64o - 0090 
+  65o - 0085 
+  66o - 0073 
+  67o - 0064 
+  68o - 0062 
+  69o - 0057 
+  70o - 0053 
+  71o - 0012 
+  72o - 0023 
+  73o - 0020 
+  74o - 0008 
+  75o - 0095 
+
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  29 ***
+
+Ranking - Rodada 24:
+   1o - 0030 
+   2o - 0096 
+   3o - 0044 
+   4o - 0045 
+   5o - 0087 
+   6o - 0079 
+   7o - 0059 
+   8o - 0055 
+   9o - 0035 
+  10o - 0028 
+  11o - 0031 
+  12o - 0004 
+  13o - 0094 
+  14o - 0084 
+  15o - 0080 
+  16o - 0054 
+  17o - 0046 
+  18o - 0049 
+  19o - 0034 
+  20o - 0043 
+  21o - 0041 
+  22o - 0021 
+  23o - 0018 
+  24o - 0015 
+  25o - 0006 
+  26o - 0098 
+  27o - 0092 
+  28o - 0086 
+  29o - 0069 
+  30o - 0066 
+  31o - 0036 
+  32o - 0026 
+  33o - 0022 
+  34o - 0013 
+  35o - 0003 
+  36o - 0002 
+  37o - 0014 
+  38o - 0097 
+  39o - 0082 
+  40o - 0088 
+  41o - 0077 
+  42o - 0065 
+  43o - 0083 
+  44o - 0072 
+  45o - 0058 
+  46o - 0067 
+  47o - 0060 
+  48o - 0047 
+  49o - 0029 
+  50o - 0009 
+  51o - 0024 
+  52o - 0001 
+  53o - 0091 
+  54o - 0090 
+  55o - 0075 
+  56o - 0073 
+  57o - 0057 
+  58o - 0068 
+  59o - 0053 
+  60o - 0052 
+  61o - 0039 
+  62o - 0042 
+  63o - 0023 
+  64o - 0020 
+  65o - 0010 
+  66o - 0095 
+  67o - 0085 
+  68o - 0064 
+  69o - 0062 
+  70o - 0012 
+  71o - 0008 
+
+Ciclista    8 será deletado...
+
+O ciclista 0008 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  30 ***
+
+A thread 0035 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   35 quebrou na rodada 30! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 19
+o número de elementos a passar dessa rodada atualizado: 66
+(ou seja: 100 (total) - 15 (r/2) - 19 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0035 quebrou na rodada 30!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  31 ***
+
+Ranking - Rodada 25:
+   1o - 0030 
+   2o - 0096 
+   3o - 0044 
+   4o - 0079 
+   5o - 0055 
+   6o - 0035 
+   7o - 0045 
+   8o - 0028 
+   9o - 0094 
+  10o - 0084 
+  11o - 0087 
+  12o - 0080 
+  13o - 0059 
+  14o - 0041 
+  15o - 0031 
+  16o - 0021 
+  17o - 0018 
+  18o - 0015 
+  19o - 0004 
+  20o - 0098 
+  21o - 0086 
+  22o - 0054 
+  23o - 0046 
+  24o - 0049 
+  25o - 0034 
+  26o - 0043 
+  27o - 0013 
+  28o - 0002 
+  29o - 0014 
+  30o - 0006 
+  31o - 0097 
+  32o - 0092 
+  33o - 0088 
+  34o - 0082 
+  35o - 0083 
+  36o - 0065 
+  37o - 0069 
+  38o - 0066 
+  39o - 0072 
+  40o - 0058 
+  41o - 0067 
+  42o - 0060 
+  43o - 0047 
+  44o - 0036 
+  45o - 0026 
+  46o - 0022 
+  47o - 0029 
+  48o - 0009 
+  49o - 0024 
+  50o - 0003 
+  51o - 0090 
+  52o - 0091 
+  53o - 0075 
+  54o - 0077 
+  55o - 0052 
+  56o - 0039 
+  57o - 0042 
+  58o - 0023 
+  59o - 0010 
+  60o - 0001 
+  61o - 0085 
+  62o - 0073 
+  63o - 0064 
+  64o - 0062 
+  65o - 0057 
+  66o - 0068 
+  67o - 0053 
+  68o - 0020 
+  69o - 0012 
+  70o - 0095 
+
+
+A thread 0079 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   79 quebrou na rodada 30! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 20
+o número de elementos a passar dessa rodada atualizado: 65
+(ou seja: 100 (total) - 15 (r/2) - 20 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0079 quebrou na rodada 30!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  32 ***
+
+Ranking - Rodada 26:
+   1o - 0030 
+   2o - 0096 
+   3o - 0079 
+   4o - 0055 
+   5o - 0044 
+   6o - 0035 
+   7o - 0045 
+   8o - 0094 
+   9o - 0084 
+  10o - 0080 
+  11o - 0028 
+  12o - 0031 
+  13o - 0018 
+  14o - 0015 
+  15o - 0004 
+  16o - 0098 
+  17o - 0087 
+  18o - 0086 
+  19o - 0059 
+  20o - 0054 
+  21o - 0049 
+  22o - 0034 
+  23o - 0043 
+  24o - 0041 
+  25o - 0021 
+  26o - 0013 
+  27o - 0002 
+  28o - 0097 
+  29o - 0092 
+  30o - 0082 
+  31o - 0069 
+  32o - 0072 
+  33o - 0046 
+  34o - 0036 
+  35o - 0026 
+  36o - 0022 
+  37o - 0029 
+  38o - 0009 
+  39o - 0003 
+  40o - 0014 
+  41o - 0006 
+  42o - 0090 
+  43o - 0088 
+  44o - 0075 
+  45o - 0077 
+  46o - 0065 
+  47o - 0083 
+  48o - 0066 
+  49o - 0058 
+  50o - 0067 
+  51o - 0060 
+  52o - 0047 
+  53o - 0039 
+  54o - 0010 
+  55o - 0024 
+  56o - 0001 
+  57o - 0091 
+  58o - 0073 
+  59o - 0062 
+  60o - 0057 
+  61o - 0068 
+  62o - 0053 
+  63o - 0052 
+  64o - 0042 
+  65o - 0023 
+  66o - 0012 
+  67o - 0020 
+  68o - 0095 
+  69o - 0085 
+  70o - 0064 
+
+Ciclista   64 será deletado...
+
+O ciclista 0064 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  33 ***
+
+A thread 0058 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   58 quebrou na rodada 30! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 21
+o número de elementos a passar dessa rodada atualizado: 64
+(ou seja: 100 (total) - 15 (r/2) - 21 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0058 quebrou na rodada 30!
+
+Ranking - Rodada 27:
+   1o - 0030 
+   2o - 0096 
+   3o - 0079 
+   4o - 0035 
+   5o - 0045 
+   6o - 0094 
+   7o - 0080 
+   8o - 0055 
+   9o - 0044 
+  10o - 0028 
+  11o - 0031 
+  12o - 0018 
+  13o - 0004 
+  14o - 0084 
+  15o - 0086 
+  16o - 0059 
+  17o - 0049 
+  18o - 0041 
+  19o - 0021 
+  20o - 0015 
+  21o - 0002 
+  22o - 0098 
+  23o - 0097 
+  24o - 0092 
+  25o - 0087 
+  26o - 0069 
+  27o - 0072 
+  28o - 0054 
+  29o - 0046 
+  30o - 0034 
+  31o - 0036 
+  32o - 0043 
+  33o - 0029 
+  34o - 0022 
+  35o - 0013 
+  36o - 0003 
+  37o - 0014 
+  38o - 0090 
+  39o - 0082 
+  40o - 0088 
+  41o - 0075 
+  42o - 0065 
+  43o - 0066 
+  44o - 0058 
+  45o - 0060 
+  46o - 0067 
+  47o - 0047 
+  48o - 0039 
+  49o - 0026 
+  50o - 0009 
+  51o - 0024 
+  52o - 0006 
+  53o - 0091 
+  54o - 0077 
+  55o - 0083 
+  56o - 0062 
+  57o - 0068 
+  58o - 0053 
+  59o - 0042 
+  60o - 0010 
+  61o - 0001 
+  62o - 0085 
+  63o - 0073 
+  64o - 0057 
+  65o - 0052 
+  66o - 0012 
+  67o - 0020 
+  68o - 0023 
+  69o - 0095 
+
+
+A thread 0047 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   47 quebrou na rodada 30! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 22
+o número de elementos a passar dessa rodada atualizado: 63
+(ou seja: 100 (total) - 15 (r/2) - 22 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0047 quebrou na rodada 30!
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  34 ***
+
+Ranking - Rodada 28:
+   1o - 0030 
+   2o - 0096 
+   3o - 0035 
+   4o - 0045 
+   5o - 0094 
+   6o - 0079 
+   7o - 0055 
+   8o - 0044 
+   9o - 0028 
+  10o - 0018 
+  11o - 0086 
+  12o - 0080 
+  13o - 0049 
+  14o - 0041 
+  15o - 0031 
+  16o - 0021 
+  17o - 0015 
+  18o - 0004 
+  19o - 0092 
+  20o - 0084 
+  21o - 0087 
+  22o - 0069 
+  23o - 0072 
+  24o - 0059 
+  25o - 0054 
+  26o - 0046 
+  27o - 0034 
+  28o - 0036 
+  29o - 0043 
+  30o - 0022 
+  31o - 0013 
+  32o - 0003 
+  33o - 0002 
+  34o - 0014 
+  35o - 0097 
+  36o - 0098 
+  37o - 0065 
+  38o - 0066 
+  39o - 0058 
+  40o - 0067 
+  41o - 0039 
+  42o - 0029 
+  43o - 0009 
+  44o - 0024 
+  45o - 0006 
+  46o - 0090 
+  47o - 0091 
+  48o - 0088 
+  49o - 0082 
+  50o - 0075 
+  51o - 0077 
+  52o - 0062 
+  53o - 0060 
+  54o - 0068 
+  55o - 0047 
+  56o - 0026 
+  57o - 0042 
+  58o - 0010 
+  59o - 0001 
+  60o - 0073 
+  61o - 0083 
+  62o - 0053 
+  63o - 0052 
+  64o - 0020 
+  65o - 0012 
+  66o - 0023 
+  67o - 0095 
+  68o - 0085 
+  69o - 0057 
+
+Ciclista   57 será deletado...
+
+O ciclista 0057 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  35 ***
+
+Ranking - Rodada 29:
+   1o - 0030 
+   2o - 0096 
+   3o - 0094 
+   4o - 0055 
+   5o - 0044 
+   6o - 0035 
+   7o - 0045 
+   8o - 0018 
+   9o - 0080 
+  10o - 0079 
+  11o - 0049 
+  12o - 0041 
+  13o - 0028 
+  14o - 0031 
+  15o - 0021 
+  16o - 0015 
+  17o - 0004 
+  18o - 0092 
+  19o - 0087 
+  20o - 0086 
+  21o - 0084 
+  22o - 0069 
+  23o - 0059 
+  24o - 0054 
+  25o - 0046 
+  26o - 0036 
+  27o - 0043 
+  28o - 0002 
+  29o - 0097 
+  30o - 0098 
+  31o - 0065 
+  32o - 0072 
+  33o - 0066 
+  34o - 0058 
+  35o - 0067 
+  36o - 0039 
+  37o - 0034 
+  38o - 0029 
+  39o - 0024 
+  40o - 0022 
+  41o - 0013 
+  42o - 0003 
+  43o - 0014 
+  44o - 0091 
+  45o - 0090 
+  46o - 0088 
+  47o - 0082 
+  48o - 0077 
+  49o - 0075 
+  50o - 0062 
+  51o - 0047 
+  52o - 0009 
+  53o - 0010 
+  54o - 0001 
+  55o - 0006 
+  56o - 0073 
+  57o - 0083 
+  58o - 0060 
+  59o - 0068 
+  60o - 0053 
+  61o - 0026 
+  62o - 0042 
+  63o - 0020 
+  64o - 0023 
+  65o - 0052 
+  66o - 0012 
+  67o - 0095 
+  68o - 0085 
+
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  36 ***
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  37 ***
+
+Ranking - Rodada 30:
+   1o - 0096 
+   2o - 0030 
+   3o - 0055 
+   4o - 0044 
+   5o - 0045 
+   6o - 0094 
+   7o - 0041 
+   8o - 0028 
+   9o - 0031 
+  10o - 0021 
+  11o - 0018 
+  12o - 0087 
+  13o - 0086 
+  14o - 0084 
+  15o - 0080 
+  16o - 0069 
+  17o - 0059 
+  18o - 0054 
+  19o - 0046 
+  20o - 0049 
+  21o - 0036 
+  22o - 0043 
+  23o - 0015 
+  24o - 0002 
+  25o - 0004 
+  26o - 0097 
+  27o - 0092 
+  28o - 0065 
+  29o - 0072 
+  30o - 0034 
+  31o - 0029 
+  32o - 0024 
+  33o - 0013 
+  34o - 0098 
+  35o - 0082 
+  36o - 0075 
+  37o - 0066 
+  38o - 0067 
+  39o - 0039 
+  40o - 0009 
+  41o - 0022 
+  42o - 0010 
+  43o - 0003 
+  44o - 0001 
+  45o - 0014 
+  46o - 0006 
+  47o - 0091 
+  48o - 0090 
+  49o - 0088 
+  50o - 0077 
+  51o - 0073 
+  52o - 0062 
+  53o - 0060 
+  54o - 0068 
+  55o - 0053 
+  56o - 0026 
+  57o - 0042 
+  58o - 0020 
+  59o - 0023 
+  60o - 0083 
+  61o - 0012 
+  62o - 0085 
+  63o - 0052 
+  64o - 0095 
+
+Ciclista   95 será deletado...
+
+O ciclista 0095 foi eliminado da corrida...
+
+Ranking - Rodada 31:
+   1o - 0096 
+   2o - 0030 
+   3o - 0094 
+   4o - 0055 
+   5o - 0044 
+   6o - 0041 
+   7o - 0045 
+   8o - 0031 
+   9o - 0021 
+  10o - 0080 
+  11o - 0069 
+  12o - 0059 
+  13o - 0036 
+  14o - 0028 
+  15o - 0018 
+  16o - 0015 
+  17o - 0002 
+  18o - 0004 
+  19o - 0092 
+  20o - 0084 
+  21o - 0086 
+  22o - 0087 
+  23o - 0054 
+  24o - 0046 
+  25o - 0049 
+  26o - 0034 
+  27o - 0043 
+  28o - 0097 
+  29o - 0082 
+  30o - 0065 
+  31o - 0072 
+  32o - 0067 
+  33o - 0029 
+  34o - 0009 
+  35o - 0022 
+  36o - 0024 
+  37o - 0013 
+  38o - 0003 
+  39o - 0014 
+  40o - 0006 
+  41o - 0098 
+  42o - 0088 
+  43o - 0077 
+  44o - 0075 
+  45o - 0066 
+  46o - 0060 
+  47o - 0068 
+  48o - 0039 
+  49o - 0026 
+  50o - 0042 
+  51o - 0010 
+  52o - 0001 
+  53o - 0023 
+  54o - 0090 
+  55o - 0091 
+  56o - 0073 
+  57o - 0083 
+  58o - 0062 
+  59o - 0053 
+  60o - 0020 
+  61o - 0012 
+  62o - 0085 
+  63o - 0052 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  38 ***
+
+Ranking - Rodada 32:
+   1o - 0096 
+   2o - 0030 
+   3o - 0055 
+   4o - 0044 
+   5o - 0031 
+   6o - 0041 
+   7o - 0094 
+   8o - 0080 
+   9o - 0059 
+  10o - 0036 
+  11o - 0045 
+  12o - 0021 
+  13o - 0018 
+  14o - 0004 
+  15o - 0092 
+  16o - 0084 
+  17o - 0087 
+  18o - 0069 
+  19o - 0046 
+  20o - 0049 
+  21o - 0043 
+  22o - 0028 
+  23o - 0015 
+  24o - 0002 
+  25o - 0097 
+  26o - 0086 
+  27o - 0072 
+  28o - 0067 
+  29o - 0054 
+  30o - 0034 
+  31o - 0029 
+  32o - 0009 
+  33o - 0022 
+  34o - 0024 
+  35o - 0006 
+  36o - 0098 
+  37o - 0088 
+  38o - 0082 
+  39o - 0077 
+  40o - 0075 
+  41o - 0065 
+  42o - 0066 
+  43o - 0068 
+  44o - 0060 
+  45o - 0039 
+  46o - 0042 
+  47o - 0010 
+  48o - 0013 
+  49o - 0003 
+  50o - 0001 
+  51o - 0014 
+  52o - 0090 
+  53o - 0062 
+  54o - 0026 
+  55o - 0020 
+  56o - 0023 
+  57o - 0091 
+  58o - 0085 
+  59o - 0073 
+  60o - 0083 
+  61o - 0053 
+  62o - 0052 
+  63o - 0012 
+
+Ciclista   12 será deletado...
+
+O ciclista 0012 foi eliminado da corrida...
+
+A thread 0004 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista    4 quebrou na rodada 36! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 23
+o número de elementos a passar dessa rodada atualizado: 59
+(ou seja: 100 (total) - 18 (r/2) - 23 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0004 quebrou na rodada 36!
+
+A thread 0039 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   39 quebrou na rodada 36! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 24
+o número de elementos a passar dessa rodada atualizado: 58
+(ou seja: 100 (total) - 18 (r/2) - 24 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0039 quebrou na rodada 36!
+  30 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  39 ***
+
+Ranking - Rodada 33:
+   1o - 0096 
+   2o - 0030 
+   3o - 0055 
+   4o - 0044 
+   5o - 0041 
+   6o - 0080 
+   7o - 0059 
+   8o - 0036 
+   9o - 0031 
+  10o - 0045 
+  11o - 0021 
+  12o - 0018 
+  13o - 0094 
+  14o - 0087 
+  15o - 0069 
+  16o - 0046 
+  17o - 0028 
+  18o - 0015 
+  19o - 0002 
+  20o - 0004 
+  21o - 0092 
+  22o - 0084 
+  23o - 0072 
+  24o - 0054 
+  25o - 0049 
+  26o - 0034 
+  27o - 0043 
+  28o - 0029 
+  29o - 0024 
+  30o - 0009 
+  31o - 0006 
+  32o - 0097 
+  33o - 0098 
+  34o - 0082 
+  35o - 0086 
+  36o - 0077 
+  37o - 0075 
+  38o - 0067 
+  39o - 0060 
+  40o - 0039 
+  41o - 0042 
+  42o - 0022 
+  43o - 0013 
+  44o - 0003 
+  45o - 0014 
+  46o - 0088 
+  47o - 0065 
+  48o - 0066 
+  49o - 0062 
+  50o - 0068 
+  51o - 0026 
+  52o - 0010 
+  53o - 0023 
+  54o - 0001 
+  55o - 0091 
+  56o - 0090 
+  57o - 0083 
+  58o - 0053 
+  59o - 0052 
+  60o - 0020 
+  61o - 0085 
+  62o - 0073 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  40 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  41 ***
+
+Ranking - Rodada 34:
+   1o - 0030 
+   2o - 0096 
+   3o - 0044 
+   4o - 0041 
+   5o - 0059 
+   6o - 0055 
+   7o - 0045 
+   8o - 0031 
+   9o - 0094 
+  10o - 0080 
+  11o - 0036 
+  12o - 0028 
+  13o - 0021 
+  14o - 0018 
+  15o - 0015 
+  16o - 0004 
+  17o - 0092 
+  18o - 0084 
+  19o - 0087 
+  20o - 0069 
+  21o - 0046 
+  22o - 0049 
+  23o - 0043 
+  24o - 0029 
+  25o - 0002 
+  26o - 0098 
+  27o - 0097 
+  28o - 0086 
+  29o - 0075 
+  30o - 0077 
+  31o - 0072 
+  32o - 0054 
+  33o - 0060 
+  34o - 0039 
+  35o - 0034 
+  36o - 0042 
+  37o - 0022 
+  38o - 0024 
+  39o - 0009 
+  40o - 0003 
+  41o - 0014 
+  42o - 0006 
+  43o - 0082 
+  44o - 0065 
+  45o - 0066 
+  46o - 0067 
+  47o - 0062 
+  48o - 0068 
+  49o - 0010 
+  50o - 0013 
+  51o - 0001 
+  52o - 0091 
+  53o - 0090 
+  54o - 0088 
+  55o - 0083 
+  56o - 0052 
+  57o - 0026 
+  58o - 0020 
+  59o - 0023 
+  60o - 0085 
+  61o - 0053 
+  62o - 0073 
+
+Ciclista   73 será deletado...
+
+O ciclista 0073 foi eliminado da corrida...
+
+Ranking - Rodada 35:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0041 
+   5o - 0059 
+   6o - 0055 
+   7o - 0045 
+   8o - 0080 
+   9o - 0036 
+  10o - 0028 
+  11o - 0031 
+  12o - 0021 
+  13o - 0018 
+  14o - 0094 
+  15o - 0087 
+  16o - 0069 
+  17o - 0046 
+  18o - 0049 
+  19o - 0029 
+  20o - 0002 
+  21o - 0015 
+  22o - 0004 
+  23o - 0098 
+  24o - 0092 
+  25o - 0086 
+  26o - 0084 
+  27o - 0075 
+  28o - 0054 
+  29o - 0039 
+  30o - 0034 
+  31o - 0043 
+  32o - 0042 
+  33o - 0009 
+  34o - 0024 
+  35o - 0014 
+  36o - 0006 
+  37o - 0097 
+  38o - 0082 
+  39o - 0077 
+  40o - 0066 
+  41o - 0072 
+  42o - 0062 
+  43o - 0068 
+  44o - 0060 
+  45o - 0010 
+  46o - 0022 
+  47o - 0013 
+  48o - 0003 
+  49o - 0091 
+  50o - 0065 
+  51o - 0067 
+  52o - 0052 
+  53o - 0026 
+  54o - 0023 
+  55o - 0001 
+  56o - 0090 
+  57o - 0085 
+  58o - 0088 
+  59o - 0083 
+  60o - 0053 
+  61o - 0020 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  42 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  43 ***
+
+Ranking - Rodada 36:
+   1o - 0030 
+   2o - 0096 
+   3o - 0044 
+   4o - 0041 
+   5o - 0045 
+   6o - 0080 
+   7o - 0059 
+   8o - 0055 
+   9o - 0036 
+  10o - 0021 
+  11o - 0018 
+  12o - 0094 
+  13o - 0087 
+  14o - 0069 
+  15o - 0028 
+  16o - 0031 
+  17o - 0002 
+  18o - 0015 
+  19o - 0098 
+  20o - 0092 
+  21o - 0084 
+  22o - 0046 
+  23o - 0049 
+  24o - 0034 
+  25o - 0043 
+  26o - 0042 
+  27o - 0029 
+  28o - 0024 
+  29o - 0009 
+  30o - 0014 
+  31o - 0006 
+  32o - 0097 
+  33o - 0086 
+  34o - 0075 
+  35o - 0077 
+  36o - 0066 
+  37o - 0072 
+  38o - 0062 
+  39o - 0054 
+  40o - 0060 
+  41o - 0010 
+  42o - 0022 
+  43o - 0003 
+  44o - 0091 
+  45o - 0082 
+  46o - 0065 
+  47o - 0067 
+  48o - 0068 
+  49o - 0052 
+  50o - 0013 
+  51o - 0023 
+  52o - 0001 
+  53o - 0090 
+  54o - 0088 
+  55o - 0026 
+  56o - 0020 
+  57o - 0085 
+  58o - 0083 
+  59o - 0053 
+
+Ciclista   53 será deletado...
+
+O ciclista 0053 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  44 ***
+
+Ranking - Rodada 37:
+   1o - 0030 
+   2o - 0096 
+   3o - 0044 
+   4o - 0059 
+   5o - 0055 
+   6o - 0036 
+   7o - 0041 
+   8o - 0045 
+   9o - 0018 
+  10o - 0080 
+  11o - 0069 
+  12o - 0028 
+  13o - 0031 
+  14o - 0021 
+  15o - 0015 
+  16o - 0098 
+  17o - 0094 
+  18o - 0084 
+  19o - 0087 
+  20o - 0046 
+  21o - 0049 
+  22o - 0034 
+  23o - 0043 
+  24o - 0042 
+  25o - 0024 
+  26o - 0009 
+  27o - 0002 
+  28o - 0014 
+  29o - 0092 
+  30o - 0086 
+  31o - 0075 
+  32o - 0066 
+  33o - 0062 
+  34o - 0054 
+  35o - 0029 
+  36o - 0022 
+  37o - 0003 
+  38o - 0006 
+  39o - 0097 
+  40o - 0082 
+  41o - 0077 
+  42o - 0065 
+  43o - 0072 
+  44o - 0068 
+  45o - 0060 
+  46o - 0010 
+  47o - 0013 
+  48o - 0023 
+  49o - 0001 
+  50o - 0091 
+  51o - 0088 
+  52o - 0067 
+  53o - 0052 
+  54o - 0026 
+  55o - 0090 
+  56o - 0085 
+  57o - 0083 
+  58o - 0020 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  45 ***
+
+A thread 0084 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   84 quebrou na rodada 42! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 25
+o número de elementos a passar dessa rodada atualizado: 54
+(ou seja: 100 (total) - 21 (r/2) - 25 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0084 quebrou na rodada 42!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  46 ***
+
+Ranking - Rodada 38:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0059 
+   5o - 0018 
+   6o - 0080 
+   7o - 0055 
+   8o - 0036 
+   9o - 0028 
+  10o - 0031 
+  11o - 0041 
+  12o - 0021 
+  13o - 0045 
+  14o - 0094 
+  15o - 0087 
+  16o - 0069 
+  17o - 0049 
+  18o - 0034 
+  19o - 0043 
+  20o - 0042 
+  21o - 0024 
+  22o - 0002 
+  23o - 0014 
+  24o - 0015 
+  25o - 0098 
+  26o - 0086 
+  27o - 0084 
+  28o - 0075 
+  29o - 0054 
+  30o - 0046 
+  31o - 0022 
+  32o - 0029 
+  33o - 0003 
+  34o - 0009 
+  35o - 0006 
+  36o - 0097 
+  37o - 0092 
+  38o - 0077 
+  39o - 0066 
+  40o - 0062 
+  41o - 0068 
+  42o - 0013 
+  43o - 0091 
+  44o - 0082 
+  45o - 0088 
+  46o - 0065 
+  47o - 0072 
+  48o - 0067 
+  49o - 0060 
+  50o - 0010 
+  51o - 0023 
+  52o - 0001 
+  53o - 0090 
+  54o - 0083 
+  55o - 0052 
+  56o - 0026 
+  57o - 0020 
+  58o - 0085 
+
+Ciclista   85 será deletado...
+
+O ciclista 0085 foi eliminado da corrida...
+
+A thread 0022 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   22 quebrou na rodada 42! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 26
+o número de elementos a passar dessa rodada atualizado: 53
+(ou seja: 100 (total) - 21 (r/2) - 26 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0022 quebrou na rodada 42!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  47 ***
+
+Ranking - Rodada 39:
+   1o - 0030 
+   2o - 0096 
+   3o - 0044 
+   4o - 0059 
+   5o - 0018 
+   6o - 0080 
+   7o - 0055 
+   8o - 0036 
+   9o - 0028 
+  10o - 0031 
+  11o - 0094 
+  12o - 0087 
+  13o - 0069 
+  14o - 0049 
+  15o - 0034 
+  16o - 0041 
+  17o - 0045 
+  18o - 0042 
+  19o - 0021 
+  20o - 0002 
+  21o - 0014 
+  22o - 0015 
+  23o - 0084 
+  24o - 0075 
+  25o - 0054 
+  26o - 0046 
+  27o - 0043 
+  28o - 0029 
+  29o - 0022 
+  30o - 0024 
+  31o - 0009 
+  32o - 0003 
+  33o - 0097 
+  34o - 0098 
+  35o - 0092 
+  36o - 0086 
+  37o - 0077 
+  38o - 0066 
+  39o - 0062 
+  40o - 0013 
+  41o - 0006 
+  42o - 0091 
+  43o - 0082 
+  44o - 0065 
+  45o - 0072 
+  46o - 0067 
+  47o - 0068 
+  48o - 0060 
+  49o - 0090 
+  50o - 0088 
+  51o - 0052 
+  52o - 0026 
+  53o - 0010 
+  54o - 0023 
+  55o - 0001 
+  56o - 0083 
+  57o - 0020 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  48 ***
+
+Ranking - Rodada 40:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0018 
+   5o - 0059 
+   6o - 0036 
+   7o - 0031 
+   8o - 0094 
+   9o - 0087 
+  10o - 0080 
+  11o - 0055 
+  12o - 0034 
+  13o - 0028 
+  14o - 0041 
+  15o - 0045 
+  16o - 0042 
+  17o - 0021 
+  18o - 0002 
+  19o - 0014 
+  20o - 0084 
+  21o - 0075 
+  22o - 0069 
+  23o - 0049 
+  24o - 0043 
+  25o - 0022 
+  26o - 0029 
+  27o - 0024 
+  28o - 0009 
+  29o - 0003 
+  30o - 0015 
+  31o - 0097 
+  32o - 0098 
+  33o - 0092 
+  34o - 0086 
+  35o - 0066 
+  36o - 0062 
+  37o - 0054 
+  38o - 0046 
+  39o - 0013 
+  40o - 0006 
+  41o - 0091 
+  42o - 0082 
+  43o - 0077 
+  44o - 0068 
+  45o - 0090 
+  46o - 0088 
+  47o - 0065 
+  48o - 0072 
+  49o - 0067 
+  50o - 0060 
+  51o - 0010 
+  52o - 0023 
+  53o - 0001 
+  54o - 0083 
+  55o - 0052 
+  56o - 0026 
+  57o - 0020 
+
+Ciclista   20 será deletado...
+
+O ciclista 0020 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  49 ***
+
+A thread 0023 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   23 quebrou na rodada 42! e será eliminado
+
+Ranking - Rodada 41:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0031 
+   5o - 0018 
+   6o - 0087 
+   7o - 0080 
+   8o - 0059 
+   9o - 0055 
+  10o - 0034 
+  11o - 0036 
+  12o - 0041 
+  13o - 0045 
+  14o - 0021 
+  15o - 0002 
+  16o - 0094 
+  17o - 0084 
+  18o - 0075 
+  19o - 0069 
+  20o - 0049 
+  21o - 0028 
+  22o - 0042 
+  23o - 0024 
+  24o - 0003 
+  25o - 0009 
+  26o - 0014 
+  27o - 0015 
+  28o - 0092 
+  29o - 0086 
+  30o - 0066 
+  31o - 0062 
+  32o - 0054 
+  33o - 0046 
+  34o - 0043 
+  35o - 0022 
+  36o - 0029 
+  37o - 0097 
+  38o - 0098 
+  39o - 0082 
+  40o - 0077 
+  41o - 0068 
+  42o - 0013 
+  43o - 0006 
+  44o - 0091 
+  45o - 0088 
+  46o - 0065 
+  47o - 0072 
+  48o - 0067 
+  49o - 0060 
+  50o - 0010 
+  51o - 0001 
+  52o - 0090 
+  53o - 0083 
+  54o - 0052 
+  55o - 0026 
+  56o - 0023 
+
+8 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 27
+o número de elementos a passar dessa rodada atualizado: 52
+(ou seja: 100 (total) - 21 (r/2) - 27 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0023 quebrou na rodada 42!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  50 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  51 ***
+
+Ranking - Rodada 42:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0080 
+   5o - 0034 
+   6o - 0036 
+   7o - 0041 
+   8o - 0031 
+   9o - 0021 
+  10o - 0018 
+  11o - 0002 
+  12o - 0094 
+  13o - 0087 
+  14o - 0075 
+  15o - 0059 
+  16o - 0055 
+  17o - 0045 
+  18o - 0042 
+  19o - 0024 
+  20o - 0003 
+  21o - 0014 
+  22o - 0015 
+  23o - 0092 
+  24o - 0086 
+  25o - 0069 
+  26o - 0046 
+  27o - 0049 
+  28o - 0043 
+  29o - 0028 
+  30o - 0029 
+  31o - 0009 
+  32o - 0098 
+  33o - 0082 
+  34o - 0066 
+  35o - 0062 
+  36o - 0054 
+  37o - 0097 
+  38o - 0091 
+  39o - 0088 
+  40o - 0077 
+  41o - 0068 
+  42o - 0013 
+  43o - 0001 
+  44o - 0006 
+  45o - 0090 
+  46o - 0065 
+  47o - 0072 
+  48o - 0067 
+  49o - 0060 
+  50o - 0052 
+  51o - 0010 
+  52o - 0083 
+  53o - 0026 
+
+Ciclista   26 será deletado...
+
+O ciclista 0026 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  52 ***
+
+A thread 0086 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   86 quebrou na rodada 48! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 48: 28
+o número de elementos a passar dessa rodada atualizado: 48
+(ou seja: 100 (total) - 24 (r/2) - 28 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0086 quebrou na rodada 48!
+
+Ranking - Rodada 43:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0080 
+   5o - 0041 
+   6o - 0021 
+   7o - 0018 
+   8o - 0094 
+   9o - 0087 
+  10o - 0075 
+  11o - 0059 
+  12o - 0055 
+  13o - 0034 
+  14o - 0036 
+  15o - 0031 
+  16o - 0045 
+  17o - 0002 
+  18o - 0003 
+  19o - 0015 
+  20o - 0092 
+  21o - 0086 
+  22o - 0069 
+  23o - 0049 
+  24o - 0043 
+  25o - 0028 
+  26o - 0042 
+  27o - 0029 
+  28o - 0024 
+  29o - 0014 
+  30o - 0098 
+  31o - 0082 
+  32o - 0066 
+  33o - 0062 
+  34o - 0046 
+  35o - 0009 
+  36o - 0097 
+  37o - 0091 
+  38o - 0077 
+  39o - 0068 
+  40o - 0054 
+  41o - 0013 
+  42o - 0001 
+  43o - 0006 
+  44o - 0090 
+  45o - 0088 
+  46o - 0065 
+  47o - 0072 
+  48o - 0060 
+  49o - 0067 
+  50o - 0052 
+  51o - 0010 
+  52o - 0083 
+
+
+A thread 0014 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   14 quebrou na rodada 48! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 48: 29
+o número de elementos a passar dessa rodada atualizado: 47
+(ou seja: 100 (total) - 24 (r/2) - 29 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0014 quebrou na rodada 48!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  53 ***
+
+A thread 0082 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   82 quebrou na rodada 48! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 48: 30
+o número de elementos a passar dessa rodada atualizado: 46
+(ou seja: 100 (total) - 24 (r/2) - 30 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0082 quebrou na rodada 48!
+
+Ranking - Rodada 44:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0080 
+   5o - 0018 
+   6o - 0087 
+   7o - 0075 
+   8o - 0055 
+   9o - 0034 
+  10o - 0036 
+  11o - 0031 
+  12o - 0041 
+  13o - 0021 
+  14o - 0002 
+  15o - 0003 
+  16o - 0094 
+  17o - 0092 
+  18o - 0086 
+  19o - 0069 
+  20o - 0059 
+  21o - 0043 
+  22o - 0028 
+  23o - 0045 
+  24o - 0042 
+  25o - 0029 
+  26o - 0024 
+  27o - 0014 
+  28o - 0015 
+  29o - 0098 
+  30o - 0082 
+  31o - 0066 
+  32o - 0049 
+  33o - 0009 
+  34o - 0097 
+  35o - 0091 
+  36o - 0077 
+  37o - 0062 
+  38o - 0054 
+  39o - 0046 
+  40o - 0013 
+  41o - 0001 
+  42o - 0006 
+  43o - 0088 
+  44o - 0065 
+  45o - 0072 
+  46o - 0068 
+  47o - 0060 
+  48o - 0090 
+  49o - 0067 
+  50o - 0052 
+  51o - 0010 
+  52o - 0083 
+
+Ciclista   83 será deletado...
+
+O ciclista 0083 foi eliminado da corrida...
+
+Ranking - Rodada 45:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0080 
+   5o - 0018 
+   6o - 0087 
+   7o - 0075 
+   8o - 0055 
+   9o - 0036 
+  10o - 0031 
+  11o - 0041 
+  12o - 0021 
+  13o - 0002 
+  14o - 0094 
+  15o - 0092 
+  16o - 0069 
+  17o - 0059 
+  18o - 0043 
+  19o - 0034 
+  20o - 0028 
+  21o - 0045 
+  22o - 0003 
+  23o - 0014 
+  24o - 0015 
+  25o - 0098 
+  26o - 0082 
+  27o - 0086 
+  28o - 0042 
+  29o - 0029 
+  30o - 0024 
+  31o - 0009 
+  32o - 0097 
+  33o - 0066 
+  34o - 0062 
+  35o - 0054 
+  36o - 0049 
+  37o - 0013 
+  38o - 0001 
+  39o - 0091 
+  40o - 0088 
+  41o - 0077 
+  42o - 0072 
+  43o - 0068 
+  44o - 0046 
+  45o - 0006 
+  46o - 0090 
+  47o - 0065 
+  48o - 0067 
+  49o - 0060 
+  50o - 0052 
+  51o - 0010 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  54 ***
+
+Ranking - Rodada 46:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0087 
+   5o - 0080 
+   6o - 0041 
+   7o - 0018 
+   8o - 0002 
+   9o - 0092 
+  10o - 0094 
+  11o - 0075 
+  12o - 0069 
+  13o - 0059 
+  14o - 0055 
+  15o - 0043 
+  16o - 0034 
+  17o - 0036 
+  18o - 0031 
+  19o - 0028 
+  20o - 0021 
+  21o - 0003 
+  22o - 0098 
+  23o - 0082 
+  24o - 0086 
+  25o - 0045 
+  26o - 0029 
+  27o - 0014 
+  28o - 0015 
+  29o - 0097 
+  30o - 0066 
+  31o - 0054 
+  32o - 0042 
+  33o - 0024 
+  34o - 0009 
+  35o - 0001 
+  36o - 0088 
+  37o - 0077 
+  38o - 0072 
+  39o - 0062 
+  40o - 0068 
+  41o - 0046 
+  42o - 0049 
+  43o - 0013 
+  44o - 0006 
+  45o - 0090 
+  46o - 0091 
+  47o - 0065 
+  48o - 0060 
+  49o - 0052 
+  50o - 0010 
+  51o - 0067 
+
+Ciclista   67 será deletado...
+
+O ciclista 0067 foi eliminado da corrida...
+
+Ranking - Rodada 47:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0080 
+   5o - 0018 
+   6o - 0002 
+   7o - 0092 
+   8o - 0094 
+   9o - 0087 
+  10o - 0075 
+  11o - 0055 
+  12o - 0034 
+  13o - 0036 
+  14o - 0028 
+  15o - 0041 
+  16o - 0021 
+  17o - 0003 
+  18o - 0098 
+  19o - 0086 
+  20o - 0069 
+  21o - 0059 
+  22o - 0043 
+  23o - 0031 
+  24o - 0045 
+  25o - 0029 
+  26o - 0014 
+  27o - 0097 
+  28o - 0082 
+  29o - 0054 
+  30o - 0042 
+  31o - 0024 
+  32o - 0001 
+  33o - 0009 
+  34o - 0015 
+  35o - 0088 
+  36o - 0077 
+  37o - 0066 
+  38o - 0072 
+  39o - 0049 
+  40o - 0006 
+  41o - 0091 
+  42o - 0090 
+  43o - 0065 
+  44o - 0062 
+  45o - 0068 
+  46o - 0046 
+  47o - 0060 
+  48o - 0013 
+  49o - 0052 
+  50o - 0010 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  55 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  56 ***
+
+Ranking - Rodada 48:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0018 
+   5o - 0002 
+   6o - 0087 
+   7o - 0080 
+   8o - 0055 
+   9o - 0034 
+  10o - 0028 
+  11o - 0041 
+  12o - 0003 
+  13o - 0098 
+  14o - 0094 
+  15o - 0092 
+  16o - 0075 
+  17o - 0069 
+  18o - 0059 
+  19o - 0043 
+  20o - 0036 
+  21o - 0031 
+  22o - 0045 
+  23o - 0021 
+  24o - 0029 
+  25o - 0097 
+  26o - 0054 
+  27o - 0042 
+  28o - 0024 
+  29o - 0001 
+  30o - 0009 
+  31o - 0015 
+  32o - 0077 
+  33o - 0066 
+  34o - 0072 
+  35o - 0049 
+  36o - 0088 
+  37o - 0062 
+  38o - 0068 
+  39o - 0046 
+  40o - 0006 
+  41o - 0091 
+  42o - 0090 
+  43o - 0065 
+  44o - 0060 
+  45o - 0052 
+  46o - 0013 
+  47o - 0010 
+
+Ciclista   10 será deletado...
+
+O ciclista 0010 foi eliminado da corrida...
+
+Ranking - Rodada 49:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0087 
+   5o - 0080 
+   6o - 0034 
+   7o - 0028 
+   8o - 0041 
+   9o - 0018 
+  10o - 0002 
+  11o - 0098 
+  12o - 0092 
+  13o - 0075 
+  14o - 0055 
+  15o - 0043 
+  16o - 0036 
+  17o - 0031 
+  18o - 0045 
+  19o - 0029 
+  20o - 0003 
+  21o - 0097 
+  22o - 0094 
+  23o - 0069 
+  24o - 0059 
+  25o - 0021 
+  26o - 0024 
+  27o - 0001 
+  28o - 0009 
+  29o - 0015 
+  30o - 0066 
+  31o - 0072 
+  32o - 0054 
+  33o - 0042 
+  34o - 0077 
+  35o - 0062 
+  36o - 0068 
+  37o - 0049 
+  38o - 0006 
+  39o - 0091 
+  40o - 0088 
+  41o - 0065 
+  42o - 0060 
+  43o - 0046 
+  44o - 0013 
+  45o - 0090 
+  46o - 0052 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  57 ***
+
+Ranking - Rodada 50:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0087 
+   5o - 0080 
+   6o - 0028 
+   7o - 0018 
+   8o - 0002 
+   9o - 0098 
+  10o - 0043 
+  11o - 0034 
+  12o - 0036 
+  13o - 0031 
+  14o - 0041 
+  15o - 0003 
+  16o - 0097 
+  17o - 0092 
+  18o - 0075 
+  19o - 0069 
+  20o - 0059 
+  21o - 0055 
+  22o - 0045 
+  23o - 0029 
+  24o - 0024 
+  25o - 0001 
+  26o - 0094 
+  27o - 0066 
+  28o - 0054 
+  29o - 0021 
+  30o - 0009 
+  31o - 0015 
+  32o - 0077 
+  33o - 0072 
+  34o - 0062 
+  35o - 0068 
+  36o - 0042 
+  37o - 0006 
+  38o - 0088 
+  39o - 0046 
+  40o - 0060 
+  41o - 0049 
+  42o - 0013 
+  43o - 0090 
+  44o - 0091 
+  45o - 0065 
+  46o - 0052 
+
+Ciclista   52 será deletado...
+
+O ciclista 0052 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  58 ***
+
+Ranking - Rodada 51:
+   1o - 0096 
+   2o - 0030 
+   3o - 0044 
+   4o - 0028 
+   5o - 0018 
+   6o - 0002 
+   7o - 0098 
+   8o - 0087 
+   9o - 0080 
+  10o - 0034 
+  11o - 0003 
+  12o - 0075 
+  13o - 0069 
+  14o - 0059 
+  15o - 0055 
+  16o - 0043 
+  17o - 0036 
+  18o - 0031 
+  19o - 0045 
+  20o - 0041 
+  21o - 0029 
+  22o - 0024 
+  23o - 0097 
+  24o - 0092 
+  25o - 0094 
+  26o - 0001 
+  27o - 0009 
+  28o - 0015 
+  29o - 0066 
+  30o - 0072 
+  31o - 0062 
+  32o - 0054 
+  33o - 0042 
+  34o - 0021 
+  35o - 0006 
+  36o - 0077 
+  37o - 0068 
+  38o - 0046 
+  39o - 0049 
+  40o - 0013 
+  41o - 0091 
+  42o - 0088 
+  43o - 0065 
+  44o - 0060 
+  45o - 0090 
+
+
+A thread 0072 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   72 quebrou na rodada 54! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 54: 31
+o número de elementos a passar dessa rodada atualizado: 42
+(ou seja: 100 (total) - 27 (r/2) - 31 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0072 quebrou na rodada 54!
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  59 ***
+
+Ranking - Rodada 52:
+   1o - 0096 
+   2o - 0044 
+   3o - 0030 
+   4o - 0028 
+   5o - 0002 
+   6o - 0098 
+   7o - 0087 
+   8o - 0080 
+   9o - 0034 
+  10o - 0018 
+  11o - 0003 
+  12o - 0059 
+  13o - 0055 
+  14o - 0043 
+  15o - 0036 
+  16o - 0031 
+  17o - 0045 
+  18o - 0041 
+  19o - 0024 
+  20o - 0097 
+  21o - 0094 
+  22o - 0092 
+  23o - 0075 
+  24o - 0069 
+  25o - 0029 
+  26o - 0001 
+  27o - 0015 
+  28o - 0066 
+  29o - 0072 
+  30o - 0054 
+  31o - 0021 
+  32o - 0009 
+  33o - 0062 
+  34o - 0068 
+  35o - 0046 
+  36o - 0049 
+  37o - 0042 
+  38o - 0006 
+  39o - 0091 
+  40o - 0088 
+  41o - 0077 
+  42o - 0060 
+  43o - 0013 
+  44o - 0090 
+  45o - 0065 
+
+Ciclista   65 será deletado...
+
+O ciclista 0065 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  60 ***
+
+Ranking - Rodada 53:
+   1o - 0096 
+   2o - 0044 
+   3o - 0030 
+   4o - 0098 
+   5o - 0080 
+   6o - 0034 
+   7o - 0028 
+   8o - 0018 
+   9o - 0002 
+  10o - 0003 
+  11o - 0087 
+  12o - 0055 
+  13o - 0043 
+  14o - 0036 
+  15o - 0045 
+  16o - 0097 
+  17o - 0094 
+  18o - 0075 
+  19o - 0069 
+  20o - 0059 
+  21o - 0031 
+  22o - 0041 
+  23o - 0029 
+  24o - 0001 
+  25o - 0024 
+  26o - 0092 
+  27o - 0066 
+  28o - 0054 
+  29o - 0021 
+  30o - 0009 
+  31o - 0015 
+  32o - 0072 
+  33o - 0068 
+  34o - 0049 
+  35o - 0042 
+  36o - 0006 
+  37o - 0088 
+  38o - 0077 
+  39o - 0062 
+  40o - 0046 
+  41o - 0060 
+  42o - 0013 
+  43o - 0090 
+  44o - 0091 
+
+
+A thread 0098 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   98 quebrou na rodada 60! e será eliminado
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  61 ***
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 60: 32
+o número de elementos a passar dessa rodada atualizado: 38
+(ou seja: 100 (total) - 30 (r/2) - 32 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0098 quebrou na rodada 60!
+
+Ranking - Rodada 54:
+   1o - 0096 
+   2o - 0044 
+   3o - 0030 
+   4o - 0098 
+   5o - 0034 
+   6o - 0028 
+   7o - 0018 
+   8o - 0002 
+   9o - 0003 
+  10o - 0087 
+  11o - 0080 
+  12o - 0055 
+  13o - 0043 
+  14o - 0036 
+  15o - 0045 
+  16o - 0097 
+  17o - 0075 
+  18o - 0059 
+  19o - 0031 
+  20o - 0041 
+  21o - 0029 
+  22o - 0024 
+  23o - 0094 
+  24o - 0069 
+  25o - 0021 
+  26o - 0001 
+  27o - 0009 
+  28o - 0015 
+  29o - 0092 
+  30o - 0066 
+  31o - 0068 
+  32o - 0054 
+  33o - 0049 
+  34o - 0042 
+  35o - 0088 
+  36o - 0077 
+  37o - 0062 
+  38o - 0060 
+  39o - 0013 
+  40o - 0006 
+  41o - 0091 
+  42o - 0046 
+  43o - 0090 
+
+Ciclista   90 será deletado...
+
+O ciclista 0090 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  62 ***
+
+Ranking - Rodada 55:
+   1o - 0096 
+   2o - 0044 
+   3o - 0030 
+   4o - 0098 
+   5o - 0028 
+   6o - 0018 
+   7o - 0002 
+   8o - 0003 
+   9o - 0087 
+  10o - 0055 
+  11o - 0034 
+  12o - 0036 
+  13o - 0045 
+  14o - 0097 
+  15o - 0080 
+  16o - 0059 
+  17o - 0043 
+  18o - 0024 
+  19o - 0094 
+  20o - 0075 
+  21o - 0069 
+  22o - 0031 
+  23o - 0041 
+  24o - 0021 
+  25o - 0029 
+  26o - 0001 
+  27o - 0092 
+  28o - 0054 
+  29o - 0042 
+  30o - 0009 
+  31o - 0015 
+  32o - 0088 
+  33o - 0066 
+  34o - 0062 
+  35o - 0068 
+  36o - 0060 
+  37o - 0049 
+  38o - 0013 
+  39o - 0006 
+  40o - 0077 
+  41o - 0046 
+  42o - 0091 
+
+
+A thread 0045 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   45 quebrou na rodada 60! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 60: 33
+o número de elementos a passar dessa rodada atualizado: 37
+(ou seja: 100 (total) - 30 (r/2) - 33 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0045 quebrou na rodada 60!
+
+Ranking - Rodada 56:
+   1o - 0096 
+   2o - 0044 
+   3o - 0030 
+   4o - 0098 
+   5o - 0028 
+   6o - 0018 
+   7o - 0003 
+   8o - 0036 
+   9o - 0045 
+  10o - 0002 
+  11o - 0087 
+  12o - 0080 
+  13o - 0055 
+  14o - 0043 
+  15o - 0034 
+  16o - 0024 
+  17o - 0097 
+  18o - 0075 
+  19o - 0069 
+  20o - 0059 
+  21o - 0031 
+  22o - 0029 
+  23o - 0094 
+  24o - 0042 
+  25o - 0041 
+  26o - 0021 
+  27o - 0001 
+  28o - 0009 
+  29o - 0015 
+  30o - 0092 
+  31o - 0088 
+  32o - 0066 
+  33o - 0062 
+  34o - 0068 
+  35o - 0054 
+  36o - 0060 
+  37o - 0049 
+  38o - 0013 
+  39o - 0077 
+  40o - 0046 
+  41o - 0006 
+  42o - 0091 
+
+Ciclista   91 será deletado...
+
+O ciclista 0091 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  63 ***
+
+Ranking - Rodada 57:
+   1o - 0096 
+   2o - 0044 
+   3o - 0030 
+   4o - 0018 
+   5o - 0003 
+   6o - 0098 
+   7o - 0028 
+   8o - 0002 
+   9o - 0087 
+  10o - 0055 
+  11o - 0043 
+  12o - 0034 
+  13o - 0036 
+  14o - 0045 
+  15o - 0024 
+  16o - 0080 
+  17o - 0059 
+  18o - 0031 
+  19o - 0029 
+  20o - 0097 
+  21o - 0094 
+  22o - 0075 
+  23o - 0069 
+  24o - 0042 
+  25o - 0021 
+  26o - 0001 
+  27o - 0009 
+  28o - 0015 
+  29o - 0092 
+  30o - 0088 
+  31o - 0066 
+  32o - 0062 
+  33o - 0054 
+  34o - 0049 
+  35o - 0041 
+  36o - 0013 
+  37o - 0077 
+  38o - 0068 
+  39o - 0060 
+  40o - 0006 
+  41o - 0046 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  64 ***
+
+Ranking - Rodada 58:
+   1o - 0096 
+   2o - 0044 
+   3o - 0098 
+   4o - 0028 
+   5o - 0030 
+   6o - 0018 
+   7o - 0003 
+   8o - 0087 
+   9o - 0034 
+  10o - 0036 
+  11o - 0024 
+  12o - 0002 
+  13o - 0080 
+  14o - 0055 
+  15o - 0043 
+  16o - 0031 
+  17o - 0045 
+  18o - 0029 
+  19o - 0097 
+  20o - 0094 
+  21o - 0075 
+  22o - 0069 
+  23o - 0059 
+  24o - 0042 
+  25o - 0009 
+  26o - 0015 
+  27o - 0092 
+  28o - 0088 
+  29o - 0054 
+  30o - 0049 
+  31o - 0021 
+  32o - 0013 
+  33o - 0001 
+  34o - 0077 
+  35o - 0066 
+  36o - 0062 
+  37o - 0068 
+  38o - 0060 
+  39o - 0041 
+  40o - 0006 
+  41o - 0046 
+
+Ciclista   46 será deletado...
+
+O ciclista 0046 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  65 ***
+
+Ranking - Rodada 59:
+   1o - 0096 
+   2o - 0044 
+   3o - 0098 
+   4o - 0028 
+   5o - 0018 
+   6o - 0087 
+   7o - 0034 
+   8o - 0036 
+   9o - 0030 
+  10o - 0002 
+  11o - 0003 
+  12o - 0055 
+  13o - 0043 
+  14o - 0031 
+  15o - 0045 
+  16o - 0029 
+  17o - 0024 
+  18o - 0097 
+  19o - 0075 
+  20o - 0080 
+  21o - 0069 
+  22o - 0059 
+  23o - 0094 
+  24o - 0088 
+  25o - 0049 
+  26o - 0042 
+  27o - 0021 
+  28o - 0013 
+  29o - 0009 
+  30o - 0015 
+  31o - 0092 
+  32o - 0077 
+  33o - 0066 
+  34o - 0062 
+  35o - 0054 
+  36o - 0041 
+  37o - 0001 
+  38o - 0068 
+  39o - 0060 
+  40o - 0006 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  66 ***
+
+A thread 0018 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   18 quebrou na rodada 66! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 66: 34
+o número de elementos a passar dessa rodada atualizado: 33
+(ou seja: 100 (total) - 33 (r/2) - 34 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0018 quebrou na rodada 66!
+
+Ranking - Rodada 60:
+   1o - 0096 
+   2o - 0044 
+   3o - 0028 
+   4o - 0018 
+   5o - 0087 
+   6o - 0034 
+   7o - 0036 
+   8o - 0030 
+   9o - 0002 
+  10o - 0055 
+  11o - 0043 
+  12o - 0029 
+  13o - 0024 
+  14o - 0003 
+  15o - 0075 
+  16o - 0069 
+  17o - 0080 
+  18o - 0031 
+  19o - 0097 
+  20o - 0094 
+  21o - 0059 
+  22o - 0042 
+  23o - 0021 
+  24o - 0013 
+  25o - 0009 
+  26o - 0015 
+  27o - 0092 
+  28o - 0088 
+  29o - 0077 
+  30o - 0062 
+  31o - 0049 
+  32o - 0041 
+  33o - 0001 
+  34o - 0066 
+  35o - 0054 
+  36o - 0068 
+  37o - 0060 
+  38o - 0006 
+
+Ciclista    6 será deletado...
+
+O ciclista 0006 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  67 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  68 ***
+
+Ranking - Rodada 61:
+   1o - 0096 
+   2o - 0044 
+   3o - 0018 
+   4o - 0087 
+   5o - 0028 
+   6o - 0030 
+   7o - 0002 
+   8o - 0055 
+   9o - 0043 
+  10o - 0034 
+  11o - 0036 
+  12o - 0029 
+  13o - 0003 
+  14o - 0069 
+  15o - 0080 
+  16o - 0024 
+  17o - 0097 
+  18o - 0094 
+  19o - 0075 
+  20o - 0059 
+  21o - 0031 
+  22o - 0021 
+  23o - 0009 
+  24o - 0088 
+  25o - 0062 
+  26o - 0049 
+  27o - 0042 
+  28o - 0013 
+  29o - 0015 
+  30o - 0092 
+  31o - 0077 
+  32o - 0066 
+  33o - 0054 
+  34o - 0041 
+  35o - 0001 
+  36o - 0060 
+  37o - 0068 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  69 ***
+
+Ranking - Rodada 62:
+   1o - 0096 
+   2o - 0044 
+   3o - 0018 
+   4o - 0002 
+   5o - 0087 
+   6o - 0055 
+   7o - 0034 
+   8o - 0028 
+   9o - 0030 
+  10o - 0003 
+  11o - 0080 
+  12o - 0043 
+  13o - 0036 
+  14o - 0029 
+  15o - 0024 
+  16o - 0097 
+  17o - 0094 
+  18o - 0069 
+  19o - 0031 
+  20o - 0021 
+  21o - 0088 
+  22o - 0075 
+  23o - 0062 
+  24o - 0059 
+  25o - 0042 
+  26o - 0013 
+  27o - 0009 
+  28o - 0015 
+  29o - 0092 
+  30o - 0054 
+  31o - 0049 
+  32o - 0041 
+  33o - 0001 
+  34o - 0077 
+  35o - 0066 
+  36o - 0060 
+  37o - 0068 
+
+Ciclista   68 será deletado...
+
+O ciclista 0068 foi eliminado da corrida...
+
+Ranking - Rodada 63:
+   1o - 0096 
+   2o - 0044 
+   3o - 0018 
+   4o - 0002 
+   5o - 0087 
+   6o - 0055 
+   7o - 0030 
+   8o - 0043 
+   9o - 0034 
+  10o - 0036 
+  11o - 0028 
+  12o - 0029 
+  13o - 0024 
+  14o - 0003 
+  15o - 0094 
+  16o - 0080 
+  17o - 0069 
+  18o - 0031 
+  19o - 0021 
+  20o - 0097 
+  21o - 0075 
+  22o - 0062 
+  23o - 0059 
+  24o - 0042 
+  25o - 0013 
+  26o - 0009 
+  27o - 0015 
+  28o - 0088 
+  29o - 0049 
+  30o - 0041 
+  31o - 0001 
+  32o - 0092 
+  33o - 0077 
+  34o - 0066 
+  35o - 0060 
+  36o - 0054 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  70 ***
+
+Ranking - Rodada 64:
+   1o - 0096 
+   2o - 0044 
+   3o - 0002 
+   4o - 0087 
+   5o - 0055 
+   6o - 0030 
+   7o - 0018 
+   8o - 0034 
+   9o - 0028 
+  10o - 0024 
+  11o - 0003 
+  12o - 0094 
+  13o - 0069 
+  14o - 0080 
+  15o - 0043 
+  16o - 0036 
+  17o - 0029 
+  18o - 0059 
+  19o - 0031 
+  20o - 0021 
+  21o - 0013 
+  22o - 0015 
+  23o - 0097 
+  24o - 0088 
+  25o - 0075 
+  26o - 0062 
+  27o - 0042 
+  28o - 0041 
+  29o - 0009 
+  30o - 0092 
+  31o - 0060 
+  32o - 0054 
+  33o - 0049 
+  34o - 0001 
+  35o - 0077 
+  36o - 0066 
+
+Ciclista   66 será deletado...
+
+O ciclista 0066 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  71 ***
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  72 ***
+
+Ranking - Rodada 65:
+   1o - 0044 
+   2o - 0096 
+   3o - 0002 
+   4o - 0055 
+   5o - 0030 
+   6o - 0018 
+   7o - 0087 
+   8o - 0034 
+   9o - 0028 
+  10o - 0024 
+  11o - 0003 
+  12o - 0094 
+  13o - 0069 
+  14o - 0080 
+  15o - 0043 
+  16o - 0036 
+  17o - 0029 
+  18o - 0021 
+  19o - 0013 
+  20o - 0075 
+  21o - 0062 
+  22o - 0059 
+  23o - 0031 
+  24o - 0042 
+  25o - 0009 
+  26o - 0015 
+  27o - 0097 
+  28o - 0092 
+  29o - 0088 
+  30o - 0060 
+  31o - 0054 
+  32o - 0049 
+  33o - 0041 
+  34o - 0001 
+  35o - 0077 
+
+
+Ranking - Rodada 66:
+   1o - 0044 
+   2o - 0096 
+   3o - 0002 
+   4o - 0055 
+   5o - 0087 
+   6o - 0034 
+   7o - 0028 
+   8o - 0030 
+   9o - 0024 
+  10o - 0003 
+  11o - 0029 
+  12o - 0094 
+  13o - 0069 
+  14o - 0080 
+  15o - 0043 
+  16o - 0036 
+  17o - 0021 
+  18o - 0013 
+  19o - 0062 
+  20o - 0059 
+  21o - 0031 
+  22o - 0042 
+  23o - 0009 
+  24o - 0015 
+  25o - 0088 
+  26o - 0075 
+  27o - 0054 
+  28o - 0060 
+  29o - 0041 
+  30o - 0097 
+  31o - 0092 
+  32o - 0049 
+  33o - 0001 
+  34o - 0077 
+
+Ciclista   77 será deletado...
+
+O ciclista 0077 foi eliminado da corrida...
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  73 ***
+
+Ranking - Rodada 67:
+   1o - 0096 
+   2o - 0044 
+   3o - 0002 
+   4o - 0087 
+   5o - 0055 
+   6o - 0034 
+   7o - 0028 
+   8o - 0030 
+   9o - 0003 
+  10o - 0024 
+  11o - 0094 
+  12o - 0069 
+  13o - 0080 
+  14o - 0043 
+  15o - 0036 
+  16o - 0021 
+  17o - 0013 
+  18o - 0029 
+  19o - 0059 
+  20o - 0031 
+  21o - 0042 
+  22o - 0009 
+  23o - 0015 
+  24o - 0088 
+  25o - 0075 
+  26o - 0062 
+  27o - 0054 
+  28o - 0097 
+  29o - 0092 
+  30o - 0060 
+  31o - 0041 
+  32o - 0001 
+  33o - 0049 
+
+
+Ranking - Rodada 68:
+   1o - 0096 
+   2o - 0044 
+   3o - 0002 
+   4o - 0087 
+   5o - 0055 
+   6o - 0034 
+   7o - 0030 
+   8o - 0003 
+   9o - 0028 
+  10o - 0024 
+  11o - 0069 
+  12o - 0080 
+  13o - 0043 
+  14o - 0036 
+  15o - 0021 
+  16o - 0029 
+  17o - 0094 
+  18o - 0031 
+  19o - 0042 
+  20o - 0013 
+  21o - 0009 
+  22o - 0015 
+  23o - 0062 
+  24o - 0059 
+  25o - 0054 
+  26o - 0097 
+  27o - 0088 
+  28o - 0075 
+  29o - 0060 
+  30o - 0041 
+  31o - 0001 
+  32o - 0092 
+  33o - 0049 
+
+Ciclista   49 será deletado...
+
+O ciclista 0049 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  74 ***
+
+Ranking - Rodada 69:
+   1o - 0096 
+   2o - 0002 
+   3o - 0087 
+   4o - 0044 
+   5o - 0055 
+   6o - 0034 
+   7o - 0028 
+   8o - 0030 
+   9o - 0024 
+  10o - 0003 
+  11o - 0080 
+  12o - 0043 
+  13o - 0036 
+  14o - 0021 
+  15o - 0029 
+  16o - 0094 
+  17o - 0069 
+  18o - 0031 
+  19o - 0042 
+  20o - 0013 
+  21o - 0009 
+  22o - 0062 
+  23o - 0054 
+  24o - 0015 
+  25o - 0088 
+  26o - 0075 
+  27o - 0059 
+  28o - 0041 
+  29o - 0001 
+  30o - 0097 
+  31o - 0092 
+  32o - 0060 
+
+  96 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  75 ***
+
+Ranking - Rodada 70:
+   1o - 0096 
+   2o - 0002 
+   3o - 0044 
+   4o - 0087 
+   5o - 0055 
+   6o - 0034 
+   7o - 0028 
+   8o - 0030 
+   9o - 0024 
+  10o - 0003 
+  11o - 0036 
+  12o - 0094 
+  13o - 0080 
+  14o - 0069 
+  15o - 0043 
+  16o - 0031 
+  17o - 0021 
+  18o - 0029 
+  19o - 0009 
+  20o - 0062 
+  21o - 0042 
+  22o - 0013 
+  23o - 0015 
+  24o - 0088 
+  25o - 0075 
+  26o - 0054 
+  27o - 0001 
+  28o - 0097 
+  29o - 0059 
+  30o - 0060 
+  31o - 0041 
+  32o - 0092 
+
+Ciclista   92 será deletado...
+
+O ciclista 0092 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  76 ***
+
+Ranking - Rodada 71:
+   1o - 0096 
+   2o - 0044 
+   3o - 0002 
+   4o - 0055 
+   5o - 0024 
+   6o - 0087 
+   7o - 0036 
+   8o - 0034 
+   9o - 0028 
+  10o - 0030 
+  11o - 0003 
+  12o - 0094 
+  13o - 0080 
+  14o - 0043 
+  15o - 0031 
+  16o - 0021 
+  17o - 0069 
+  18o - 0062 
+  19o - 0042 
+  20o - 0013 
+  21o - 0029 
+  22o - 0009 
+  23o - 0088 
+  24o - 0054 
+  25o - 0001 
+  26o - 0015 
+  27o - 0097 
+  28o - 0075 
+  29o - 0059 
+  30o - 0060 
+  31o - 0041 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  77 ***
+
+A thread 0096 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   96 quebrou na rodada 78! e será eliminado
+
+Ranking - Rodada 72:
+   1o - 0096 
+   2o - 0044 
+   3o - 0002 
+   4o - 0055 
+   5o - 0024 
+   6o - 0034 
+   7o - 0028 
+   8o - 0030 
+   9o - 0003 
+  10o - 0094 
+  11o - 0087 
+  12o - 0043 
+  13o - 0036 
+  14o - 0031 
+  15o - 0021 
+  16o - 0069 
+  17o - 0080 
+  18o - 0062 
+  19o - 0013 
+  20o - 0029 
+  21o - 0009 
+  22o - 0042 
+  23o - 0001 
+  24o - 0015 
+  25o - 0088 
+  26o - 0075 
+  27o - 0059 
+  28o - 0054 
+  29o - 0060 
+  30o - 0041 
+  31o - 0097 
+
+Ciclista   97 será deletado...
+
+O ciclista 0097 foi eliminado da corrida...
+0 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 78: 35
+o número de elementos a passar dessa rodada atualizado: 26
+(ou seja: 100 (total) - 39 (r/2) - 35 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0096 quebrou na rodada 78!
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  78 ***
+
+Ranking - Rodada 73:
+   1o - 0096 
+   2o - 0044 
+   3o - 0024 
+   4o - 0002 
+   5o - 0055 
+   6o - 0034 
+   7o - 0003 
+   8o - 0087 
+   9o - 0043 
+  10o - 0036 
+  11o - 0031 
+  12o - 0028 
+  13o - 0030 
+  14o - 0021 
+  15o - 0094 
+  16o - 0080 
+  17o - 0029 
+  18o - 0009 
+  19o - 0069 
+  20o - 0062 
+  21o - 0013 
+  22o - 0015 
+  23o - 0088 
+  24o - 0059 
+  25o - 0054 
+  26o - 0042 
+  27o - 0041 
+  28o - 0001 
+  29o - 0075 
+  30o - 0060 
+
+
+A thread 0024 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   24 quebrou na rodada 78! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 78: 36
+o número de elementos a passar dessa rodada atualizado: 25
+(ou seja: 100 (total) - 39 (r/2) - 36 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0024 quebrou na rodada 78!
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  79 ***
+
+Ranking - Rodada 74:
+   1o - 0044 
+   2o - 0096 
+   3o - 0024 
+   4o - 0002 
+   5o - 0055 
+   6o - 0034 
+   7o - 0036 
+   8o - 0031 
+   9o - 0028 
+  10o - 0030 
+  11o - 0021 
+  12o - 0003 
+  13o - 0094 
+  14o - 0087 
+  15o - 0080 
+  16o - 0043 
+  17o - 0029 
+  18o - 0069 
+  19o - 0062 
+  20o - 0013 
+  21o - 0009 
+  22o - 0015 
+  23o - 0088 
+  24o - 0054 
+  25o - 0001 
+  26o - 0075 
+  27o - 0059 
+  28o - 0060 
+  29o - 0042 
+  30o - 0041 
+
+Ciclista   41 será deletado...
+
+O ciclista 0041 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  80 ***
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  81 ***
+
+Ranking - Rodada 75:
+   1o - 0096 
+   2o - 0044 
+   3o - 0055 
+   4o - 0024 
+   5o - 0002 
+   6o - 0036 
+   7o - 0034 
+   8o - 0003 
+   9o - 0094 
+  10o - 0043 
+  11o - 0031 
+  12o - 0028 
+  13o - 0030 
+  14o - 0021 
+  15o - 0087 
+  16o - 0080 
+  17o - 0062 
+  18o - 0029 
+  19o - 0009 
+  20o - 0015 
+  21o - 0069 
+  22o - 0013 
+  23o - 0001 
+  24o - 0088 
+  25o - 0054 
+  26o - 0075 
+  27o - 0059 
+  28o - 0060 
+  29o - 0042 
+
+
+A thread 0009 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista    9 quebrou na rodada 78! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 78: 37
+o número de elementos a passar dessa rodada atualizado: 24
+(ou seja: 100 (total) - 39 (r/2) - 37 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0009 quebrou na rodada 78!
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  82 ***
+
+Ranking - Rodada 76:
+   1o - 0044 
+   2o - 0096 
+   3o - 0024 
+   4o - 0002 
+   5o - 0055 
+   6o - 0003 
+   7o - 0094 
+   8o - 0043 
+   9o - 0036 
+  10o - 0034 
+  11o - 0031 
+  12o - 0028 
+  13o - 0030 
+  14o - 0021 
+  15o - 0087 
+  16o - 0080 
+  17o - 0062 
+  18o - 0015 
+  19o - 0069 
+  20o - 0029 
+  21o - 0001 
+  22o - 0009 
+  23o - 0054 
+  24o - 0013 
+  25o - 0088 
+  26o - 0075 
+  27o - 0059 
+  28o - 0042 
+  29o - 0060 
+
+Ciclista   60 será deletado...
+
+O ciclista 0060 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  83 ***
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  84 ***
+
+A thread 0042 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   42 quebrou na rodada 78! e será eliminado
+
+Ranking - Rodada 77:
+   1o - 0044 
+   2o - 0096 
+   3o - 0002 
+   4o - 0024 
+   5o - 0094 
+   6o - 0055 
+   7o - 0043 
+   8o - 0036 
+   9o - 0034 
+  10o - 0031 
+  11o - 0030 
+  12o - 0003 
+  13o - 0087 
+  14o - 0080 
+  15o - 0028 
+  16o - 0021 
+  17o - 0015 
+  18o - 0069 
+  19o - 0062 
+  20o - 0029 
+  21o - 0001 
+  22o - 0009 
+  23o - 0013 
+  24o - 0088 
+  25o - 0059 
+  26o - 0054 
+  27o - 0075 
+  28o - 0042 
+
+7 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 78: 38
+o número de elementos a passar dessa rodada atualizado: 23
+(ou seja: 100 (total) - 39 (r/2) - 38 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0042 quebrou na rodada 78!
+
+Ranking - Rodada 78:
+   1o - 0044 
+   2o - 0002 
+   3o - 0055 
+   4o - 0043 
+   5o - 0036 
+   6o - 0031 
+   7o - 0030 
+   8o - 0003 
+   9o - 0094 
+  10o - 0087 
+  11o - 0034 
+  12o - 0028 
+  13o - 0021 
+  14o - 0080 
+  15o - 0069 
+  16o - 0062 
+  17o - 0001 
+  18o - 0015 
+  19o - 0029 
+  20o - 0088 
+  21o - 0054 
+  22o - 0013 
+  23o - 0075 
+  24o - 0059 
+
+Ciclista   59 será deletado...
+
+O ciclista 0059 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  85 ***
+
+Ranking - Rodada 79:
+   1o - 0044 
+   2o - 0002 
+   3o - 0055 
+   4o - 0031 
+   5o - 0030 
+   6o - 0003 
+   7o - 0087 
+   8o - 0043 
+   9o - 0036 
+  10o - 0034 
+  11o - 0021 
+  12o - 0094 
+  13o - 0080 
+  14o - 0062 
+  15o - 0028 
+  16o - 0015 
+  17o - 0069 
+  18o - 0029 
+  19o - 0001 
+  20o - 0054 
+  21o - 0013 
+  22o - 0088 
+  23o - 0075 
+
+
+Ranking - Rodada 80:
+   1o - 0044 
+   2o - 0002 
+   3o - 0031 
+   4o - 0030 
+   5o - 0055 
+   6o - 0043 
+   7o - 0036 
+   8o - 0021 
+   9o - 0003 
+  10o - 0094 
+  11o - 0087 
+  12o - 0080 
+  13o - 0034 
+  14o - 0028 
+  15o - 0015 
+  16o - 0069 
+  17o - 0062 
+  18o - 0001 
+  19o - 0013 
+  20o - 0029 
+  21o - 0088 
+  22o - 0075 
+  23o - 0054 
+
+Ciclista   54 será deletado...
+
+O ciclista 0054 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  86 ***
+
+Ranking - Rodada 81:
+   1o - 0044 
+   2o - 0002 
+   3o - 0030 
+   4o - 0055 
+   5o - 0043 
+   6o - 0031 
+   7o - 0003 
+   8o - 0087 
+   9o - 0036 
+  10o - 0034 
+  11o - 0028 
+  12o - 0021 
+  13o - 0094 
+  14o - 0080 
+  15o - 0001 
+  16o - 0015 
+  17o - 0069 
+  18o - 0062 
+  19o - 0013 
+  20o - 0029 
+  21o - 0088 
+  22o - 0075 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  87 ***
+
+Ranking - Rodada 82:
+   1o - 0044 
+   2o - 0002 
+   3o - 0055 
+   4o - 0031 
+   5o - 0030 
+   6o - 0003 
+   7o - 0087 
+   8o - 0043 
+   9o - 0036 
+  10o - 0034 
+  11o - 0021 
+  12o - 0080 
+  13o - 0028 
+  14o - 0015 
+  15o - 0094 
+  16o - 0069 
+  17o - 0062 
+  18o - 0001 
+  19o - 0088 
+  20o - 0075 
+  21o - 0013 
+  22o - 0029 
+
+Ciclista   29 será deletado...
+
+O ciclista 0029 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  88 ***
+
+Ranking - Rodada 83:
+   1o - 0044 
+   2o - 0002 
+   3o - 0055 
+   4o - 0031 
+   5o - 0030 
+   6o - 0003 
+   7o - 0087 
+   8o - 0043 
+   9o - 0036 
+  10o - 0080 
+  11o - 0034 
+  12o - 0021 
+  13o - 0094 
+  14o - 0069 
+  15o - 0028 
+  16o - 0001 
+  17o - 0015 
+  18o - 0088 
+  19o - 0075 
+  20o - 0062 
+  21o - 0013 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  89 ***
+
+Ranking - Rodada 84:
+   1o - 0044 
+   2o - 0055 
+   3o - 0030 
+   4o - 0002 
+   5o - 0036 
+   6o - 0031 
+   7o - 0003 
+   8o - 0087 
+   9o - 0043 
+  10o - 0034 
+  11o - 0021 
+  12o - 0094 
+  13o - 0069 
+  14o - 0080 
+  15o - 0028 
+  16o - 0001 
+  17o - 0015 
+  18o - 0013 
+  19o - 0088 
+  20o - 0075 
+  21o - 0062 
+
+Ciclista   62 será deletado...
+
+O ciclista 0062 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  90 ***
+
+Ranking - Rodada 85:
+   1o - 0044 
+   2o - 0055 
+   3o - 0002 
+   4o - 0031 
+   5o - 0030 
+   6o - 0087 
+   7o - 0043 
+   8o - 0036 
+   9o - 0034 
+  10o - 0003 
+  11o - 0094 
+  12o - 0080 
+  13o - 0021 
+  14o - 0001 
+  15o - 0069 
+  16o - 0028 
+  17o - 0015 
+  18o - 0088 
+  19o - 0075 
+  20o - 0013 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  91 ***
+
+Ranking - Rodada 86:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0002 
+   5o - 0087 
+   6o - 0036 
+   7o - 0034 
+   8o - 0030 
+   9o - 0003 
+  10o - 0094 
+  11o - 0080 
+  12o - 0043 
+  13o - 0021 
+  14o - 0001 
+  15o - 0069 
+  16o - 0028 
+  17o - 0088 
+  18o - 0013 
+  19o - 0015 
+  20o - 0075 
+
+Ciclista   75 será deletado...
+
+O ciclista 0075 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  92 ***
+
+Ranking - Rodada 87:
+   1o - 0044 
+   2o - 0055 
+   3o - 0002 
+   4o - 0036 
+   5o - 0031 
+   6o - 0030 
+   7o - 0094 
+   8o - 0087 
+   9o - 0043 
+  10o - 0034 
+  11o - 0001 
+  12o - 0003 
+  13o - 0069 
+  14o - 0080 
+  15o - 0028 
+  16o - 0021 
+  17o - 0013 
+  18o - 0015 
+  19o - 0088 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  93 ***
+
+Ranking - Rodada 88:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0002 
+   5o - 0094 
+   6o - 0087 
+   7o - 0036 
+   8o - 0030 
+   9o - 0001 
+  10o - 0003 
+  11o - 0080 
+  12o - 0043 
+  13o - 0034 
+  14o - 0021 
+  15o - 0069 
+  16o - 0028 
+  17o - 0013 
+  18o - 0015 
+  19o - 0088 
+
+Ciclista   88 será deletado...
+
+O ciclista 0088 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  94 ***
+
+A thread 0015 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   15 quebrou na rodada 90! e será eliminado
+
+Ranking - Rodada 89:
+   1o - 0044 
+   2o - 0055 
+   3o - 0002 
+   4o - 0094 
+   5o - 0087 
+   6o - 0036 
+   7o - 0031 
+   8o - 0030 
+   9o - 0001 
+  10o - 0034 
+  11o - 0003 
+  12o - 0069 
+  13o - 0080 
+  14o - 0043 
+  15o - 0021 
+  16o - 0028 
+  17o - 0013 
+  18o - 0015 
+
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 90: 39
+o número de elementos a passar dessa rodada atualizado: 16
+(ou seja: 100 (total) - 45 (r/2) - 39 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0015 quebrou na rodada 90!
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  95 ***
+
+Ranking - Rodada 90:
+   1o - 0044 
+   2o - 0087 
+   3o - 0055 
+   4o - 0031 
+   5o - 0001 
+   6o - 0002 
+   7o - 0094 
+   8o - 0036 
+   9o - 0034 
+  10o - 0030 
+  11o - 0003 
+  12o - 0069 
+  13o - 0080 
+  14o - 0043 
+  15o - 0021 
+  16o - 0028 
+  17o - 0013 
+
+Ciclista   13 será deletado...
+
+O ciclista 0013 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  96 ***
+
+Ranking - Rodada 91:
+   1o - 0044 
+   2o - 0087 
+   3o - 0055 
+   4o - 0031 
+   5o - 0001 
+   6o - 0002 
+   7o - 0094 
+   8o - 0036 
+   9o - 0030 
+  10o - 0003 
+  11o - 0069 
+  12o - 0034 
+  13o - 0080 
+  14o - 0043 
+  15o - 0021 
+  16o - 0028 
+
+
+A thread 0001 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista    1 quebrou na rodada 96! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 96: 40
+o número de elementos a passar dessa rodada atualizado: 12
+(ou seja: 100 (total) - 48 (r/2) - 40 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0001 quebrou na rodada 96!
+
+Ranking - Rodada 92:
+   1o - 0044 
+   2o - 0087 
+   3o - 0055 
+   4o - 0031 
+   5o - 0001 
+   6o - 0094 
+   7o - 0030 
+   8o - 0002 
+   9o - 0069 
+  10o - 0036 
+  11o - 0034 
+  12o - 0003 
+  13o - 0021 
+  14o - 0080 
+  15o - 0043 
+  16o - 0028 
+
+Ciclista   28 será deletado...
+
+O ciclista 0028 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  97 ***
+
+Ranking - Rodada 93:
+   1o - 0044 
+   2o - 0087 
+   3o - 0055 
+   4o - 0001 
+   5o - 0031 
+   6o - 0030 
+   7o - 0094 
+   8o - 0069 
+   9o - 0036 
+  10o - 0034 
+  11o - 0002 
+  12o - 0003 
+  13o - 0021 
+  14o - 0080 
+  15o - 0043 
+
+
+Ranking - Rodada 94:
+   1o - 0044 
+   2o - 0001 
+   3o - 0087 
+   4o - 0055 
+   5o - 0031 
+   6o - 0094 
+   7o - 0036 
+   8o - 0034 
+   9o - 0030 
+  10o - 0002 
+  11o - 0003 
+  12o - 0069 
+  13o - 0043 
+  14o - 0021 
+  15o - 0080 
+
+Ciclista   80 será deletado...
+
+O ciclista 0080 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  98 ***
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  99 ***
+
+Ranking - Rodada 95:
+   1o - 0044 
+   2o - 0001 
+   3o - 0087 
+   4o - 0055 
+   5o - 0031 
+   6o - 0094 
+   7o - 0030 
+   8o - 0002 
+   9o - 0069 
+  10o - 0036 
+  11o - 0034 
+  12o - 0003 
+  13o - 0043 
+  14o - 0021 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 100 ***
+
+Ranking - Rodada 96:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0094 
+   5o - 0087 
+   6o - 0002 
+   7o - 0036 
+   8o - 0034 
+   9o - 0030 
+  10o - 0003 
+  11o - 0069 
+  12o - 0043 
+  13o - 0021 
+
+Ciclista   21 será deletado...
+
+O ciclista 0021 foi eliminado da corrida...
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 101 ***
+
+Ranking - Rodada 97:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0094 
+   5o - 0087 
+   6o - 0002 
+   7o - 0003 
+   8o - 0069 
+   9o - 0036 
+  10o - 0034 
+  11o - 0030 
+  12o - 0043 
+
+  44 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 102 ***
+
+Ranking - Rodada 98:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0087 
+   5o - 0094 
+   6o - 0002 
+   7o - 0003 
+   8o - 0069 
+   9o - 0036 
+  10o - 0030 
+  11o - 0034 
+  12o - 0043 
+
+Ciclista   43 será deletado...
+
+O ciclista 0043 foi eliminado da corrida...
+
+Ranking - Rodada 99:
+   1o - 0044 
+   2o - 0087 
+   3o - 0055 
+   4o - 0031 
+   5o - 0094 
+   6o - 0002 
+   7o - 0069 
+   8o - 0036 
+   9o - 0003 
+  10o - 0034 
+  11o - 0030 
+
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 103 ***
+
+Ranking - Rodada 100:
+   1o - 0044 
+   2o - 0087 
+   3o - 0055 
+   4o - 0031 
+   5o - 0094 
+   6o - 0002 
+   7o - 0036 
+   8o - 0069 
+   9o - 0034 
+  10o - 0030 
+  11o - 0003 
+
+Ciclista    3 será deletado...
+
+O ciclista 0003 foi eliminado da corrida...
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 104 ***
+
+A thread 0034 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   34 quebrou na rodada 102! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 102: 41
+o número de elementos a passar dessa rodada atualizado: 8
+(ou seja: 100 (total) - 51 (r/2) - 41 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0034 quebrou na rodada 102!
+
+Ranking - Rodada 101:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0094 
+   5o - 0087 
+   6o - 0036 
+   7o - 0002 
+   8o - 0069 
+   9o - 0034 
+  10o - 0030 
+
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 105 ***
+
+Ranking - Rodada 102:
+   1o - 0044 
+   2o - 0055 
+   3o - 0031 
+   4o - 0094 
+   5o - 0087 
+   6o - 0036 
+   7o - 0069 
+   8o - 0030 
+   9o - 0002 
+
+Ciclista    2 será deletado...
+
+O ciclista 0002 foi eliminado da corrida...
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 106 ***
+
+Ranking - Rodada 103:
+   1o - 0055 
+   2o - 0044 
+   3o - 0094 
+   4o - 0031 
+   5o - 0087 
+   6o - 0069 
+   7o - 0036 
+   8o - 0030 
+
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 107 ***
+
+Ranking - Rodada 104:
+   1o - 0055 
+   2o - 0044 
+   3o - 0094 
+   4o - 0031 
+   5o - 0087 
+   6o - 0069 
+   7o - 0036 
+   8o - 0030 
+
+Ciclista   30 será deletado...
+
+O ciclista 0030 foi eliminado da corrida...
+
+Ranking - Rodada 105:
+   1o - 0055 
+   2o - 0094 
+   3o - 0044 
+   4o - 0031 
+   5o - 0087 
+   6o - 0036 
+   7o - 0069 
+
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 108 ***
+
+Ranking - Rodada 106:
+   1o - 0055 
+   2o - 0094 
+   3o - 0044 
+   4o - 0031 
+   5o - 0087 
+   6o - 0069 
+   7o - 0036 
+
+Ciclista   36 será deletado...
+
+O ciclista 0036 foi eliminado da corrida...
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 109 ***
+
+Ranking - Rodada 107:
+   1o - 0055 
+   2o - 0094 
+   3o - 0044 
+   4o - 0031 
+   5o - 0087 
+   6o - 0069 
+
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 110 ***
+
+Ranking - Rodada 108:
+   1o - 0055 
+   2o - 0031 
+   3o - 0094 
+   4o - 0044 
+   5o - 0087 
+   6o - 0069 
+
+Ciclista   69 será deletado...
+
+O ciclista 0069 foi eliminado da corrida...
+  55 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 111 ***
+
+Ranking - Rodada 109:
+   1o - 0055 
+   2o - 0031 
+   3o - 0094 
+   4o - 0044 
+   5o - 0087 
+
+
+Ranking - Rodada 111:
+   1o - 0055 
+   2o - 0031 
+   3o - 0094 
+   4o - 0044 
+
+  31 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 112 ***
+Na rodada 113 foi decidido que a thread 140600955254528 seria uma das finalistas(0)!
+  94 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 113 ***
+*************************************************************
+entrou aqui: A THREAD 528 É UMA DAS 2 FINALISTAS (RODADA: 114)!
+*************************************************************
+As duas threads estão a menos que 90km/h (possivelmente) 
+
+Ranking - Rodada 110:
+   1o - 0055 
+   2o - 0031 
+   3o - 0094 
+   4o - 0044 
+   5o - 0087 
+
+Ciclista   87 será deletado...
+
+O ciclista 0087 foi eliminado da corrida...
+
+Ranking - Rodada 112:
+   1o - 0031 
+   2o - 0094 
+   3o - 0055 
+   4o - 0044 
+
+Ciclista   44 será deletado...
+Na rodada 113 foi decidido que a thread 140602104596224 seria uma das finalistas(1)!
+*************************************************************
+entrou aqui: A THREAD 224 É UMA DAS 2 FINALISTAS (RODADA: 114)!
+
+O ciclista 0044 foi eliminado da corrida...
+*************************************************************
+As duas threads estão a menos que 90km/h (possivelmente) 
+O ciclista 140603740387072 chegou tarde demais na rodada 113 !
+
+Ranking - Rodada 113:
+   1o - 0094 
+   2o - 0055 
+   3o - 0031 
+
+  31 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 114 ***
+*************************************************************
+entrou aqui: A THREAD 528 É UMA DAS 2 FINALISTAS (RODADA: 115)!
+*************************************************************
+As duas threads estão a menos que 90km/h (possivelmente) 
+
+Ranking - Rodada 114:
+   1o - 0031 
+   2o - 0094 
+   3o - 0055 
+
+Ciclista   55 será deletado...
+A VELOCIDADE VAI VOLTAR AO NORMAL COM CERTEZA AGORA!
+
+O ciclista 0055 foi eliminado da corrida...
+  31 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 115 ***
+
+Ranking - Rodada 115:
+   1o - 0031 
+   2o - 0094 
+
+  31 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 116 ***
+
+Ranking - Rodada 116:
+   1o - 0031 
+   2o - 0094 
+
+Ciclista   94 será deletado...
+A VELOCIDADE VAI VOLTAR AO NORMAL COM CERTEZA AGORA!
+
+O ciclista 0094 foi eliminado da corrida...
+  31 EH O PRIMEIRO COLOCADO!!!!!!!
+  31 EH O VENCEDOR!!!!!!!
+O ciclista 0031 é o VENCEDOR da corrida na rodada 117!
+OK!!
+******************* RANKING ******************* 
+
+Ciclista:   34 - Status: Quebrado - Rodada: 102
+Ciclista:    1 - Status: Quebrado - Rodada:  96
+Ciclista:   15 - Status: Quebrado - Rodada:  90
+Ciclista:   42 - Status: Quebrado - Rodada:  78
+Ciclista:    9 - Status: Quebrado - Rodada:  78
+Ciclista:   24 - Status: Quebrado - Rodada:  78
+Ciclista:   96 - Status: Quebrado - Rodada:  78
+Ciclista:   18 - Status: Quebrado - Rodada:  66
+Ciclista:   45 - Status: Quebrado - Rodada:  60
+Ciclista:   98 - Status: Quebrado - Rodada:  60
+Ciclista:   72 - Status: Quebrado - Rodada:  54
+Ciclista:   82 - Status: Quebrado - Rodada:  48
+Ciclista:   14 - Status: Quebrado - Rodada:  48
+Ciclista:   86 - Status: Quebrado - Rodada:  48
+Ciclista:   23 - Status: Quebrado - Rodada:  42
+Ciclista:   22 - Status: Quebrado - Rodada:  42
+Ciclista:   84 - Status: Quebrado - Rodada:  42
+Ciclista:   39 - Status: Quebrado - Rodada:  36
+Ciclista:    4 - Status: Quebrado - Rodada:  36
+Ciclista:   47 - Status: Quebrado - Rodada:  30
+Ciclista:   58 - Status: Quebrado - Rodada:  30
+Ciclista:   79 - Status: Quebrado - Rodada:  30
+Ciclista:   35 - Status: Quebrado - Rodada:  30
+Ciclista:   81 - Status: Quebrado - Rodada:  24
+Ciclista:   93 - Status: Quebrado - Rodada:  24
+Ciclista:   51 - Status: Quebrado - Rodada:  24
+Ciclista:   56 - Status: Quebrado - Rodada:  24
+Ciclista:   99 - Status: Quebrado - Rodada:  18
+Ciclista:   71 - Status: Quebrado - Rodada:  18
+Ciclista:   40 - Status: Quebrado - Rodada:  18
+Ciclista:   61 - Status: Quebrado - Rodada:  18
+Ciclista:   78 - Status: Quebrado - Rodada:  18
+Ciclista:   27 - Status: Quebrado - Rodada:  12
+Ciclista:   25 - Status: Quebrado - Rodada:  12
+Ciclista:   70 - Status: Quebrado - Rodada:  12
+Ciclista:   16 - Status: Quebrado - Rodada:  12
+Ciclista:   38 - Status: Quebrado - Rodada:  12
+Ciclista:   48 - Status: Quebrado - Rodada:  12
+Ciclista:   17 - Status: Quebrado - Rodada:   6
+Ciclista:   33 - Status: Quebrado - Rodada:   6
+Ciclista:   19 - Status: Quebrado - Rodada:   6
+Posicao:    1o - Ciclista: 0031 - Status: Eliminado - Rodada: 117 Tempo: 2278.213s
+Posicao:    2o - Ciclista: 0094 - Status: Eliminado - Rodada: 116 Tempo: 2261.467s
+Posicao:    3o - Ciclista: 0055 - Status: Eliminado - Rodada: 114 Tempo: 2232.727s
+Posicao:    4o - Ciclista: 0044 - Status: Eliminado - Rodada: 112 Tempo: 2202.568s
+Posicao:    5o - Ciclista: 0087 - Status: Eliminado - Rodada: 110 Tempo: 2201.357s
+Posicao:    6o - Ciclista: 0069 - Status: Eliminado - Rodada: 108 Tempo: 2156.418s
+Posicao:    7o - Ciclista: 0036 - Status: Eliminado - Rodada: 106 Tempo: 2112.094s
+Posicao:    8o - Ciclista: 0030 - Status: Eliminado - Rodada: 104 Tempo: 2082.098s
+Posicao:    9o - Ciclista: 0002 - Status: Eliminado - Rodada: 102 Tempo: 2037.121s
+Posicao:   10o - Ciclista: 0003 - Status: Eliminado - Rodada: 100 Tempo: 2007.069s
+Posicao:   11o - Ciclista: 0043 - Status: Eliminado - Rodada:  98 Tempo: 1991.106s
+Posicao:   12o - Ciclista: 0021 - Status: Eliminado - Rodada:  96 Tempo: 1946.105s
+Posicao:   13o - Ciclista: 0080 - Status: Eliminado - Rodada:  94 Tempo: 1914.525s
+Posicao:   14o - Ciclista: 0028 - Status: Eliminado - Rodada:  92 Tempo: 1870.300s
+Posicao:   15o - Ciclista: 0013 - Status: Eliminado - Rodada:  90 Tempo: 1825.194s
+Posicao:   16o - Ciclista: 0088 - Status: Eliminado - Rodada:  88 Tempo: 1808.312s
+Posicao:   17o - Ciclista: 0075 - Status: Eliminado - Rodada:  86 Tempo: 1763.134s
+Posicao:   18o - Ciclista: 0062 - Status: Eliminado - Rodada:  84 Tempo: 1718.388s
+Posicao:   19o - Ciclista: 0029 - Status: Eliminado - Rodada:  82 Tempo: 1674.090s
+Posicao:   20o - Ciclista: 0054 - Status: Eliminado - Rodada:  80 Tempo: 1643.067s
+Posicao:   21o - Ciclista: 0059 - Status: Eliminado - Rodada:  78 Tempo: 1612.441s
+Posicao:   22o - Ciclista: 0060 - Status: Eliminado - Rodada:  76 Tempo: 1582.111s
+Posicao:   23o - Ciclista: 0041 - Status: Eliminado - Rodada:  74 Tempo: 1522.075s
+Posicao:   24o - Ciclista: 0097 - Status: Eliminado - Rodada:  72 Tempo: 1489.347s
+Posicao:   25o - Ciclista: 0092 - Status: Eliminado - Rodada:  70 Tempo: 1459.222s
+Posicao:   26o - Ciclista: 0049 - Status: Eliminado - Rodada:  68 Tempo: 1414.756s
+Posicao:   27o - Ciclista: 0077 - Status: Eliminado - Rodada:  66 Tempo: 1383.321s
+Posicao:   28o - Ciclista: 0066 - Status: Eliminado - Rodada:  64 Tempo: 1337.961s
+Posicao:   29o - Ciclista: 0068 - Status: Eliminado - Rodada:  62 Tempo: 1307.762s
+Posicao:   30o - Ciclista: 0006 - Status: Eliminado - Rodada:  60 Tempo: 1263.688s
+Posicao:   31o - Ciclista: 0046 - Status: Eliminado - Rodada:  58 Tempo: 1232.053s
+Posicao:   32o - Ciclista: 0091 - Status: Eliminado - Rodada:  56 Tempo: 1185.113s
+Posicao:   33o - Ciclista: 0090 - Status: Eliminado - Rodada:  54 Tempo: 1154.634s
+Posicao:   34o - Ciclista: 0065 - Status: Eliminado - Rodada:  52 Tempo: 1109.929s
+Posicao:   35o - Ciclista: 0052 - Status: Eliminado - Rodada:  50 Tempo: 1064.883s
+Posicao:   36o - Ciclista: 0010 - Status: Eliminado - Rodada:  48 Tempo: 1034.991s
+Posicao:   37o - Ciclista: 0067 - Status: Eliminado - Rodada:  46 Tempo: 988.238s
+Posicao:   38o - Ciclista: 0083 - Status: Eliminado - Rodada:  44 Tempo: 957.194s
+Posicao:   39o - Ciclista: 0026 - Status: Eliminado - Rodada:  42 Tempo: 912.417s
+Posicao:   40o - Ciclista: 0020 - Status: Eliminado - Rodada:  40 Tempo: 866.802s
+Posicao:   41o - Ciclista: 0085 - Status: Eliminado - Rodada:  38 Tempo: 834.671s
+Posicao:   42o - Ciclista: 0053 - Status: Eliminado - Rodada:  36 Tempo: 790.390s
+Posicao:   43o - Ciclista: 0073 - Status: Eliminado - Rodada:  34 Tempo: 759.370s
+Posicao:   44o - Ciclista: 0012 - Status: Eliminado - Rodada:  32 Tempo: 700.108s
+Posicao:   45o - Ciclista: 0095 - Status: Eliminado - Rodada:  30 Tempo: 682.716s
+Posicao:   46o - Ciclista: 0057 - Status: Eliminado - Rodada:  28 Tempo: 623.158s
+Posicao:   47o - Ciclista: 0064 - Status: Eliminado - Rodada:  26 Tempo: 577.431s
+Posicao:   48o - Ciclista: 0008 - Status: Eliminado - Rodada:  24 Tempo: 533.211s
+Posicao:   49o - Ciclista: 0063 - Status: Eliminado - Rodada:  22 Tempo: 501.532s
+Posicao:   50o - Ciclista: 0076 - Status: Eliminado - Rodada:  20 Tempo: 471.182s
+Posicao:   51o - Ciclista: 0050 - Status: Eliminado - Rodada:  18 Tempo: 410.816s
+Posicao:   52o - Ciclista: 0000 - Status: Eliminado - Rodada:  16 Tempo: 365.768s
+Posicao:   53o - Ciclista: 0007 - Status: Eliminado - Rodada:  14 Tempo: 319.876s
+Posicao:   54o - Ciclista: 0074 - Status: Eliminado - Rodada:  12 Tempo: 287.704s
+Posicao:   55o - Ciclista: 0089 - Status: Eliminado - Rodada:  10 Tempo: 256.826s
+Posicao:   56o - Ciclista: 0032 - Status: Eliminado - Rodada:   8 Tempo: 197.531s
+Posicao:   57o - Ciclista: 0011 - Status: Eliminado - Rodada:   6 Tempo: 152.135s
+Posicao:   58o - Ciclista: 0037 - Status: Eliminado - Rodada:   4 Tempo: 120.913s
+Posicao:   59o - Ciclista: 0005 - Status: Eliminado - Rodada:   2 Tempo: 60.656s
+
+
+Tempo de execução: 2278.214720
+	Command being timed: "./ep2 250 100"
+	User time (seconds): 17.15
+	System time (seconds): 54.39
+	Percent of CPU this job got: 3%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 37:58.98
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3196
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 407
+	Voluntary context switches: 1936987
+	Involuntary context switches: 45840
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 216
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

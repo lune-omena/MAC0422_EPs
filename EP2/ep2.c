@@ -85,12 +85,6 @@ int main(int argc, char * argv[])
         debug = 1;
         printf("\n Modo debug ativado!\n");
     }
-<<<<<<< HEAD
-
-    //d = 15; /* excluir quando estiver pronto */
-    tam_pista = d;/* excluir quando estiver pronto */
-=======
->>>>>>> 55354620eef2d4f11d83517bf8473fb4a361d998
     
     // todas threads precisam rodar
     ciclistas_atuais = 0;

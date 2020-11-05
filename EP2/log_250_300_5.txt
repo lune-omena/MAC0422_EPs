@@ -22995,3 +22995,729 @@ Ranking - Rodada 131:
   32o - 0192 
   33o - 0209 
   34o - 0238 
+  35o - 0248 
+  36o - 0224 
+  37o - 0179 
+  38o - 0151 
+  39o - 0117 
+  40o - 0098 
+  41o - 0076 
+  42o - 0029 
+  43o - 0293 
+  44o - 0268 
+  45o - 0198 
+  46o - 0125 
+  47o - 0062 
+  48o - 0028 
+  49o - 0280 
+  50o - 0011 
+  51o - 0017 
+  52o - 0010 
+  53o - 0227 
+  54o - 0235 
+  55o - 0142 
+
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 142 ***
+
+Ranking - Rodada 132:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0139 
+   7o - 0105 
+   8o - 0088 
+   9o - 0077 
+  10o - 0069 
+  11o - 0027 
+  12o - 0008 
+  13o - 0292 
+  14o - 0058 
+  15o - 0253 
+  16o - 0175 
+  17o - 0147 
+  18o - 0283 
+  19o - 0258 
+  20o - 0214 
+  21o - 0168 
+  22o - 0156 
+  23o - 0138 
+  24o - 0119 
+  25o - 0083 
+  26o - 0036 
+  27o - 0059 
+  28o - 0051 
+  29o - 0053 
+  30o - 0046 
+  31o - 0209 
+  32o - 0238 
+  33o - 0248 
+  34o - 0151 
+  35o - 0117 
+  36o - 0098 
+  37o - 0029 
+  38o - 0031 
+  39o - 0293 
+  40o - 0192 
+  41o - 0224 
+  42o - 0179 
+  43o - 0076 
+  44o - 0062 
+  45o - 0280 
+  46o - 0268 
+  47o - 0198 
+  48o - 0125 
+  49o - 0028 
+  50o - 0227 
+  51o - 0142 
+  52o - 0010 
+  53o - 0235 
+
+Ciclista  235 será deletado...
+
+O ciclista 0235 foi eliminado da corrida...
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 143 ***
+
+Ranking - Rodada 133:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0105 
+   7o - 0088 
+   8o - 0077 
+   9o - 0069 
+  10o - 0027 
+  11o - 0008 
+  12o - 0292 
+  13o - 0139 
+  14o - 0058 
+  15o - 0253 
+  16o - 0175 
+  17o - 0147 
+  18o - 0283 
+  19o - 0258 
+  20o - 0214 
+  21o - 0168 
+  22o - 0138 
+  23o - 0119 
+  24o - 0083 
+  25o - 0036 
+  26o - 0053 
+  27o - 0209 
+  28o - 0238 
+  29o - 0151 
+  30o - 0156 
+  31o - 0098 
+  32o - 0059 
+  33o - 0051 
+  34o - 0046 
+  35o - 0031 
+  36o - 0293 
+  37o - 0192 
+  38o - 0248 
+  39o - 0224 
+  40o - 0179 
+  41o - 0117 
+  42o - 0076 
+  43o - 0029 
+  44o - 0280 
+  45o - 0268 
+  46o - 0198 
+  47o - 0125 
+  48o - 0062 
+  49o - 0010 
+  50o - 0028 
+  51o - 0227 
+  52o - 0142 
+
+
+A thread 0209 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  209 quebrou na rodada 138! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 138: 183
+o número de elementos a passar dessa rodada atualizado: 48
+(ou seja: 300 (total) - 69 (r/2) - 183 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0209 quebrou na rodada 138!
+
+A thread 0151 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  151 quebrou na rodada 138! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 138: 184
+o número de elementos a passar dessa rodada atualizado: 47
+(ou seja: 300 (total) - 69 (r/2) - 184 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0151 quebrou na rodada 138!
+ 109 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 144 ***
+
+A thread 0179 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  179 quebrou na rodada 138! e será eliminado
+7 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 138: 185
+o número de elementos a passar dessa rodada atualizado: 46
+(ou seja: 300 (total) - 69 (r/2) - 185 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0179 quebrou na rodada 138!
+
+Ranking - Rodada 134:
+   1o - 0061 
+   2o - 0022 
+   3o - 0155 
+   4o - 0109 
+   5o - 0188 
+   6o - 0105 
+   7o - 0088 
+   8o - 0069 
+   9o - 0027 
+  10o - 0008 
+  11o - 0077 
+  12o - 0058 
+  13o - 0292 
+  14o - 0253 
+  15o - 0147 
+  16o - 0139 
+  17o - 0214 
+  18o - 0175 
+  19o - 0138 
+  20o - 0036 
+  21o - 0053 
+  22o - 0283 
+  23o - 0258 
+  24o - 0209 
+  25o - 0238 
+  26o - 0151 
+  27o - 0168 
+  28o - 0156 
+  29o - 0119 
+  30o - 0098 
+  31o - 0083 
+  32o - 0059 
+  33o - 0046 
+  34o - 0248 
+  35o - 0179 
+  36o - 0076 
+  37o - 0051 
+  38o - 0029 
+  39o - 0031 
+  40o - 0293 
+  41o - 0268 
+  42o - 0192 
+  43o - 0224 
+  44o - 0198 
+  45o - 0125 
+  46o - 0117 
+  47o - 0062 
+  48o - 0280 
+  49o - 0028 
+  50o - 0227 
+  51o - 0010 
+  52o - 0142 
+
+Ciclista  142 será deletado...
+
+O ciclista 0142 foi eliminado da corrida...
+ 109 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 145 ***
+
+A thread 0031 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   31 quebrou na rodada 138! e será eliminado
+8 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 138: 186
+o número de elementos a passar dessa rodada atualizado: 45
+(ou seja: 300 (total) - 69 (r/2) - 186 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0031 quebrou na rodada 138!
+
+Ranking - Rodada 135:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0088 
+   7o - 0027 
+   8o - 0008 
+   9o - 0105 
+  10o - 0077 
+  11o - 0069 
+  12o - 0058 
+  13o - 0292 
+  14o - 0139 
+  15o - 0253 
+  16o - 0214 
+  17o - 0147 
+  18o - 0138 
+  19o - 0053 
+  20o - 0283 
+  21o - 0258 
+  22o - 0209 
+  23o - 0175 
+  24o - 0151 
+  25o - 0168 
+  26o - 0156 
+  27o - 0119 
+  28o - 0098 
+  29o - 0083 
+  30o - 0036 
+  31o - 0059 
+  32o - 0046 
+  33o - 0238 
+  34o - 0076 
+  35o - 0031 
+  36o - 0293 
+  37o - 0248 
+  38o - 0224 
+  39o - 0179 
+  40o - 0125 
+  41o - 0117 
+  42o - 0062 
+  43o - 0051 
+  44o - 0029 
+  45o - 0268 
+  46o - 0192 
+  47o - 0198 
+  48o - 0280 
+  49o - 0010 
+  50o - 0028 
+  51o - 0227 
+
+
+A thread 0051 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   51 quebrou na rodada 138! e será eliminado
+8 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 138: 187
+o número de elementos a passar dessa rodada atualizado: 44
+(ou seja: 300 (total) - 69 (r/2) - 187 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0051 quebrou na rodada 138!
+
+Ranking - Rodada 136:
+   1o - 0022 
+   2o - 0061 
+   3o - 0155 
+   4o - 0109 
+   5o - 0188 
+   6o - 0088 
+   7o - 0027 
+   8o - 0105 
+   9o - 0069 
+  10o - 0058 
+  11o - 0008 
+  12o - 0292 
+  13o - 0139 
+  14o - 0077 
+  15o - 0147 
+  16o - 0138 
+  17o - 0053 
+  18o - 0258 
+  19o - 0209 
+  20o - 0253 
+  21o - 0214 
+  22o - 0175 
+  23o - 0168 
+  24o - 0156 
+  25o - 0119 
+  26o - 0098 
+  27o - 0083 
+  28o - 0036 
+  29o - 0059 
+  30o - 0046 
+  31o - 0283 
+  32o - 0238 
+  33o - 0151 
+  34o - 0076 
+  35o - 0293 
+  36o - 0224 
+  37o - 0179 
+  38o - 0117 
+  39o - 0029 
+  40o - 0031 
+  41o - 0268 
+  42o - 0192 
+  43o - 0248 
+  44o - 0125 
+  45o - 0062 
+  46o - 0051 
+  47o - 0280 
+  48o - 0198 
+  49o - 0010 
+  50o - 0028 
+  51o - 0227 
+
+Ciclista  227 será deletado...
+
+O ciclista 0227 foi eliminado da corrida...
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 146 ***
+
+A thread 0028 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   28 quebrou na rodada 138! e será eliminado
+9 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 138: 188
+o número de elementos a passar dessa rodada atualizado: 43
+(ou seja: 300 (total) - 69 (r/2) - 188 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0028 quebrou na rodada 138!
+
+Ranking - Rodada 137:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0088 
+   7o - 0027 
+   8o - 0105 
+   9o - 0069 
+  10o - 0058 
+  11o - 0008 
+  12o - 0139 
+  13o - 0292 
+  14o - 0147 
+  15o - 0077 
+  16o - 0258 
+  17o - 0253 
+  18o - 0214 
+  19o - 0175 
+  20o - 0156 
+  21o - 0138 
+  22o - 0119 
+  23o - 0053 
+  24o - 0059 
+  25o - 0046 
+  26o - 0283 
+  27o - 0209 
+  28o - 0238 
+  29o - 0151 
+  30o - 0168 
+  31o - 0098 
+  32o - 0076 
+  33o - 0083 
+  34o - 0036 
+  35o - 0293 
+  36o - 0224 
+  37o - 0179 
+  38o - 0117 
+  39o - 0029 
+  40o - 0031 
+  41o - 0268 
+  42o - 0192 
+  43o - 0248 
+  44o - 0125 
+  45o - 0051 
+  46o - 0062 
+  47o - 0010 
+  48o - 0028 
+  49o - 0280 
+  50o - 0198 
+
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 147 ***
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 148 ***
+
+Ranking - Rodada 139:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0058 
+   7o - 0027 
+   8o - 0105 
+   9o - 0088 
+  10o - 0069 
+  11o - 0008 
+  12o - 0139 
+  13o - 0077 
+  14o - 0292 
+  15o - 0253 
+  16o - 0175 
+  17o - 0147 
+  18o - 0053 
+  19o - 0258 
+  20o - 0214 
+  21o - 0138 
+  22o - 0119 
+  23o - 0098 
+  24o - 0083 
+  25o - 0046 
+  26o - 0283 
+  27o - 0224 
+  28o - 0168 
+  29o - 0156 
+  30o - 0076 
+  31o - 0036 
+  32o - 0059 
+  33o - 0293 
+  34o - 0238 
+  35o - 0117 
+  36o - 0029 
+  37o - 0268 
+  38o - 0192 
+  39o - 0248 
+  40o - 0125 
+  41o - 0062 
+  42o - 0010 
+  43o - 0280 
+
+
+Ranking - Rodada 138:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0027 
+   7o - 0105 
+   8o - 0088 
+   9o - 0058 
+  10o - 0069 
+  11o - 0008 
+  12o - 0147 
+  13o - 0139 
+  14o - 0077 
+  15o - 0292 
+  16o - 0253 
+  17o - 0214 
+  18o - 0175 
+  19o - 0138 
+  20o - 0119 
+  21o - 0053 
+  22o - 0283 
+  23o - 0258 
+  24o - 0168 
+  25o - 0156 
+  26o - 0098 
+  27o - 0083 
+  28o - 0036 
+  29o - 0059 
+  30o - 0046 
+  31o - 0293 
+  32o - 0238 
+  33o - 0224 
+  34o - 0117 
+  35o - 0076 
+  36o - 0029 
+  37o - 0268 
+  38o - 0192 
+  39o - 0248 
+  40o - 0125 
+  41o - 0062 
+  42o - 0010 
+  43o - 0280 
+  44o - 0198 
+
+Ciclista  198 será deletado...
+
+O ciclista 0198 foi eliminado da corrida...
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 149 ***
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 150 ***
+
+Ranking - Rodada 140:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0027 
+   7o - 0105 
+   8o - 0088 
+   9o - 0058 
+  10o - 0008 
+  11o - 0139 
+  12o - 0077 
+  13o - 0069 
+  14o - 0292 
+  15o - 0147 
+  16o - 0258 
+  17o - 0253 
+  18o - 0214 
+  19o - 0175 
+  20o - 0098 
+  21o - 0083 
+  22o - 0053 
+  23o - 0046 
+  24o - 0283 
+  25o - 0168 
+  26o - 0156 
+  27o - 0138 
+  28o - 0119 
+  29o - 0036 
+  30o - 0059 
+  31o - 0238 
+  32o - 0224 
+  33o - 0117 
+  34o - 0076 
+  35o - 0029 
+  36o - 0293 
+  37o - 0268 
+  38o - 0192 
+  39o - 0248 
+  40o - 0010 
+  41o - 0125 
+  42o - 0062 
+  43o - 0280 
+
+Ciclista  280 será deletado...
+
+O ciclista 0280 foi eliminado da corrida...
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 151 ***
+
+Ranking - Rodada 141:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0088 
+   7o - 0058 
+   8o - 0027 
+   9o - 0105 
+  10o - 0077 
+  11o - 0069 
+  12o - 0008 
+  13o - 0292 
+  14o - 0139 
+  15o - 0214 
+  16o - 0175 
+  17o - 0147 
+  18o - 0098 
+  19o - 0083 
+  20o - 0053 
+  21o - 0046 
+  22o - 0258 
+  23o - 0253 
+  24o - 0168 
+  25o - 0036 
+  26o - 0283 
+  27o - 0238 
+  28o - 0224 
+  29o - 0156 
+  30o - 0138 
+  31o - 0119 
+  32o - 0076 
+  33o - 0059 
+  34o - 0293 
+  35o - 0248 
+  36o - 0117 
+  37o - 0029 
+  38o - 0010 
+  39o - 0268 
+  40o - 0192 
+  41o - 0125 
+  42o - 0062 
+
+
+Ranking - Rodada 142:
+   1o - 0022 
+   2o - 0155 
+   3o - 0061 
+   4o - 0109 
+   5o - 0188 
+   6o - 0058 
+   7o - 0027 
+   8o - 0105 
+   9o - 0088 
+  10o - 0077 
+  11o - 0069 
+  12o - 0139 
+  13o - 0008 
+  14o - 0292 
+  15o - 0175 
+  16o - 0083 
+  17o - 0053 
+  18o - 0046 
+  19o - 0258 
+  20o - 0214 
+  21o - 0147 
+  22o - 0098 
+  23o - 0283 
+  24o - 0253 
+  25o - 0168 
+  26o - 0156 
+  27o - 0138 
+  28o - 0119 
+  29o - 0076 
+  30o - 0036 
+  31o - 0059 
+  32o - 0293 
+  33o - 0238 
+  34o - 0248 
+  35o - 0224 
+  36o - 0117 
+  37o - 0029 
+  38o - 0010 
+  39o - 0268 
+  40o - 0192 
+  41o - 0125 
+  42o - 0062 
+
+Ciclista   62 será deletado...
+
+O ciclista 0062 foi eliminado da corrida...
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 152 ***
+
+A thread 0117 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  117 quebrou na rodada 144! e será eliminado
+9 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 144: 189
+o número de elementos a passar dessa rodada atualizado: 39
+(ou seja: 300 (total) - 72 (r/2) - 189 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0117 quebrou na rodada 144!
+
+Ranking - Rodada 143:
+   1o - 0022 
+   2o - 0155 
+   3o - 0109 
+   4o - 0061 
+   5o - 0188 
+   6o - 0058 
+   7o - 0027 
+   8o - 0105 
+   9o - 0088 
+  10o - 0069 
+  11o - 0139 
+  12o - 0077 
+  13o - 0292 
+  14o - 0175 
+  15o - 0083 
+  16o - 0046 
+  17o - 0008 
+  18o - 0258 
+  19o - 0214 
+  20o - 0053 
+  21o - 0283 
+  22o - 0253 
+  23o - 0168 
+  24o - 0147 
+  25o - 0156 
+  26o - 0119 
+  27o - 0098 
+  28o - 0036 
+  29o - 0

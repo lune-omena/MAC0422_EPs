@@ -7652,4 +7652,2873 @@ Ranking - Rodada 26:
  198o - 0175 
  199o - 0146 
  200o - 0112 
- 201o -
+ 201o - 0106 
+ 202o - 0091 
+ 203o - 0095 
+ 204o - 0081 
+ 205o - 0082 
+ 206o - 0069 
+ 207o - 0068 
+ 208o - 0047 
+ 209o - 0031 
+ 210o - 0016 
+ 211o - 0014 
+ 212o - 0297 
+ 213o - 0291 
+ 214o - 0286 
+ 215o - 0275 
+ 216o - 0265 
+ 217o - 0252 
+ 218o - 0207 
+ 219o - 0216 
+ 220o - 0204 
+ 221o - 0145 
+ 222o - 0135 
+ 223o - 0125 
+ 224o - 0061 
+ 225o - 0040 
+ 226o - 0053 
+ 227o - 0029 
+ 228o - 0299 
+ 229o - 0243 
+ 230o - 0233 
+ 231o - 0212 
+ 232o - 0188 
+ 233o - 0184 
+ 234o - 0173 
+ 235o - 0121 
+
+Ciclista  121 será deletado...
+
+O ciclista 0121 foi eliminado da corrida...
+
+A thread 0105 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  105 quebrou na rodada 30! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 59
+o número de elementos a passar dessa rodada atualizado: 226
+(ou seja: 300 (total) - 15 (r/2) - 59 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0105 quebrou na rodada 30!
+
+A thread 0249 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  249 quebrou na rodada 30! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 60
+o número de elementos a passar dessa rodada atualizado: 225
+(ou seja: 300 (total) - 15 (r/2) - 60 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0249 quebrou na rodada 30!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  33 ***
+
+A thread 0104 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  104 quebrou na rodada 30! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 61
+o número de elementos a passar dessa rodada atualizado: 224
+(ou seja: 300 (total) - 15 (r/2) - 61 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0104 quebrou na rodada 30!
+
+A thread 0033 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   33 quebrou na rodada 30! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 62
+o número de elementos a passar dessa rodada atualizado: 223
+(ou seja: 300 (total) - 15 (r/2) - 62 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0033 quebrou na rodada 30!
+
+A thread 0226 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  226 quebrou na rodada 30! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 63
+o número de elementos a passar dessa rodada atualizado: 222
+(ou seja: 300 (total) - 15 (r/2) - 63 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0226 quebrou na rodada 30!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  34 ***
+
+Ranking - Rodada 27:
+   1o - 0156 
+   2o - 0141 
+   3o - 0034 
+   4o - 0035 
+   5o - 0246 
+   6o - 0199 
+   7o - 0174 
+   8o - 0166 
+   9o - 0144 
+  10o - 0140 
+  11o - 0056 
+  12o - 0238 
+  13o - 0239 
+  14o - 0205 
+  15o - 0178 
+  16o - 0186 
+  17o - 0133 
+  18o - 0117 
+  19o - 0103 
+  20o - 0065 
+  21o - 0073 
+  22o - 0059 
+  23o - 0057 
+  24o - 0049 
+  25o - 0054 
+  26o - 0038 
+  27o - 0019 
+  28o - 0008 
+  29o - 0287 
+  30o - 0278 
+  31o - 0259 
+  32o - 0255 
+  33o - 0267 
+  34o - 0261 
+  35o - 0250 
+  36o - 0224 
+  37o - 0220 
+  38o - 0240 
+  39o - 0230 
+  40o - 0225 
+  41o - 0208 
+  42o - 0202 
+  43o - 0196 
+  44o - 0198 
+  45o - 0194 
+  46o - 0193 
+  47o - 0189 
+  48o - 0162 
+  49o - 0160 
+  50o - 0161 
+  51o - 0149 
+  52o - 0143 
+  53o - 0148 
+  54o - 0150 
+  55o - 0153 
+  56o - 0132 
+  57o - 0126 
+  58o - 0123 
+  59o - 0113 
+  60o - 0111 
+  61o - 0099 
+  62o - 0092 
+  63o - 0079 
+  64o - 0066 
+  65o - 0051 
+  66o - 0037 
+  67o - 0030 
+  68o - 0036 
+  69o - 0003 
+  70o - 0013 
+  71o - 0292 
+  72o - 0293 
+  73o - 0289 
+  74o - 0288 
+  75o - 0268 
+  76o - 0271 
+  77o - 0263 
+  78o - 0260 
+  79o - 0258 
+  80o - 0256 
+  81o - 0276 
+  82o - 0235 
+  83o - 0200 
+  84o - 0217 
+  85o - 0187 
+  86o - 0165 
+  87o - 0171 
+  88o - 0157 
+  89o - 0168 
+  90o - 0154 
+  91o - 0122 
+  92o - 0118 
+  93o - 0139 
+  94o - 0105 
+  95o - 0108 
+  96o - 0104 
+  97o - 0100 
+  98o - 0084 
+  99o - 0093 
+ 100o - 0086 
+ 101o - 0094 
+ 102o - 0070 
+ 103o - 0050 
+ 104o - 0048 
+ 105o - 0021 
+ 106o - 0041 
+ 107o - 0032 
+ 108o - 0011 
+ 109o - 0028 
+ 110o - 0020 
+ 111o - 0004 
+ 112o - 0025 
+ 113o - 0022 
+ 114o - 0015 
+ 115o - 0005 
+ 116o - 0026 
+ 117o - 0002 
+ 118o - 0298 
+ 119o - 0294 
+ 120o - 0281 
+ 121o - 0283 
+ 122o - 0277 
+ 123o - 0266 
+ 124o - 0269 
+ 125o - 0253 
+ 126o - 0251 
+ 127o - 0245 
+ 128o - 0254 
+ 129o - 0249 
+ 130o - 0228 
+ 131o - 0227 
+ 132o - 0222 
+ 133o - 0223 
+ 134o - 0219 
+ 135o - 0197 
+ 136o - 0215 
+ 137o - 0169 
+ 138o - 0158 
+ 139o - 0163 
+ 140o - 0142 
+ 141o - 0155 
+ 142o - 0134 
+ 143o - 0127 
+ 144o - 0136 
+ 145o - 0107 
+ 146o - 0110 
+ 147o - 0137 
+ 148o - 0116 
+ 149o - 0101 
+ 150o - 0115 
+ 151o - 0114 
+ 152o - 0102 
+ 153o - 0072 
+ 154o - 0083 
+ 155o - 0063 
+ 156o - 0058 
+ 157o - 0074 
+ 158o - 0052 
+ 159o - 0060 
+ 160o - 0046 
+ 161o - 0064 
+ 162o - 0043 
+ 163o - 0023 
+ 164o - 0007 
+ 165o - 0001 
+ 166o - 0006 
+ 167o - 0290 
+ 168o - 0282 
+ 169o - 0273 
+ 170o - 0272 
+ 171o - 0274 
+ 172o - 0257 
+ 173o - 0241 
+ 174o - 0247 
+ 175o - 0236 
+ 176o - 0221 
+ 177o - 0229 
+ 178o - 0226 
+ 179o - 0218 
+ 180o - 0203 
+ 181o - 0201 
+ 182o - 0183 
+ 183o - 0175 
+ 184o - 0172 
+ 185o - 0152 
+ 186o - 0146 
+ 187o - 0112 
+ 188o - 0106 
+ 189o - 0096 
+ 190o - 0081 
+ 191o - 0082 
+ 192o - 0075 
+ 193o - 0069 
+ 194o - 0071 
+ 195o - 0068 
+ 196o - 0055 
+ 197o - 0042 
+ 198o - 0033 
+ 199o - 0031 
+ 200o - 0016 
+ 201o - 0024 
+ 202o - 0297 
+ 203o - 0291 
+ 204o - 0286 
+ 205o - 0284 
+ 206o - 0275 
+ 207o - 0265 
+ 208o - 0270 
+ 209o - 0264 
+ 210o - 0252 
+ 211o - 0231 
+ 212o - 0216 
+ 213o - 0204 
+ 214o - 0191 
+ 215o - 0195 
+ 216o - 0145 
+ 217o - 0125 
+ 218o - 0091 
+ 219o - 0095 
+ 220o - 0047 
+ 221o - 0061 
+ 222o - 0040 
+ 223o - 0053 
+ 224o - 0029 
+ 225o - 0014 
+ 226o - 0299 
+ 227o - 0243 
+ 228o - 0233 
+ 229o - 0207 
+ 230o - 0212 
+ 231o - 0188 
+ 232o - 0173 
+ 233o - 0135 
+ 234o - 0184 
+
+
+A thread 0125 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  125 quebrou na rodada 30! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 64
+o número de elementos a passar dessa rodada atualizado: 221
+(ou seja: 300 (total) - 15 (r/2) - 64 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0125 quebrou na rodada 30!
+
+A thread 0116 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  116 quebrou na rodada 30! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 65
+o número de elementos a passar dessa rodada atualizado: 220
+(ou seja: 300 (total) - 15 (r/2) - 65 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0116 quebrou na rodada 30!
+
+A thread 0243 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  243 quebrou na rodada 30! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 66
+o número de elementos a passar dessa rodada atualizado: 219
+(ou seja: 300 (total) - 15 (r/2) - 66 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0243 quebrou na rodada 30!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  35 ***
+
+Ranking - Rodada 28:
+   1o - 0156 
+   2o - 0034 
+   3o - 0246 
+   4o - 0199 
+   5o - 0174 
+   6o - 0166 
+   7o - 0141 
+   8o - 0035 
+   9o - 0239 
+  10o - 0186 
+  11o - 0178 
+  12o - 0133 
+  13o - 0144 
+  14o - 0140 
+  15o - 0103 
+  16o - 0073 
+  17o - 0059 
+  18o - 0057 
+  19o - 0056 
+  20o - 0054 
+  21o - 0038 
+  22o - 0019 
+  23o - 0287 
+  24o - 0278 
+  25o - 0255 
+  26o - 0259 
+  27o - 0267 
+  28o - 0238 
+  29o - 0250 
+  30o - 0220 
+  31o - 0240 
+  32o - 0225 
+  33o - 0230 
+  34o - 0205 
+  35o - 0196 
+  36o - 0198 
+  37o - 0194 
+  38o - 0193 
+  39o - 0162 
+  40o - 0160 
+  41o - 0161 
+  42o - 0149 
+  43o - 0143 
+  44o - 0132 
+  45o - 0126 
+  46o - 0123 
+  47o - 0117 
+  48o - 0113 
+  49o - 0111 
+  50o - 0099 
+  51o - 0092 
+  52o - 0079 
+  53o - 0065 
+  54o - 0049 
+  55o - 0066 
+  56o - 0008 
+  57o - 0003 
+  58o - 0288 
+  59o - 0289 
+  60o - 0268 
+  61o - 0271 
+  62o - 0263 
+  63o - 0260 
+  64o - 0256 
+  65o - 0276 
+  66o - 0261 
+  67o - 0224 
+  68o - 0235 
+  69o - 0208 
+  70o - 0202 
+  71o - 0200 
+  72o - 0217 
+  73o - 0189 
+  74o - 0148 
+  75o - 0150 
+  76o - 0153 
+  77o - 0139 
+  78o - 0105 
+  79o - 0108 
+  80o - 0100 
+  81o - 0086 
+  82o - 0094 
+  83o - 0051 
+  84o - 0050 
+  85o - 0048 
+  86o - 0030 
+  87o - 0037 
+  88o - 0041 
+  89o - 0036 
+  90o - 0028 
+  91o - 0020 
+  92o - 0025 
+  93o - 0022 
+  94o - 0015 
+  95o - 0002 
+  96o - 0013 
+  97o - 0292 
+  98o - 0293 
+  99o - 0294 
+ 100o - 0283 
+ 101o - 0277 
+ 102o - 0266 
+ 103o - 0269 
+ 104o - 0258 
+ 105o - 0251 
+ 106o - 0245 
+ 107o - 0254 
+ 108o - 0227 
+ 109o - 0223 
+ 110o - 0219 
+ 111o - 0197 
+ 112o - 0215 
+ 113o - 0187 
+ 114o - 0165 
+ 115o - 0157 
+ 116o - 0171 
+ 117o - 0168 
+ 118o - 0163 
+ 119o - 0154 
+ 120o - 0155 
+ 121o - 0134 
+ 122o - 0127 
+ 123o - 0122 
+ 124o - 0118 
+ 125o - 0136 
+ 126o - 0107 
+ 127o - 0137 
+ 128o - 0115 
+ 129o - 0114 
+ 130o - 0104 
+ 131o - 0072 
+ 132o - 0083 
+ 133o - 0084 
+ 134o - 0093 
+ 135o - 0063 
+ 136o - 0074 
+ 137o - 0060 
+ 138o - 0052 
+ 139o - 0070 
+ 140o - 0046 
+ 141o - 0064 
+ 142o - 0021 
+ 143o - 0043 
+ 144o - 0032 
+ 145o - 0011 
+ 146o - 0023 
+ 147o - 0004 
+ 148o - 0005 
+ 149o - 0007 
+ 150o - 0001 
+ 151o - 0026 
+ 152o - 0298 
+ 153o - 0290 
+ 154o - 0282 
+ 155o - 0281 
+ 156o - 0272 
+ 157o - 0253 
+ 158o - 0249 
+ 159o - 0228 
+ 160o - 0221 
+ 161o - 0226 
+ 162o - 0222 
+ 163o - 0218 
+ 164o - 0203 
+ 165o - 0201 
+ 166o - 0183 
+ 167o - 0169 
+ 168o - 0158 
+ 169o - 0142 
+ 170o - 0152 
+ 171o - 0110 
+ 172o - 0116 
+ 173o - 0101 
+ 174o - 0106 
+ 175o - 0096 
+ 176o - 0102 
+ 177o - 0081 
+ 178o - 0075 
+ 179o - 0069 
+ 180o - 0058 
+ 181o - 0071 
+ 182o - 0068 
+ 183o - 0055 
+ 184o - 0042 
+ 185o - 0033 
+ 186o - 0016 
+ 187o - 0024 
+ 188o - 0006 
+ 189o - 0297 
+ 190o - 0286 
+ 191o - 0284 
+ 192o - 0273 
+ 193o - 0270 
+ 194o - 0274 
+ 195o - 0264 
+ 196o - 0252 
+ 197o - 0257 
+ 198o - 0241 
+ 199o - 0247 
+ 200o - 0236 
+ 201o - 0231 
+ 202o - 0229 
+ 203o - 0195 
+ 204o - 0172 
+ 205o - 0175 
+ 206o - 0146 
+ 207o - 0125 
+ 208o - 0112 
+ 209o - 0095 
+ 210o - 0082 
+ 211o - 0047 
+ 212o - 0053 
+ 213o - 0040 
+ 214o - 0031 
+ 215o - 0014 
+ 216o - 0299 
+ 217o - 0291 
+ 218o - 0275 
+ 219o - 0265 
+ 220o - 0243 
+ 221o - 0207 
+ 222o - 0216 
+ 223o - 0204 
+ 224o - 0191 
+ 225o - 0188 
+ 226o - 0173 
+ 227o - 0145 
+ 228o - 0135 
+ 229o - 0091 
+ 230o - 0061 
+ 231o - 0029 
+ 232o - 0233 
+ 233o - 0212 
+ 234o - 0184 
+
+Ciclista  184 será deletado...
+
+O ciclista 0184 foi eliminado da corrida...
+
+A thread 0053 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   53 quebrou na rodada 30! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 30: 67
+o número de elementos a passar dessa rodada atualizado: 218
+(ou seja: 300 (total) - 15 (r/2) - 67 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0053 quebrou na rodada 30!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  36 ***
+
+A thread 0141 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  141 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 68
+o número de elementos a passar dessa rodada atualizado: 214
+(ou seja: 300 (total) - 18 (r/2) - 68 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+
+Ranking - Rodada 29:
+   1o - 0156 
+   2o - 0246 
+   3o - 0199 
+   4o - 0174 
+   5o - 0141 
+   6o - 0034 
+   7o - 0035 
+   8o - 0186 
+   9o - 0166 
+  10o - 0133 
+  11o - 0144 
+  12o - 0140 
+  13o - 0103 
+  14o - 0073 
+  15o - 0056 
+  16o - 0038 
+  17o - 0019 
+  18o - 0278 
+  19o - 0255 
+  20o - 0267 
+  21o - 0250 
+  22o - 0239 
+  23o - 0220 
+  24o - 0230 
+  25o - 0205 
+  26o - 0193 
+  27o - 0194 
+  28o - 0178 
+  29o - 0162 
+  30o - 0161 
+  31o - 0126 
+  32o - 0123 
+  33o - 0113 
+  34o - 0117 
+  35o - 0079 
+  36o - 0065 
+  37o - 0059 
+  38o - 0057 
+  39o - 0049 
+  40o - 0054 
+  41o - 0288 
+  42o - 0287 
+  43o - 0268 
+  44o - 0271 
+  45o - 0256 
+  46o - 0259 
+  47o - 0238 
+  48o - 0224 
+  49o - 0235 
+  50o - 0240 
+  51o - 0225 
+  52o - 0208 
+  53o - 0196 
+  54o - 0198 
+  55o - 0160 
+  56o - 0149 
+  57o - 0143 
+  58o - 0148 
+  59o - 0150 
+  60o - 0153 
+  61o - 0132 
+  62o - 0111 
+  63o - 0099 
+  64o - 0092 
+  65o - 0100 
+  66o - 0094 
+  67o - 0066 
+  68o - 0051 
+  69o - 0048 
+  70o - 0030 
+  71o - 0037 
+  72o - 0041 
+  73o - 0036 
+  74o - 0020 
+  75o - 0028 
+  76o - 0025 
+  77o - 0008 
+  78o - 0015 
+  79o - 0003 
+  80o - 0002 
+  81o - 0013 
+  82o - 0294 
+  83o - 0289 
+  84o - 0283 
+  85o - 0263 
+  86o - 0269 
+  87o - 0260 
+  88o - 0258 
+  89o - 0276 
+  90o - 0261 
+  91o - 0254 
+  92o - 0245 
+  93o - 0202 
+  94o - 0217 
+  95o - 0200 
+  96o - 0223 
+  97o - 0219 
+  98o - 0215 
+  99o - 0187 
+ 100o - 0189 
+ 101o - 0165 
+ 102o - 0168 
+ 103o - 0154 
+ 104o - 0155 
+ 105o - 0127 
+ 106o - 0118 
+ 107o - 0136 
+ 108o - 0139 
+ 109o - 0107 
+ 110o - 0137 
+ 111o - 0105 
+ 112o - 0108 
+ 113o - 0115 
+ 114o - 0114 
+ 115o - 0072 
+ 116o - 0083 
+ 117o - 0084 
+ 118o - 0093 
+ 119o - 0063 
+ 120o - 0086 
+ 121o - 0074 
+ 122o - 0052 
+ 123o - 0046 
+ 124o - 0070 
+ 125o - 0050 
+ 126o - 0064 
+ 127o - 0021 
+ 128o - 0043 
+ 129o - 0032 
+ 130o - 0011 
+ 131o - 0004 
+ 132o - 0022 
+ 133o - 0026 
+ 134o - 0001 
+ 135o - 0290 
+ 136o - 0292 
+ 137o - 0293 
+ 138o - 0282 
+ 139o - 0281 
+ 140o - 0277 
+ 141o - 0266 
+ 142o - 0272 
+ 143o - 0251 
+ 144o - 0228 
+ 145o - 0249 
+ 146o - 0227 
+ 147o - 0222 
+ 148o - 0218 
+ 149o - 0197 
+ 150o - 0203 
+ 151o - 0201 
+ 152o - 0183 
+ 153o - 0171 
+ 154o - 0157 
+ 155o - 0169 
+ 156o - 0158 
+ 157o - 0163 
+ 158o - 0142 
+ 159o - 0134 
+ 160o - 0152 
+ 161o - 0122 
+ 162o - 0110 
+ 163o - 0101 
+ 164o - 0106 
+ 165o - 0096 
+ 166o - 0102 
+ 167o - 0104 
+ 168o - 0075 
+ 169o - 0058 
+ 170o - 0071 
+ 171o - 0068 
+ 172o - 0060 
+ 173o - 0055 
+ 174o - 0042 
+ 175o - 0033 
+ 176o - 0016 
+ 177o - 0023 
+ 178o - 0024 
+ 179o - 0005 
+ 180o - 0007 
+ 181o - 0006 
+ 182o - 0298 
+ 183o - 0274 
+ 184o - 0253 
+ 185o - 0264 
+ 186o - 0257 
+ 187o - 0252 
+ 188o - 0247 
+ 189o - 0236 
+ 190o - 0221 
+ 191o - 0229 
+ 192o - 0226 
+ 193o - 0195 
+ 194o - 0175 
+ 195o - 0172 
+ 196o - 0146 
+ 197o - 0125 
+ 198o - 0116 
+ 199o - 0112 
+ 200o - 0095 
+ 201o - 0081 
+ 202o - 0082 
+ 203o - 0069 
+ 204o - 0040 
+ 205o - 0031 
+ 206o - 0014 
+ 207o - 0299 
+ 208o - 0297 
+ 209o - 0291 
+ 210o - 0286 
+ 211o - 0284 
+ 212o - 0273 
+ 213o - 0275 
+ 214o - 0265 
+ 215o - 0270 
+ 216o - 0243 
+ 217o - 0241 
+ 218o - 0231 
+ 219o - 0207 
+ 220o - 0191 
+ 221o - 0188 
+ 222o - 0145 
+ 223o - 0091 
+ 224o - 0047 
+ 225o - 0061 
+ 226o - 0053 
+ 227o - 0029 
+ 228o - 0233 
+ 229o - 0216 
+ 230o - 0204 
+ 231o - 0212 
+ 232o - 0173 
+ 233o - 0135 
+
+O ciclista 0141 quebrou na rodada 36!
+
+A thread 0250 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  250 quebrou na rodada 36! e será eliminado
+
+A thread 0246 iniciou o processo de quebra.
+Ops! O ciclista  246 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 70
+o número de elementos a passar dessa rodada atualizado: 212
+(ou seja: 300 (total) - 18 (r/2) - 70 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0250 quebrou na rodada 36!
+O ciclista 0246 quebrou na rodada 36!
+
+A thread 0174 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  174 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 71
+o número de elementos a passar dessa rodada atualizado: 211
+(ou seja: 300 (total) - 18 (r/2) - 71 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0174 quebrou na rodada 36!
+
+A thread 0054 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   54 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 72
+o número de elementos a passar dessa rodada atualizado: 210
+(ou seja: 300 (total) - 18 (r/2) - 72 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0054 quebrou na rodada 36!
+
+A thread 0255 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  255 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 73
+o número de elementos a passar dessa rodada atualizado: 209
+(ou seja: 300 (total) - 18 (r/2) - 73 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0255 quebrou na rodada 36!
+
+A thread 0267 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  267 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 74
+o número de elementos a passar dessa rodada atualizado: 208
+(ou seja: 300 (total) - 18 (r/2) - 74 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0267 quebrou na rodada 36!
+
+A thread 0205 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  205 quebrou na rodada 36! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 75
+o número de elementos a passar dessa rodada atualizado: 207
+(ou seja: 300 (total) - 18 (r/2) - 75 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0205 quebrou na rodada 36!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  37 ***
+
+Ranking - Rodada 30:
+   1o - 0156 
+   2o - 0246 
+   3o - 0199 
+   4o - 0141 
+   5o - 0034 
+   6o - 0174 
+   7o - 0166 
+   8o - 0133 
+   9o - 0140 
+  10o - 0103 
+  11o - 0056 
+  12o - 0038 
+  13o - 0019 
+  14o - 0255 
+  15o - 0267 
+  16o - 0250 
+  17o - 0239 
+  18o - 0186 
+  19o - 0178 
+  20o - 0162 
+  21o - 0161 
+  22o - 0144 
+  23o - 0126 
+  24o - 0123 
+  25o - 0113 
+  26o - 0079 
+  27o - 0073 
+  28o - 0059 
+  29o - 0057 
+  30o - 0054 
+  31o - 0288 
+  32o - 0287 
+  33o - 0278 
+  34o - 0259 
+  35o - 0238 
+  36o - 0224 
+  37o - 0220 
+  38o - 0235 
+  39o - 0240 
+  40o - 0230 
+  41o - 0208 
+  42o - 0205 
+  43o - 0196 
+  44o - 0193 
+  45o - 0194 
+  46o - 0143 
+  47o - 0148 
+  48o - 0150 
+  49o - 0132 
+  50o - 0117 
+  51o - 0111 
+  52o - 0099 
+  53o - 0092 
+  54o - 0100 
+  55o - 0065 
+  56o - 0094 
+  57o - 0066 
+  58o - 0049 
+  59o - 0051 
+  60o - 0048 
+  61o - 0041 
+  62o - 0020 
+  63o - 0003 
+  64o - 0013 
+  65o - 0294 
+  66o - 0289 
+  67o - 0283 
+  68o - 0268 
+  69o - 0271 
+  70o - 0263 
+  71o - 0269 
+  72o - 0258 
+  73o - 0260 
+  74o - 0256 
+  75o - 0276 
+  76o - 0261 
+  77o - 0254 
+  78o - 0245 
+  79o - 0225 
+  80o - 0223 
+  81o - 0219 
+  82o - 0200 
+  83o - 0198 
+  84o - 0215 
+  85o - 0187 
+  86o - 0165 
+  87o - 0160 
+  88o - 0168 
+  89o - 0154 
+  90o - 0139 
+  91o - 0108 
+  92o - 0072 
+  93o - 0084 
+  94o - 0093 
+  95o - 0063 
+  96o - 0086 
+  97o - 0074 
+  98o - 0050 
+  99o - 0064 
+ 100o - 0030 
+ 101o - 0043 
+ 102o - 0037 
+ 103o - 0036 
+ 104o - 0028 
+ 105o - 0025 
+ 106o - 0008 
+ 107o - 0022 
+ 108o - 0001 
+ 109o - 0002 
+ 110o - 0292 
+ 111o - 0266 
+ 112o - 0272 
+ 113o - 0251 
+ 114o - 0222 
+ 115o - 0217 
+ 116o - 0201 
+ 117o - 0203 
+ 118o - 0189 
+ 119o - 0183 
+ 120o - 0157 
+ 121o - 0163 
+ 122o - 0155 
+ 123o - 0134 
+ 124o - 0127 
+ 125o - 0122 
+ 126o - 0118 
+ 127o - 0136 
+ 128o - 0107 
+ 129o - 0137 
+ 130o - 0110 
+ 131o - 0101 
+ 132o - 0106 
+ 133o - 0115 
+ 134o - 0114 
+ 135o - 0083 
+ 136o - 0071 
+ 137o - 0060 
+ 138o - 0052 
+ 139o - 0055 
+ 140o - 0046 
+ 141o - 0070 
+ 142o - 0042 
+ 143o - 0021 
+ 144o - 0032 
+ 145o - 0011 
+ 146o - 0016 
+ 147o - 0004 
+ 148o - 0023 
+ 149o - 0005 
+ 150o - 0007 
+ 151o - 0026 
+ 152o - 0006 
+ 153o - 0298 
+ 154o - 0290 
+ 155o - 0293 
+ 156o - 0282 
+ 157o - 0281 
+ 158o - 0277 
+ 159o - 0274 
+ 160o - 0264 
+ 161o - 0257 
+ 162o - 0247 
+ 163o - 0228 
+ 164o - 0221 
+ 165o - 0227 
+ 166o - 0218 
+ 167o - 0197 
+ 168o - 0171 
+ 169o - 0169 
+ 170o - 0158 
+ 171o - 0142 
+ 172o - 0152 
+ 173o - 0146 
+ 174o - 0112 
+ 175o - 0096 
+ 176o - 0095 
+ 177o - 0081 
+ 178o - 0102 
+ 179o - 0075 
+ 180o - 0058 
+ 181o - 0068 
+ 182o - 0031 
+ 183o - 0024 
+ 184o - 0014 
+ 185o - 0297 
+ 186o - 0284 
+ 187o - 0273 
+ 188o - 0270 
+ 189o - 0253 
+ 190o - 0252 
+ 191o - 0241 
+ 192o - 0236 
+ 193o - 0231 
+ 194o - 0229 
+ 195o - 0207 
+ 196o - 0191 
+ 197o - 0195 
+ 198o - 0172 
+ 199o - 0175 
+ 200o - 0145 
+ 201o - 0091 
+ 202o - 0082 
+ 203o - 0069 
+ 204o - 0047 
+ 205o - 0029 
+ 206o - 0040 
+ 207o - 0299 
+ 208o - 0291 
+ 209o - 0286 
+ 210o - 0275 
+ 211o - 0265 
+ 212o - 0204 
+ 213o - 0188 
+ 214o - 0173 
+ 215o - 0135 
+ 216o - 0061 
+ 217o - 0233 
+ 218o - 0216 
+ 219o - 0212 
+
+Ciclista  212 será deletado...
+
+O ciclista 0212 foi eliminado da corrida...
+
+A thread 0084 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   84 quebrou na rodada 36! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 76
+o número de elementos a passar dessa rodada atualizado: 206
+(ou seja: 300 (total) - 18 (r/2) - 76 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0084 quebrou na rodada 36!
+
+A thread 0036 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   36 quebrou na rodada 36! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 77
+o número de elementos a passar dessa rodada atualizado: 205
+(ou seja: 300 (total) - 18 (r/2) - 77 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0036 quebrou na rodada 36!
+
+A thread 0271 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  271 quebrou na rodada 36! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 78
+o número de elementos a passar dessa rodada atualizado: 204
+(ou seja: 300 (total) - 18 (r/2) - 78 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0271 quebrou na rodada 36!
+
+A thread 0251 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  251 quebrou na rodada 36! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 79
+o número de elementos a passar dessa rodada atualizado: 203
+(ou seja: 300 (total) - 18 (r/2) - 79 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0251 quebrou na rodada 36!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  38 ***
+
+A thread 0066 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   66 quebrou na rodada 36! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 80
+o número de elementos a passar dessa rodada atualizado: 202
+(ou seja: 300 (total) - 18 (r/2) - 80 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0066 quebrou na rodada 36!
+
+A thread 0260 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  260 quebrou na rodada 36! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 81
+o número de elementos a passar dessa rodada atualizado: 201
+(ou seja: 300 (total) - 18 (r/2) - 81 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0260 quebrou na rodada 36!
+
+Ranking - Rodada 31:
+   1o - 0156 
+   2o - 0246 
+   3o - 0199 
+   4o - 0174 
+   5o - 0166 
+   6o - 0141 
+   7o - 0103 
+   8o - 0056 
+   9o - 0034 
+  10o - 0019 
+  11o - 0255 
+  12o - 0267 
+  13o - 0250 
+  14o - 0239 
+  15o - 0186 
+  16o - 0178 
+  17o - 0161 
+  18o - 0133 
+  19o - 0123 
+  20o - 0140 
+  21o - 0113 
+  22o - 0057 
+  23o - 0054 
+  24o - 0038 
+  25o - 0278 
+  26o - 0259 
+  27o - 0235 
+  28o - 0240 
+  29o - 0208 
+  30o - 0205 
+  31o - 0193 
+  32o - 0162 
+  33o - 0143 
+  34o - 0148 
+  35o - 0150 
+  36o - 0144 
+  37o - 0132 
+  38o - 0126 
+  39o - 0111 
+  40o - 0099 
+  41o - 0079 
+  42o - 0065 
+  43o - 0073 
+  44o - 0094 
+  45o - 0059 
+  46o - 0049 
+  47o - 0051 
+  48o - 0041 
+  49o - 0020 
+  50o - 0003 
+  51o - 0289 
+  52o - 0288 
+  53o - 0287 
+  54o - 0283 
+  55o - 0271 
+  56o - 0268 
+  57o - 0256 
+  58o - 0261 
+  59o - 0238 
+  60o - 0224 
+  61o - 0220 
+  62o - 0225 
+  63o - 0230 
+  64o - 0223 
+  65o - 0196 
+  66o - 0215 
+  67o - 0198 
+  68o - 0194 
+  69o - 0187 
+  70o - 0165 
+  71o - 0160 
+  72o - 0168 
+  73o - 0117 
+  74o - 0108 
+  75o - 0092 
+  76o - 0100 
+  77o - 0084 
+  78o - 0066 
+  79o - 0048 
+  80o - 0050 
+  81o - 0030 
+  82o - 0037 
+  83o - 0036 
+  84o - 0028 
+  85o - 0025 
+  86o - 0022 
+  87o - 0001 
+  88o - 0002 
+  89o - 0013 
+  90o - 0294 
+  91o - 0263 
+  92o - 0269 
+  93o - 0258 
+  94o - 0260 
+  95o - 0276 
+  96o - 0251 
+  97o - 0245 
+  98o - 0254 
+  99o - 0217 
+ 100o - 0219 
+ 101o - 0200 
+ 102o - 0201 
+ 103o - 0189 
+ 104o - 0163 
+ 105o - 0154 
+ 106o - 0155 
+ 107o - 0134 
+ 108o - 0122 
+ 109o - 0118 
+ 110o - 0139 
+ 111o - 0136 
+ 112o - 0107 
+ 113o - 0137 
+ 114o - 0110 
+ 115o - 0106 
+ 116o - 0115 
+ 117o - 0114 
+ 118o - 0072 
+ 119o - 0083 
+ 120o - 0093 
+ 121o - 0063 
+ 122o - 0086 
+ 123o - 0071 
+ 124o - 0074 
+ 125o - 0060 
+ 126o - 0052 
+ 127o - 0055 
+ 128o - 0046 
+ 129o - 0070 
+ 130o - 0042 
+ 131o - 0064 
+ 132o - 0021 
+ 133o - 0043 
+ 134o - 0032 
+ 135o - 0011 
+ 136o - 0023 
+ 137o - 0016 
+ 138o - 0008 
+ 139o - 0026 
+ 140o - 0006 
+ 141o - 0292 
+ 142o - 0290 
+ 143o - 0293 
+ 144o - 0281 
+ 145o - 0277 
+ 146o - 0266 
+ 147o - 0272 
+ 148o - 0264 
+ 149o - 0257 
+ 150o - 0228 
+ 151o - 0221 
+ 152o - 0227 
+ 153o - 0222 
+ 154o - 0218 
+ 155o - 0197 
+ 156o - 0203 
+ 157o - 0183 
+ 158o - 0171 
+ 159o - 0157 
+ 160o - 0169 
+ 161o - 0158 
+ 162o - 0142 
+ 163o - 0127 
+ 164o - 0152 
+ 165o - 0146 
+ 166o - 0101 
+ 167o - 0112 
+ 168o - 0096 
+ 169o - 0081 
+ 170o - 0075 
+ 171o - 0058 
+ 172o - 0068 
+ 173o - 0031 
+ 174o - 0004 
+ 175o - 0024 
+ 176o - 0007 
+ 177o - 0014 
+ 178o - 0005 
+ 179o - 0298 
+ 180o - 0297 
+ 181o - 0282 
+ 182o - 0284 
+ 183o - 0274 
+ 184o - 0252 
+ 185o - 0247 
+ 186o - 0236 
+ 187o - 0231 
+ 188o - 0229 
+ 189o - 0207 
+ 190o - 0191 
+ 191o - 0195 
+ 192o - 0172 
+ 193o - 0175 
+ 194o - 0145 
+ 195o - 0091 
+ 196o - 0095 
+ 197o - 0102 
+ 198o - 0082 
+ 199o - 0069 
+ 200o - 0047 
+ 201o - 0040 
+ 202o - 0299 
+ 203o - 0286 
+ 204o - 0273 
+ 205o - 0265 
+ 206o - 0270 
+ 207o - 0253 
+ 208o - 0241 
+ 209o - 0204 
+ 210o - 0188 
+ 211o - 0061 
+ 212o - 0029 
+ 213o - 0291 
+ 214o - 0275 
+ 215o - 0216 
+ 216o - 0173 
+ 217o - 0135 
+ 218o - 0233 
+
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  39 ***
+
+A thread 0152 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  152 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 82
+o número de elementos a passar dessa rodada atualizado: 200
+(ou seja: 300 (total) - 18 (r/2) - 82 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0152 quebrou na rodada 36!
+
+A thread 0137 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  137 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 83
+o número de elementos a passar dessa rodada atualizado: 199
+(ou seja: 300 (total) - 18 (r/2) - 83 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0137 quebrou na rodada 36!
+
+A thread 0071 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   71 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 84
+o número de elementos a passar dessa rodada atualizado: 198
+(ou seja: 300 (total) - 18 (r/2) - 84 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0071 quebrou na rodada 36!
+
+Ranking - Rodada 32:
+   1o - 0246 
+   2o - 0199 
+   3o - 0141 
+   4o - 0156 
+   5o - 0019 
+   6o - 0250 
+   7o - 0186 
+   8o - 0178 
+   9o - 0174 
+  10o - 0166 
+  11o - 0133 
+  12o - 0123 
+  13o - 0140 
+  14o - 0113 
+  15o - 0103 
+  16o - 0057 
+  17o - 0056 
+  18o - 0054 
+  19o - 0034 
+  20o - 0278 
+  21o - 0255 
+  22o - 0267 
+  23o - 0239 
+  24o - 0208 
+  25o - 0205 
+  26o - 0193 
+  27o - 0161 
+  28o - 0143 
+  29o - 0148 
+  30o - 0144 
+  31o - 0132 
+  32o - 0126 
+  33o - 0111 
+  34o - 0099 
+  35o - 0079 
+  36o - 0094 
+  37o - 0073 
+  38o - 0059 
+  39o - 0049 
+  40o - 0051 
+  41o - 0038 
+  42o - 0041 
+  43o - 0020 
+  44o - 0003 
+  45o - 0287 
+  46o - 0283 
+  47o - 0271 
+  48o - 0256 
+  49o - 0259 
+  50o - 0261 
+  51o - 0238 
+  52o - 0224 
+  53o - 0235 
+  54o - 0220 
+  55o - 0240 
+  56o - 0225 
+  57o - 0230 
+  58o - 0223 
+  59o - 0196 
+  60o - 0215 
+  61o - 0198 
+  62o - 0194 
+  63o - 0187 
+  64o - 0165 
+  65o - 0162 
+  66o - 0150 
+  67o - 0117 
+  68o - 0092 
+  69o - 0100 
+  70o - 0065 
+  71o - 0084 
+  72o - 0050 
+  73o - 0037 
+  74o - 0036 
+  75o - 0028 
+  76o - 0002 
+  77o - 0013 
+  78o - 0289 
+  79o - 0288 
+  80o - 0268 
+  81o - 0269 
+  82o - 0263 
+  83o - 0260 
+  84o - 0251 
+  85o - 0245 
+  86o - 0254 
+  87o - 0200 
+  88o - 0201 
+  89o - 0160 
+  90o - 0168 
+  91o - 0163 
+  92o - 0154 
+  93o - 0155 
+  94o - 0118 
+  95o - 0139 
+  96o - 0137 
+  97o - 0110 
+  98o - 0108 
+  99o - 0115 
+ 100o - 0072 
+ 101o - 0083 
+ 102o - 0093 
+ 103o - 0086 
+ 104o - 0074 
+ 105o - 0066 
+ 106o - 0071 
+ 107o - 0052 
+ 108o - 0046 
+ 109o - 0070 
+ 110o - 0048 
+ 111o - 0042 
+ 112o - 0064 
+ 113o - 0021 
+ 114o - 0030 
+ 115o - 0043 
+ 116o - 0011 
+ 117o - 0025 
+ 118o - 0008 
+ 119o - 0022 
+ 120o - 0001 
+ 121o - 0026 
+ 122o - 0006 
+ 123o - 0292 
+ 124o - 0290 
+ 125o - 0293 
+ 126o - 0294 
+ 127o - 0277 
+ 128o - 0266 
+ 129o - 0272 
+ 130o - 0258 
+ 131o - 0276 
+ 132o - 0257 
+ 133o - 0221 
+ 134o - 0227 
+ 135o - 0222 
+ 136o - 0217 
+ 137o - 0219 
+ 138o - 0189 
+ 139o - 0157 
+ 140o - 0171 
+ 141o - 0158 
+ 142o - 0142 
+ 143o - 0134 
+ 144o - 0127 
+ 145o - 0122 
+ 146o - 0152 
+ 147o - 0146 
+ 148o - 0136 
+ 149o - 0107 
+ 150o - 0101 
+ 151o - 0112 
+ 152o - 0106 
+ 153o - 0114 
+ 154o - 0081 
+ 155o - 0063 
+ 156o - 0060 
+ 157o - 0055 
+ 158o - 0032 
+ 159o - 0031 
+ 160o - 0004 
+ 161o - 0016 
+ 162o - 0023 
+ 163o - 0024 
+ 164o - 0007 
+ 165o - 0005 
+ 166o - 0298 
+ 167o - 0297 
+ 168o - 0282 
+ 169o - 0281 
+ 170o - 0274 
+ 171o - 0264 
+ 172o - 0252 
+ 173o - 0247 
+ 174o - 0228 
+ 175o - 0236 
+ 176o - 0218 
+ 177o - 0207 
+ 178o - 0197 
+ 179o - 0203 
+ 180o - 0191 
+ 181o - 0183 
+ 182o - 0195 
+ 183o - 0172 
+ 184o - 0175 
+ 185o - 0169 
+ 186o - 0145 
+ 187o - 0096 
+ 188o - 0095 
+ 189o - 0102 
+ 190o - 0082 
+ 191o - 0075 
+ 192o - 0058 
+ 193o - 0069 
+ 194o - 0068 
+ 195o - 0047 
+ 196o - 0014 
+ 197o - 0284 
+ 198o - 0273 
+ 199o - 0265 
+ 200o - 0270 
+ 201o - 0253 
+ 202o - 0241 
+ 203o - 0231 
+ 204o - 0229 
+ 205o - 0188 
+ 206o - 0091 
+ 207o - 0061 
+ 208o - 0029 
+ 209o - 0040 
+ 210o - 0299 
+ 211o - 0291 
+ 212o - 0286 
+ 213o - 0275 
+ 214o - 0216 
+ 215o - 0204 
+ 216o - 0173 
+ 217o - 0135 
+ 218o - 0233 
+
+Ciclista  233 será deletado...
+
+O ciclista 0233 foi eliminado da corrida...
+
+A thread 0200 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  200 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 85
+o número de elementos a passar dessa rodada atualizado: 197
+(ou seja: 300 (total) - 18 (r/2) - 85 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0200 quebrou na rodada 36!
+
+A thread 0127 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  127 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 86
+o número de elementos a passar dessa rodada atualizado: 196
+(ou seja: 300 (total) - 18 (r/2) - 86 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0127 quebrou na rodada 36!
+
+A thread 0043 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   43 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 87
+o número de elementos a passar dessa rodada atualizado: 195
+(ou seja: 300 (total) - 18 (r/2) - 87 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0043 quebrou na rodada 36!
+
+A thread 0274 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  274 quebrou na rodada 36! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 88
+o número de elementos a passar dessa rodada atualizado: 194
+(ou seja: 300 (total) - 18 (r/2) - 88 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0274 quebrou na rodada 36!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  40 ***
+
+Ranking - Rodada 33:
+   1o - 0199 
+   2o - 0156 
+   3o - 0246 
+   4o - 0250 
+   5o - 0186 
+   6o - 0178 
+   7o - 0174 
+   8o - 0166 
+   9o - 0141 
+  10o - 0133 
+  11o - 0123 
+  12o - 0103 
+  13o - 0057 
+  14o - 0034 
+  15o - 0019 
+  16o - 0255 
+  17o - 0239 
+  18o - 0208 
+  19o - 0193 
+  20o - 0161 
+  21o - 0144 
+  22o - 0132 
+  23o - 0126 
+  24o - 0140 
+  25o - 0113 
+  26o - 0099 
+  27o - 0094 
+  28o - 0059 
+  29o - 0056 
+  30o - 0049 
+  31o - 0054 
+  32o - 0038 
+  33o - 0041 
+  34o - 0287 
+  35o - 0278 
+  36o - 0271 
+  37o - 0259 
+  38o - 0261 
+  39o - 0267 
+  40o - 0224 
+  41o - 0240 
+  42o - 0230 
+  43o - 0223 
+  44o - 0205 
+  45o - 0198 
+  46o - 0194 
+  47o - 0187 
+  48o - 0165 
+  49o - 0162 
+  50o - 0143 
+  51o - 0148 
+  52o - 0150 
+  53o - 0117 
+  54o - 0111 
+  55o - 0092 
+  56o - 0100 
+  57o - 0079 
+  58o - 0084 
+  59o - 0065 
+  60o - 0073 
+  61o - 0051 
+  62o - 0050 
+  63o - 0037 
+  64o - 0036 
+  65o - 0020 
+  66o - 0028 
+  67o - 0003 
+  68o - 0013 
+  69o - 0002 
+  70o - 0288 
+  71o - 0289 
+  72o - 0283 
+  73o - 0268 
+  74o - 0256 
+  75o - 0251 
+  76o - 0254 
+  77o - 0238 
+  78o - 0235 
+  79o - 0220 
+  80o - 0225 
+  81o - 0196 
+  82o - 0215 
+  83o - 0160 
+  84o - 0168 
+  85o - 0163 
+  86o - 0154 
+  87o - 0155 
+  88o - 0139 
+  89o - 0137 
+  90o - 0108 
+  91o - 0115 
+  92o - 0072 
+  93o - 0093 
+  94o - 0086 
+  95o - 0074 
+  96o - 0071 
+  97o - 0066 
+  98o - 0052 
+  99o - 0070 
+ 100o - 0048 
+ 101o - 0064 
+ 102o - 0021 
+ 103o - 0030 
+ 104o - 0025 
+ 105o - 0022 
+ 106o - 0006 
+ 107o - 0292 
+ 108o - 0290 
+ 109o - 0294 
+ 110o - 0277 
+ 111o - 0266 
+ 112o - 0269 
+ 113o - 0263 
+ 114o - 0258 
+ 115o - 0260 
+ 116o - 0276 
+ 117o - 0245 
+ 118o - 0257 
+ 119o - 0221 
+ 120o - 0217 
+ 121o - 0219 
+ 122o - 0200 
+ 123o - 0201 
+ 124o - 0189 
+ 125o - 0171 
+ 126o - 0142 
+ 127o - 0134 
+ 128o - 0152 
+ 129o - 0146 
+ 130o - 0122 
+ 131o - 0118 
+ 132o - 0136 
+ 133o - 0110 
+ 134o - 0112 
+ 135o - 0106 
+ 136o - 0114 
+ 137o - 0081 
+ 138o - 0083 
+ 139o - 0063 
+ 140o - 0060 
+ 141o - 0046 
+ 142o - 0055 
+ 143o - 0042 
+ 144o - 0043 
+ 145o - 0032 
+ 146o - 0011 
+ 147o - 0031 
+ 148o - 0004 
+ 149o - 0016 
+ 150o - 0008 
+ 151o - 0007 
+ 152o - 0001 
+ 153o - 0026 
+ 154o - 0298 
+ 155o - 0297 
+ 156o - 0293 
+ 157o - 0282 
+ 158o - 0281 
+ 159o - 0272 
+ 160o - 0274 
+ 161o - 0252 
+ 162o - 0247 
+ 163o - 0228 
+ 164o - 0227 
+ 165o - 0222 
+ 166o - 0207 
+ 167o - 0218 
+ 168o - 0197 
+ 169o - 0203 
+ 170o - 0191 
+ 171o - 0195 
+ 172o - 0183 
+ 173o - 0172 
+ 174o - 0175 
+ 175o - 0157 
+ 176o - 0169 
+ 177o - 0158 
+ 178o - 0145 
+ 179o - 0127 
+ 180o - 0107 
+ 181o - 0101 
+ 182o - 0102 
+ 183o - 0082 
+ 184o - 0075 
+ 185o - 0069 
+ 186o - 0068 
+ 187o - 0023 
+ 188o - 0024 
+ 189o - 0005 
+ 190o - 0014 
+ 191o - 0284 
+ 192o - 0265 
+ 193o - 0270 
+ 194o - 0253 
+ 195o - 0264 
+ 196o - 0236 
+ 197o - 0231 
+ 198o - 0229 
+ 199o - 0096 
+ 200o - 0095 
+ 201o - 0058 
+ 202o - 0061 
+ 203o - 0047 
+ 204o - 0029 
+ 205o - 0299 
+ 206o - 0291 
+ 207o - 0286 
+ 208o - 0273 
+ 209o - 0275 
+ 210o - 0241 
+ 211o - 0204 
+ 212o - 0188 
+ 213o - 0173 
+ 214o - 0091 
+ 215o - 0040 
+ 216o - 0216 
+ 217o - 0135 
+
+
+A thread 0026 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   26 quebrou na rodada 36! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 89
+o número de elementos a passar dessa rodada atualizado: 193
+(ou seja: 300 (total) - 18 (r/2) - 89 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0026 quebrou na rodada 36!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  41 ***
+
+A thread 0058 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   58 quebrou na rodada 36! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 36: 90
+o número de elementos a passar dessa rodada atualizado: 192
+(ou seja: 300 (total) - 18 (r/2) - 90 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0058 quebrou na rodada 36!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  42 ***
+
+Ranking - Rodada 34:
+   1o - 0199 
+   2o - 0156 
+   3o - 0246 
+   4o - 0186 
+   5o - 0178 
+   6o - 0174 
+   7o - 0141 
+   8o - 0103 
+   9o - 0057 
+  10o - 0034 
+  11o - 0019 
+  12o - 0250 
+  13o - 0208 
+  14o - 0161 
+  15o - 0166 
+  16o - 0133 
+  17o - 0123 
+  18o - 0113 
+  19o - 0094 
+  20o - 0059 
+  21o - 0054 
+  22o - 0038 
+  23o - 0287 
+  24o - 0278 
+  25o - 0255 
+  26o - 0267 
+  27o - 0239 
+  28o - 0224 
+  29o - 0240 
+  30o - 0205 
+  31o - 0198 
+  32o - 0193 
+  33o - 0194 
+  34o - 0187 
+  35o - 0162 
+  36o - 0165 
+  37o - 0143 
+  38o - 0148 
+  39o - 0144 
+  40o - 0132 
+  41o - 0126 
+  42o - 0140 
+  43o - 0117 
+  44o - 0111 
+  45o - 0099 
+  46o - 0084 
+  47o - 0065 
+  48o - 0073 
+  49o - 0056 
+  50o - 0049 
+  51o - 0051 
+  52o - 0037 
+  53o - 0036 
+  54o - 0041 
+  55o - 0020 
+  56o - 0028 
+  57o - 0003 
+  58o - 0002 
+  59o - 0289 
+  60o - 0288 
+  61o - 0268 
+  62o - 0271 
+  63o - 0259 
+  64o - 0251 
+  65o - 0261 
+  66o - 0220 
+  67o - 0225 
+  68o - 0230 
+  69o - 0223 
+  70o - 0196 
+  71o - 0160 
+  72o - 0150 
+  73o - 0115 
+  74o - 0092 
+  75o - 0079 
+  76o - 0100 
+  77o - 0086 
+  78o - 0074 
+  79o - 0066 
+  80o - 0048 
+  81o - 0050 
+  82o - 0030 
+  83o - 0022 
+  84o - 0013 
+  85o - 0292 
+  86o - 0290 
+  87o - 0283 
+  88o - 0266 
+  89o - 0263 
+  90o - 0258 
+  91o - 0260 
+  92o - 0276 
+  93o - 0256 
+  94o - 0257 
+  95o - 0254 
+  96o - 0238 
+  97o - 0235 
+  98o - 0221 
+  99o - 0217 
+ 100o - 0219 
+ 101o - 0215 
+ 102o - 0201 
+ 103o - 0189 
+ 104o - 0168 
+ 105o - 0163 
+ 106o - 0154 
+ 107o - 0155 
+ 108o - 0152 
+ 109o - 0122 
+ 110o - 0118 
+ 111o - 0136 
+ 112o - 0139 
+ 113o - 0137 
+ 114o - 0108 
+ 115o - 0110 
+ 116o - 0112 
+ 117o - 0072 
+ 118o - 0083 
+ 119o - 0093 
+ 120o - 0063 
+ 121o - 0071 
+ 122o - 0052 
+ 123o - 0046 
+ 124o - 0055 
+ 125o - 0070 
+ 126o - 0064 
+ 127o - 0042 
+ 128o - 0021 
+ 129o - 0043 
+ 130o - 0011 
+ 131o - 0031 
+ 132o - 0025 
+ 133o - 0016 
+ 134o - 0008 
+ 135o - 0006 
+ 136o - 0298 
+ 137o - 0293 
+ 138o - 0294 
+ 139o - 0282 
+ 140o - 0277 
+ 141o - 0272 
+ 142o - 0269 
+ 143o - 0252 
+ 144o - 0245 
+ 145o - 0247 
+ 146o - 0227 
+ 147o - 0222 
+ 148o - 0207 
+ 149o - 0197 
+ 150o - 0200 
+ 151o - 0203 
+ 152o - 0191 
+ 153o - 0172 
+ 154o - 0157 
+ 155o - 0169 
+ 156o - 0171 
+ 157o - 0158 
+ 158o - 0142 
+ 159o - 0134 
+ 160o - 0127 
+ 161o - 0146 
+ 162o - 0107 
+ 163o - 0101 
+ 164o - 0106 
+ 165o - 0114 
+ 166o - 0081 
+ 167o - 0082 
+ 168o - 0075 
+ 169o - 0069 
+ 170o - 0068 
+ 171o - 0060 
+ 172o - 0032 
+ 173o - 0004 
+ 174o - 0023 
+ 175o - 0024 
+ 176o - 0007 
+ 177o - 0005 
+ 178o - 0001 
+ 179o - 0026 
+ 180o - 0297 
+ 181o - 0281 
+ 182o - 0264 
+ 183o - 0274 
+ 184o - 0228 
+ 185o - 0236 
+ 186o - 0231 
+ 187o - 0218 
+ 188o - 0183 
+ 189o - 0195 
+ 190o - 0175 
+ 191o - 0145 
+ 192o - 0096 
+ 193o - 0095 
+ 194o - 0102 
+ 195o - 0058 
+ 196o - 0047 
+ 197o - 0029 
+ 198o - 0014 
+ 199o - 0284 
+ 200o - 0273 
+ 201o - 0265 
+ 202o - 0270 
+ 203o - 0253 
+ 204o - 0241 
+ 205o - 0229 
+ 206o - 0204 
+ 207o - 0173 
+ 208o - 0091 
+ 209o - 0061 
+ 210o - 0040 
+ 211o - 0299 
+ 212o - 0291 
+ 213o - 0286 
+ 214o - 0275 
+ 215o - 0188 
+ 216o - 0216 
+ 217o - 0135 
+
+Ciclista  135 será deletado...
+
+O ciclista 0135 foi eliminado da corrida...
+
+Ranking - Rodada 35:
+   1o - 0199 
+   2o - 0141 
+   3o - 0156 
+   4o - 0103 
+   5o - 0057 
+   6o - 0019 
+   7o - 0250 
+   8o - 0246 
+   9o - 0208 
+  10o - 0178 
+  11o - 0186 
+  12o - 0174 
+  13o - 0161 
+  14o - 0166 
+  15o - 0133 
+  16o - 0123 
+  17o - 0113 
+  18o - 0094 
+  19o - 0059 
+  20o - 0054 
+  21o - 0038 
+  22o - 0034 
+  23o - 0255 
+  24o - 0267 
+  25o - 0239 
+  26o - 0224 
+  27o - 0240 
+  28o - 0205 
+  29o - 0194 
+  30o - 0193 
+  31o - 0162 
+  32o - 0143 
+  33o - 0148 
+  34o - 0144 
+  35o - 0132 
+  36o - 0126 
+  37o - 0140 
+  38o - 0084 
+  39o - 0065 
+  40o - 0056 
+  41o - 0036 
+  42o - 0041 
+  43o - 0020 
+  44o - 0028 
+  45o - 0288 
+  46o - 0287 
+  47o - 0278 
+  48o - 0271 
+  49o - 0268 
+  50o - 0259 
+  51o - 0251 
+  52o - 0261 
+  53o - 0225 
+  54o - 0223 
+  55o - 0196 
+  56o - 0198 
+  57o - 0187 
+  58o - 0165 
+  59o - 0160 
+  60o - 0150 
+  61o - 0117 
+  62o - 0111 
+  63o - 0099 
+  64o - 0092 
+  65o - 0079 
+  66o - 0073 
+  67o - 0086 
+  68o - 0074 
+  69o - 0049 
+  70o - 0051 
+  71o - 0066 
+  72o - 0050 
+  73o - 0037 
+  74o - 0030 
+  75o - 0022 
+  76o - 0003 
+  77o - 0013 
+  78o - 0002 
+  79o - 0292 
+  80o - 0290 
+  81o - 0289 
+  82o - 0283 
+  83o - 0263 
+  84o - 0258 
+  85o - 0260 
+  86o - 0256 
+  87o - 0257 
+  88o - 0254 
+  89o - 0220 
+  90o - 0221 
+  91o - 0230 
+  92o - 0217 
+  93o - 0219 
+  94o - 0215 
+  95o - 0201 
+  96o - 0189 
+  97o - 0168 
+  98o - 0163 
+  99o - 0154 
+ 100o - 0152 
+ 101o - 0122 
+ 102o - 0137 
+ 103o - 0139 
+ 104o - 0108 
+ 105o - 0110 
+ 106o - 0115 
+ 107o - 0100 
+ 108o - 0083 
+ 109o - 0072 
+ 110o - 0093 
+ 111o - 0063 
+ 112o - 0071 
+ 113o - 0052 
+ 114o - 0046 
+ 115o - 0070 
+ 116o - 0048 
+ 117o - 0064 
+ 118o - 0021 
+ 119o - 0016 
+ 120o - 0025 
+ 121o - 0008 
+ 122o - 0006 
+ 123o - 0266 
+ 124o - 0272 
+ 125o - 0276 
+ 126o - 0245 
+ 127o - 0252 
+ 128o - 0238 
+ 129o - 0247 
+ 130o - 0235 
+ 131o - 0227 
+ 132o - 0222 
+ 133o - 0207 
+ 134o - 0197 
+ 135o - 0200 
+ 136o - 0191 
+ 137o - 0172 
+ 138o - 0157 
+ 139o - 0171 
+ 140o - 0169 
+ 141o - 0158 
+ 142o - 0142 
+ 143o - 0155 
+ 144o - 0134 
+ 145o - 0127 
+ 146o - 0146 
+ 147o - 0118 
+ 148o - 0136 
+ 149o - 0101 
+ 150o - 0112 
+ 151o - 0106 
+ 152o - 0114 
+ 153o - 0081 
+ 154o - 0075 
+ 155o - 0069 
+ 156o - 0068 
+ 157o - 0055 
+ 158o - 0042 
+ 159o - 0043 
+ 160o - 0032 
+ 161o - 0011 
+ 162o - 0031 
+ 163o - 0004 
+ 164o - 0024 
+ 165o - 0023 
+ 166o - 0007 
+ 167o - 0005 
+ 168o - 0001 
+ 169o - 0298 
+ 170o - 0297 
+ 171o - 0293 
+ 172o - 0294 
+ 173o - 0282 
+ 174o - 0281 
+ 175o - 0277 
+ 176o - 0269 
+ 177o - 0274 
+ 178o - 0264 
+ 179o - 0228 
+ 180o - 0236 
+ 181o - 0218 
+ 182o - 0203 
+ 183o - 0183 
+ 184o - 0195 
+ 185o - 0175 
+ 186o - 0145 
+ 187o - 0107 
+ 188o - 0096 
+ 189o - 0102 
+ 190o - 0082 
+ 191o - 0060 
+ 192o - 0047 
+ 193o - 0029 
+ 194o - 0014 
+ 195o - 0026 
+ 196o - 0284 
+ 197o - 0265 
+ 198o - 0270 
+ 199o - 0241 
+ 200o - 0231 
+ 201o - 0229 
+ 202o - 0091 
+ 203o - 0095 
+ 204o - 0058 
+ 205o - 0061 
+ 206o - 0040 
+ 207o - 0299 
+ 208o - 0291 
+ 209o - 0286 
+ 210o - 0273 
+ 211o - 0275 
+ 212o - 0253 
+ 213o - 0204 
+ 214o - 0173 
+ 215o - 0188 
+ 216o - 0216 
+
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  43 ***
+
+A thread 0148 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  148 quebrou na rodada 42! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 91
+o número de elementos a passar dessa rodada atualizado: 188
+(ou seja: 300 (total) - 21 (r/2) - 91 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0148 quebrou na rodada 42!
+
+A thread 0268 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  268 quebrou na rodada 42! e será eliminado
+2 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 92
+o número de elementos a passar dessa rodada atualizado: 187
+(ou seja: 300 (total) - 21 (r/2) - 92 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0268 quebrou na rodada 42!
+
+Ranking - Rodada 36:
+   1o - 0199 
+   2o - 0156 
+   3o - 0103 
+   4o - 0166 
+   5o - 0133 
+   6o - 0123 
+   7o - 0057 
+   8o - 0038 
+   9o - 0034 
+  10o - 0019 
+  11o - 0239 
+  12o - 0224 
+  13o - 0208 
+  14o - 0178 
+  15o - 0186 
+  16o - 0161 
+  17o - 0143 
+  18o - 0148 
+  19o - 0132 
+  20o - 0144 
+  21o - 0126 
+  22o - 0113 
+  23o - 0065 
+  24o - 0094 
+  25o - 0059 
+  26o - 0056 
+  27o - 0041 
+  28o - 0288 
+  29o - 0287 
+  30o - 0278 
+  31o - 0268 
+  32o - 0259 
+  33o - 0261 
+  34o - 0240 
+  35o - 0225 
+  36o - 0198 
+  37o - 0194 
+  38o - 0193 
+  39o - 0187 
+  40o - 0162 
+  41o - 0165 
+  42o - 0160 
+  43o - 0150 
+  44o - 0140 
+  45o - 0117 
+  46o - 0099 
+  47o - 0092 
+  48o - 0079 
+  49o - 0073 
+  50o - 0086 
+  51o - 0049 
+  52o - 0051 
+  53o - 0050 
+  54o - 0037 
+  55o - 0030 
+  56o - 0020 
+  57o - 0028 
+  58o - 0022 
+  59o - 0003 
+  60o - 0002 
+  61o - 0292 
+  62o - 0289 
+  63o - 0263 
+  64o - 0258 
+  65o - 0256 
+  66o - 0221 
+  67o - 0230 
+  68o - 0223 
+  69o - 0219 
+  70o - 0201 
+  71o - 0215 
+  72o - 0196 
+  73o - 0189 
+  74o - 0110 
+  75o - 0111 
+  76o - 0115 
+  77o - 0100 
+  78o - 0072 
+  79o - 0083 
+  80o - 0074 
+  81o - 0052 
+  82o - 0048 
+  83o - 0016 
+  84o - 0008 
+  85o - 0013 
+  86o - 0290 
+  87o - 0283 
+  88o - 0266 
+  89o - 0276 
+  90o - 0252 
+  91o - 0257 
+  92o - 0245 
+  93o - 0238 
+  94o - 0254 
+  95o - 0235 
+  96o - 0220 
+  97o - 0222 
+  98o - 0207 
+  99o - 0217 
+ 100o - 0191 
+ 101o - 0169 
+ 102o - 0168 
+ 103o - 0158 
+ 104o - 0163 
+ 105o - 0154 
+ 106o - 0142 
+ 107o - 0155 
+ 108o - 0134 
+ 109o - 0122 
+ 110o - 0118 
+ 111o - 0139 
+ 112o - 0108 
+ 113o - 0106 
+ 114o - 0114 
+ 115o - 0093 
+ 116o - 0075 
+ 117o - 0063 
+ 118o - 0069 
+ 119o - 0068 
+ 120o - 0055 
+ 121o - 0046 
+ 122o - 0070 
+ 123o - 0042 
+ 124o - 0064 
+ 125o - 0021 
+ 126o - 0032 
+ 127o - 0031 
+ 128o - 0024 
+ 129o - 0025 
+ 130o - 0007 
+ 131o - 0005 
+ 132o - 0006 
+ 133o - 0298 
+ 134o - 0293 
+ 135o - 0294 
+ 136o - 0277 
+ 137o - 0272 
+ 138o - 0269 
+ 139o - 0247 
+ 140o - 0228 
+ 141o - 0236 
+ 142o - 0227 
+ 143o - 0218 
+ 144o - 0197 
+ 145o - 0203 
+ 146o - 0175 
+ 147o - 0172 
+ 148o - 0157 
+ 149o - 0171 
+ 150o - 0146 
+ 151o - 0136 
+ 152o - 0107 
+ 153o - 0101 
+ 154o - 0112 
+ 155o - 0081 
+ 156o - 0082 
+ 157o - 0060 
+ 158o - 0047 
+ 159o - 0029 
+ 160o - 0011 
+ 161o - 0004 
+ 162o - 0023 
+ 163o - 0001 
+ 164o - 0014 
+ 165o - 0297 
+ 166o - 0282 
+ 167o - 0281 
+ 168o - 0264 
+ 169o - 0231 
+ 170o - 0183 
+ 171o - 0195 
+ 172o - 0145 
+ 173o - 0096 
+ 174o - 0091 
+ 175o - 0095 
+ 176o - 0102 
+ 177o - 0040 
+ 178o - 0284 
+ 179o - 0275 
+ 180o - 0265 
+ 181o - 0270 
+ 182o - 0241 
+ 183o - 0229 
+ 184o - 0204 
+ 185o - 0188 
+ 186o - 0061 
+ 187o - 0299 
+ 188o - 0291 
+ 189o - 0286 
+ 190o - 0273 
+ 191o - 0253 
+ 192o - 0216 
+ 193o - 0173 
+
+Ciclista  173 será deletado...
+
+O ciclista 0173 foi eliminado da corrida...
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  44 ***
+
+Ranking - Rodada 37:
+   1o - 0199 
+   2o - 0103 
+   3o - 0166 
+   4o - 0156 
+   5o - 0133 
+   6o - 0123 
+   7o - 0057 
+   8o - 0038 
+   9o - 0019 
+  10o - 0239 
+  11o - 0224 
+  12o - 0208 
+  13o - 0178 
+  14o - 0186 
+  15o - 0161 
+  16o - 0148 
+  17o - 0132 
+  18o - 0113 
+  19o - 0065 
+  20o - 0094 
+  21o - 0059 
+  22o - 0056 
+  23o - 0034 
+  24o - 0288 
+  25o - 0287 
+  26o - 0268 
+  27o - 0240 
+  28o - 0193 
+  29o - 0194 
+  30o - 0187 
+  31o - 0165 
+  32o - 0162 
+  33o - 0160 
+  34o - 0143 
+  35o - 0144 
+  36o - 0126 
+  37o - 0140 
+  38o - 0117 
+  39o - 0092 
+  40o - 0079 
+  41o - 0073 
+  42o - 0086 
+  43o - 0049 
+  44o - 0050 
+  45o - 0030 
+  46o - 0020 
+  47o - 0041 
+  48o - 0028 
+  49o - 0022 
+  50o - 0002 
+  51o - 0292 
+  52o - 0289 
+  53o - 0278 
+  54o - 0258 
+  55o - 0259 
+  56o - 0261 
+  57o - 0225 
+  58o - 0230 
+  59o - 0223 
+  60o - 0219 
+  61o - 0201 
+  62o - 0196 
+  63o - 0198 
+  64o - 0189 
+  65o - 0150 
+  66o - 0099 
+  67o - 0111 
+  68o - 0115 
+  69o - 0100 
+  70o - 0074 
+  71o - 0051 
+  72o - 0037 
+  73o - 0003 
+  74o - 0013 
+  75o - 0290 
+  76o - 0283 
+  77o - 0263 
+  78o - 0256 
+  79o - 0254 
+  80o - 0235 
+  81o - 0221 
+  82o - 0222 
+  83o - 0207 
+  84o - 0217 
+  85o - 0215 
+  86o - 0191 
+  87o - 0169 
+  88o - 0163 
+  89o - 0168 
+  90o - 0154 
+  91o - 0142 
+  92o - 0134 
+  93o - 0118 
+  94o - 0139 
+  95o - 0108 
+  96o - 0110 
+  97o - 0114 
+  98o - 0072 
+  99o - 0083 
+ 100o - 0093 
+ 101o - 0069 
+ 102o - 0068 
+ 103o - 0052 
+ 104o - 0046 
+ 105o - 0070 
+ 106o - 0048 
+ 107o - 0064 
+ 108o - 0021 
+ 109o - 0031 
+ 110o - 0024 
+ 111o - 0025 
+ 112o - 0016 
+ 113o - 0008 
+ 114o - 0005 
+ 115o - 0006 
+ 116o - 0298 
+ 117o - 0293 
+ 118o - 0294 
+ 119o - 0277 
+ 120o - 0266 
+ 121o - 0269 
+ 122o - 0276 
+ 123o - 0257 
+ 124o - 0245 
+ 125o - 0252 
+ 126o - 0238 
+ 127o - 0247 
+ 128o - 0228 
+ 129o - 0220 
+ 130o - 0227 
+ 131o - 0218 
+ 132o - 0197 
+ 133o - 0203 
+ 134o - 0157 
+ 135o - 0158 
+ 136o - 0155 
+ 137o - 0122 
+ 138o - 0146 
+ 139o - 0107 
+ 140o - 0112 
+ 141o - 0101 
+ 142o - 0106 
+ 143o - 0075 
+ 144o - 0063 
+ 145o - 0060 
+ 146o - 0055 
+ 147o - 0042 
+ 148o - 0047 
+ 149o - 0032 
+ 150o - 0004 
+ 151o - 0023 
+ 152o - 0007 
+ 153o - 0001 
+ 154o - 0014 
+ 155o - 0297 
+ 156o - 0282 
+ 157o - 0281 
+ 158o - 0272 
+ 159o - 0264 
+ 160o - 0236 
+ 161o - 0195 
+ 162o - 0183 
+ 163o - 0172 
+ 164o - 0175 
+ 165o - 0171 
+ 166o - 0145 
+ 167o - 0136 
+ 168o - 0096 
+ 169o - 0091 
+ 170o - 0095 
+ 171o - 0081 
+ 172o - 0102 
+ 173o - 0082 
+ 174o - 0029 
+ 175o - 0040 
+ 176o - 0011 
+ 177o - 0284 
+ 178o - 0265 
+ 179o - 0270 
+ 180o - 0241 
+ 181o - 0231 
+ 182o - 0229 
+ 183o - 0204 
+ 184o - 0061 
+ 185o - 0299 
+ 186o - 0291 
+ 187o - 0273 
+ 188o - 0275 
+ 189o - 0253 
+ 190o - 0216 
+ 191o - 0188 
+ 192o - 0286 
+
+ 199 EH O PRIMEIRO COLOCA

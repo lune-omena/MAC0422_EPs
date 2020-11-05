@@ -82,7 +82,8 @@ int main(int argc, char * argv[])
         debug = 1;
         printf("\n Modo debug ativado!\n");
     }
-    d = 15; /* excluir quando estiver pronto */
+
+    //d = 15; /* excluir quando estiver pronto */
     tam_pista = d;/* excluir quando estiver pronto */
     
     // todas threads precisam rodar
@@ -510,6 +511,8 @@ int atualizaPos(pthread_t thread, int pos_i, int *pos_j, int *rodada, int *vel_a
                     vel_ultimos[0] = KM60;
                 else
                     vel_ultimos[1] = KM60;
+
+                pista[pos_i][*pos_j] = 0;
                 
                 return CHAMPION;
             }

@@ -10521,4 +10521,456 @@ Ranking - Rodada 37:
  191o - 0188 
  192o - 0286 
 
- 199 EH O PRIMEIRO COLOCA
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  45 ***
+
+A thread 0050 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   50 quebrou na rodada 42! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 93
+o número de elementos a passar dessa rodada atualizado: 186
+(ou seja: 300 (total) - 21 (r/2) - 93 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0050 quebrou na rodada 42!
+
+A thread 0021 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   21 quebrou na rodada 42! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 94
+o número de elementos a passar dessa rodada atualizado: 185
+(ou seja: 300 (total) - 21 (r/2) - 94 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0021 quebrou na rodada 42!
+
+A thread 0220 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  220 quebrou na rodada 42! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 95
+o número de elementos a passar dessa rodada atualizado: 184
+(ou seja: 300 (total) - 21 (r/2) - 95 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0220 quebrou na rodada 42!
+ 199 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  46 ***
+
+Ranking - Rodada 38:
+   1o - 0199 
+   2o - 0103 
+   3o - 0166 
+   4o - 0156 
+   5o - 0057 
+   6o - 0038 
+   7o - 0019 
+   8o - 0239 
+   9o - 0224 
+  10o - 0186 
+  11o - 0161 
+  12o - 0148 
+  13o - 0133 
+  14o - 0123 
+  15o - 0059 
+  16o - 0034 
+  17o - 0288 
+  18o - 0287 
+  19o - 0268 
+  20o - 0240 
+  21o - 0208 
+  22o - 0193 
+  23o - 0194 
+  24o - 0187 
+  25o - 0178 
+  26o - 0165 
+  27o - 0162 
+  28o - 0143 
+  29o - 0132 
+  30o - 0126 
+  31o - 0113 
+  32o - 0065 
+  33o - 0073 
+  34o - 0094 
+  35o - 0056 
+  36o - 0049 
+  37o - 0030 
+  38o - 0020 
+  39o - 0041 
+  40o - 0022 
+  41o - 0002 
+  42o - 0292 
+  43o - 0289 
+  44o - 0278 
+  45o - 0258 
+  46o - 0259 
+  47o - 0261 
+  48o - 0223 
+  49o - 0219 
+  50o - 0201 
+  51o - 0196 
+  52o - 0198 
+  53o - 0160 
+  54o - 0144 
+  55o - 0140 
+  56o - 0117 
+  57o - 0099 
+  58o - 0092 
+  59o - 0079 
+  60o - 0100 
+  61o - 0086 
+  62o - 0051 
+  63o - 0050 
+  64o - 0037 
+  65o - 0028 
+  66o - 0013 
+  67o - 0290 
+  68o - 0263 
+  69o - 0256 
+  70o - 0235 
+  71o - 0221 
+  72o - 0225 
+  73o - 0230 
+  74o - 0215 
+  75o - 0191 
+  76o - 0189 
+  77o - 0169 
+  78o - 0168 
+  79o - 0154 
+  80o - 0142 
+  81o - 0150 
+  82o - 0134 
+  83o - 0118 
+  84o - 0110 
+  85o - 0111 
+  86o - 0114 
+  87o - 0115 
+  88o - 0072 
+  89o - 0083 
+  90o - 0093 
+  91o - 0074 
+  92o - 0068 
+  93o - 0070 
+  94o - 0046 
+  95o - 0048 
+  96o - 0064 
+  97o - 0021 
+  98o - 0024 
+  99o - 0016 
+ 100o - 0008 
+ 101o - 0005 
+ 102o - 0003 
+ 103o - 0006 
+ 104o - 0283 
+ 105o - 0276 
+ 106o - 0252 
+ 107o - 0245 
+ 108o - 0257 
+ 109o - 0254 
+ 110o - 0238 
+ 111o - 0228 
+ 112o - 0220 
+ 113o - 0222 
+ 114o - 0207 
+ 115o - 0217 
+ 116o - 0197 
+ 117o - 0157 
+ 118o - 0163 
+ 119o - 0158 
+ 120o - 0155 
+ 121o - 0122 
+ 122o - 0139 
+ 123o - 0108 
+ 124o - 0101 
+ 125o - 0112 
+ 126o - 0106 
+ 127o - 0075 
+ 128o - 0063 
+ 129o - 0069 
+ 130o - 0060 
+ 131o - 0052 
+ 132o - 0055 
+ 133o - 0047 
+ 134o - 0042 
+ 135o - 0031 
+ 136o - 0004 
+ 137o - 0025 
+ 138o - 0023 
+ 139o - 0007 
+ 140o - 0001 
+ 141o - 0298 
+ 142o - 0297 
+ 143o - 0293 
+ 144o - 0294 
+ 145o - 0277 
+ 146o - 0281 
+ 147o - 0266 
+ 148o - 0272 
+ 149o - 0269 
+ 150o - 0247 
+ 151o - 0236 
+ 152o - 0227 
+ 153o - 0218 
+ 154o - 0203 
+ 155o - 0183 
+ 156o - 0172 
+ 157o - 0175 
+ 158o - 0171 
+ 159o - 0146 
+ 160o - 0107 
+ 161o - 0096 
+ 162o - 0095 
+ 163o - 0081 
+ 164o - 0102 
+ 165o - 0082 
+ 166o - 0029 
+ 167o - 0032 
+ 168o - 0040 
+ 169o - 0011 
+ 170o - 0014 
+ 171o - 0282 
+ 172o - 0264 
+ 173o - 0231 
+ 174o - 0229 
+ 175o - 0204 
+ 176o - 0195 
+ 177o - 0145 
+ 178o - 0136 
+ 179o - 0091 
+ 180o - 0061 
+ 181o - 0284 
+ 182o - 0275 
+ 183o - 0273 
+ 184o - 0265 
+ 185o - 0270 
+ 186o - 0253 
+ 187o - 0241 
+ 188o - 0216 
+ 189o - 0299 
+ 190o - 0291 
+ 191o - 0286 
+ 192o - 0188 
+
+Ciclista  188 será deletado...
+
+O ciclista 0188 foi eliminado da corrida...
+
+A thread 0163 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  163 quebrou na rodada 42! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 96
+o número de elementos a passar dessa rodada atualizado: 183
+(ou seja: 300 (total) - 21 (r/2) - 96 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0163 quebrou na rodada 42!
+
+A thread 0063 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   63 quebrou na rodada 42! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 97
+o número de elementos a passar dessa rodada atualizado: 182
+(ou seja: 300 (total) - 21 (r/2) - 97 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0063 quebrou na rodada 42!
+
+A thread 0269 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  269 quebrou na rodada 42! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 98
+o número de elementos a passar dessa rodada atualizado: 181
+(ou seja: 300 (total) - 21 (r/2) - 98 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0269 quebrou na rodada 42!
+
+A thread 0091 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   91 quebrou na rodada 42! e será eliminado
+5 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 42: 99
+o número de elementos a passar dessa rodada atualizado: 180
+(ou seja: 300 (total) - 21 (r/2) - 99 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0091 quebrou na rodada 42!
+
+Ranking - Rodada 39:
+   1o - 0199 
+   2o - 0166 
+   3o - 0103 
+   4o - 0057 
+   5o - 0019 
+   6o - 0239 
+   7o - 0224 
+   8o - 0156 
+   9o - 0148 
+  10o - 0133 
+  11o - 0123 
+  12o - 0059 
+  13o - 0038 
+  14o - 0034 
+  15o - 0288 
+  16o - 0287 
+  17o - 0240 
+  18o - 0193 
+  19o - 0194 
+  20o - 0187 
+  21o - 0178 
+  22o - 0186 
+  23o - 0162 
+  24o - 0161 
+  25o - 0113 
+  26o - 0065 
+  27o - 0073 
+  28o - 0094 
+  29o - 0056 
+  30o - 0049 
+  31o - 0030 
+  32o - 0020 
+  33o - 0002 
+  34o - 0278 
+  35o - 0268 
+  36o - 0258 
+  37o - 0219 
+  38o - 0208 
+  39o - 0196 
+  40o - 0201 
+  41o - 0198 
+  42o - 0165 
+  43o - 0160 
+  44o - 0143 
+  45o - 0126 
+  46o - 0132 
+  47o - 0140 
+  48o - 0092 
+  49o - 0079 
+  50o - 0100 
+  51o - 0086 
+  52o - 0051 
+  53o - 0050 
+  54o - 0037 
+  55o - 0041 
+  56o - 0028 
+  57o - 0022 
+  58o - 0013 
+  59o - 0292 
+  60o - 0290 
+  61o - 0289 
+  62o - 0263 
+  63o - 0256 
+  64o - 0259 
+  65o - 0261 
+  66o - 0221 
+  67o - 0225 
+  68o - 0230 
+  69o - 0223 
+  70o - 0191 
+  71o - 0189 
+  72o - 0169 
+  73o - 0168 
+  74o - 0154 
+  75o - 0142 
+  76o - 0150 
+  77o - 0144 
+  78o - 0118 
+  79o - 0117 
+  80o - 0099 
+  81o - 0115 
+  82o - 0072 
+  83o - 0083 
+  84o - 0074 
+  85o - 0070 
+  86o - 0048 
+  87o - 0024 
+  88o - 0016 
+  89o - 0005 
+  90o - 0003 
+  91o - 0006 
+  92o - 0283 
+  93o - 0276 
+  94o - 0257 
+  95o - 0245 
+  96o - 0252 
+  97o - 0254 
+  98o - 0238 
+  99o - 0228 
+ 100o - 0235 
+ 101o - 0220 
+ 102o - 0222 
+ 103o - 0207 
+ 104o - 0197 
+ 105o - 0215 
+ 106o - 0157 
+ 107o - 0163 
+ 108o - 0158 
+ 109o - 0155 
+ 110o - 0134 
+ 111o - 0139 
+ 112o - 0108 
+ 113o - 0101 
+ 114o - 0110 
+ 115o - 0111 
+ 116o - 0106 
+ 117o - 0114 
+ 118o - 0063 
+ 119o - 0093 
+ 120o - 0075 
+ 121o - 0068 
+ 122o - 0060 
+ 123o - 0052 
+ 124o - 0046 
+ 125o - 0064 
+ 126o - 0021 
+ 127o - 0031 
+ 128o - 0004 
+ 129o - 0025 
+ 130o - 0023 
+ 131o - 0008 
+ 132o - 0001 
+ 133o - 0297 
+ 134o - 0293 
+ 135o - 0294 
+ 136o - 0281 
+ 137o - 0277 
+ 138o - 0269 
+ 139o - 0247 
+ 140o - 0236 
+ 141o - 0227 
+ 142o - 0218 
+ 143o - 0217 
+ 144o - 0203 
+ 145o - 0183 
+ 146o - 0175 
+ 147o - 0171 
+ 148o - 0122 
+ 149o - 0096 
+ 150o - 0112 
+ 151o - 0081 
+ 152o - 0102 
+ 153o - 0082 
+ 154o - 0069 
+ 155o - 0055 
+ 156o - 0047 
+ 157o - 0042 
+ 158o - 0029 
+ 159o - 0032 
+ 160o - 0011 
+ 161o - 0007 
+ 162o - 0014 
+ 163o - 0298 
+ 164o - 0266 
+ 165o - 0272 
+ 166o - 0231 
+ 167o - 0172 
+ 168o - 0145 
+ 169o - 0146 
+ 170o - 0107 
+ 171o - 0091 
+ 172o -

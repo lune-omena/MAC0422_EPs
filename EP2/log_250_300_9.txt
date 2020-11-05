@@ -14918,4 +14918,250 @@ Ranking - Rodada 60:
   91o - 0254 
   92o - 0196 
   93o - 0253 
-  94o - 02
+  94o - 0236 
+  95o - 0164 
+  96o - 0174 
+  97o - 0163 
+  98o - 0136 
+  99o - 0080 
+ 100o - 0087 
+ 101o - 0083 
+ 102o - 0022 
+ 103o - 0025 
+ 104o - 0288 
+ 105o - 0268 
+ 106o - 0220 
+ 107o - 0241 
+ 108o - 0199 
+ 109o - 0153 
+ 110o - 0207 
+ 111o - 0125 
+ 112o - 0187 
+ 113o - 0175 
+ 114o - 0156 
+ 115o - 0128 
+ 116o - 0118 
+ 117o - 0121 
+ 118o - 0105 
+ 119o - 0102 
+ 120o - 0018 
+ 121o - 0015 
+ 122o - 0295 
+ 123o - 0266 
+ 124o - 0195 
+ 125o - 0200 
+ 126o - 0213 
+ 127o - 0216 
+ 128o - 0231 
+ 129o - 0159 
+ 130o - 0225 
+ 131o - 0141 
+ 132o - 0161 
+ 133o - 0139 
+ 134o - 0086 
+ 135o - 0099 
+ 136o - 0069 
+ 137o - 0078 
+ 138o - 0042 
+ 139o - 0040 
+ 140o - 0020 
+ 141o - 0298 
+ 142o - 0257 
+ 143o - 0259 
+ 144o - 0203 
+ 145o - 0255 
+ 146o - 0228 
+ 147o - 0172 
+ 148o - 0072 
+ 149o - 0041 
+ 150o - 0009 
+ 151o - 0013 
+
+Ciclista   13 será deletado...
+
+O ciclista 0013 foi eliminado da corrida...
+
+A thread 0238 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  238 quebrou na rodada 66! e será eliminado
+3 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 66: 123
+o número de elementos a passar dessa rodada atualizado: 144
+(ou seja: 300 (total) - 33 (r/2) - 123 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0238 quebrou na rodada 66!
+ 205 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  69 ***
+
+A thread 0165 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  165 quebrou na rodada 66! e será eliminado
+4 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 66: 124
+o número de elementos a passar dessa rodada atualizado: 143
+(ou seja: 300 (total) - 33 (r/2) - 124 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0165 quebrou na rodada 66!
+ 205 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  70 ***
+
+Ranking - Rodada 61:
+   1o - 0205 
+   2o - 0284 
+   3o - 0193 
+   4o - 0158 
+   5o - 0093 
+   6o - 0263 
+   7o - 0157 
+   8o - 0276 
+   9o - 0235 
+  10o - 0226 
+  11o - 0248 
+  12o - 0247 
+  13o - 0147 
+  14o - 0151 
+  15o - 0057 
+  16o - 0014 
+  17o - 0282 
+  18o - 0238 
+  19o - 0273 
+  20o - 0265 
+  21o - 0242 
+  22o - 0230 
+  23o - 0197 
+  24o - 0224 
+  25o - 0182 
+  26o - 0112 
+  27o - 0044 
+  28o - 0106 
+  29o - 0101 
+  30o - 0109 
+  31o - 0098 
+  32o - 0038 
+  33o - 0016 
+  34o - 0011 
+  35o - 0299 
+  36o - 0280 
+  37o - 0275 
+  38o - 0240 
+  39o - 0249 
+  40o - 0221 
+  41o - 0189 
+  42o - 0170 
+  43o - 0146 
+  44o - 0104 
+  45o - 0114 
+  46o - 0095 
+  47o - 0088 
+  48o - 0062 
+  49o - 0019 
+  50o - 0027 
+  51o - 0005 
+  52o - 0279 
+  53o - 0227 
+  54o - 0250 
+  55o - 0244 
+  56o - 0219 
+  57o - 0204 
+  58o - 0116 
+  59o - 0122 
+  60o - 0183 
+  61o - 0165 
+  62o - 0137 
+  63o - 0046 
+  64o - 0113 
+  65o - 0085 
+  66o - 0091 
+  67o - 0036 
+  68o - 0029 
+  69o - 0024 
+  70o - 0023 
+  71o - 0007 
+  72o - 0037 
+  73o - 0032 
+  74o - 0000 
+  75o - 0004 
+  76o - 0292 
+  77o - 0252 
+  78o - 0264 
+  79o - 0211 
+  80o - 0254 
+  81o - 0196 
+  82o - 0253 
+  83o - 0191 
+  84o - 0234 
+  85o - 0201 
+  86o - 0223 
+  87o - 0185 
+  88o - 0236 
+  89o - 0133 
+  90o - 0164 
+  91o - 0174 
+  92o - 0111 
+  93o - 0136 
+  94o - 0080 
+  95o - 0087 
+  96o - 0083 
+  97o - 0081 
+  98o - 0022 
+  99o - 0288 
+ 100o - 0287 
+ 101o - 0245 
+ 102o - 0220 
+ 103o - 0192 
+ 104o - 0153 
+ 105o - 0125 
+ 106o - 0156 
+ 107o - 0163 
+ 108o - 0102 
+ 109o - 0025 
+ 110o - 0295 
+ 111o - 0266 
+ 112o - 0268 
+ 113o - 0241 
+ 114o - 0216 
+ 115o - 0199 
+ 116o - 0207 
+ 117o - 0187 
+ 118o - 0231 
+ 119o - 0159 
+ 120o - 0225 
+ 121o - 0175 
+ 122o - 0161 
+ 123o - 0139 
+ 124o - 0128 
+ 125o - 0121 
+ 126o - 0118 
+ 127o - 0105 
+ 128o - 0069 
+ 129o - 0078 
+ 130o - 0040 
+ 131o - 0018 
+ 132o - 0015 
+ 133o - 0020 
+ 134o - 0257 
+ 135o - 0259 
+ 136o - 0200 
+ 137o - 0203 
+ 138o - 0195 
+ 139o - 0255 
+ 140o - 0228 
+ 141o - 0213 
+ 142o - 0141 
+ 143o - 0086 
+ 144o - 0099 
+ 145o - 0042 
+ 146o - 0041 
+ 147o - 0009 
+ 148o - 0298 
+ 149o - 0172 
+ 150o - 0072 
+
+ 205 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  71 ***
+
+A thread 0211 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O 

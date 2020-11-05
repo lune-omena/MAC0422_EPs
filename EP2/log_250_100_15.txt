@@ -4919,4 +4919,250 @@ Ranking - Rodada 61:
   39o - 0032 
   40o - 0034 
   41o - 0011 
-  42
+  42o - 0073 
+
+  83 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  69 ***
+
+Ranking - Rodada 62:
+   1o - 0083 
+   2o - 0068 
+   3o - 0094 
+   4o - 0066 
+   5o - 0084 
+   6o - 0036 
+   7o - 0020 
+   8o - 0039 
+   9o - 0049 
+  10o - 0016 
+  11o - 0012 
+  12o - 0091 
+  13o - 0062 
+  14o - 0021 
+  15o - 0022 
+  16o - 0003 
+  17o - 0072 
+  18o - 0078 
+  19o - 0056 
+  20o - 0033 
+  21o - 0004 
+  22o - 0077 
+  23o - 0097 
+  24o - 0090 
+  25o - 0095 
+  26o - 0053 
+  27o - 0047 
+  28o - 0054 
+  29o - 0052 
+  30o - 0035 
+  31o - 0007 
+  32o - 0067 
+  33o - 0088 
+  34o - 0050 
+  35o - 0057 
+  36o - 0046 
+  37o - 0032 
+  38o - 0034 
+  39o - 0011 
+  40o - 0010 
+  41o - 0073 
+  42o - 0089 
+
+Ciclista   89 será deletado...
+
+O ciclista 0089 foi eliminado da corrida...
+  83 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  70 ***
+  83 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  71 ***
+
+Ranking - Rodada 63:
+   1o - 0083 
+   2o - 0068 
+   3o - 0094 
+   4o - 0066 
+   5o - 0084 
+   6o - 0020 
+   7o - 0036 
+   8o - 0049 
+   9o - 0062 
+  10o - 0039 
+  11o - 0021 
+  12o - 0016 
+  13o - 0012 
+  14o - 0003 
+  15o - 0072 
+  16o - 0078 
+  17o - 0091 
+  18o - 0056 
+  19o - 0033 
+  20o - 0022 
+  21o - 0004 
+  22o - 0095 
+  23o - 0035 
+  24o - 0007 
+  25o - 0077 
+  26o - 0097 
+  27o - 0090 
+  28o - 0088 
+  29o - 0053 
+  30o - 0050 
+  31o - 0057 
+  32o - 0047 
+  33o - 0054 
+  34o - 0046 
+  35o - 0052 
+  36o - 0032 
+  37o - 0011 
+  38o - 0010 
+  39o - 0073 
+  40o - 0067 
+  41o - 0034 
+
+
+A thread 0033 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   33 quebrou na rodada 66! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 66: 29
+o número de elementos a passar dessa rodada atualizado: 38
+(ou seja: 100 (total) - 33 (r/2) - 29 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0033 quebrou na rodada 66!
+
+Ranking - Rodada 64:
+   1o - 0083 
+   2o - 0068 
+   3o - 0084 
+   4o - 0094 
+   5o - 0066 
+   6o - 0036 
+   7o - 0020 
+   8o - 0039 
+   9o - 0049 
+  10o - 0012 
+  11o - 0003 
+  12o - 0072 
+  13o - 0062 
+  14o - 0021 
+  15o - 0016 
+  16o - 0022 
+  17o - 0078 
+  18o - 0091 
+  19o - 0095 
+  20o - 0056 
+  21o - 0035 
+  22o - 0033 
+  23o - 0004 
+  24o - 0077 
+  25o - 0097 
+  26o - 0090 
+  27o - 0088 
+  28o - 0057 
+  29o - 0047 
+  30o - 0054 
+  31o - 0052 
+  32o - 0032 
+  33o - 0010 
+  34o - 0007 
+  35o - 0073 
+  36o - 0067 
+  37o - 0050 
+  38o - 0053 
+  39o - 0046 
+  40o - 0034 
+  41o - 0011 
+
+Ciclista   11 será deletado...
+
+O ciclista 0011 foi eliminado da corrida...
+  83 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  72 ***
+
+A thread 0068 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   68 quebrou na rodada 72! e será eliminado
+1 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 72: 30
+o número de elementos a passar dessa rodada atualizado: 34
+(ou seja: 100 (total) - 36 (r/2) - 30 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0068 quebrou na rodada 72!
+  83 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  73 ***
+
+Ranking - Rodada 65:
+   1o - 0083 
+   2o - 0068 
+   3o - 0084 
+   4o - 0094 
+   5o - 0066 
+   6o - 0020 
+   7o - 0039 
+   8o - 0036 
+   9o - 0012 
+  10o - 0003 
+  11o - 0072 
+  12o - 0062 
+  13o - 0049 
+  14o - 0016 
+  15o - 0022 
+  16o - 0078 
+  17o - 0091 
+  18o - 0095 
+  19o - 0033 
+  20o - 0021 
+  21o - 0077 
+  22o - 0097 
+  23o - 0090 
+  24o - 0088 
+  25o - 0057 
+  26o - 0056 
+  27o - 0047 
+  28o - 0054 
+  29o - 0035 
+  30o - 0032 
+  31o - 0010 
+  32o - 0004 
+  33o - 0007 
+  34o - 0073 
+  35o - 0067 
+  36o - 0053 
+  37o - 0050 
+  38o - 0046 
+  39o - 0052 
+  40o - 0034 
+
+  83 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  74 ***
+
+Ranking - Rodada 66:
+   1o - 0083 
+   2o - 0068 
+   3o - 0066 
+   4o - 0084 
+   5o - 0094 
+   6o - 0039 
+   7o - 0036 
+   8o - 0020 
+   9o - 0012 
+  10o - 0003 
+  11o - 0072 
+  12o - 0062 
+  13o - 0049 
+  14o - 0021 
+  15o - 0016 
+  16o - 0022 
+  17o - 0077 
+  18o - 0078 
+  19o - 0097 
+  20o - 0091 
+  21o - 0095 
+  22o - 0088 
+  23o - 0057 
+  24o - 0056 
+  25o - 0047 
+  26o - 0035 
+  27o -

@@ -27785,4 +27785,247 @@ Ranking - Rodada 188:
   12o - 0264 
   13o - 0102 
   14o - 0096 
-  15o - 
+  15o - 0053 
+  16o - 0283 
+  17o - 0182 
+  18o - 0195 
+  19o - 0066 
+  20o - 0272 
+  21o - 0213 
+  22o - 0082 
+
+Ciclista   82 será deletado...
+
+O ciclista 0082 foi eliminado da corrida...
+
+Ranking - Rodada 189:
+   1o - 0203 
+   2o - 0090 
+   3o - 0214 
+   4o - 0159 
+   5o - 0146 
+   6o - 0240 
+   7o - 0180 
+   8o - 0141 
+   9o - 0040 
+  10o - 0010 
+  11o - 0273 
+  12o - 0102 
+  13o - 0096 
+  14o - 0053 
+  15o - 0283 
+  16o - 0264 
+  17o - 0182 
+  18o - 0195 
+  19o - 0272 
+  20o - 0213 
+  21o - 0066 
+
+
+Ranking - Rodada 190:
+   1o - 0203 
+   2o - 0090 
+   3o - 0146 
+   4o - 0214 
+   5o - 0180 
+   6o - 0159 
+   7o - 0141 
+   8o - 0010 
+   9o - 0273 
+  10o - 0240 
+  11o - 0040 
+  12o - 0053 
+  13o - 0264 
+  14o - 0102 
+  15o - 0096 
+  16o - 0283 
+  17o - 0182 
+  18o - 0195 
+  19o - 0272 
+  20o - 0066 
+  21o - 0213 
+
+Ciclista  213 será deletado...
+
+O ciclista 0213 foi eliminado da corrida...
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 201 ***
+
+A thread 0195 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  195 quebrou na rodada 192! e será eliminado
+10 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 192: 187
+o número de elementos a passar dessa rodada atualizado: 17
+(ou seja: 300 (total) - 96 (r/2) - 187 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0195 quebrou na rodada 192!
+
+A thread 0066 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   66 quebrou na rodada 192! e será eliminado
+
+Ranking - Rodada 191:
+   1o - 0203 
+   2o - 0090 
+   3o - 0146 
+   4o - 0214 
+   5o - 0180 
+   6o - 0159 
+   7o - 0141 
+   8o - 0040 
+   9o - 0053 
+  10o - 0010 
+  11o - 0273 
+  12o - 0264 
+  13o - 0240 
+  14o - 0102 
+  15o - 0096 
+  16o - 0283 
+  17o - 0272 
+  18o - 0182 
+  19o - 0195 
+  20o - 0066 
+
+10 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 192: 188
+o número de elementos a passar dessa rodada atualizado: 16
+(ou seja: 300 (total) - 96 (r/2) - 188 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0066 quebrou na rodada 192!
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 202 ***
+
+Ranking - Rodada 192:
+   1o - 0203 
+   2o - 0214 
+   3o - 0141 
+   4o - 0146 
+   5o - 0180 
+   6o - 0159 
+   7o - 0040 
+   8o - 0273 
+   9o - 0264 
+  10o - 0240 
+  11o - 0102 
+  12o - 0096 
+  13o - 0053 
+  14o - 0010 
+  15o - 0283 
+  16o - 0272 
+  17o - 0182 
+
+Ciclista  182 será deletado...
+
+O ciclista 0182 foi eliminado da corrida...
+
+Ranking - Rodada 193:
+   1o - 0203 
+   2o - 0214 
+   3o - 0146 
+   4o - 0180 
+   5o - 0141 
+   6o - 0040 
+   7o - 0240 
+   8o - 0159 
+   9o - 0102 
+  10o - 0053 
+  11o - 0010 
+  12o - 0273 
+  13o - 0264 
+  14o - 0096 
+  15o - 0283 
+  16o - 0272 
+
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 203 ***
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 204 ***
+
+Ranking - Rodada 194:
+   1o - 0203 
+   2o - 0146 
+   3o - 0214 
+   4o - 0141 
+   5o - 0040 
+   6o - 0180 
+   7o - 0159 
+   8o - 0053 
+   9o - 0010 
+  10o - 0273 
+  11o - 0264 
+  12o - 0240 
+  13o - 0102 
+  14o - 0096 
+  15o - 0272 
+  16o - 0283 
+
+Ciclista  283 será deletado...
+
+O ciclista 0283 foi eliminado da corrida...
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 205 ***
+
+Ranking - Rodada 195:
+   1o - 0203 
+   2o - 0146 
+   3o - 0214 
+   4o - 0141 
+   5o - 0040 
+   6o - 0180 
+   7o - 0159 
+   8o - 0053 
+   9o - 0010 
+  10o - 0273 
+  11o - 0264 
+  12o - 0240 
+  13o - 0272 
+  14o - 0102 
+  15o - 0096 
+
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 206 ***
+
+Ranking - Rodada 196:
+   1o - 0203 
+   2o - 0141 
+   3o - 0146 
+   4o - 0214 
+   5o - 0180 
+   6o - 0159 
+   7o - 0040 
+   8o - 0053 
+   9o - 0010 
+  10o - 0273 
+  11o - 0240 
+  12o - 0264 
+  13o - 0102 
+  14o - 0096 
+  15o - 0272 
+
+Ciclista  272 será deletado...
+
+O ciclista 0272 foi eliminado da corrida...
+
+Ranking - Rodada 197:
+   1o - 0203 
+   2o - 0146 
+   3o - 0214 
+   4o - 0141 
+   5o - 0040 
+   6o - 0273 
+   7o - 0180 
+   8o - 0159 
+   9o - 0053 
+  10o - 0010 
+  11o - 0264 
+  12o - 0240 
+  13o - 0102 
+  14o - 0096 
+
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 207 ***
+
+Ran

@@ -22231,3 +22231,519 @@ Ranking - Rodada 120:
   59o - 0227 
   60o - 0125 
   61o - 0062 
+  62o - 0017 
+  63o - 0298 
+  64o - 0235 
+  65o - 0135 
+
+Ciclista  135 será deletado...
+
+O ciclista 0135 foi eliminado da corrida...
+
+A thread 0133 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  133 quebrou na rodada 126! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 126: 178
+o número de elementos a passar dessa rodada atualizado: 59
+(ou seja: 300 (total) - 63 (r/2) - 178 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0133 quebrou na rodada 126!
+
+A thread 0073 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   73 quebrou na rodada 126! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 126: 179
+o número de elementos a passar dessa rodada atualizado: 58
+(ou seja: 300 (total) - 63 (r/2) - 179 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0073 quebrou na rodada 126!
+
+A thread 0206 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  206 quebrou na rodada 126! e será eliminado
+6 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 126: 180
+o número de elementos a passar dessa rodada atualizado: 57
+(ou seja: 300 (total) - 63 (r/2) - 180 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0206 quebrou na rodada 126!
+
+Ranking - Rodada 121:
+   1o - 0155 
+   2o - 0109 
+   3o - 0188 
+   4o - 0061 
+   5o - 0022 
+   6o - 0018 
+   7o - 0105 
+   8o - 0027 
+   9o - 0008 
+  10o - 0088 
+  11o - 0077 
+  12o - 0069 
+  13o - 0292 
+  14o - 0206 
+  15o - 0175 
+  16o - 0139 
+  17o - 0133 
+  18o - 0083 
+  19o - 0036 
+  20o - 0209 
+  21o - 0248 
+  22o - 0138 
+  23o - 0119 
+  24o - 0073 
+  25o - 0058 
+  26o - 0051 
+  27o - 0031 
+  28o - 0283 
+  29o - 0258 
+  30o - 0192 
+  31o - 0253 
+  32o - 0224 
+  33o - 0117 
+  34o - 0053 
+  35o - 0268 
+  36o - 0214 
+  37o - 0179 
+  38o - 0151 
+  39o - 0168 
+  40o - 0147 
+  41o - 0059 
+  42o - 0046 
+  43o - 0028 
+  44o - 0289 
+  45o - 0293 
+  46o - 0280 
+  47o - 0238 
+  48o - 0198 
+  49o - 0142 
+  50o - 0098 
+  51o - 0076 
+  52o - 0029 
+  53o - 0011 
+  54o - 0021 
+  55o - 0010 
+  56o - 0257 
+  57o - 0227 
+  58o - 0156 
+  59o - 0125 
+  60o - 0062 
+  61o - 0040 
+  62o - 0017 
+  63o - 0298 
+  64o - 0235 
+
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 132 ***
+
+Ranking - Rodada 122:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0018 
+   7o - 0105 
+   8o - 0027 
+   9o - 0008 
+  10o - 0088 
+  11o - 0077 
+  12o - 0292 
+  13o - 0175 
+  14o - 0139 
+  15o - 0133 
+  16o - 0069 
+  17o - 0083 
+  18o - 0036 
+  19o - 0206 
+  20o - 0073 
+  21o - 0058 
+  22o - 0051 
+  23o - 0031 
+  24o - 0209 
+  25o - 0253 
+  26o - 0248 
+  27o - 0224 
+  28o - 0138 
+  29o - 0119 
+  30o - 0053 
+  31o - 0283 
+  32o - 0258 
+  33o - 0192 
+  34o - 0214 
+  35o - 0179 
+  36o - 0168 
+  37o - 0147 
+  38o - 0117 
+  39o - 0059 
+  40o - 0046 
+  41o - 0028 
+  42o - 0293 
+  43o - 0268 
+  44o - 0238 
+  45o - 0151 
+  46o - 0098 
+  47o - 0076 
+  48o - 0029 
+  49o - 0289 
+  50o - 0280 
+  51o - 0257 
+  52o - 0198 
+  53o - 0156 
+  54o - 0142 
+  55o - 0125 
+  56o - 0011 
+  57o - 0040 
+  58o - 0021 
+  59o - 0010 
+  60o - 0227 
+  61o - 0235 
+  62o - 0062 
+  63o - 0017 
+  64o - 0298 
+
+Ciclista  298 será deletado...
+
+O ciclista 0298 foi eliminado da corrida...
+ 155 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 133 ***
+
+Ranking - Rodada 123:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0018 
+   7o - 0105 
+   8o - 0027 
+   9o - 0008 
+  10o - 0077 
+  11o - 0292 
+  12o - 0175 
+  13o - 0139 
+  14o - 0088 
+  15o - 0069 
+  16o - 0083 
+  17o - 0206 
+  18o - 0133 
+  19o - 0073 
+  20o - 0036 
+  21o - 0058 
+  22o - 0248 
+  23o - 0138 
+  24o - 0119 
+  25o - 0051 
+  26o - 0053 
+  27o - 0031 
+  28o - 0258 
+  29o - 0192 
+  30o - 0209 
+  31o - 0253 
+  32o - 0214 
+  33o - 0224 
+  34o - 0179 
+  35o - 0168 
+  36o - 0147 
+  37o - 0117 
+  38o - 0059 
+  39o - 0283 
+  40o - 0268 
+  41o - 0238 
+  42o - 0098 
+  43o - 0076 
+  44o - 0046 
+  45o - 0029 
+  46o - 0028 
+  47o - 0289 
+  48o - 0293 
+  49o - 0280 
+  50o - 0198 
+  51o - 0151 
+  52o - 0156 
+  53o - 0142 
+  54o - 0011 
+  55o - 0021 
+  56o - 0257 
+  57o - 0227 
+  58o - 0125 
+  59o - 0062 
+  60o - 0040 
+  61o - 0017 
+  62o - 0010 
+  63o - 0235 
+
+  61 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 134 ***
+
+Ranking - Rodada 124:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0027 
+   7o - 0018 
+   8o - 0008 
+   9o - 0105 
+  10o - 0077 
+  11o - 0069 
+  12o - 0292 
+  13o - 0175 
+  14o - 0139 
+  15o - 0133 
+  16o - 0088 
+  17o - 0073 
+  18o - 0083 
+  19o - 0036 
+  20o - 0058 
+  21o - 0206 
+  22o - 0248 
+  23o - 0138 
+  24o - 0053 
+  25o - 0031 
+  26o - 0258 
+  27o - 0192 
+  28o - 0209 
+  29o - 0253 
+  30o - 0214 
+  31o - 0168 
+  32o - 0147 
+  33o - 0119 
+  34o - 0051 
+  35o - 0059 
+  36o - 0283 
+  37o - 0268 
+  38o - 0224 
+  39o - 0179 
+  40o - 0117 
+  41o - 0098 
+  42o - 0076 
+  43o - 0029 
+  44o - 0046 
+  45o - 0028 
+  46o - 0293 
+  47o - 0238 
+  48o - 0198 
+  49o - 0151 
+  50o - 0156 
+  51o - 0142 
+  52o - 0011 
+  53o - 0021 
+  54o - 0289 
+  55o - 0280 
+  56o - 0227 
+  57o - 0125 
+  58o - 0062 
+  59o - 0017 
+  60o - 0010 
+  61o - 0257 
+  62o - 0235 
+  63o - 0040 
+
+Ciclista   40 será deletado...
+
+O ciclista 0040 foi eliminado da corrida...
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 135 ***
+
+Ranking - Rodada 125:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0018 
+   7o - 0105 
+   8o - 0077 
+   9o - 0027 
+  10o - 0008 
+  11o - 0292 
+  12o - 0175 
+  13o - 0139 
+  14o - 0133 
+  15o - 0088 
+  16o - 0073 
+  17o - 0069 
+  18o - 0083 
+  19o - 0058 
+  20o - 0206 
+  21o - 0036 
+  22o - 0053 
+  23o - 0031 
+  24o - 0258 
+  25o - 0253 
+  26o - 0248 
+  27o - 0168 
+  28o - 0147 
+  29o - 0138 
+  30o - 0051 
+  31o - 0059 
+  32o - 0192 
+  33o - 0209 
+  34o - 0214 
+  35o - 0224 
+  36o - 0179 
+  37o - 0117 
+  38o - 0119 
+  39o - 0098 
+  40o - 0076 
+  41o - 0046 
+  42o - 0028 
+  43o - 0283 
+  44o - 0268 
+  45o - 0238 
+  46o - 0151 
+  47o - 0156 
+  48o - 0029 
+  49o - 0011 
+  50o - 0293 
+  51o - 0280 
+  52o - 0198 
+  53o - 0142 
+  54o - 0125 
+  55o - 0062 
+  56o - 0021 
+  57o - 0017 
+  58o - 0010 
+  59o - 0289 
+  60o - 0257 
+  61o - 0227 
+  62o - 0235 
+
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 136 ***
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 137 ***
+
+Ranking - Rodada 126:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0105 
+   7o - 0008 
+   8o - 0077 
+   9o - 0027 
+  10o - 0292 
+  11o - 0139 
+  12o - 0088 
+  13o - 0069 
+  14o - 0175 
+  15o - 0083 
+  16o - 0036 
+  17o - 0058 
+  18o - 0053 
+  19o - 0258 
+  20o - 0253 
+  21o - 0248 
+  22o - 0147 
+  23o - 0138 
+  24o - 0051 
+  25o - 0031 
+  26o - 0192 
+  27o - 0214 
+  28o - 0224 
+  29o - 0179 
+  30o - 0168 
+  31o - 0119 
+  32o - 0076 
+  33o - 0059 
+  34o - 0046 
+  35o - 0283 
+  36o - 0268 
+  37o - 0209 
+  38o - 0238 
+  39o - 0151 
+  40o - 0156 
+  41o - 0117 
+  42o - 0098 
+  43o - 0029 
+  44o - 0028 
+  45o - 0293 
+  46o - 0198 
+  47o - 0142 
+  48o - 0125 
+  49o - 0062 
+  50o - 0011 
+  51o - 0021 
+  52o - 0017 
+  53o - 0010 
+  54o - 0280 
+  55o - 0227 
+  56o - 0235 
+  57o - 0289 
+  58o - 0257 
+
+Ciclista  257 será deletado...
+
+O ciclista 0257 foi eliminado da corrida...
+
+Ranking - Rodada 127:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0105 
+   7o - 0027 
+   8o - 0008 
+   9o - 0088 
+  10o - 0077 
+  11o - 0069 
+  12o - 0292 
+  13o - 0175 
+  14o - 0139 
+  15o - 0036 
+  16o - 0058 
+  17o - 0258 
+  18o - 0253 
+  19o - 0138 
+  20o - 0083 
+  21o - 0053 
+  22o - 0192 
+  23o - 0248 
+  24o - 0214 
+  25o - 0224 
+  26o - 0168 
+  27o - 0147 
+  28o - 0119 
+  29o - 0076 
+  30o - 0059 
+  31o - 0051 
+  32o - 0046 
+  33o - 0031 
+  34o - 0283 
+  35o - 0209 
+  36o - 0179 
+  37o - 0151 
+  38o - 0156 
+  39o - 0117 
+  40o - 0098 
+  41o - 0028 
+  42o - 0293 
+  43o - 0268 
+  44o - 0238 
+  45o - 0198 
+  46o - 0062 
+  47o - 0029 
+  48o - 0011 
+  49o - 0017 
+  50o - 0010 
+  51o - 0280 
+  52o - 0235 
+  53o - 0142 
+  54o - 0125 
+  55o - 0021 
+  56o - 0289 
+  57o - 0227 
+
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 

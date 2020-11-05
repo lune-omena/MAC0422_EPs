@@ -27035,4 +27035,269 @@ Ranking - Rodada 168:
   25o - 0082 
   26o - 0165 
   27o - 0277 
- 
+  28o - 0241 
+  29o - 0186 
+  30o - 0219 
+  31o - 0156 
+  32o - 0209 
+  33o - 0270 
+  34o - 0173 
+  35o - 0284 
+  36o - 0144 
+
+Ciclista  144 será deletado...
+
+O ciclista 0144 foi eliminado da corrida...
+
+Ranking - Rodada 169:
+   1o - 0203 
+   2o - 0159 
+   3o - 0273 
+   4o - 0214 
+   5o - 0090 
+   6o - 0053 
+   7o - 0240 
+   8o - 0146 
+   9o - 0096 
+  10o - 0010 
+  11o - 0180 
+  12o - 0102 
+  13o - 0066 
+  14o - 0040 
+  15o - 0213 
+  16o - 0195 
+  17o - 0080 
+  18o - 0283 
+  19o - 0292 
+  20o - 0264 
+  21o - 0263 
+  22o - 0272 
+  23o - 0141 
+  24o - 0082 
+  25o - 0182 
+  26o - 0165 
+  27o - 0277 
+  28o - 0241 
+  29o - 0186 
+  30o - 0219 
+  31o - 0156 
+  32o - 0209 
+  33o - 0270 
+  34o - 0173 
+  35o - 0284 
+
+
+A thread 0263 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  263 quebrou na rodada 174! e será eliminado
+9 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 174: 182
+o número de elementos a passar dessa rodada atualizado: 31
+(ou seja: 300 (total) - 87 (r/2) - 182 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0263 quebrou na rodada 174!
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 183 ***
+
+Ranking - Rodada 170:
+   1o - 0203 
+   2o - 0273 
+   3o - 0159 
+   4o - 0090 
+   5o - 0053 
+   6o - 0240 
+   7o - 0214 
+   8o - 0146 
+   9o - 0180 
+  10o - 0096 
+  11o - 0010 
+  12o - 0040 
+  13o - 0213 
+  14o - 0195 
+  15o - 0102 
+  16o - 0066 
+  17o - 0283 
+  18o - 0263 
+  19o - 0272 
+  20o - 0141 
+  21o - 0080 
+  22o - 0292 
+  23o - 0264 
+  24o - 0182 
+  25o - 0082 
+  26o - 0241 
+  27o - 0186 
+  28o - 0219 
+  29o - 0156 
+  30o - 0165 
+  31o - 0209 
+  32o - 0277 
+  33o - 0173 
+  34o - 0270 
+  35o - 0284 
+
+Ciclista  284 será deletado...
+
+O ciclista 0284 foi eliminado da corrida...
+
+Ranking - Rodada 171:
+   1o - 0203 
+   2o - 0273 
+   3o - 0159 
+   4o - 0090 
+   5o - 0240 
+   6o - 0214 
+   7o - 0053 
+   8o - 0146 
+   9o - 0096 
+  10o - 0010 
+  11o - 0180 
+  12o - 0102 
+  13o - 0066 
+  14o - 0040 
+  15o - 0283 
+  16o - 0272 
+  17o - 0213 
+  18o - 0195 
+  19o - 0141 
+  20o - 0080 
+  21o - 0292 
+  22o - 0264 
+  23o - 0263 
+  24o - 0182 
+  25o - 0082 
+  26o - 0219 
+  27o - 0165 
+  28o - 0209 
+  29o - 0241 
+  30o - 0186 
+  31o - 0173 
+  32o - 0156 
+  33o - 0277 
+  34o - 0270 
+
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 184 ***
+
+Ranking - Rodada 172:
+   1o - 0203 
+   2o - 0273 
+   3o - 0159 
+   4o - 0090 
+   5o - 0240 
+   6o - 0214 
+   7o - 0146 
+   8o - 0053 
+   9o - 0010 
+  10o - 0180 
+  11o - 0096 
+  12o - 0040 
+  13o - 0272 
+  14o - 0213 
+  15o - 0195 
+  16o - 0141 
+  17o - 0102 
+  18o - 0066 
+  19o - 0283 
+  20o - 0263 
+  21o - 0182 
+  22o - 0080 
+  23o - 0292 
+  24o - 0264 
+  25o - 0165 
+  26o - 0082 
+  27o - 0186 
+  28o - 0173 
+  29o - 0219 
+  30o - 0156 
+  31o - 0209 
+  32o - 0277 
+  33o - 0270 
+  34o - 0241 
+
+Ciclista  241 será deletado...
+
+O ciclista 0241 foi eliminado da corrida...
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 185 ***
+
+Ranking - Rodada 173:
+   1o - 0203 
+   2o - 0090 
+   3o - 0273 
+   4o - 0159 
+   5o - 0240 
+   6o - 0214 
+   7o - 0146 
+   8o - 0180 
+   9o - 0096 
+  10o - 0053 
+  11o - 0010 
+  12o - 0040 
+  13o - 0195 
+  14o - 0141 
+  15o - 0283 
+  16o - 0263 
+  17o - 0272 
+  18o - 0213 
+  19o - 0182 
+  20o - 0102 
+  21o - 0066 
+  22o - 0292 
+  23o - 0165 
+  24o - 0082 
+  25o - 0080 
+  26o - 0264 
+  27o - 0186 
+  28o - 0173 
+  29o - 0219 
+  30o - 0156 
+  31o - 0209 
+  32o - 0277 
+  33o - 0270 
+
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 186 ***
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 187 ***
+
+Ranking - Rodada 175:
+   1o - 0203 
+   2o - 0090 
+   3o - 0159 
+   4o - 0273 
+   5o - 0146 
+   6o - 0240 
+   7o - 0214 
+   8o - 0180 
+   9o - 0010 
+  10o - 0096 
+  11o - 0053 
+  12o - 0195 
+  13o - 0141 
+  14o - 0040 
+  15o - 0182 
+  16o - 0102 
+  17o - 0283 
+  18o - 0272 
+  19o - 0213 
+  20o - 0066 
+  21o - 0292 
+  22o - 0264 
+  23o - 0186 
+  24o - 0173 
+  25o - 0219 
+  26o - 0165 
+  27o - 0082 
+  28o - 0080 
+  29o - 0277 
+  30o - 0156 
+  31o - 0209 
+
+
+Ranking - Rodada 174:
+   1o - 0203 
+   2o - 0090 
+   3o - 0159 
+   4o - 0273 

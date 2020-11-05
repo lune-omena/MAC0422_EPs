@@ -4341,4 +4341,271 @@ Ops! O ciclista   57 quebrou na rodada 54! e será eliminado
 4 RODADAS ATUALIZADAS!
 número de TOTAL (até agora) de quebrados da rodada 54: 29
 o número de elementos a passar dessa rodada atualizado: 44
-(ou seja: 100 (total) - 27 (r/2) - 29 (
+(ou seja: 100 (total) - 27 (r/2) - 29 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0057 quebrou na rodada 54!
+
+Ranking - Rodada 50:
+   1o - 0069 
+   2o - 0078 
+   3o - 0022 
+   4o - 0045 
+   5o - 0073 
+   6o - 0080 
+   7o - 0053 
+   8o - 0042 
+   9o - 0003 
+  10o - 0092 
+  11o - 0084 
+  12o - 0085 
+  13o - 0083 
+  14o - 0049 
+  15o - 0074 
+  16o - 0057 
+  17o - 0030 
+  18o - 0009 
+  19o - 0025 
+  20o - 0008 
+  21o - 0079 
+  22o - 0070 
+  23o - 0065 
+  24o - 0054 
+  25o - 0067 
+  26o - 0021 
+  27o - 0002 
+  28o - 0064 
+  29o - 0094 
+  30o - 0090 
+  31o - 0089 
+  32o - 0077 
+  33o - 0060 
+  34o - 0056 
+  35o - 0046 
+  36o - 0027 
+  37o - 0031 
+  38o - 0088 
+  39o - 0075 
+  40o - 0068 
+  41o - 0058 
+  42o - 0051 
+  43o - 0048 
+  44o - 0040 
+  45o - 0024 
+  46o - 0018 
+  47o - 0063 
+  48o - 0028 
+  49o - 0044 
+
+Ciclista   44 será deletado...
+
+O ciclista 0044 foi eliminado da corrida...
+
+Ranking - Rodada 51:
+   1o - 0069 
+   2o - 0078 
+   3o - 0022 
+   4o - 0045 
+   5o - 0053 
+   6o - 0042 
+   7o - 0092 
+   8o - 0084 
+   9o - 0073 
+  10o - 0080 
+  11o - 0083 
+  12o - 0074 
+  13o - 0030 
+  14o - 0009 
+  15o - 0003 
+  16o - 0025 
+  17o - 0008 
+  18o - 0079 
+  19o - 0085 
+  20o - 0049 
+  21o - 0065 
+  22o - 0057 
+  23o - 0054 
+  24o - 0002 
+  25o - 0089 
+  26o - 0077 
+  27o - 0070 
+  28o - 0060 
+  29o - 0056 
+  30o - 0067 
+  31o - 0046 
+  32o - 0027 
+  33o - 0021 
+  34o - 0031 
+  35o - 0064 
+  36o - 0088 
+  37o - 0094 
+  38o - 0090 
+  39o - 0075 
+  40o - 0068 
+  41o - 0051 
+  42o - 0018 
+  43o - 0058 
+  44o - 0048 
+  45o - 0040 
+  46o - 0024 
+  47o - 0063 
+  48o - 0028 
+
+  69 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  58 ***
+
+Ranking - Rodada 52:
+   1o - 0069 
+   2o - 0078 
+   3o - 0022 
+   4o - 0045 
+   5o - 0073 
+   6o - 0080 
+   7o - 0053 
+   8o - 0030 
+   9o - 0042 
+  10o - 0009 
+  11o - 0003 
+  12o - 0025 
+  13o - 0008 
+  14o - 0092 
+  15o - 0084 
+  16o - 0079 
+  17o - 0085 
+  18o - 0049 
+  19o - 0083 
+  20o - 0074 
+  21o - 0057 
+  22o - 0054 
+  23o - 0002 
+  24o - 0077 
+  25o - 0065 
+  26o - 0060 
+  27o - 0056 
+  28o - 0067 
+  29o - 0027 
+  30o - 0064 
+  31o - 0089 
+  32o - 0068 
+  33o - 0070 
+  34o - 0051 
+  35o - 0046 
+  36o - 0021 
+  37o - 0031 
+  38o - 0094 
+  39o - 0090 
+  40o - 0088 
+  41o - 0075 
+  42o - 0058 
+  43o - 0048 
+  44o - 0040 
+  45o - 0024 
+  46o - 0018 
+  47o - 0028 
+  48o - 0063 
+
+Ciclista   63 será deletado...
+
+O ciclista 0063 foi eliminado da corrida...
+  69 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  59 ***
+
+A thread 0078 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   78 quebrou na rodada 60! e será eliminado
+0 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 60: 30
+o número de elementos a passar dessa rodada atualizado: 40
+(ou seja: 100 (total) - 30 (r/2) - 30 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0078 quebrou na rodada 60!
+
+Ranking - Rodada 53:
+   1o - 0069 
+   2o - 0078 
+   3o - 0022 
+   4o - 0045 
+   5o - 0080 
+   6o - 0053 
+   7o - 0030 
+   8o - 0042 
+   9o - 0009 
+  10o - 0092 
+  11o - 0084 
+  12o - 0079 
+  13o - 0073 
+  14o - 0083 
+  15o - 0049 
+  16o - 0054 
+  17o - 0025 
+  18o - 0003 
+  19o - 0008 
+  20o - 0085 
+  21o - 0077 
+  22o - 0074 
+  23o - 0065 
+  24o - 0057 
+  25o - 0060 
+  26o - 0056 
+  27o - 0067 
+  28o - 0002 
+  29o - 0070 
+  30o - 0051 
+  31o - 0046 
+  32o - 0027 
+  33o - 0021 
+  34o - 0064 
+  35o - 0090 
+  36o - 0088 
+  37o - 0089 
+  38o - 0075 
+  39o - 0068 
+  40o - 0058 
+  41o - 0048 
+  42o - 0024 
+  43o - 0018 
+  44o - 0031 
+  45o - 0094 
+  46o - 0040 
+  47o - 0028 
+
+  69 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA  60 ***
+
+Ranking - Rodada 54:
+   1o - 0069 
+   2o - 0078 
+   3o - 0022 
+   4o - 0045 
+   5o - 0080 
+   6o - 0053 
+   7o - 0009 
+   8o - 0092 
+   9o - 0084 
+  10o - 0079 
+  11o - 0073 
+  12o - 0049 
+  13o - 0054 
+  14o - 0042 
+  15o - 0025 
+  16o - 0008 
+  17o - 0085 
+  18o - 0077 
+  19o - 0083 
+  20o - 0074 
+  21o - 0060 
+  22o - 0056 
+  23o - 0067 
+  24o - 0003 
+  25o - 0002 
+  26o - 0065 
+  27o - 0046 
+  28o - 0021 
+  29o - 0090 
+  30o - 0075 
+  31o - 0068 
+  32o - 0058 
+  33o - 0070 
+  34o - 0051 
+  35o - 004

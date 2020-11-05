@@ -22746,4 +22746,252 @@ Ranking - Rodada 127:
   57o - 0227 
 
   22 EH O PRIMEIRO COLOCADO!!!!!!!
-*** RODADA 
+*** RODADA 138 ***
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 139 ***
+
+Ranking - Rodada 128:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0027 
+   7o - 0008 
+   8o - 0105 
+   9o - 0088 
+  10o - 0077 
+  11o - 0069 
+  12o - 0292 
+  13o - 0139 
+  14o - 0058 
+  15o - 0258 
+  16o - 0253 
+  17o - 0175 
+  18o - 0083 
+  19o - 0036 
+  20o - 0053 
+  21o - 0192 
+  22o - 0248 
+  23o - 0214 
+  24o - 0168 
+  25o - 0147 
+  26o - 0138 
+  27o - 0119 
+  28o - 0051 
+  29o - 0059 
+  30o - 0031 
+  31o - 0283 
+  32o - 0209 
+  33o - 0224 
+  34o - 0179 
+  35o - 0151 
+  36o - 0156 
+  37o - 0117 
+  38o - 0098 
+  39o - 0076 
+  40o - 0046 
+  41o - 0028 
+  42o - 0268 
+  43o - 0238 
+  44o - 0198 
+  45o - 0062 
+  46o - 0029 
+  47o - 0293 
+  48o - 0280 
+  49o - 0142 
+  50o - 0125 
+  51o - 0011 
+  52o - 0017 
+  53o - 0010 
+  54o - 0227 
+  55o - 0235 
+  56o - 0021 
+  57o - 0289 
+
+Ciclista  289 será deletado...
+
+O ciclista 0289 foi eliminado da corrida...
+
+Ranking - Rodada 129:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0027 
+   7o - 0008 
+   8o - 0292 
+   9o - 0139 
+  10o - 0105 
+  11o - 0088 
+  12o - 0077 
+  13o - 0069 
+  14o - 0258 
+  15o - 0253 
+  16o - 0175 
+  17o - 0083 
+  18o - 0058 
+  19o - 0214 
+  20o - 0168 
+  21o - 0147 
+  22o - 0138 
+  23o - 0036 
+  24o - 0059 
+  25o - 0053 
+  26o - 0283 
+  27o - 0192 
+  28o - 0209 
+  29o - 0248 
+  30o - 0224 
+  31o - 0179 
+  32o - 0151 
+  33o - 0156 
+  34o - 0119 
+  35o - 0076 
+  36o - 0051 
+  37o - 0046 
+  38o - 0031 
+  39o - 0028 
+  40o - 0268 
+  41o - 0238 
+  42o - 0117 
+  43o - 0098 
+  44o - 0062 
+  45o - 0029 
+  46o - 0293 
+  47o - 0280 
+  48o - 0198 
+  49o - 0125 
+  50o - 0011 
+  51o - 0017 
+  52o - 0227 
+  53o - 0235 
+  54o - 0142 
+  55o - 0021 
+  56o - 0010 
+
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 140 ***
+
+A thread 0011 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   11 quebrou na rodada 132! e será eliminado
+9 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 132: 181
+o número de elementos a passar dessa rodada atualizado: 53
+(ou seja: 300 (total) - 66 (r/2) - 181 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0011 quebrou na rodada 132!
+
+Ranking - Rodada 130:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0027 
+   7o - 0292 
+   8o - 0139 
+   9o - 0105 
+  10o - 0088 
+  11o - 0077 
+  12o - 0069 
+  13o - 0008 
+  14o - 0253 
+  15o - 0175 
+  16o - 0058 
+  17o - 0258 
+  18o - 0147 
+  19o - 0138 
+  20o - 0083 
+  21o - 0036 
+  22o - 0059 
+  23o - 0283 
+  24o - 0192 
+  25o - 0248 
+  26o - 0214 
+  27o - 0224 
+  28o - 0151 
+  29o - 0168 
+  30o - 0156 
+  31o - 0119 
+  32o - 0076 
+  33o - 0053 
+  34o - 0051 
+  35o - 0046 
+  36o - 0031 
+  37o - 0209 
+  38o - 0238 
+  39o - 0179 
+  40o - 0117 
+  41o - 0098 
+  42o - 0062 
+  43o - 0029 
+  44o - 0028 
+  45o - 0293 
+  46o - 0280 
+  47o - 0268 
+  48o - 0198 
+  49o - 0125 
+  50o - 0011 
+  51o - 0227 
+  52o - 0235 
+  53o - 0142 
+  54o - 0017 
+  55o - 0010 
+  56o - 0021 
+
+Ciclista   21 será deletado...
+
+O ciclista 0021 foi eliminado da corrida...
+
+A thread 0017 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista   17 quebrou na rodada 132! e será eliminado
+9 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 132: 182
+o número de elementos a passar dessa rodada atualizado: 52
+(ou seja: 300 (total) - 66 (r/2) - 182 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0017 quebrou na rodada 132!
+  22 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 141 ***
+
+Ranking - Rodada 131:
+   1o - 0155 
+   2o - 0109 
+   3o - 0061 
+   4o - 0022 
+   5o - 0188 
+   6o - 0027 
+   7o - 0139 
+   8o - 0105 
+   9o - 0088 
+  10o - 0077 
+  11o - 0069 
+  12o - 0008 
+  13o - 0292 
+  14o - 0253 
+  15o - 0175 
+  16o - 0058 
+  17o - 0258 
+  18o - 0147 
+  19o - 0138 
+  20o - 0036 
+  21o - 0283 
+  22o - 0214 
+  23o - 0168 
+  24o - 0156 
+  25o - 0119 
+  26o - 0083 
+  27o - 0059 
+  28o - 0053 
+  29o - 0051 
+  30o - 0046 
+  31o - 0031 
+  32o - 0192 
+  33o - 0209 
+  34o - 0238 

@@ -27301,3 +27301,229 @@ Ranking - Rodada 174:
    2o - 0090 
    3o - 0159 
    4o - 0273 
+   5o - 0240 
+   6o - 0214 
+   7o - 0146 
+   8o - 0180 
+   9o - 0010 
+  10o - 0096 
+  11o - 0053 
+  12o - 0195 
+  13o - 0141 
+  14o - 0040 
+  15o - 0283 
+  16o - 0272 
+  17o - 0213 
+  18o - 0182 
+  19o - 0102 
+  20o - 0080 
+  21o - 0066 
+  22o - 0292 
+  23o - 0264 
+  24o - 0186 
+  25o - 0173 
+  26o - 0219 
+  27o - 0165 
+  28o - 0209 
+  29o - 0082 
+  30o - 0277 
+  31o - 0156 
+  32o - 0270 
+
+Ciclista  270 será deletado...
+
+O ciclista 0270 foi eliminado da corrida...
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 188 ***
+
+Ranking - Rodada 176:
+   1o - 0203 
+   2o - 0090 
+   3o - 0159 
+   4o - 0273 
+   5o - 0240 
+   6o - 0180 
+   7o - 0146 
+   8o - 0214 
+   9o - 0010 
+  10o - 0141 
+  11o - 0096 
+  12o - 0053 
+  13o - 0182 
+  14o - 0195 
+  15o - 0102 
+  16o - 0040 
+  17o - 0272 
+  18o - 0283 
+  19o - 0264 
+  20o - 0213 
+  21o - 0186 
+  22o - 0173 
+  23o - 0219 
+  24o - 0165 
+  25o - 0080 
+  26o - 0066 
+  27o - 0292 
+  28o - 0277 
+  29o - 0209 
+  30o - 0082 
+  31o - 0156 
+
+Ciclista  156 será deletado...
+
+O ciclista 0156 foi eliminado da corrida...
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 189 ***
+
+A thread 0219 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  219 quebrou na rodada 180! e será eliminado
+10 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 180: 183
+o número de elementos a passar dessa rodada atualizado: 27
+(ou seja: 300 (total) - 90 (r/2) - 183 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0219 quebrou na rodada 180!
+
+Ranking - Rodada 177:
+   1o - 0203 
+   2o - 0090 
+   3o - 0180 
+   4o - 0159 
+   5o - 0146 
+   6o - 0273 
+   7o - 0240 
+   8o - 0214 
+   9o - 0010 
+  10o - 0096 
+  11o - 0053 
+  12o - 0195 
+  13o - 0141 
+  14o - 0102 
+  15o - 0040 
+  16o - 0182 
+  17o - 0283 
+  18o - 0264 
+  19o - 0272 
+  20o - 0173 
+  21o - 0219 
+  22o - 0165 
+  23o - 0066 
+  24o - 0292 
+  25o - 0213 
+  26o - 0186 
+  27o - 0082 
+  28o - 0080 
+  29o - 0277 
+  30o - 0209 
+
+
+A thread 0292 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  292 quebrou na rodada 180! e será eliminado
+10 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 180: 184
+o número de elementos a passar dessa rodada atualizado: 26
+(ou seja: 300 (total) - 90 (r/2) - 184 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0292 quebrou na rodada 180!
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 190 ***
+
+A thread 0165 iniciou o processo de quebra.
+A LISTA ESTAVA VAZIA, PREENCHENDO ELA AGORA...
+Ops! O ciclista  165 quebrou na rodada 180! e será eliminado
+11 RODADAS ATUALIZADAS!
+número de TOTAL (até agora) de quebrados da rodada 180: 185
+o número de elementos a passar dessa rodada atualizado: 25
+(ou seja: 300 (total) - 90 (r/2) - 185 (queb)
+LISTA DELETADA 1
+LISTA DELETADA 2
+O ciclista 0165 quebrou na rodada 180!
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 191 ***
+
+Ranking - Rodada 178:
+   1o - 0203 
+   2o - 0090 
+   3o - 0180 
+   4o - 0159 
+   5o - 0146 
+   6o - 0273 
+   7o - 0240 
+   8o - 0214 
+   9o - 0010 
+  10o - 0141 
+  11o - 0096 
+  12o - 0040 
+  13o - 0053 
+  14o - 0195 
+  15o - 0102 
+  16o - 0283 
+  17o - 0264 
+  18o - 0272 
+  19o - 0182 
+  20o - 0219 
+  21o - 0165 
+  22o - 0292 
+  23o - 0213 
+  24o - 0173 
+  25o - 0082 
+  26o - 0080 
+  27o - 0066 
+  28o - 0277 
+  29o - 0186 
+  30o - 0209 
+
+Ciclista  209 será deletado...
+
+O ciclista 0209 foi eliminado da corrida...
+
+Ranking - Rodada 179:
+   1o - 0203 
+   2o - 0090 
+   3o - 0146 
+   4o - 0214 
+   5o - 0180 
+   6o - 0159 
+   7o - 0273 
+   8o - 0240 
+   9o - 0010 
+  10o - 0141 
+  11o - 0096 
+  12o - 0040 
+  13o - 0053 
+  14o - 0195 
+  15o - 0102 
+  16o - 0283 
+  17o - 0264 
+  18o - 0182 
+  19o - 0219 
+  20o - 0292 
+  21o - 0272 
+  22o - 0213 
+  23o - 0165 
+  24o - 0066 
+  25o - 0277 
+  26o - 0186 
+  27o - 0173 
+  28o - 0082 
+  29o - 0080 
+
+ 203 EH O PRIMEIRO COLOCADO!!!!!!!
+*** RODADA 192 ***
+
+Ranking - Rodada 180:
+   1o - 0203 
+   2o - 0090 
+   3o - 0214 
+   4o - 0180 
+   5o - 0146 
+   6o - 0240 
+   7o - 0159 
+   8o - 0010 
+   9o - 0273 
+  10o - 0096 
+  11o 

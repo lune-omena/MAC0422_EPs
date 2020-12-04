@@ -73,6 +73,8 @@ int main ()
     for(int i = 0; i < 24414; i++)
         FAT[i] = NULL;
 
+    // O PRIMEIRO BLOCO DA FAT FICA NO DIRETÓRIO
+
     /* Quando eu encher o sistema de arquivos na hora de corrigir o seu EP, eu vou desmontar o arquivo, 
      * fechar o EP e dar um ls no arquivo que foi criado. */
 

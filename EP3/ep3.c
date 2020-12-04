@@ -50,25 +50,27 @@ int main ()
 
     /* O bitmap representa os blocos vazios e ocupados, como existem 100MB de espaço total, sendo 4KB para cada
      * bloco, temos 100000KB/4KB = 25000 blocos de espaço!!!*/
-    int bitmap[25000]; 
-
-    for(int i = 0; i < 25000; i++)
-        bitmap[i] = 1; // blocos livres representados por 1
 
     /* Por definição, bitmap guarda 1 bit por bloco! Portanto, como temos 25K espaços do bitmap, são no total
      * 25K bits ocupados que cabem em 32K bits (4KB), portanto o bitmap ocupa 1 bloco */
     /* Por definição, FAT guarda 4 bytes por entrada! Como são 100MB de dados, com 4KB para cada bloco,
      * somam no total 25000 entradas na tabela. Mas o FAT utiliza 4 bytes por entrada, portanto o espaço
      * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
-    /* No total, são 26 espaços ocupados */
+    /* No total, são 26 espaços pré-ocupados */
 
+    int bitmap[24974]; 
+
+    for(int i = 0; i < 24974; i++)
+        bitmap[i] = 1; // blocos livres representados por 1
+
+    /*
     for(int i = 0; i < 26; i++)
-        bitmap[i] = 0; // provavelmente mudar para indicar que bitmap só tem 24974 espaços
+        bitmap[i] = 0; // provavelmente mudar para indicar que bitmap só tem 24974 espaços */
 
     /* O FAT é utilizado para armazenamento de arquivos */
-    Bloco * FAT[25000];
+    Bloco * FAT[24974];
 
-    for(int i = 0; i < 25000; i++)
+    for(int i = 0; i < 24974; i++)
         FAT[i] = NULL;
 
     /* Quando eu encher o sistema de arquivos na hora de corrigir o seu EP, eu vou desmontar o arquivo, 
@@ -116,9 +118,13 @@ int main ()
 
                 if(fp != NULL) {
                     printf("Sistema de arquivos recuperado\n");
+                    // precisamos carregar o sistema de arquivos com o fat, bitmap, etc.
                 }
-                else
+                else {
                     printf("Temos que criar um novo sistema de arquivos :)\n");
+                    fp = fopen(new_path, "w");
+                    // aqui criamos o "/"
+                }
             }
             else 
                 printf("Esse path não existe\n");

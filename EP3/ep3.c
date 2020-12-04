@@ -10,9 +10,6 @@
 #include <stdio.h>               /* printf(), fgets()... */
 #include <stdlib.h>              /* malloc(), free() */
 
-//#include <sys/syscall.h>         /* usado para syscalls */
-//#include <sys/stat.h>            /* syscall mkdir, kill, ...*/
-
 #include <readline/readline.h>   /* ler linha de comando */
 #include <readline/history.h>    /* historico do terminal */
 #include <string.h>              /* strcmp(), strtok()... */
@@ -20,6 +17,7 @@
 #include <unistd.h>              /* access() -> checa path se existe */
 #include <time.h>                /* pegar timestamp */
 
+#define BLOCOS 24414             /* blocos livres */
 /* Funções a serem implementadas:
 - mount arquivo
 - cp origem destino:
@@ -60,22 +58,23 @@ int main ()
     /* No total, são 26 espaços pré-ocupados */
 
     // 24414 posições vem de 100MB/4*1024, aula 15
-    int bitmap[24414]; 
+    int bitmap[BLOCOS]; 
 
-    for(int i = 0; i < 24414; i++)
+    for(int i = 0; i < BLOCOS; i++)
         bitmap[i] = 1; // blocos livres representados por 1
 
-    for(int i = 0; i < 26; i++)
-        bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
-
-    /* O FAT é utilizado para armazenamento de arquivos */
-    Bloco * FAT[24414];
-
-    for(int i = 0; i < 24414; i++)
-        FAT[i] = NULL;
 
     // indica próximo espaço vago?
     int atual_bitmap = 26;
+
+    for(int i = 0; i < atual_bitmap; i++)
+        bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
+
+    /* O FAT é utilizado para armazenamento de arquivos */
+    Bloco * FAT[BLOCOS];
+
+    for(int i = 0; i < BLOCOS; i++)
+        FAT[i] = NULL;
 
     // O PRIMEIRO BLOCO DA FAT FICA NO DIRETÓRIO
     // não sei exatamente o que eu quis dizer com isso, mas acho que era para dizer que
@@ -103,7 +102,8 @@ int main ()
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "mount")) {
             char * arquivo = strtok(NULL, "\n"); // delimitador é o fim do texto, ou seja \n
-
+            
+            if (arquivo != NULL)
             printf("%s\n", arquivo);
             
             if(arquivo == NULL) 

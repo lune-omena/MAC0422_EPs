@@ -138,10 +138,7 @@ int main ()
                     bitmap[26] = 0;
                     atual_bitmap++;
 
-                    //FAT
-                    FAT[0] = (Bloco *) malloc(sizeof(Bloco));
-                    FAT[0]->prox = NULL;
-                    strcat(FAT[0]->data, "\0"); // o diretório não tem conteúdo
+                    //FAT não existe porque é diretório
 
                     //diretório como lista com 1 entrada para cada arquivo
                     Diretorio raiz;

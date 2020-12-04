@@ -16,6 +16,8 @@ typedef struct node {
 typedef struct cell {
 
     int tamanho; // tamanho em bytes, só para não diretórios
+    int pos_fat; // entrada na tabela FAT
+
     unsigned int arq_criado; // instante de tempo em que o arquivo foi criado
     unsigned int arq_alterado; // instante de tempo em que o arquivo foi alterado
     unsigned int arq_acesso; // instante de tempo em que o arquivo foi acessado
@@ -29,8 +31,9 @@ typedef struct list {
     unsigned int t_alterado; // instante de tempo em que o arquivo foi alterado
     unsigned int t_acesso; // instante de tempo em que o arquivo foi acessado
 
-    Arquivo * arqv;
-    Arquivo * prox;
+    Arquivo * arqv; // primeiro arquivo do diretório
+    Arquivo * prox; // segundo arquivo do diretório 
+
 } Diretorio;
 
 

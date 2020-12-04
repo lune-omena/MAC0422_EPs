@@ -18,6 +18,7 @@
 #include <string.h>              /* strcmp(), strtok()... */
 
 #include <unistd.h>              /* access() -> checa path se existe */
+#include <time.h>                /* pegar timestamp */
 
 /* Funções a serem implementadas:
 - mount arquivo
@@ -49,10 +50,10 @@ int main ()
     prompt = definePrompt();
 
     /* O bitmap representa os blocos vazios e ocupados, como existem 100MB de espaço total, sendo 4KB para cada
-     * bloco, temos 100000KB/4KB = 25000 blocos de espaço!!!*/
+     * bloco, temos 100000KB/4*1024 = 24414 blocos de espaço!!!*/
 
-    /* Por definição, bitmap guarda 1 bit por bloco! Portanto, como temos 25K espaços do bitmap, são no total
-     * 25K bits ocupados que cabem em 32K bits (4KB), portanto o bitmap ocupa 1 bloco */
+    /* Por definição, bitmap guarda 1 bit por bloco! Portanto, como temos 24414 espaços do bitmap, são no total
+     * 24414 bits ocupados que cabem em 32K bits (4KB), portanto o bitmap ocupa 1 bloco */
     /* Por definição, FAT guarda 4 bytes por entrada! Como são 100MB de dados, com 4KB para cada bloco,
      * somam no total 25000 entradas na tabela. Mas o FAT utiliza 4 bytes por entrada, portanto o espaço
      * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
@@ -73,7 +74,12 @@ int main ()
     for(int i = 0; i < 24414; i++)
         FAT[i] = NULL;
 
+    // indica próximo espaço vago?
+    int atual_bitmap = 26;
+
     // O PRIMEIRO BLOCO DA FAT FICA NO DIRETÓRIO
+    // não sei exatamente o que eu quis dizer com isso, mas acho que era para dizer que
+    // para cada diretório nas listinhas, a indicação na tabela fat do conteúdo é dado lá
 
     /* Quando eu encher o sistema de arquivos na hora de corrigir o seu EP, eu vou desmontar o arquivo, 
      * fechar o EP e dar um ls no arquivo que foi criado. */
@@ -103,7 +109,7 @@ int main ()
             if(arquivo == NULL) 
                 printf("Precisa de mais argumentos.\n");
 
-            else if(!access(arquivo, F_OK)) {// checa se path existe
+            else if(!access(arquivo, F_OK)) { // checa se path existe
                 
                 /* Cria path para o arquivo.txt */
                 int tamanho = strlen(arquivo);
@@ -123,9 +129,26 @@ int main ()
                     // precisamos carregar o sistema de arquivos com o fat, bitmap, etc.
                 }
                 else {
-                    printf("Temos que criar um novo sistema de arquivos :)\n");
-                    fp = fopen(new_path, "w");
-                    // aqui criamos o "/"
+                    printf("Temos que criar um novo sistema de arquivos\n");
+                    fp = fopen(new_path, "w"); // só vamos mexer com o arquivo final no umount, certo?
+                    
+                    /* aqui criamos o "/"? */
+
+                    //bitmap
+                    bitmap[26] = 0;
+                    atual_bitmap++;
+
+                    //FAT
+                    FAT[0] = (Bloco *) malloc(sizeof(Bloco));
+                    FAT[0]->prox = NULL;
+                    strcat(FAT[0]->data, "\0"); // o diretório não tem conteúdo
+
+                    //diretório como lista com 1 entrada para cada arquivo
+                    Diretorio raiz;
+                    raiz.prox = NULL;
+                    raiz.arqv = NULL;
+                    raiz.t_criado = raiz.t_alterado = raiz.t_acesso = (unsigned) time(NULL);
+
                 }
             }
             else 

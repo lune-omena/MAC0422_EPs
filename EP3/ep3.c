@@ -100,10 +100,10 @@ int main ()
                 printf("Precisa de mais argumentos.\n");
 
             else if(!access(arquivo, F_OK)) {// checa se path existe
-                printf("woo\n");
-
+                
+                /* Cria path para o arquivo.txt */
                 int tamanho = strlen(arquivo);
-                char new_path[tamanho+12]; //"/arquivo.txt"
+                char new_path[tamanho+12]; 
 
                 for (int i = 0; i < tamanho+12; i++)
                     new_path[i] = NULL;
@@ -111,13 +111,14 @@ int main ()
                 strcat(new_path, arquivo);
                 strcat(new_path, "/arquivo.txt");
 
-                //printf("%s\n", new_path);
+                /* Checa se já existe arquivo.txt */
                 fp = fopen(new_path, "r+");
+
                 if(fp != NULL) {
-                    printf("sucesso!\n");
+                    printf("Sistema de arquivos recuperado\n");
                 }
                 else
-                    printf(":(\n");
+                    printf("Temos que criar um novo sistema de arquivos :)\n");
             }
             else 
                 printf("Esse path não existe\n");

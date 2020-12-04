@@ -6,6 +6,12 @@
  * 
  */
 
+// eu n sei se isso tá certo
+typedef struct node {
+    char data[4000]; // cada char é um byte, um bloco tem 4KB
+    struct node * prox;
+} Bloco;
+
 
 /* PROTÓTIPOS */
 char * definePrompt(); // Criaçao de prompt personalizado

@@ -6,16 +6,18 @@
  */
 
 /* Bibliotecas */
-#include "ep3.h"               /* header */
+#include "ep3.h"                 /* header */
 #include <stdio.h>               /* printf(), fgets()... */
 #include <stdlib.h>              /* malloc(), free() */
 
-#include <sys/syscall.h>         /* usado para syscalls */
-#include <sys/stat.h>            /* syscall mkdir, kill, ...*/
+//#include <sys/syscall.h>         /* usado para syscalls */
+//#include <sys/stat.h>            /* syscall mkdir, kill, ...*/
 
 #include <readline/readline.h>   /* ler linha de comando */
 #include <readline/history.h>    /* historico do terminal */
 #include <string.h>              /* strcmp(), strtok()... */
+
+#include <unistd.h>              /* access() -> checa path se existe */
 
 /* Funções a serem implementadas:
 - mount arquivo
@@ -31,17 +33,48 @@
 - umount
 - sai
 */
+
+/* teremos que implementar bitmap, FAT, / etc. */
 int main ()
 {
     /* auxiliares para o terminal */
     char * buffer;                                
     char * prompt; 
     char * buf_break;
+
     /* argumentos usados como parâmetros para as funcoes cp e find */
     char * args[2];  
     
     /* FORMATAÇÃO DO PROMPT */
     prompt = definePrompt();
+
+    /* O bitmap representa os blocos vazios e ocupados, como existem 100MB de espaço total, sendo 4KB para cada
+     * bloco, temos 100000KB/4KB = 25000 blocos de espaço!!!*/
+    int bitmap[25000]; 
+
+    for(int i = 0; i < 25000; i++)
+        bitmap[i] = 1; // blocos livres representados por 1
+
+    /* Por definição, bitmap guarda 1 bit por bloco! Portanto, como temos 25K espaços do bitmap, são no total
+     * 25K bits ocupados que cabem em 32K bits (4KB), portanto o bitmap ocupa 1 bloco */
+    /* Por definição, FAT guarda 4 bytes por entrada! Como são 100MB de dados, com 4KB para cada bloco,
+     * somam no total 25000 entradas na tabela. Mas o FAT utiliza 4 bytes por entrada, portanto o espaço
+     * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
+    /* No total, são 26 espaços ocupados */
+
+    for(int i = 0; i < 26; i++)
+        bitmap[i] = 0; // provavelmente mudar para indicar que bitmap só tem 24974 espaços
+
+    /* O FAT é utilizado para armazenamento de arquivos */
+    Bloco * FAT[25000];
+
+    for(int i = 0; i < 25000; i++)
+        FAT[i] = NULL;
+
+    /* Quando eu encher o sistema de arquivos na hora de corrigir o seu EP, eu vou desmontar o arquivo, 
+     * fechar o EP e dar um ls no arquivo que foi criado. */
+
+    FILE *fp;
 
     using_history();
 
@@ -59,16 +92,35 @@ int main ()
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "mount")) {
-            char * dirname = strtok(NULL, " ");
+            char * arquivo = strtok(NULL, "\n"); // delimitador é o fim do texto, ou seja \n
+
+            printf("%s\n", arquivo);
             
-            /* if(dirname == NULL) 
+            if(arquivo == NULL) 
                 printf("Precisa de mais argumentos.\n");
 
-            else if(!mkdir(dirname,0777)) 
-                printf("Criado o diretório de nome %s.\n", dirname);
+            else if(!access(arquivo, F_OK)) {// checa se path existe
+                printf("woo\n");
 
+                int tamanho = strlen(arquivo);
+                char new_path[tamanho+12]; //"/arquivo.txt"
+
+                for (int i = 0; i < tamanho+12; i++)
+                    new_path[i] = NULL;
+
+                strcat(new_path, arquivo);
+                strcat(new_path, "/arquivo.txt");
+
+                //printf("%s\n", new_path);
+                fp = fopen(new_path, "r+");
+                if(fp != NULL) {
+                    printf("sucesso!\n");
+                }
+                else
+                    printf(":(\n");
+            }
             else 
-                printf("Não foi possível criar o diretório.\n"); */
+                printf("Esse path não existe\n");
         }
         else if(!strcmp(buf_break, "umount"))
         {

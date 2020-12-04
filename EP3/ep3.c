@@ -58,19 +58,19 @@ int main ()
      * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
     /* No total, são 26 espaços pré-ocupados */
 
-    int bitmap[24974]; 
+    // 24414 posições vem de 100MB/4*1024, aula 15
+    int bitmap[24414]; 
 
-    for(int i = 0; i < 24974; i++)
+    for(int i = 0; i < 24414; i++)
         bitmap[i] = 1; // blocos livres representados por 1
 
-    /*
     for(int i = 0; i < 26; i++)
-        bitmap[i] = 0; // provavelmente mudar para indicar que bitmap só tem 24974 espaços */
+        bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
 
     /* O FAT é utilizado para armazenamento de arquivos */
-    Bloco * FAT[24974];
+    Bloco * FAT[24414];
 
-    for(int i = 0; i < 24974; i++)
+    for(int i = 0; i < 24414; i++)
         FAT[i] = NULL;
 
     /* Quando eu encher o sistema de arquivos na hora de corrigir o seu EP, eu vou desmontar o arquivo, 

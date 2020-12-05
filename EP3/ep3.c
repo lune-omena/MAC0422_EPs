@@ -29,10 +29,10 @@ int main ()
     // 24414 posições vem de 100MB/4*1024, aula 15
     int bitmap[BLOCOS]; 
     /* O FAT é utilizado para armazenamento de arquivos */
-    Bloco * FAT[BLOCOS];
+    Bloco FAT[BLOCOS];
     void  * admin[BLOCOS];
-    
-    
+
+
     admin[0] = (void *) bitmap;
     admin[1] = (void *) FAT;
     /* argumentos usados como parâmetros para as funcoes cp e find */
@@ -50,9 +50,7 @@ int main ()
      * somam no total 25000 entradas na tabela. Mas o FAT utiliza 4 bytes por entrada, portanto o espaço
      * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
     /* A FAT vai ocupar o dobro porque vamos utilizá-la para endereçar diretamente os blocos */
-    /* No total, são 51 espaços pré-ocupados */
-
-    
+    /* No total, são 51 espaços pré-ocupados */ 
 
     for(int i = 0; i < BLOCOS; i++)
         bitmap[i] = 1; // blocos livres representados por 1
@@ -61,7 +59,11 @@ int main ()
     int atual_bitmap = 51;
 
     for(int i = 0; i < atual_bitmap; i++)
-        bitmap[i] = i; // blocos ocupados pelo bitmap e pelo FAT
+        bitmap[i] = 1; // blocos ocupados pelo bitmap e pelo FAT
+    
+    /*
+    for(int i = 0; i < BLOCOS; i++)
+        FAT[i] = NULL;*/
 
     /* testando posição de admin */
     printf("Posicao 0 do bitmap pelo bitmap: %d\n",  bitmap[0]);
@@ -70,11 +72,17 @@ int main ()
     int posicao = 1;
     printf("Posicao 0 do bitmap pelo vetorzao: %d\n",  *(int *) &admin[0][sizeof(int)*0]);
     printf("Posicao 1 do bitmap pelo vetorzao: %d\n",  *(int *) &admin[0][sizeof(int)*posicao]);
+
+    /* inicialização do FAT */
+    FAT[0].prox = -1;
+    FAT[0].endereco = admin[0];
+
+    for(int i = 1; i < atual_bitmap; i++)
+        FAT[i].prox =  i+1;
     
-
-
-    for(int i = 0; i < BLOCOS; i++)
-        FAT[i] = NULL;
+    FAT[atual_bitmap-1].prox = -1;
+    FAT[1].endereco = admin[1];
+    
 
     // O PRIMEIRO BLOCO DA FAT FICA NO DIRETÓRIO
     // não sei exatamente o que eu quis dizer com isso, mas acho que era para dizer que

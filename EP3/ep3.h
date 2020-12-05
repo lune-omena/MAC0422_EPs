@@ -8,9 +8,11 @@
 
 // Este bloco é uma célula da FAT
 typedef struct node {
-    // cada char é um byte, um bloco tem 4KB
-    char data[4000]; 
-    struct node * prox;
+    
+    // endereço do bloco
+    void * endereco;
+    // indica o índice do próximo bloco (-1 se não tiver próximo) 
+    int prox;
 } Bloco;
 
 typedef struct cell {

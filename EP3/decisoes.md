@@ -4,13 +4,15 @@
 - Como fica o espaço para armazenamento de diretorios
 - Como é a escrita do arquivo de mount, e leitura depois que ele está pronto
 - Como foi o cálculo para alocação de espaço dos elementos FAT, bitmap, diretorios e arquivos
-
+- VETORZÃO representativo dos blocos
+- gambiarra do fat se auto-representando
 
 
 ## Itens a completar
 
-- [ ] I dk
-- [ ] please add mais coisas
+- [ ] implementação de hierarquia dos diretórios
+- [ ] implementar vetor representativo de blocos
+- [ ] fazer writer/parser do txt 
 - [ ] Função para escrita de arquivo mount
 - [ ] Função para pegar informações do arquivo mount
 - [ ] Implementação da FAT

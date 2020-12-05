@@ -55,7 +55,8 @@ int main ()
     /* Por definição, FAT guarda 4 bytes por entrada! Como são 100MB de dados, com 4KB para cada bloco,
      * somam no total 25000 entradas na tabela. Mas o FAT utiliza 4 bytes por entrada, portanto o espaço
      * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
-    /* No total, são 26 espaços pré-ocupados */
+    /* A FAT vai ocupar o dobro porque vamos utilizá-la para endereçar diretamente os blocos */
+    /* No total, são 51 espaços pré-ocupados */
 
     // 24414 posições vem de 100MB/4*1024, aula 15
     int bitmap[BLOCOS]; 
@@ -63,9 +64,8 @@ int main ()
     for(int i = 0; i < BLOCOS; i++)
         bitmap[i] = 1; // blocos livres representados por 1
 
-
     // indica próximo espaço vago?
-    int atual_bitmap = 26;
+    int atual_bitmap = 51;
 
     for(int i = 0; i < atual_bitmap; i++)
         bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
@@ -86,8 +86,8 @@ int main ()
     FILE *fp;
 
     using_history();
-
     printf("Digite CTRL+D para finalizar.\n");
+
 
     while ((buffer = readline(prompt)))
     {
@@ -135,10 +135,10 @@ int main ()
                     /* aqui criamos o "/"? */
 
                     //bitmap
-                    bitmap[26] = 0;
+                    bitmap[atual_bitmap] = 0;
                     atual_bitmap++;
 
-                    //FAT não existe porque é diretório
+                    
 
                     //diretório como lista com 1 entrada para cada arquivo
                     Diretorio raiz;

@@ -142,11 +142,16 @@ int main ()
                     
                     /* aqui criamos o "/"? */
 
+                    //Vetor admin -> preciso incluir algo como o / no bloco?
+                    admin[atual_bitmap] = NULL;
+
+                    //FAT
+                    FAT[atual_bitmap].prox = -1;
+                    FAT[atual_bitmap].endereco = admin[atual_bitmap];
+
                     //bitmap
                     bitmap[atual_bitmap] = 0;
-                    atual_bitmap++;
-
-                    
+                    atual_bitmap++;                    
 
                     //diretório como lista com 1 entrada para cada arquivo
                     Diretorio raiz;
@@ -184,6 +189,7 @@ int main ()
 
             args[0]; /* origem */
             args[1]; /* destino */
+
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "mkdir"))

@@ -27,6 +27,8 @@ typedef struct cell {
 
 
 typedef struct list {
+
+    char * nome;
     
     unsigned int t_criado; // instante de tempo em que o arquivo foi criado
     unsigned int t_alterado; // instante de tempo em que o arquivo foi alterado
@@ -47,3 +49,4 @@ typedef struct list {
 char * definePrompt(); // Criaçao de prompt personalizado
 int find_bitmap(); // Encontra espaço vago na bitmap (retorna -1 se não existe espaço)
 int find_fat(); // Encontra espaço vago na FAT
+Diretorio * find_dir(char * nome); // Encontra o diretório desejado

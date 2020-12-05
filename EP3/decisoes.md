@@ -10,7 +10,7 @@
 
 ## Itens a completar
 
-- [ ] fazer função para pegar espaço do bitmap vago
+- [x] fazer função para pegar espaço do bitmap vago
 - [ ] arquivos como animais e pastas como nenens a família toda
 - [ ] determinar tamanho fixo dos diretórios (estou considerando < 1 bloco)
 - [ ] implementação de hierarquia dos diretórios

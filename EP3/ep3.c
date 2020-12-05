@@ -83,7 +83,10 @@ int main ()
     
     FAT[atual_bitmap-1].prox = -1;
     FAT[1].endereco = admin[1];
-    
+
+    // Diretório "/" é o raiz
+    Diretorio * raiz; // criei antes
+    raiz = (Diretorio *) malloc(sizeof(Diretorio));
 
     // O PRIMEIRO BLOCO DA FAT FICA NO DIRETÓRIO
     // não sei exatamente o que eu quis dizer com isso, mas acho que era para dizer que
@@ -142,16 +145,17 @@ int main ()
                     fp = fopen(new_path, "w"); // só vamos mexer com o arquivo final no umount, certo?
                     
                     /* aqui criamos o "/"? */
-
                     //diretório como lista com 1 entrada para cada arquivo
-                    Diretorio * raiz;
 
+                    raiz->nome = (char *) malloc(strlen("/")+1);
+                    strcpy(raiz->nome, "/");
                     raiz->arqv = NULL;
                     raiz->arqv_prox = NULL;
                     raiz->dir_filho = NULL;
                     raiz->dir_prox = NULL; // o dir_prox de raiz deve sempre ser NULL!!!
-                    raiz->pos_fat = atual_bitmap;
                     raiz->t_criado = raiz->t_alterado = raiz->t_acesso = (unsigned) time(NULL);
+                    
+                    raiz->pos_fat = atual_bitmap;
 
                     //Vetor admin -> preciso incluir algo como o / no bloco?
                     admin[atual_bitmap] = (void *) raiz;
@@ -162,7 +166,7 @@ int main ()
 
                     //bitmap
                     bitmap[atual_bitmap] = 0;
-                    atual_bitmap++;                    
+                    atual_bitmap++;
 
                 }
             }
@@ -203,6 +207,7 @@ int main ()
             int ini = -1; 
 
             if(!access(args[1], F_OK)) { // encontrou path para dest e orig
+
                 FILE * f_cp = fopen(args[0], "r");
 
                 if(f_cp) { // encontrou path para arquivo texto

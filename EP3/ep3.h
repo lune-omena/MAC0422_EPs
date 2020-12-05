@@ -8,7 +8,7 @@
 
 // Este bloco é uma célula da FAT
 typedef struct node {
-    
+
     // endereço do bloco
     void * endereco;
     // indica o índice do próximo bloco (-1 se não tiver próximo) 
@@ -16,7 +16,6 @@ typedef struct node {
 } Bloco;
 
 typedef struct cell {
-
     int tamanho; // tamanho em bytes, só para não diretórios
     int pos_fat; // entrada na tabela FAT
 
@@ -33,11 +32,18 @@ typedef struct list {
     unsigned int t_alterado; // instante de tempo em que o arquivo foi alterado
     unsigned int t_acesso; // instante de tempo em que o arquivo foi acessado
 
+    int pos_fat; // posição inicial do fat do diretório
+
     Arquivo * arqv; // primeiro arquivo do diretório
-    Arquivo * prox; // segundo arquivo do diretório 
+    Arquivo * arqv_prox; // segundo arquivo do diretório 
+
+    struct list * dir_filho; // Diretório abaixo na hierarquia
+    struct list * dir_prox; // Diretório na mesma hierarquia
 
 } Diretorio;
 
 
 /* PROTÓTIPOS */
 char * definePrompt(); // Criaçao de prompt personalizado
+int find_bitmap(); // Encontra espaço vago na bitmap (retorna -1 se não existe espaço)
+int find_fat(); // Encontra espaço vago na FAT

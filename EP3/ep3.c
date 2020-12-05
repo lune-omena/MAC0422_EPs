@@ -20,21 +20,22 @@
 #define BLOCOS 24414             /* blocos totais */
 
 
+/* VARIÁVEIS GLOBAIS */
+int    bitmap[BLOCOS]; 
+Bloco  FAT[BLOCOS];
+void * admin[BLOCOS];
+
+
 int main ()
 {
     /* auxiliares para o terminal */
     char * buffer;                                
     char * prompt; 
     char * buf_break;
-    // 24414 posições vem de 100MB/4*1024, aula 15
-    int bitmap[BLOCOS]; 
-    /* O FAT é utilizado para armazenamento de arquivos */
-    Bloco FAT[BLOCOS];
-    void  * admin[BLOCOS];
-
 
     admin[0] = (void *) bitmap;
     admin[1] = (void *) FAT;
+
     /* argumentos usados como parâmetros para as funcoes cp e find */
     char * args[2];  
     
@@ -142,8 +143,18 @@ int main ()
                     
                     /* aqui criamos o "/"? */
 
+                    //diretório como lista com 1 entrada para cada arquivo
+                    Diretorio * raiz;
+
+                    raiz->arqv = NULL;
+                    raiz->arqv_prox = NULL;
+                    raiz->dir_filho = NULL;
+                    raiz->dir_prox = NULL; // o dir_prox de raiz deve sempre ser NULL!!!
+                    raiz->pos_fat = atual_bitmap;
+                    raiz->t_criado = raiz->t_alterado = raiz->t_acesso = (unsigned) time(NULL);
+
                     //Vetor admin -> preciso incluir algo como o / no bloco?
-                    admin[atual_bitmap] = NULL;
+                    admin[atual_bitmap] = (void *) raiz;
 
                     //FAT
                     FAT[atual_bitmap].prox = -1;
@@ -152,12 +163,6 @@ int main ()
                     //bitmap
                     bitmap[atual_bitmap] = 0;
                     atual_bitmap++;                    
-
-                    //diretório como lista com 1 entrada para cada arquivo
-                    Diretorio raiz;
-                    raiz.prox = NULL;
-                    raiz.arqv = NULL;
-                    raiz.t_criado = raiz.t_alterado = raiz.t_acesso = (unsigned) time(NULL);
 
                 }
             }
@@ -189,6 +194,202 @@ int main ()
 
             args[0]; /* origem */
             args[1]; /* destino */
+
+            char texto[4000];
+            char aux[4000];
+            char aux2[4000] = "\0";
+            int tam_txt = 0;
+            int tam_kbytes = 0;
+            int ini = -1; 
+
+            if(!access(args[1], F_OK)) { // encontrou path para dest e orig
+                FILE * f_cp = fopen(args[0], "r");
+
+                if(f_cp) { // encontrou path para arquivo texto
+
+                    // encontra espaço vago do fat e do bitmap
+                    // guarda posição atual caso necessite "fechar" em -1 no fat
+                    // se for \n, checa se aux tá cheio, se não tiver adiciona o resto no aux e fecha se >= 4000
+                    // se não checa se o tamanho da string é <= 4000, se for então ele ocupou o espaço total e aloca
+                    //              se não for, quer dizer que acabou definitivamente e ele vai receber posição -1
+
+
+                    Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
+                    // preciso atualizar primeiro na FAT e pegar tamanho
+                    int pos_ultimo = -1;
+
+                    //  to read N characters, the length specification must be specified as N+1.
+                    while(fgets(texto, 4001, f_cp)) { 
+                        
+                        // preciso zerar o aux em algum momento
+                        tam_txt = strlen(texto);
+                        
+                        // checando se último elemento era newline
+                        if(texto[tam_txt-1] == "\n") { // falta ler mais coisa, talvez
+                            //strlen não conta \0
+                            if(strlen(aux) + tam_txt >= 4000) {
+
+                                if(tam_txt > 4000 - strlen(aux)) { // se o tamanho da nova string for maior que o max
+                                    // "Corta string"
+                                    strncat(aux, texto, 4000 - strlen(aux));
+                                    // aux carrega, agora, o conteúdo primeiro!
+                                    strncpy(texto, texto + (4000 - strlen(aux)), strlen(texto)- (4000 - strlen(aux)));
+                                    // texto carrega, agora, o resto
+
+                                    // encontra espaço vago no bitmap/FAT
+                                    int pos = find_bitmap();
+
+                                    admin[pos] = (void *) aux;
+                                    strcpy(aux, texto);
+                                    
+                                    // insere no bitmap/FAT
+                                    bitmap[pos] = 0;
+                                    pos_ultimo = pos;
+
+                                    //FAT encontra espaço vaGO MUDAR DPS
+                                    if(pos_ultimo != -1)
+                                        FAT[pos_ultimo].prox = pos;
+                                    else
+                                        ini = pos;
+                                    
+
+                                    FAT[pos].prox = -1;
+                                    FAT[pos].endereco = admin[pos];
+                                    atual_bitmap++;
+
+                                    tam_kbytes += 4;
+
+                                }
+                                else { // conteúdo  == 
+                                    //  Concatena em aux
+                                    strcat(aux, texto);
+
+                                    // encontra espaço vago no bitmap/FAT
+                                    int pos = find_bitmap();
+
+                                    // insere no bitmap/FAT
+
+                                    admin[pos] = (void *) aux;
+                                    strcpy(aux, aux2);
+                                    
+                                    // insere no bitmap/FAT
+                                    bitmap[pos] = 0;
+                                    pos_ultimo = pos;
+
+                                    //FAT encontra espaço vaGO MUDAR DPS
+                                    if(pos_ultimo != -1)
+                                        FAT[pos_ultimo].prox = pos;
+                                    else
+                                        ini = pos;
+
+                                    FAT[pos].prox = -1;
+                                    FAT[pos].endereco = admin[pos];
+                                    atual_bitmap++;
+
+                                    tam_kbytes += 4;
+                                }
+
+                            }
+                            else 
+                                strcat(aux, texto);
+                            
+                        }
+                        else if(strlen(aux) + tam_txt > 4000) { // pode estar faltando mais coisa
+                            // "Corta string"
+                            strncat(aux, texto, 4000 - strlen(aux));
+                            // aux carrega, agora, o conteúdo primeiro!
+                            strncpy(texto, texto + (4000 - strlen(aux)), strlen(texto)- (4000 - strlen(aux)));
+                            // texto carrega, agora, o resto
+
+                            // encontra espaço vago no bitmap/FAT
+                            int pos = find_bitmap();
+
+                            admin[pos] = (void *) aux;
+                            strcpy(aux, texto);
+                            
+                            // insere no bitmap/FAT
+                            bitmap[pos] = 0;
+                            pos_ultimo = pos;
+
+                            //FAT encontra espaço vaGO MUDAR DPS
+                            if(pos_ultimo != -1)
+                                FAT[pos_ultimo].prox = pos;
+                            else
+                                ini = pos;
+
+                            FAT[pos].prox = -1;
+                            FAT[pos].endereco = admin[pos];
+                            atual_bitmap++;
+
+                            tam_kbytes += 4;
+                        }
+                        else if (strlen(aux) + tam_txt == 4000) {
+                            // conteúdo  == 
+                            //  Concatena em aux
+                            strcat(aux, texto);
+
+                            // encontra espaço vago no bitmap/FAT
+                            int pos = find_bitmap();
+
+                            // insere no bitmap/FAT
+
+                            admin[pos] = (void *) aux;
+                            strcpy(aux, aux2);
+                            
+                            // insere no bitmap/FAT
+                            bitmap[pos] = 0;
+                            pos_ultimo = pos;
+
+                            //FAT encontra espaço vaGO MUDAR DPS
+                            if(pos_ultimo != -1)
+                                FAT[pos_ultimo].prox = pos;
+                            else
+                                ini = pos;
+
+                            FAT[pos].prox = -1;
+                            FAT[pos].endereco = admin[pos];
+                            atual_bitmap++;
+
+                            tam_kbytes +=4;
+                        }
+                        else { // terminou o file
+                            strcat(aux, texto);
+
+                            int pos = find_bitmap();
+
+                            admin[pos] = (void *) aux;
+                            
+                            // insere no bitmap/FAT
+                            bitmap[pos] = 0;
+                            pos_ultimo = pos;
+
+                            //FAT encontra espaço vaGO MUDAR DPS
+                            if(pos_ultimo != -1)
+                                FAT[pos_ultimo].prox = pos;
+                            else
+                                ini = pos;
+
+                            FAT[pos].prox = -1;
+                            FAT[pos].endereco = admin[pos];
+                            atual_bitmap++;
+
+                            tam_kbytes += (strlen(aux))/1000;
+                        }
+                        
+                    }
+
+                    // atualizar dados do arquivo dentro do diretório que está
+                    novo_arquivo->arq_acesso = novo_arquivo->arq_alterado = novo_arquivo->arq_criado = (unsigned) time(NULL);
+                    novo_arquivo->tamanho = (tam_kbytes)*1000;
+                    novo_arquivo->pos_fat = ini;
+
+                }
+                else 
+                    printf("Não existe um arquivo (origem) com esse nome.\n");
+            }
+            else
+                printf("Não existe path destino com esse nome.\n");
+            
 
         }
         /* PRECISA REALIZAR FUNCAO */
@@ -337,4 +538,15 @@ char * definePrompt()
 
 
     return prompt;
+}
+
+int find_bitmap() {
+    int aux;
+
+    for(aux = 0; aux < 24414 && bitmap[aux]; aux++);
+
+    if(aux == 24414)
+        return -1;
+    
+    return aux;
 }

@@ -17,30 +17,24 @@
 #include <unistd.h>              /* access() -> checa path se existe */
 #include <time.h>                /* pegar timestamp */
 
-#define BLOCOS 24414             /* blocos livres */
-/* Funções a serem implementadas:
-- mount arquivo
-- cp origem destino:
-- mkdir diretorio
-- rmdir diretorio
-- cat arquivo
-- touch arquivo
-- rm arquivo
-- ls diretorio
-- find diretorio arquivo
-- df
-- umount
-- sai
-*/
+#define BLOCOS 24414             /* blocos totais */
 
-/* teremos que implementar bitmap, FAT, / etc. */
+
 int main ()
 {
     /* auxiliares para o terminal */
     char * buffer;                                
     char * prompt; 
     char * buf_break;
-
+    // 24414 posições vem de 100MB/4*1024, aula 15
+    int bitmap[BLOCOS]; 
+    /* O FAT é utilizado para armazenamento de arquivos */
+    Bloco * FAT[BLOCOS];
+    void  * admin[BLOCOS];
+    
+    
+    admin[0] = (void *) bitmap;
+    admin[1] = (void *) FAT;
     /* argumentos usados como parâmetros para as funcoes cp e find */
     char * args[2];  
     
@@ -58,8 +52,7 @@ int main ()
     /* A FAT vai ocupar o dobro porque vamos utilizá-la para endereçar diretamente os blocos */
     /* No total, são 51 espaços pré-ocupados */
 
-    // 24414 posições vem de 100MB/4*1024, aula 15
-    int bitmap[BLOCOS]; 
+    
 
     for(int i = 0; i < BLOCOS; i++)
         bitmap[i] = 1; // blocos livres representados por 1
@@ -68,10 +61,17 @@ int main ()
     int atual_bitmap = 51;
 
     for(int i = 0; i < atual_bitmap; i++)
-        bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
+        bitmap[i] = i; // blocos ocupados pelo bitmap e pelo FAT
 
-    /* O FAT é utilizado para armazenamento de arquivos */
-    Bloco * FAT[BLOCOS];
+    /* testando posição de admin */
+    printf("Posicao 0 do bitmap pelo bitmap: %d\n",  bitmap[0]);
+    printf("Posicao 1 do bitmap pelo bitmap: %d\n",  bitmap[1]);
+    int * hello = (int *) admin[0];
+    int posicao = 1;
+    printf("Posicao 0 do bitmap pelo vetorzao: %d\n",  *(int *) &admin[0][sizeof(int)*0]);
+    printf("Posicao 1 do bitmap pelo vetorzao: %d\n",  *(int *) &admin[0][sizeof(int)*posicao]);
+    
+
 
     for(int i = 0; i < BLOCOS; i++)
         FAT[i] = NULL;

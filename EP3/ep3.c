@@ -555,3 +555,7 @@ int find_bitmap() {
     
     return aux;
 }
+
+Diretorio * find_dir(char * nome) {
+    
+}

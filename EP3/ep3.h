@@ -40,18 +40,33 @@ typedef struct list {
     int pos_fat; // posição inicial do fat do diretório
 
     Arquivo * arqv; // primeiro arquivo do diretório
-    Arquivo * arqv_prox; // segundo arquivo do diretório 
 
     struct list * dir_filho; // Diretório abaixo na hierarquia
     struct list * dir_prox; // Diretório na mesma hierarquia
 
 } Diretorio;
 
+typedef struct celula {
+    
+    char * nome; // Nome do arquivo txt/diretório
+    char tipo; // D: diretório, A: arquivo texto
+
+    unsigned int t_criado; // instante de tempo em que o arquivo foi criado
+    unsigned int t_alterado; // instante de tempo em que o arquivo foi alterado
+    unsigned int t_acesso; // instante de tempo em que o arquivo foi acessado
+
+    int pos_fat; // posição inicial no FAT
+    int tamanho; // tamanho em bytes, só para não diretórios
+
+    struct celula * node_filho; // Diretório abaixo na hierarquia
+    struct celula * node_prox; // Diretório na mesma hierarquia
+
+} Celula;
 
 /* PROTÓTIPOS */
 char * definePrompt(); // Criaçao de prompt personalizado
 int find_bitmap(); // Encontra espaço vago na bitmap (retorna -1 se não existe espaço)
 int find_fat(); // Encontra espaço vago na FAT
-Diretorio * find_dir(char * nome, Diretorio * raiz); // Encontra o diretório desejado (NULL se não existe)
+Celula * find_dir(char * nome, Celula * raiz); // Encontra o diretório desejado (NULL se não existe)
 int ult_arq(Diretorio * dir); // devolve o último arquivo do 
 char * nome_arquivo(char * path); // Devolve nome do arquivo dado por um path

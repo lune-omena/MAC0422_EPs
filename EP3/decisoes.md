@@ -6,15 +6,16 @@
 - Como foi o cálculo para alocação de espaço dos elementos FAT, bitmap, diretorios e arquivos
 - VETORZÃO representativo dos blocos
 - gambiarra do fat se auto-representando
+- DIRETÓRIO: no máximo 10 subarquivos!!!!
 
 
 ## Itens a completar
 
+- [ ] determinar tamanho máximo do diretório
 - [x] fazer função para pegar espaço do bitmap vago
 - [ ] arquivos como animais e pastas como nenens a família toda
-- [ ] determinar tamanho fixo dos diretórios (estou considerando < 1 bloco)
 - [ ] implementação de hierarquia dos diretórios
-- [ ] implementar vetor representativo de blocos
+- [x] implementar vetor representativo de blocos
 - [ ] fazer writer/parser do txt 
 - [ ] Função para escrita de arquivo mount
 - [ ] Função para pegar informações do arquivo mount

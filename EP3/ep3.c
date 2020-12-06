@@ -91,8 +91,12 @@ int main ()
     FAT[1]->endereco = admin[1];
 
     // Diretório "/" é o raiz
+    /*
     Diretorio * raiz; // criei antes
-    raiz = (Diretorio *) malloc(sizeof(Diretorio));
+    raiz = (Diretorio *) malloc(sizeof(Diretorio));*/
+    Celula * raiz; // criei antes
+    raiz = (Celula *) malloc(sizeof(Celula));
+
 
     // O PRIMEIRO BLOCO DA FAT FICA NO DIRETÓRIO
     // não sei exatamente o que eu quis dizer com isso, mas acho que era para dizer que
@@ -162,13 +166,13 @@ int main ()
 
                     raiz->nome = (char *) malloc(strlen("/")+1);
                     strcpy(raiz->nome, "/");
-                    raiz->arqv = NULL;
-                    raiz->arqv_prox = NULL;
-                    raiz->dir_filho = NULL;
-                    raiz->dir_prox = NULL; // o dir_prox de raiz deve sempre ser NULL!!!
+                    raiz->tipo = 'D';
+                    raiz->node_filho = raiz->node_prox = NULL; // o node_prox de raiz deve sempre ser NULL!!!
                     raiz->t_criado = raiz->t_alterado = raiz->t_acesso = (unsigned) time(NULL);
-                    
                     raiz->pos_fat = atual_bitmap;
+                    raiz->tamanho = 0;
+
+                    printf("%d", raiz->t_acesso);
 
                     //Vetor admin -> preciso incluir algo como o / no bloco?
                     admin[atual_bitmap] = (void *) raiz;
@@ -213,13 +217,14 @@ int main ()
             //args[0]; /* origem */
             //args[1]; /* destino */
             char texto[4000];
-            char aux[4000];
-            char aux2[4000] = "\0";
+            char aux[4000] = "";
+            char aux2[4000] = "";
             int tam_txt = 0;
             int tam_bytes = 0;
             int ini = -1; 
 
-            Diretorio * dir = find_dir(args[1], raiz);
+            //Diretorio * dir = find_dir(args[1], raiz);
+            Celula * dir = find_dir(args[1], raiz);
 
             //if(!access(args[1], F_OK)) { // encontrou path para dest e orig
             if(dir) {
@@ -231,7 +236,8 @@ int main ()
 
                     printf("Encontrou arquivo! O diretório destino é |%s|!\n", dir->nome);
 
-                    Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
+                    //Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
+                    Celula * novo_arquivo = (Celula *) malloc(sizeof(Arquivo));
                     // preciso atualizar primeiro na FAT e pegar tamanho
                     int pos_ultimo = -1;
 
@@ -277,7 +283,10 @@ int main ()
                         }
                         else {
                             *c_pointer = c;
-                            strcat(aux, c_pointer);
+                            if(strlen(aux) > 0)
+                                strcat(aux, c_pointer);
+                            else
+                                strcpy(aux, c_pointer);
                         }
                         
                         c = fgetc(f_cp);
@@ -285,13 +294,21 @@ int main ()
                     }
 
                     // atualizar dados do arquivo dentro do diretório que está
-                    novo_arquivo->arq_acesso = novo_arquivo->arq_alterado = novo_arquivo->arq_criado = (unsigned) time(NULL);
+                    novo_arquivo->t_acesso = novo_arquivo->t_alterado = novo_arquivo->t_criado = (unsigned) time(NULL);
+                    printf("%d", novo_arquivo->t_acesso);
                     novo_arquivo->tamanho = (tam_bytes);
                     novo_arquivo->pos_fat = ini;
+                    novo_arquivo->node_filho = (Celula *) malloc(sizeof(Celula));
+                    novo_arquivo->node_prox = (Celula *) malloc(sizeof(Celula));
+                    novo_arquivo->node_prox = novo_arquivo->node_filho  = NULL;
+                    novo_arquivo->tipo = 'A';
                     novo_arquivo->nome = nome_arquivo(args[0]);
+
                     printf("%s criado\n", novo_arquivo->nome);
 
                     // INSERIR NO diretório
+                    if(!dir->node_filho)
+                        dir->node_filho = novo_arquivo;
 
                 }
                 else 
@@ -306,11 +323,12 @@ int main ()
         {
             char * dirname = strtok(NULL, " ");
 
-            // Separar o nome do diretório entre parte existente e parte criada
+            // Separar o nome do die retório entre parte existente e parte criada
             int nome_size;
             char * novo = nome_arquivo(dirname);
             nome_size = strlen(novo);
 
+            /*
             if(nome_size) { // path existe!
                 Diretorio * new = (Diretorio *) malloc(sizeof(Diretorio));
                 Diretorio * aux = NULL, * ant = NULL;
@@ -339,7 +357,7 @@ int main ()
                 new->pos_fat = find_bitmap();
                 bitmap[new->pos_fat] = 0;            
 
-            }
+            }*/
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "rmdir"))
@@ -557,8 +575,8 @@ int find_bitmap() {
     return aux;
 }
 
-Diretorio * find_dir(char * nome, Diretorio * raiz) {
-    Diretorio * aux = raiz;
+Celula * find_dir(char * nome, Celula * raiz) {
+    Celula * aux = raiz;
 
     if(!strcmp(nome, raiz->nome)) // é o "/"
         return raiz;
@@ -566,8 +584,10 @@ Diretorio * find_dir(char * nome, Diretorio * raiz) {
     char * token = strtok(nome, "/");
 
     while(token) {
-        while(aux && !strcmp(token, aux->nome))
-            aux = aux->dir_prox;
+        aux = aux->node_filho;
+
+        while(aux && aux->tipo == 'D' && !strcmp(token, aux->nome))
+            aux = aux->node_prox;
         
         if(aux)
             token = strtok(nome, "/");

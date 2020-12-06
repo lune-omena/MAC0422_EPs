@@ -446,29 +446,32 @@ int main ()
                 break;
             }
             /* vai procurar o arquivo na tabela de diretorios, começando pelo */
-            /* Resultado: se 0, conseguiu excluir os arquivos. 
-                          se 1, não conseguiu excluir o arquivo, ou não encontrou o arquivo;*/
+            /* Resultado: se 1, conseguiu excluir os arquivos. 
+                          se 0, não conseguiu excluir o arquivo, ou não encontrou o arquivo;*/
             result = rm_diretorio(dirname, inicio_dados); 
 
             if (result)
-                printf("\nArquivo não encontrado ou problema ao excluir o arquivo. Tente novamente.");
+                printf("\nArquivo apagado com sucesso.\n");
             else
-                printf("\nArquivo apagado com sucesso.");
+                printf("\nArquivo não encontrado ou problema ao excluir o arquivo. Tente novamente.\n");
 
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "ls"))
         {
-            //char * dirname = strtok(NULL, " ");
-            
-            /* if(dirname == NULL) 
+            char * dirname = strtok(NULL, " ");
+            int result;
+            if(dirname == NULL)
+            {
                 printf("Precisa de mais argumentos.\n");
+            }
+            else
+            {
+                result = ls_diretorio(dirname, inicio_dados); 
 
-            else if(!mkdir(dirname,0777)) 
-                printf("Criado o diretório de nome %s.\n", dirname);
-
-            else 
-                printf("Não foi possível criar o diretório.\n"); */
+            if (!result)
+                printf("\nArquivo não encontrado ou problema ao excluir o arquivo. Tente novamente.\n");
+            }
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "df"))
@@ -660,8 +663,122 @@ Celula * devolve_ult(Celula * pai) {
     return aux;
 }
 
+int ls_diretorio(char * diretorio, int inicio_dados)
+{
+    Celula * raiz, * aux, * aux_ant;
+    int pos_fat, atual;
+    Bloco * bloco;
+    raiz = admin[inicio_dados]; //recebendo o /
+    /* printf("\nRaiz: %s", raiz->nome);
+    printf("\n filho: %p", raiz->node_filho);
+    printf("\n irmao: %p", raiz->node_prox); */
+    char * caminho = strtok(diretorio, "/");
+    char * proximo = strtok(NULL, "/");
+
+    aux = raiz->node_filho;
+    
+    if (aux == NULL)
+    {
+        aux = raiz->node_prox;
+
+        if (aux == NULL)
+            return 0;
+    }
+    /* percorrendo caminho enviado pelo arquivo */
+    while( proximo != NULL )
+    {
+        printf( " %s\n", caminho);
+        /* percorrendo lista de filhos */
+        while (aux->node_filho != NULL && strcmp(aux->nome, caminho) != 0 )
+        {
+            aux = aux->node_filho;
+        }
+
+        if (aux == NULL)
+            return 0;
+        
+        caminho = proximo;
+        proximo = strtok(NULL, "/");
+    }
+
+    /* encontrei a pasta do arquivo, percorro a lista de irmaos
+       para encontrar o arquivo.*/
+   
+    //aux = aux->node_filho;
+    
+    while (aux != NULL)
+    {
+        printf("\n %s     \t\t %dKB \t %c", aux->nome, aux->tamanho, aux->tipo);
+        aux = aux->node_prox;
+    }
+    printf("\n");
+    return 1;
+}
+
 int rm_diretorio(char * arquivo, int inicio_dados)
 {
+    Celula * raiz, * aux, * aux_ant;
+    int pos_fat, atual;
+    Bloco * bloco;
+    raiz = admin[inicio_dados]; //recebendo o /
+    printf("\nRaiz: %s", raiz->nome);
+
+    char * caminho = strtok(arquivo, "/");
+    char * proximo = strtok(NULL, "/");
+
+    aux = raiz->node_filho;
+    
+    /* percorrendo caminho enviado pelo arquivo */
+    while( proximo != NULL )
+    {
+        printf( " %s\n", caminho);
+        /* percorrendo lista de filhos */
+        while (aux->node_filho != NULL && strcmp(aux->nome, caminho) != 0 )
+        {
+            aux = aux->node_filho;
+        }
+
+        if (aux == NULL)
+            return 0;
+        
+        caminho = proximo;
+        proximo = strtok(NULL, "/");
+    }
+
+    /* encontrei a pasta do arquivo, percorro a lista de irmaos
+       para encontrar o arquivo.*/
+    aux_ant = aux;
+    aux = aux->node_prox;
+    
+    while (aux != NULL && strcmp(aux->nome, caminho) != 0 )
+    {
+        aux = aux->node_filho;
+    }
+
+    if (aux == NULL)
+        return 0;
+    else /* Encontrei o arquivo, vamos apagá-lo */
+    {
+        /* retira registro do diretorio anterior */
+        aux_ant->node_prox = aux->node_prox;
+
+        /* retira registro na FAT e bitmap */
+        pos_fat = aux->pos_fat;
+        while (FAT[pos_fat]->prox != -1)
+        {
+            atual = pos_fat;
+            pos_fat = FAT[pos_fat]->prox;
+            /* essa seria a parte de apagar a entrada em admin[x] */
+            /* free(FAT[atual]->endereco)*/
+            FAT[atual]->prox = -1;
+            bitmap[atual] = 1;
+        }
+
+        bitmap[pos_fat] = 1;
+
+
+    }
+    
 
     return 0;
 }

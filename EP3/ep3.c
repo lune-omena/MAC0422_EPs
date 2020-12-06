@@ -336,41 +336,51 @@ int main ()
         {
             char * dirname = strtok(NULL, " ");
 
-            // Separar o nome do die retório entre parte existente e parte criada
+            // Separar o nome do diretório entre parte existente e parte criada
             int nome_size;
-            char * novo = nome_arquivo(dirname);
+            char * novo = nome_arquivo(dirname); // pega nome do diretório
             nome_size = strlen(novo);
 
-            /*
             if(nome_size) { // path existe!
-                Diretorio * new = (Diretorio *) malloc(sizeof(Diretorio));
-                Diretorio * aux = NULL, * ant = NULL;
-                char * pai;
+                Celula * new = (Celula *) malloc(sizeof(Celula));
+                Celula * aux = NULL, * ant = NULL;
+                int n_pai = strlen(dirname) - nome_size - 1; //  retira o / do fim do nome
+                char * pai = (char *) malloc((n_pai+1)*sizeof(char)); // +1 para o \0
 
-                strncpy(pai, dirname, strlen(dirname) - nome_size - 1);
+                strncpy(pai, dirname, n_pai); 
 
                 aux = find_dir(pai, raiz);
-                
-                if(aux->dir_filho) {
-                    aux = aux->dir_filho;
-                    
-                    while(aux) {
-                        ant = aux;
-                        aux = aux->dir_prox;
-                    }
 
-                    ant->dir_prox = new;
+                if(aux->filhos == 10) {
+                    printf("O diretório %s chegou no limite de arquivos (10)!\n", aux->nome);
                 }
-                else
-                    aux->dir_filho = new;
+                else {
 
-                new->t_acesso = new->t_alterado =  new->t_criado = (unsigned) time(NULL);
-                new->nome = novo;
-                new->dir_filho = new->dir_prox = NULL;
-                new->pos_fat = find_bitmap();
-                bitmap[new->pos_fat] = 0;            
+                    if(aux->filhos > 0) {
+                        aux = aux->node_filho;
+                        
+                        while(aux) {
+                            ant = aux;
+                            aux = aux->node_prox;
+                        }
 
-            }*/
+                        ant->node_prox = new;
+                    }
+                    else
+                        aux->node_filho = new;
+
+                    aux->filhos++;
+                    new->t_acesso = new->t_alterado = new->t_criado = (unsigned) time(NULL);
+                    new->nome = novo;
+                    new->filhos = 0;
+                    new->tipo = 'D';
+                    new->node_filho = new->node_prox = NULL;
+                    new->tamanho = 0;
+                    new->pos_fat = find_bitmap();
+                    bitmap[new->pos_fat] = 0;            
+                }
+
+            }
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "rmdir"))

@@ -21,9 +21,9 @@
 
 
 /* VARIÁVEIS GLOBAIS */
-int    bitmap[BLOCOS]; 
-Bloco *FAT[BLOCOS];
-void * admin[BLOCOS];
+int     bitmap[BLOCOS]; 
+Bloco * FAT[BLOCOS];
+void  * admin[BLOCOS];
 
 int registraAdmin(char * arquivo);
 int recebeAdmin(char * arquivo);
@@ -47,13 +47,12 @@ int main ()
     /* O bitmap representa os blocos vazios e ocupados, como existem 100MB de espaço total, sendo 4KB para cada
      * bloco, temos 100000KB/4*1024 = 24414 blocos de espaço!!!*/
 
-    /* Por definição, bitmap guarda 1 bit por bloco! Portanto, como temos 24414 espaços do bitmap, são no total
-     * 24414 bits ocupados que cabem em 32K bits (4KB), portanto o bitmap ocupa 1 bloco */
+    /* O bitmap guarda 4 bytes por bloco! Portanto, como temos 24414 espaços do bitmap, são no total
+     * 24414*4 bytes = ~97K ocupados que cabem em 7 blocos */
     /* Por definição, FAT guarda 4 bytes por entrada! Como são 100MB de dados, com 4KB para cada bloco,
-     * somam no total 25000 entradas na tabela. Mas o FAT utiliza 4 bytes por entrada, portanto o espaço
-     * total ocupado pelo FAT é dado por 100KB. Logo, ocupa 25 blocos. */
-    /* A FAT vai ocupar o dobro porque vamos utilizá-la para endereçar diretamente os blocos */
-    /* No total, são 51 espaços pré-ocupados */ 
+     * somam no total 24414 entradas na tabela. Mas o FAT utiliza 8 bytes por entrada, portanto o espaço
+     * total ocupado pelo FAT é dado por ~195KB. Logo, ocupa 49 blocos. */
+    /* No total, são 49+7 = 56 espaços pré-ocupados */ 
 
     for (int i = 0; i < BLOCOS; i ++)
         FAT[i] = malloc(sizeof(Bloco));
@@ -62,7 +61,7 @@ int main ()
         bitmap[i] = 1; // blocos livres representados por 1
 
     // indica próximo espaço vago?
-    int atual_bitmap = 51;
+    int atual_bitmap = 56;
 
     for(int i = 0; i < atual_bitmap; i++)
         bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
@@ -106,8 +105,8 @@ int main ()
 
     using_history();
     printf("Digite CTRL+D para finalizar.\n");
-    char * caminho2 = "/media/lune/Data/Desktop/USP/Github/MAC0422_EPs/EP3/arquivo.txt";
-    char * caminho = "/media/lune/Data/Desktop/USP/Github/MAC0422_EPs/EP3";
+    char * caminho2 = "/home/lara/code/4o/so/MAC0422_EPs/EP3/arquivo.txt";
+    char * caminho = "/home/lara/code/4o/so/MAC0422_EPs/EP3";
 
     while ((buffer = readline(prompt)))
     {
@@ -303,19 +302,44 @@ int main ()
             
 
         }
-        /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "mkdir"))
         {
-            //char * dirname = strtok(NULL, " ");
-            
-            /* if(dirname == NULL) 
-                printf("Precisa de mais argumentos.\n");
+            char * dirname = strtok(NULL, " ");
 
-            else if(!mkdir(dirname,0777)) 
-                printf("Criado o diretório de nome %s.\n", dirname);
+            // Separar o nome do diretório entre parte existente e parte criada
+            int nome_size;
+            char * novo = nome_arquivo(dirname);
+            nome_size = strlen(novo);
 
-            else 
-                printf("Não foi possível criar o diretório.\n"); */
+            if(nome_size) { // path existe!
+                Diretorio * new = (Diretorio *) malloc(sizeof(Diretorio));
+                Diretorio * aux = NULL, * ant = NULL;
+                char * pai;
+
+                strncpy(pai, dirname, strlen(dirname) - nome_size - 1);
+
+                aux = find_dir(pai, raiz);
+                
+                if(aux->dir_filho) {
+                    aux = aux->dir_filho;
+                    
+                    while(aux) {
+                        ant = aux;
+                        aux = aux->dir_prox;
+                    }
+
+                    ant->dir_prox = new;
+                }
+                else
+                    aux->dir_filho = new;
+
+                new->t_acesso = new->t_alterado =  new->t_criado = (unsigned) time(NULL);
+                new->nome = novo;
+                new->dir_filho = new->dir_prox = NULL;
+                new->pos_fat = find_bitmap();
+                bitmap[new->pos_fat] = 0;            
+
+            }
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "rmdir"))

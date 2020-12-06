@@ -168,6 +168,7 @@ int main ()
                     strcpy(raiz->nome, "/");
                     raiz->tipo = 'D';
                     raiz->node_filho = raiz->node_prox = NULL; // o node_prox de raiz deve sempre ser NULL!!!
+                    raiz->filhos = 0;
                     raiz->t_criado = raiz->t_alterado = raiz->t_acesso = (unsigned) time(NULL);
                     raiz->pos_fat = atual_bitmap;
                     raiz->tamanho = 0;
@@ -236,80 +237,90 @@ int main ()
 
                     printf("Encontrou arquivo! O diretório destino é |%s|!\n", dir->nome);
 
-                    //Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
-                    Celula * novo_arquivo = (Celula *) malloc(sizeof(Celula));
-                    // preciso atualizar primeiro na FAT e pegar tamanho
-                    int pos_ultimo = -1;
+                    if(dir->filhos == 10) {
+                        printf("O diretório chegou ao seu número limite de arquivos(10)!\n");
+                        printf("Não é possível adicionar este arquivo no destino.\n");
+                    }
+                    else {
+                        //Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
+                        Celula * novo_arquivo = (Celula *) malloc(sizeof(Celula));
+                        // preciso atualizar primeiro na FAT e pegar tamanho
+                        int pos_ultimo = -1;
 
-                    char c = fgetc(f_cp);
+                        char c = fgetc(f_cp);
 
-                    while(1) {
+                        while(1) {
 
-                        if( c == EOF || strlen(aux) + 1 == 4000 ) {
+                            if( c == EOF || strlen(aux) + 1 == 4000 ) {
 
-                            if(c == EOF)
-                                strcpy(c_pointer, aux2);
+                                if(c == EOF)
+                                    strcpy(c_pointer, aux2);
+                                else {
+                                    *c_pointer = c;
+                                    printf("%d é o tamanho de c_pointer\n", strlen(c_pointer));
+                                }
+                                
+                                strcat(aux, c_pointer);
+
+                                int pos = find_bitmap();
+
+                                admin[pos] = (void *) aux;
+                                printf("aqui: |%s|\n", aux);
+                                
+                                // insere no bitmap/FAT
+                                bitmap[pos] = 0;
+                                pos_ultimo = pos;
+
+                                //FAT encontra espaço vaGO MUDAR DPS
+                                if(pos_ultimo != -1)
+                                    FAT[pos_ultimo]->prox = pos;
+                                else
+                                    ini = pos;
+
+                                FAT[pos]->prox = -1;
+                                FAT[pos]->endereco = admin[pos];
+                                atual_bitmap++;
+
+                                tam_bytes += strlen(aux);
+                                strcpy(aux, aux2);
+
+                                if(c == EOF)
+                                    break;
+
+                            }
                             else {
+                                c_pointer = (char *) malloc(sizeof(char));
                                 *c_pointer = c;
-                                printf("%d é o tamanho de c_pointer\n", strlen(c_pointer));
+                                strcat(aux, c_pointer);
                             }
                             
-                            strcat(aux, c_pointer);
-
-                            int pos = find_bitmap();
-
-                            admin[pos] = (void *) aux;
-                            printf("aqui: |%s|\n", aux);
-                            
-                            // insere no bitmap/FAT
-                            bitmap[pos] = 0;
-                            pos_ultimo = pos;
-
-                            //FAT encontra espaço vaGO MUDAR DPS
-                            if(pos_ultimo != -1)
-                                FAT[pos_ultimo]->prox = pos;
-                            else
-                                ini = pos;
-
-                            FAT[pos]->prox = -1;
-                            FAT[pos]->endereco = admin[pos];
-                            atual_bitmap++;
-
-                            tam_bytes += strlen(aux);
-                            strcpy(aux, aux2);
-
-                            if(c == EOF)
-                                break;
+                            c = fgetc(f_cp);
 
                         }
-                        else {
-                            c_pointer = (char *) malloc(sizeof(char));
-                            *c_pointer = c;
-                            strcat(aux, c_pointer);
-                        }
+
+                        // atualizar dados do arquivo dentro do diretório que está
+                        novo_arquivo->t_acesso = novo_arquivo->t_alterado = novo_arquivo->t_criado = (unsigned) time(NULL);
+                        printf("%d", novo_arquivo->t_acesso);
+                        novo_arquivo->tamanho = (tam_bytes);
+                        novo_arquivo->pos_fat = ini;
+                        novo_arquivo->node_filho = (Celula *) malloc(sizeof(Celula));
+                        novo_arquivo->node_prox = (Celula *) malloc(sizeof(Celula));
+                        novo_arquivo->node_prox = novo_arquivo->node_filho  = NULL;
+                        novo_arquivo->filhos = 0;
+                        novo_arquivo->tipo = 'A';
+                        novo_arquivo->nome = nome_arquivo(args[0]);
+
+                        printf("%s criado\n", novo_arquivo->nome);
+
+                        // INSERIR NO diretório
+                        if(dir->filhos == 0)
+                            dir->node_filho = novo_arquivo;
+                        else
+                            devolve_ult(dir)->node_prox = novo_arquivo;
                         
-                        c = fgetc(f_cp);
+                        dir->filhos++;
 
                     }
-
-                    // atualizar dados do arquivo dentro do diretório que está
-                    novo_arquivo->t_acesso = novo_arquivo->t_alterado = novo_arquivo->t_criado = (unsigned) time(NULL);
-                    printf("%d", novo_arquivo->t_acesso);
-                    novo_arquivo->tamanho = (tam_bytes);
-                    novo_arquivo->pos_fat = ini;
-                    novo_arquivo->node_filho = (Celula *) malloc(sizeof(Celula));
-                    novo_arquivo->node_prox = (Celula *) malloc(sizeof(Celula));
-                    novo_arquivo->node_prox = novo_arquivo->node_filho  = NULL;
-                    novo_arquivo->tipo = 'A';
-                    novo_arquivo->nome = nome_arquivo(args[0]);
-
-                    printf("%s criado\n", novo_arquivo->nome);
-
-                    // INSERIR NO diretório
-                    if(!dir->node_filho)
-                        dir->node_filho = novo_arquivo;
-                    else
-                        devolve_ult(dir)->node_prox = novo_arquivo;
 
                 }
                 else 
@@ -317,7 +328,6 @@ int main ()
             }
             else
                 printf("Não existe path destino com esse nome.\n");
-            
 
         }
         else if(!strcmp(buf_break, "mkdir"))

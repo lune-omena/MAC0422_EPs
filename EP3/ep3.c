@@ -128,8 +128,8 @@ int main ()
             
             if(arquivo == NULL) 
                 printf("Precisa de mais argumentos.\n");
-            else if(!access(caminho, F_OK)) { // checa se path existe
-            //else if(!access(arquivo, F_OK)) { // checa se path existe
+            //else if(!access(caminho, F_OK)) { // checa se path existe
+            else if(!access(arquivo, F_OK)) { // checa se path existe
                 
                 /* Cria path para o arquivo.txt */
                 int tamanho = strlen(arquivo);
@@ -142,8 +142,8 @@ int main ()
                 strcat(new_path, "/arquivo.txt");
 
                 /* Checa se já existe arquivo.txt */
-                //fp = fopen(new_path, "r+");
-                fp = fopen(caminho2, "r+");
+                fp = fopen(new_path, "r+");
+                //fp = fopen(caminho2, "r+");
 
                 if(fp != NULL) {
                     printf("Sistema de arquivos recuperado\n");
@@ -153,12 +153,13 @@ int main ()
                     // precisamos carregar o sistema de arquivos com o fat, bitmap, etc.
                     printf("\nEndereco fat original: %p", FAT);
                     printf("\nValor fat original 1 : %d", FAT[0]->prox);
-                    recebeAdmin(caminho2, bitmap, FAT);
+                    //recebeAdmin(caminho2, bitmap, FAT);
+                    recebeAdmin(new_path, bitmap, FAT);
                 }
                 else {
                     printf("Temos que criar um novo sistema de arquivos\n");
-                    //fp = fopen(new_path, "w"); // só vamos mexer com o arquivo final no umount, certo?
-                    fp = fopen(caminho2, "w"); // só vamos mexer com o arquivo final no umount, certo?
+                    fp = fopen(new_path, "w"); // só vamos mexer com o arquivo final no umount, certo?
+                    //fp = fopen(caminho2, "w"); // só vamos mexer com o arquivo final no umount, certo?
                     /* aqui criamos o "/"? */
                     //diretório como lista com 1 entrada para cada arquivo
 
@@ -435,6 +436,7 @@ int main ()
             for (int i = 0; i < 10; i++)
         printf("\n Fat prox %d: %d - endereço %d", i, FAT[i]->prox, FAT[i]);
             registraAdmin(caminho2);
+            //registraAdmin(new_path);
             exit(1);
         }
         /* Caso não reconheça nenhum comando */

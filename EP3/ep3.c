@@ -259,12 +259,13 @@ int main ()
                                     strcpy(c_pointer, aux2);
                                 else {
                                     *c_pointer = c;
-                                    printf("%d é o tamanho de c_pointer\n", strlen(c_pointer));
+                                    //printf("%d é o tamanho de c_pointer\n", strlen(c_pointer));
                                 }
                                 
                                 strcat(aux, c_pointer);
 
                                 int pos = find_bitmap();
+                                //printf("%d\n", pos);
 
                                 admin[pos] = (void *) aux;
                                 printf("aqui: |%s|\n", aux);
@@ -335,10 +336,13 @@ int main ()
         else if(!strcmp(buf_break, "mkdir"))
         {
             char * dirname = strtok(NULL, " ");
+            printf("%s\n", dirname);
 
             // Separar o nome do diretório entre parte existente e parte criada
+            printf("Criando diretório!\n");
             int nome_size;
-            char * novo = nome_arquivo(dirname); // pega nome do diretório
+            char * novo = nome_arquivo(dirname); // pega nome do diretório SEM /
+
             nome_size = strlen(novo);
 
             if(nome_size) { // path existe!
@@ -349,13 +353,14 @@ int main ()
 
                 strncpy(pai, dirname, n_pai); 
 
+                printf("%s é o nome do novo diretório, %s é seu pai!\n", novo, pai);
+
                 aux = find_dir(pai, raiz);
 
                 if(aux->filhos == 10) {
                     printf("O diretório %s chegou no limite de arquivos (10)!\n", aux->nome);
                 }
                 else {
-
                     if(aux->filhos > 0) {
                         aux = aux->node_filho;
                         
@@ -370,13 +375,18 @@ int main ()
                         aux->node_filho = new;
 
                     aux->filhos++;
+
                     new->t_acesso = new->t_alterado = new->t_criado = (unsigned) time(NULL);
+                    printf("Tempo: |%d|\n", new->t_acesso);
                     new->nome = novo;
+                    printf("Nome: |%s|\n", new->nome);
                     new->filhos = 0;
                     new->tipo = 'D';
+                    printf("Tipo: |%c|\n", new->tipo);
                     new->node_filho = new->node_prox = NULL;
                     new->tamanho = 0;
                     new->pos_fat = find_bitmap();
+                    printf("Posição no bitmap/FAT: |%d|\n", new->pos_fat);
                     bitmap[new->pos_fat] = 0;            
                 }
 
@@ -598,7 +608,7 @@ int recebeAdmin(char * arquivo)
 int find_bitmap() {
     int aux;
 
-    for(aux = 0; aux < 24414 && bitmap[aux]; aux++);
+    for(aux = 0; aux < 24414 && !bitmap[aux]; aux++);
 
     if(aux == 24414)
         return -1;

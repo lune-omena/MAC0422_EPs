@@ -70,3 +70,4 @@ int find_fat(); // Encontra espaço vago na FAT
 Celula * find_dir(char * nome, Celula * raiz); // Encontra o diretório desejado (NULL se não existe)
 int ult_arq(Diretorio * dir); // devolve o último arquivo do 
 char * nome_arquivo(char * path); // Devolve nome do arquivo dado por um path
+Celula * devolve_ult(Celula * pai); // Devolve a última célula filha do pai

@@ -243,22 +243,23 @@ int main ()
 
                     char c = fgetc(f_cp);
 
-
                     while(1) {
 
                         if( c == EOF || strlen(aux) + 1 == 4000 ) {
 
                             if(c == EOF)
                                 strcpy(c_pointer, aux2);
-                            else
+                            else {
                                 *c_pointer = c;
+                                printf("%d é o tamanho de c_pointer\n", strlen(c_pointer));
+                            }
                             
                             strcat(aux, c_pointer);
 
                             int pos = find_bitmap();
 
                             admin[pos] = (void *) aux;
-                            //printf("aqui: |%s|\n", aux);
+                            printf("aqui: |%s|\n", aux);
                             
                             // insere no bitmap/FAT
                             bitmap[pos] = 0;
@@ -282,6 +283,7 @@ int main ()
 
                         }
                         else {
+                            c_pointer = (char *) malloc(sizeof(char));
                             *c_pointer = c;
                             strcat(aux, c_pointer);
                         }
@@ -306,6 +308,8 @@ int main ()
                     // INSERIR NO diretório
                     if(!dir->node_filho)
                         dir->node_filho = novo_arquivo;
+                    else
+                        devolve_ult(dir)->node_prox = novo_arquivo;
 
                 }
                 else 
@@ -605,4 +609,13 @@ char * nome_arquivo(char * path) {  // Devolve nome do arquivo dado por um path
     }
 
     return past;
+}
+
+Celula * devolve_ult(Celula * pai) {
+    Celula * aux  = pai->node_filho;
+
+    while(aux->node_prox)
+        aux = aux->node_prox;
+
+    return aux;
 }

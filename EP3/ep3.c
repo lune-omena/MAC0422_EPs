@@ -237,7 +237,7 @@ int main ()
                     printf("Encontrou arquivo! O diretório destino é |%s|!\n", dir->nome);
 
                     //Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
-                    Celula * novo_arquivo = (Celula *) malloc(sizeof(Arquivo));
+                    Celula * novo_arquivo = (Celula *) malloc(sizeof(Celula));
                     // preciso atualizar primeiro na FAT e pegar tamanho
                     int pos_ultimo = -1;
 
@@ -283,10 +283,7 @@ int main ()
                         }
                         else {
                             *c_pointer = c;
-                            if(strlen(aux) > 0)
-                                strcat(aux, c_pointer);
-                            else
-                                strcpy(aux, c_pointer);
+                            strcat(aux, c_pointer);
                         }
                         
                         c = fgetc(f_cp);

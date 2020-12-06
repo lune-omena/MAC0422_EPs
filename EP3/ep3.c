@@ -190,6 +190,7 @@ int main ()
         else if(!strcmp(buf_break, "cp"))
         {
             int i;
+            buf_break = strtok(NULL, " "); // pega cp
 
             for(i = 0; buf_break != NULL && i < 2; i++) { // origem e destino
                 args[i] = buf_break;
@@ -203,10 +204,13 @@ int main ()
             char aux[4000];
             char aux2[4000] = "\0";
             int tam_txt = 0;
-            int tam_kbytes = 0;
+            int tam_bytes = 0;
             int ini = -1; 
 
-            if(!access(args[1], F_OK)) { // encontrou path para dest e orig
+            Diretorio * dir = find_dir(args[1], raiz);
+
+            //if(!access(args[1], F_OK)) { // encontrou path para dest e orig
+            if(dir) {
 
                 FILE * f_cp = fopen(args[0], "r");
 
@@ -218,6 +222,7 @@ int main ()
                     // se não checa se o tamanho da string é <= 4000, se for então ele ocupou o espaço total e aloca
                     //              se não for, quer dizer que acabou definitivamente e ele vai receber posição -1
 
+                    printf("Encontrou arquivo! O diretório destino é |%s|!\n", dir->nome);
 
                     Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
                     // preciso atualizar primeiro na FAT e pegar tamanho
@@ -228,12 +233,14 @@ int main ()
                         
                         // preciso zerar o aux em algum momento
                         tam_txt = strlen(texto);
+
+                        printf("%d: |%s| e |%c|\n", tam_txt, texto, texto[tam_txt-1]);
                         
                         // checando se último elemento era newline
-                        if(texto[tam_txt-1] == "\n") { // falta ler mais coisa, talvez
+                        if(texto[tam_txt-1] == '\n') { // falta ler mais coisa, talvez
                             //strlen não conta \0
+                            printf("tem newline \n");
                             if(strlen(aux) + tam_txt >= 4000) {
-
                                 if(tam_txt > 4000 - strlen(aux)) { // se o tamanho da nova string for maior que o max
                                     // "Corta string"
                                     strncat(aux, texto, 4000 - strlen(aux));
@@ -262,7 +269,7 @@ int main ()
                                     FAT[pos].endereco = admin[pos];
                                     atual_bitmap++;
 
-                                    tam_kbytes += 4;
+                                    tam_bytes += 4000;
 
                                 }
                                 else { // conteúdo  == 
@@ -291,12 +298,14 @@ int main ()
                                     FAT[pos].endereco = admin[pos];
                                     atual_bitmap++;
 
-                                    tam_kbytes += 4;
+                                    tam_bytes += 4000;
                                 }
 
                             }
-                            else 
+                            else { // ok
                                 strcat(aux, texto);
+                                printf("aqui1: %s\n", aux);
+                            }
                             
                         }
                         else if(strlen(aux) + tam_txt > 4000) { // pode estar faltando mais coisa
@@ -326,19 +335,22 @@ int main ()
                             FAT[pos].endereco = admin[pos];
                             atual_bitmap++;
 
-                            tam_kbytes += 4;
+                            tam_bytes += 4000;
                         }
                         else if (strlen(aux) + tam_txt == 4000) {
                             // conteúdo  == 
-                            //  Concatena em aux
+                            printf("Entrou aqui!\n");
+                            // Concatena em aux
                             strcat(aux, texto);
 
+                            printf("Entrou aqui!\n");
                             // encontra espaço vago no bitmap/FAT
                             int pos = find_bitmap();
 
                             // insere no bitmap/FAT
 
                             admin[pos] = (void *) aux;
+                            printf("aqui: |%s|\n", aux);
                             strcpy(aux, aux2);
                             
                             // insere no bitmap/FAT
@@ -355,7 +367,7 @@ int main ()
                             FAT[pos].endereco = admin[pos];
                             atual_bitmap++;
 
-                            tam_kbytes +=4;
+                            tam_bytes += 4000;
                         }
                         else { // terminou o file
                             strcat(aux, texto);
@@ -363,6 +375,7 @@ int main ()
                             int pos = find_bitmap();
 
                             admin[pos] = (void *) aux;
+                            printf("aqui: |%s|\n", aux);
                             
                             // insere no bitmap/FAT
                             bitmap[pos] = 0;
@@ -378,15 +391,17 @@ int main ()
                             FAT[pos].endereco = admin[pos];
                             atual_bitmap++;
 
-                            tam_kbytes += (strlen(aux))/1000;
+                            tam_bytes += strlen(aux);
                         }
                         
                     }
 
                     // atualizar dados do arquivo dentro do diretório que está
                     novo_arquivo->arq_acesso = novo_arquivo->arq_alterado = novo_arquivo->arq_criado = (unsigned) time(NULL);
-                    novo_arquivo->tamanho = (tam_kbytes)*1000;
+                    novo_arquivo->tamanho = (tam_bytes);
                     novo_arquivo->pos_fat = ini;
+
+                    // INSERIR NO diretório
 
                 }
                 else 
@@ -556,6 +571,23 @@ int find_bitmap() {
     return aux;
 }
 
-Diretorio * find_dir(char * nome) {
-    
+Diretorio * find_dir(char * nome, Diretorio * raiz) {
+    Diretorio * aux = raiz;
+
+    if(!strcmp(nome, raiz->nome)) // é o "/"
+        return raiz;
+
+    char * token = strtok(nome, "/");
+
+    while(token) {
+
+        while(aux && !strcmp(token, aux->nome))
+            aux = aux->dir_prox;
+        
+        if(aux)
+            token = strtok(nome, "/");
+        else token = NULL;
+    }
+
+    return aux;
 }

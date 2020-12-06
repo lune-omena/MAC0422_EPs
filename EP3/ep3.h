@@ -20,6 +20,7 @@ typedef struct cell {
     int pos_fat; // entrada na tabela FAT
 
     char * nome;
+    struct cell * arqv_prox; // segundo arquivo do diretório 
 
     unsigned int arq_criado; // instante de tempo em que o arquivo foi criado
     unsigned int arq_alterado; // instante de tempo em que o arquivo foi alterado
@@ -51,4 +52,5 @@ typedef struct list {
 char * definePrompt(); // Criaçao de prompt personalizado
 int find_bitmap(); // Encontra espaço vago na bitmap (retorna -1 se não existe espaço)
 int find_fat(); // Encontra espaço vago na FAT
-Diretorio * find_dir(char * nome); // Encontra o diretório desejado
+Diretorio * find_dir(char * nome, Diretorio * raiz); // Encontra o diretório desejado (NULL se não existe)
+int ult_arq(Diretorio * dir); // devolve o último arquivo do 

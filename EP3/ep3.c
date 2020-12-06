@@ -62,6 +62,8 @@ int main ()
 
     // indica próximo espaço vago?
     int atual_bitmap = 56;
+    int inicio_dados = atual_bitmap; /* recebe inicio do sistema de dados*/
+    
 
     for(int i = 0; i < atual_bitmap; i++)
         bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
@@ -415,16 +417,24 @@ int main ()
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "rm"))
         {
-            //char * dirname = strtok(NULL, " ");
-            
-            /* if(dirname == NULL) 
+            char * dirname = strtok(NULL, " ");
+            int result;
+
+            if(dirname == NULL)
+            {
                 printf("Precisa de mais argumentos.\n");
+                break;
+            }
+            /* vai procurar o arquivo na tabela de diretorios, começando pelo */
+            /* Resultado: se 0, conseguiu excluir os arquivos. 
+                          se 1, não conseguiu excluir o arquivo, ou não encontrou o arquivo;*/
+            result = rm_diretorio(dirname, inicio_dados); 
 
-            else if(!mkdir(dirname,0777)) 
-                printf("Criado o diretório de nome %s.\n", dirname);
+            if (result)
+                printf("\nArquivo não encontrado ou problema ao excluir o arquivo. Tente novamente.");
+            else
+                printf("\nArquivo apagado com sucesso.");
 
-            else 
-                printf("Não foi possível criar o diretório.\n"); */
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "ls"))
@@ -628,4 +638,10 @@ Celula * devolve_ult(Celula * pai) {
         aux = aux->node_prox;
 
     return aux;
+}
+
+int rm_diretorio(char * arquivo, int inicio_dados)
+{
+
+    return 0;
 }

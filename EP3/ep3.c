@@ -22,9 +22,11 @@
 
 /* VARIÁVEIS GLOBAIS */
 int    bitmap[BLOCOS]; 
-Bloco  FAT[BLOCOS];
+Bloco *FAT[BLOCOS];
 void * admin[BLOCOS];
 
+int registraAdmin(char * arquivo);
+int recebeAdmin(char * arquivo, int * bitmap, Bloco * FAT);
 
 int main ()
 {
@@ -53,6 +55,9 @@ int main ()
     /* A FAT vai ocupar o dobro porque vamos utilizá-la para endereçar diretamente os blocos */
     /* No total, são 51 espaços pré-ocupados */ 
 
+    for (int i = 0; i < BLOCOS; i ++)
+        FAT[i] = malloc(sizeof(Bloco));
+
     for(int i = 0; i < BLOCOS; i++)
         bitmap[i] = 1; // blocos livres representados por 1
 
@@ -60,7 +65,7 @@ int main ()
     int atual_bitmap = 51;
 
     for(int i = 0; i < atual_bitmap; i++)
-        bitmap[i] = 1; // blocos ocupados pelo bitmap e pelo FAT
+        bitmap[i] = 0; // blocos ocupados pelo bitmap e pelo FAT
     
     /*
     for(int i = 0; i < BLOCOS; i++)
@@ -75,14 +80,16 @@ int main ()
     printf("Posicao 1 do bitmap pelo vetorzao: %d\n",  *(int *) &admin[0][sizeof(int)*posicao]);
 
     /* inicialização do FAT */
-    FAT[0].prox = -1;
-    FAT[0].endereco = admin[0];
+    FAT[0]->prox = -1;
+    FAT[0]->endereco = admin[0];
 
     for(int i = 1; i < atual_bitmap; i++)
-        FAT[i].prox =  i+1;
+        FAT[i]->prox =  i+1;
+    for(int i = atual_bitmap; i < BLOCOS; i++)
+        FAT[i]->prox =  -1;
     
-    FAT[atual_bitmap-1].prox = -1;
-    FAT[1].endereco = admin[1];
+    FAT[atual_bitmap-1]->prox = -1;
+    FAT[1]->endereco = admin[1];
 
     // Diretório "/" é o raiz
     Diretorio * raiz; // criei antes
@@ -99,7 +106,8 @@ int main ()
 
     using_history();
     printf("Digite CTRL+D para finalizar.\n");
-
+    char * caminho2 = "/media/lune/Data/Desktop/USP/Github/MAC0422_EPs/EP3/arquivo.txt";
+    char * caminho = "/media/lune/Data/Desktop/USP/Github/MAC0422_EPs/EP3";
 
     while ((buffer = readline(prompt)))
     {
@@ -120,8 +128,8 @@ int main ()
             
             if(arquivo == NULL) 
                 printf("Precisa de mais argumentos.\n");
-
-            else if(!access(arquivo, F_OK)) { // checa se path existe
+            else if(!access(caminho, F_OK)) { // checa se path existe
+            //else if(!access(arquivo, F_OK)) { // checa se path existe
                 
                 /* Cria path para o arquivo.txt */
                 int tamanho = strlen(arquivo);
@@ -134,16 +142,23 @@ int main ()
                 strcat(new_path, "/arquivo.txt");
 
                 /* Checa se já existe arquivo.txt */
-                fp = fopen(new_path, "r+");
+                //fp = fopen(new_path, "r+");
+                fp = fopen(caminho2, "r+");
 
                 if(fp != NULL) {
                     printf("Sistema de arquivos recuperado\n");
                     // precisamos carregar o sistema de arquivos com o fat, bitmap, etc.
+                    puts(new_path);
+                    fclose(fp);
+                    // precisamos carregar o sistema de arquivos com o fat, bitmap, etc.
+                    printf("\nEndereco fat original: %p", FAT);
+                    printf("\nValor fat original 1 : %d", FAT[0]->prox);
+                    recebeAdmin(caminho2, bitmap, FAT);
                 }
                 else {
                     printf("Temos que criar um novo sistema de arquivos\n");
-                    fp = fopen(new_path, "w"); // só vamos mexer com o arquivo final no umount, certo?
-                    
+                    //fp = fopen(new_path, "w"); // só vamos mexer com o arquivo final no umount, certo?
+                    fp = fopen(caminho2, "w"); // só vamos mexer com o arquivo final no umount, certo?
                     /* aqui criamos o "/"? */
                     //diretório como lista com 1 entrada para cada arquivo
 
@@ -161,8 +176,8 @@ int main ()
                     admin[atual_bitmap] = (void *) raiz;
 
                     //FAT
-                    FAT[atual_bitmap].prox = -1;
-                    FAT[atual_bitmap].endereco = admin[atual_bitmap];
+                    FAT[atual_bitmap]->prox = -1;
+                    FAT[atual_bitmap]->endereco = admin[atual_bitmap];
 
                     //bitmap
                     bitmap[atual_bitmap] = 0;
@@ -249,12 +264,12 @@ int main ()
 
                             //FAT encontra espaço vaGO MUDAR DPS
                             if(pos_ultimo != -1)
-                                FAT[pos_ultimo].prox = pos;
+                                FAT[pos_ultimo]->prox = pos;
                             else
                                 ini = pos;
 
-                            FAT[pos].prox = -1;
-                            FAT[pos].endereco = admin[pos];
+                            FAT[pos]->prox = -1;
+                            FAT[pos]->endereco = admin[pos];
                             atual_bitmap++;
 
                             tam_bytes += strlen(aux);
@@ -406,6 +421,20 @@ int main ()
         else if(!strcmp(buf_break, "sai"))
         {
             /* freeProgram(); */
+            printf("\nEntrei no sai");
+            printf("\nEndereço do bitmap %p", bitmap);
+            printf("\nEndereço do fat %p", &FAT);
+            printf("\nEndereço do admin %p", admin);
+            printf("\nValor do bitmap %d", bitmap[5]);
+            printf("\nEndereço do valor do bitmap %p", bitmap[5]);
+            printf("\nEndereço do admin-bitmap %d", &admin[0][0]);
+            printf("\nEndereço do admin-bitmap %p", &admin[0][0]);
+            printf("\nEndereço do admin-fat %p", (Bloco *) admin[1]);
+            //for (int i = 0; i < 10; i++)
+            //    printf("\n Bitmap %d: %d", i, bitmap[i]);
+            for (int i = 0; i < 10; i++)
+        printf("\n Fat prox %d: %d - endereço %d", i, FAT[i]->prox, FAT[i]);
+            registraAdmin(caminho2);
             exit(1);
         }
         /* Caso não reconheça nenhum comando */
@@ -437,6 +466,120 @@ char * definePrompt()
 
 
     return prompt;
+}
+
+
+int registraAdmin(char * arquivo)
+{
+    FILE *fp;
+    int i;
+    /* reescreve conteudo armazenado */
+    printf("\nEntrei tada");
+    printf("\nEndereço de entrada: %p", admin);
+    printf("\nEndereço de entrada: %p", &admin);
+   // printf("\nEndereço de entrada: %p", admin[0]);
+    printf("\nEndereço do admin %p", *(long int *) admin);
+    int * bitmap = (long int *) admin[0];
+    Bloco ** fat =  (Bloco *) admin[1];
+    printf("\nEndereço do bitmap: %p", bitmap);
+    printf("\nEndereço do fat: %p", fat);
+    printf("\nEndereço do bitmap?: %p", bitmap[5]);
+    for (int i = 100; i < 110; i++)
+        printf("\n Bitmap %d: %d", i, bitmap[5]);
+    for (int i = 100; i < 110; i++)
+        printf("\n Fat prox %d: %d", i, fat[i]->prox);
+    //printf("\nEndereço de entrada: %p", (int *) *(void *) &admin[0]);
+    //printf("\nEndereco do bitmap-void: %p", &admin[1]);
+    
+   /* printf("\nEndereco do bitmap-void: %p", *(int *) &admin[0][sizeof(int)*0]);
+    printf("\nValor do bitmap: %d", bitmap[0]);*/
+    //getchar();
+
+    fp = fopen(arquivo, "w");
+    printf("\nAbri o arquivo");
+    
+    
+    for (i = 0; i < BLOCOS; i++)
+       fprintf(fp, "%d", bitmap[i]);
+    fputc('\n', fp);
+    for (i = 0; i < BLOCOS; i++)
+       fprintf(fp, "%5d", FAT[i]->prox);
+    printf ("\nGRAVAMOS %d BLOCOS\n", i);
+    printf("\n FPP: %p", fp);
+    printf("\nTeste");
+    //fseek( fp, 0, SEEK_CUR );
+    
+    fclose(fp);
+    return 1;
+}
+
+int recebeAdmin(char * arquivo, int * bitmap, Bloco * FAT)
+{
+    FILE *fp;
+    int n, size;
+    char ch;
+    char * textfat[5];
+    int i = 0;
+    Bloco ** fat =  (Bloco *) admin[1];
+    printf("\nEndereco fat: %p", fat);
+    printf("\nValor fat original 1 : %d", fat[0]->prox);
+    puts(arquivo);
+    fp = fopen(arquivo, "r");
+    printf("\n FPP: %p", fp);
+    
+    /* bitmap = (int *) *admin[0];
+    fat = (int *) *admin[1]; */
+    /* int num;
+    char c;
+    c = fgetc(fp);
+    printf("\n%d", c);
+    num = atoi(&c);
+    printf("\n%d", num); */
+    /* First line: bitmap */
+    while ((ch = fgetc(fp)) != '\n' && ch != EOF)
+    {    
+        
+        bitmap[i] = atoi(&ch);
+        /* if (n == size) {
+            size *= 2;
+            nline = mallocSafe((size+1)*sizeof(char)); 
+            strncpy(nline, line, n);
+            free(line); 
+            line = nline;
+        }
+        line[n++] = ch; */
+        i++;
+    }
+    /* Second line: FAT */
+    i = 0;
+    while ((ch = fgets(textfat, 6, fp)) != NULL && ch != EOF)
+    {    
+       /*  printf("\nTexto texto: ");
+        puts(textfat);
+        printf(" indice: %d numero: %d", i, atoi(textfat));
+        printf(" ola");
+        printf(" fat: %d", FAT[i].prox); */
+        printf("\nValor fat original 1 : %p - contador: %d ué value: %d", fat[i], i, fat[24413]->prox);
+        printf(" Valor arquivo: %d", atoi(textfat));
+        fat[i]->prox = atoi(textfat);
+        //FAT[i].prox = atoi(textfat);
+        /* if (n == size) {
+            size *= 2;
+            nline = mallocSafe((size+1)*sizeof(char)); 
+            strncpy(nline, line, n);
+            free(line); 
+            line = nline;
+        }
+        line[n++] = ch; */
+        i++;
+        if (i == 24414)
+            break;
+    }
+
+ 
+    printf("\nSai!");
+    fclose(fp);
+    return 1;
 }
 
 int find_bitmap() {

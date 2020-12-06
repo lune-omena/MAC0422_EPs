@@ -54,3 +54,4 @@ int find_bitmap(); // Encontra espaço vago na bitmap (retorna -1 se não existe
 int find_fat(); // Encontra espaço vago na FAT
 Diretorio * find_dir(char * nome, Diretorio * raiz); // Encontra o diretório desejado (NULL se não existe)
 int ult_arq(Diretorio * dir); // devolve o último arquivo do 
+char * nome_arquivo(char * path); // Devolve nome do arquivo dado por um path

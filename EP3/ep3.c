@@ -25,9 +25,6 @@ int     bitmap[BLOCOS];
 Bloco * FAT[BLOCOS];
 void  * admin[BLOCOS];
 
-int registraAdmin(char * arquivo);
-int recebeAdmin(char * arquivo);
-
 int main ()
 {
     /* auxiliares para o terminal */
@@ -569,26 +566,59 @@ char * definePrompt()
 int registraAdmin(char * arquivo)
 {
     FILE *fp;
-    int i;
+    int i, inicio_dados = 56;
+    Celula * bloco_aux;
 
     fp = fopen(arquivo, "w");
 
     if (fp != NULL)
     {
         printf("\nAbri o arquivo");
-    
+        
+        /* Primeira linha: bitmap */
         for (i = 0; i < BLOCOS; i++)
             fprintf(fp, "%d", bitmap[i]);
+
         fputc('\n', fp);
+
+        /* Segunda linha linha: bitmap */
         for (i = 0; i < BLOCOS; i++)
             fprintf(fp, "%5d", FAT[i]->prox);
         
         printf("\nGRAVAMOS %d BLOCOS\n", i);
-        printf("\nSai!");
+
+        /* Próximas linhas: dados em disco */
+        /* Blocos de metadados - irnformacoes de arquivos e diretorios */
+        for(i = inicio_dados; i < (inicio_dados + 4882); i++)
+        {
+            bloco_aux = (Bloco *) FAT[i]->endereco;
+            if (bloco_aux != NULL)
+            {
+                fprintf(fp, "|%s|%c|%d", bloco_aux->nome, bloco_aux->tipo, bloco_aux->tamanho);
+                fprintf(fp, "|%d|%d", bloco_aux->pos_fat, bloco_aux->filhos);
+                fprintf(fp, "|%s", asctime(localtime(bloco_aux->t_criado)));
+                fprintf(fp, "|%s", asctime(localtime(bloco_aux->t_acesso)));
+                fprintf(fp, "|%s", asctime(localtime(bloco_aux->t_alterado)));
+                fprintf(fp, "|%d", bloco_aux->node_filho->pos_fat);
+                fprintf(fp, "|%d", bloco_aux->node_prox->pos_fat);
+            }            
+            
+            fputc('\n', fp);
+        }
+        
+        /* Blocos de dados - informações em texto */
+        for (i = i; i < BLOCOS; i++)
+        {
+            if (FAT[i] != -1)
+            {
+                fprintf(fp, "%s", (char *) admin[i]);
+            }
+            fputc('\n', fp);
+        }
     }
     
     //fseek( fp, 0, SEEK_CUR );
-    
+    printf("\nSai!");
     fclose(fp);
     return 1;
 }
@@ -750,7 +780,7 @@ int ls_diretorio(char * diretorio, int inicio_dados)
     return 1;
 }
 
-int rm_diretorio(char * arquivo, int inicio_dados)
+int rm_arquivo(char * arquivo, int inicio_dados)
 {
     Celula * raiz, * aux, * aux_ant;
     int pos_fat, atual;
@@ -837,6 +867,97 @@ int rm_diretorio(char * arquivo, int inicio_dados)
 
     }
     
+
+    return 0;
+}
+
+int rm_diretorio(char * diretorio, int inicio_dados)
+{
+    /* por enquanto está como o rm_arquivo */
+    Celula * raiz, * aux, * aux_ant;
+    int pos_fat, atual;
+    //Bloco * bloco;
+    raiz = admin[inicio_dados]; //recebendo o /
+    printf("\nRaiz: %s", raiz->nome);
+
+    char * caminho = strtok(diretorio, "/");
+    char * proximo = strtok(NULL, "/");
+
+    printf("\nCaminho: %s proximo: %s", caminho, proximo);
+    aux_ant = raiz;
+    printf("\nOlá");
+    aux = raiz->node_filho;
+    printf("\naux: %p", aux);
+    
+    /* percorrendo caminho enviado pelo arquivo */
+    while( proximo != NULL )
+    {
+        printf( " %s\n", caminho);
+        /* percorrendo lista de filhos */
+        while (aux->node_filho != NULL && strcmp(aux->nome, caminho) != 0 )
+        {
+            aux_ant = aux;
+            aux = aux->node_filho;
+        }
+
+        if (aux == NULL)
+            return 0;
+        
+        caminho = proximo;
+        proximo = strtok(NULL, "/");
+        
+    }
+    printf("\nOpa, passei - e devia ter passado mesmo");
+    /* encontrei a pasta do arquivo, percorro a lista de irmaos
+       para encontrar o arquivo.*/
+    if (aux->node_prox != NULL)
+    {
+        aux_ant = aux;
+        aux = aux->node_prox;
+        printf("\n Aqui não preciso entrar");
+    }
+    printf("\n Passei por onde não precisava entrar");
+    printf("\n Comparação: %d", strcmp(aux->nome, caminho));
+    printf("\n Antes da comparação, valor de aux: %p", aux);
+    while (aux != NULL && strcmp(aux->nome, caminho) != 0 )
+    {
+        aux_ant = aux;
+        aux = aux->node_filho;
+    }
+    printf("\n Depois da comparação");
+    
+    if (aux == NULL)
+        return 0;
+    else /* Encontrei o arquivo, vamos apagá-lo */
+    {
+        printf("\n Encontrei o arquivo");
+        printf("\n auxant %p nome %s  -- auxprox %p", aux_ant, aux_ant->nome, aux->node_prox);
+         /* retira registro do diretorio anterior */
+         /* caso o anterior seja um irmão */
+        if (aux_ant->node_prox == aux)
+            aux_ant->node_prox = aux->node_prox;
+        /* caso o anterior seja uma mãe */
+        if (aux_ant->node_filho == aux)
+            aux_ant->node_filho = aux->node_prox;
+
+        /* retira registro na FAT e bitmap */
+        pos_fat = aux->pos_fat;
+        printf("\nPosicao na fat do arquivo a ser deletado: %d", pos_fat);
+        
+        while (FAT[pos_fat]->prox != -1)
+        {
+            atual = pos_fat;
+            pos_fat = FAT[pos_fat]->prox;
+            /* essa seria a parte de apagar a entrada em admin[x] */
+            /* free(FAT[atual]->endereco)*/
+            FAT[atual]->prox = -1;
+            bitmap[atual] = 1;
+        }
+
+        bitmap[pos_fat] = 1;
+
+
+    }
 
     return 0;
 }

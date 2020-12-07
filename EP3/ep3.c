@@ -401,7 +401,7 @@ int main ()
                 }
                 else {
                     
-                    if(aux->filhos)
+                    if(aux->node_filho && aux->filhos)
                         devolve_ult(aux)->node_prox = new;
                     else
                         aux->node_filho = new;
@@ -479,7 +479,6 @@ int main ()
 
                     int resultado = remove_filhos(aux);
 
-                    /*           
                     indice = aux->pos_fat;
                 
                     if(ant && aux->node_prox) {
@@ -488,6 +487,10 @@ int main ()
                     else if(aux->node_prox) { // o aux era o primeiro
                         dir_node->node_filho = aux->node_prox;
                     }
+                    else {
+                        dir_node->node_filho = NULL;
+                    }
+                    
 
                     indice = aux->pos_fat;
                     printf("\nPosicao na fat do arquivo a ser deletado: %d\n", indice);
@@ -506,7 +509,9 @@ int main ()
 
                     admin[indice] = NULL;
                     FAT[indice]->endereco = NULL;
-                    bitmap[indice] = 1;*/
+                    bitmap[indice] = 1;
+
+                    free(aux);
 
                     printf("Arquivo foi deletado com sucesso!\n");
                 }
@@ -940,7 +945,6 @@ int remove_filhos(Celula * pai) {
                 bitmap[atual] = 1;
             }
 
-            free(aux->nome);
             aux->filhos = 0;
             aux->pos_fat = -1;
             aux->node_filho = NULL;

@@ -429,16 +429,64 @@ int main ()
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "cat"))
         {
-            //char * dirname = strtok(NULL, " ");
-            
-            /* if(dirname == NULL) 
-                printf("Precisa de mais argumentos.\n");
+            char * dirname = strtok(NULL, " ");
+            Celula * dir_node, * aux;
 
-            else if(!mkdir(dirname,0777)) 
-                printf("Criado o diretório de nome %s.\n", dirname);
+            // Copia dirname para um dummy para não alterar valor original
+            char * org_aux = (char *) malloc((strlen(dirname)+1)*sizeof(char));
+            strncpy(org_aux, dirname, strlen(dirname));
+            int indice;
 
-            else 
-                printf("Não foi possível criar o diretório.\n"); */
+            // vai ter o path e o nome do arquivo
+            // do tipo /home/lara/code/4o/so/MAC0422_EPs/EP3/oi.txt
+
+            char * arqv = nome_arquivo(org_aux);
+
+            // Copia diretório a dir
+            int arq_tam = strlen(dirname) - strlen(arqv);
+            char * dir = (char *) malloc((arq_tam+1)*sizeof(char));
+            strncpy(dir, dirname, arq_tam);
+            printf("nome do dir: %s\n", dir);
+
+            dir_node = find_dir(dir, raiz);
+
+            if(dir_node) { // dir_node deve ser pai do arquivo, logo:
+                aux = dir_node->node_filho;
+                int achou = 0;
+
+                while(aux && !achou) {
+
+                    if(aux->tipo == 'A'  && !strcmp(aux->nome, arqv)) {
+                        achou = 1;
+                    }
+                    else
+                        aux = aux->node_prox;
+                    
+                }
+
+                if(aux) { // encontrou o arquivo!
+                    printf("Arquivo encontrado :)\n");
+                    
+                    indice = aux->pos_fat;
+                    int i = FAT[indice]->prox;
+                    
+                    if(aux->tamanho >= 4000) {
+                        while(i != -1) {
+                            printf("%s", (char *) admin[i]);
+                            i = FAT[i]->prox;
+                        }
+                    }
+                    else {
+                        printf("%s\n", (char *) admin[indice]);
+                    }
+                }
+                else 
+                    printf("O arquivo não foi encontado.\n");
+
+            }
+            else
+                printf("Esse path não existe\n");
+
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "touch"))

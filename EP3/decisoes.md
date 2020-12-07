@@ -7,6 +7,7 @@
 - VETORZÃO representativo dos blocos
 - gambiarra do fat se auto-representando
 - DIRETÓRIO: no máximo 10 subarquivos!!!!
+- qanfo for fazer ref. a diretŕio, sempre usa / No final!!!!!!!!!!!!!!!!!!!!!
 
 
 ## Itens a completar

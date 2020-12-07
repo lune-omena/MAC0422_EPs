@@ -405,7 +405,8 @@ int main ()
                     new->tamanho = 0;
                     new->pos_fat = find_bitmap();
                     printf("Posição no bitmap/FAT: |%d|\n", new->pos_fat);
-                    bitmap[new->pos_fat] = 0;            
+                    bitmap[new->pos_fat] = 0;
+                    admin[new->pos_fat] = (void *) new;
 
                     printf("Agora %s é filho oficia de %s\n\n", new->nome, aux->nome);
                 }
@@ -415,16 +416,90 @@ int main ()
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "rmdir"))
         {
-            //char * dirname = strtok(NULL, " ");
-            
-            /* if(dirname == NULL) 
-                printf("Precisa de mais argumentos.\n");
+            char * dirname = strtok(NULL, " ");
+            Celula * dir_node, * aux, * ant;
 
-            else if(!mkdir(dirname,0777)) 
-                printf("Criado o diretório de nome %s.\n", dirname);
+            // Copia dirname para um dummy para não alterar valor original
+            char * org_aux = (char *) malloc((strlen(dirname)+1)*sizeof(char));
+            strncpy(org_aux, dirname, strlen(dirname));
+            int indice;
 
-            else 
-                printf("Não foi possível criar o diretório.\n"); */
+            // vai ter o path e o nome do arquivo
+            // do tipo /home/lara/code/4o/so/MAC0422_EPs/EP3/oi.txt
+
+            char * dir = nome_arquivo(org_aux);
+
+            // Copia diretório a dir
+            int dir_tam = strlen(dirname) - strlen(dir) - 1; // retira a "/"
+            char * dir_ant = (char *) malloc((dir_tam+1)*sizeof(char));
+            strncpy(dir_ant, dirname, dir_tam);
+            printf("nome do path anterior ao diretório: %s\n", dir_ant);
+
+            dir_node = find_dir(dir_ant, raiz);
+
+            if(dir_node) { // dir_node deve ser pai do arquivo, logo:
+
+                aux = dir_node->node_filho;
+                int achou = 0;
+
+                while(aux && !achou) {
+
+                    if(aux->tipo == 'D'  && !strcmp(aux->nome, dir)) {
+                        achou = 1;
+                    }
+                    else {
+                        ant = aux;
+                        aux = aux->node_prox;
+                    }
+                    
+                }
+
+                if(aux) { // encontrou o arquivo!
+                    printf("Diretório encontrado :) %s\n", dirname);
+
+                    // Primeiro vou deletar todos os arquivos que estiverem dentro do diretório:
+                    Celula * arq = aux;
+
+                    int resultado = remove_filhos(aux);
+
+                    /*           
+                    indice = aux->pos_fat;
+                
+                    if(ant && aux->node_prox) {
+                        ant->node_prox = aux->node_prox;
+                    }
+                    else if(aux->node_prox) { // o aux era o primeiro
+                        dir_node->node_filho = aux->node_prox;
+                    }
+
+                    indice = aux->pos_fat;
+                    printf("\nPosicao na fat do arquivo a ser deletado: %d\n", indice);
+                    int atual;
+                    
+                    while (FAT[indice]->prox != -1)
+                    {
+                        atual = indice;
+                        indice = FAT[indice]->prox;
+                        admin[atual] = NULL;
+
+                        FAT[atual]->endereco = NULL;
+                        FAT[atual]->prox = -1;
+                        bitmap[atual] = 1;
+                    }
+
+                    admin[indice] = NULL;
+                    FAT[indice]->endereco = NULL;
+                    bitmap[indice] = 1;*/
+
+                    printf("Arquivo foi deletado com sucesso!\n");
+                }
+                else 
+                    printf("O arquivo não foi encontado.\n");
+
+            }
+            else
+                printf("Esse path não existe\n");
+
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "cat"))
@@ -757,6 +832,97 @@ int registraAdmin(char * arquivo)
     //fseek( fp, 0, SEEK_CUR );
     printf("\nSai!");
     
+    return 1;
+}
+
+int remove_filhos(Celula * pai) {
+
+    if(pai == NULL)
+        return 1;
+
+    int indice = pai->pos_fat;
+    int ok = 0;
+
+    if(!pai->node_filho)
+        return 1;
+
+    Celula * aux = pai->node_filho;
+    Celula * ant = NULL;
+
+    while(aux) {
+        if(aux->tipo == 'A') {
+
+            // CORREÇÃO DA LISTA LIGADA
+            // quer dizer que não é mais o primeiro filho, e seria o atual
+            if(aux->node_prox)
+                pai->node_filho = aux->node_prox;
+            else
+                pai->node_filho = NULL;
+
+            indice = aux->pos_fat;
+            printf("\nPosicao na fat do arquivo a ser deletado: %d\n", indice);
+            int atual;
+            
+            while (FAT[indice]->prox != -1)
+            {
+                atual = indice;
+                indice = FAT[indice]->prox;
+                admin[atual] = NULL;
+
+                FAT[atual]->endereco = NULL;
+                FAT[atual]->prox = -1;
+                bitmap[atual] = 1;
+            }
+
+            admin[indice] = NULL;
+            FAT[indice]->endereco = NULL;
+            bitmap[indice] = 1;
+
+        }
+        else if(aux->tipo == 'D') {
+            // CORREÇÃO DA LISTA LIGADA
+            // quer dizer que não é mais o primeiro filho, e seria o atual
+            if(aux->node_prox)
+                pai->node_filho = aux->node_prox;
+            else 
+                pai->node_filho = NULL;
+
+            ok = remove_filhos(aux); // remoção de arquivos e diretórios filhos
+
+            // ELIMINAÇÃO DA CÉLULA
+
+            indice = aux->pos_fat;
+            printf("\nPosicao na fat do diretório a ser deletado: %d\n", indice);
+            int atual;
+            
+            while (FAT[indice]->prox != -1)
+            {
+                atual = indice;
+                indice = FAT[indice]->prox;
+                admin[atual] = NULL;
+
+                FAT[atual]->endereco = NULL;
+                FAT[atual]->prox = -1;
+                bitmap[atual] = 1;
+            }
+
+            free(aux->nome);
+            aux->filhos = 0;
+            aux->pos_fat = -1;
+            aux->node_filho = NULL;
+
+            admin[indice] = NULL;
+            FAT[indice]->endereco = NULL;
+            bitmap[indice] = 1;
+
+        }
+
+        ant = aux;
+        aux = aux->node_prox;
+        ant->node_prox = NULL;
+        free(ant);
+    }
+
     return 1;
 }
 

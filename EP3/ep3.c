@@ -505,6 +505,91 @@ int main ()
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "rm"))
         {
+
+            char * dirname = strtok(NULL, " ");
+            Celula * dir_node, * aux, * ant;
+
+            // Copia dirname para um dummy para não alterar valor original
+            char * org_aux = (char *) malloc((strlen(dirname)+1)*sizeof(char));
+            strncpy(org_aux, dirname, strlen(dirname));
+            int indice;
+
+            // vai ter o path e o nome do arquivo
+            // do tipo /home/lara/code/4o/so/MAC0422_EPs/EP3/oi.txt
+
+            char * arqv = nome_arquivo(org_aux);
+
+            // Copia diretório a dir
+            int arq_tam = strlen(dirname) - strlen(arqv);
+            char * dir = (char *) malloc((arq_tam+1)*sizeof(char));
+            strncpy(dir, dirname, arq_tam);
+            printf("nome do dir: %s\n", dir);
+
+            dir_node = find_dir(dir, raiz);
+
+            if(dir_node) { // dir_node deve ser pai do arquivo, logo:
+
+                aux = dir_node->node_filho;
+                int achou = 0;
+
+                while(aux && !achou) {
+
+                    if(aux->tipo == 'A'  && !strcmp(aux->nome, arqv)) {
+                        achou = 1;
+                    }
+                    else {
+                        ant = aux;
+                        aux = aux->node_prox;
+                    }
+                    
+                }
+
+                if(aux) { // encontrou o arquivo!
+                    printf("Arquivo encontrado :)\n");
+                    
+                    indice = aux->pos_fat;
+                
+                    /* retira registro do diretorio anterior */
+                    /* caso o anterior seja um irmão */
+                    if(ant && aux->node_prox) {
+                        ant->node_prox = aux->node_prox;
+                    }
+                    else if(aux->node_prox) { // o aux era o primeiro
+                        dir_node->node_filho = aux->node_prox;
+                    }
+
+                    /* retira registro na FAT e bitmap */
+                    indice = aux->pos_fat;
+                    printf("\nPosicao na fat do arquivo a ser deletado: %d\n", indice);
+                    int atual;
+                    
+                    while (FAT[indice]->prox != -1)
+                    {
+                        atual = indice;
+                        indice = FAT[indice]->prox;
+                        /* essa seria a parte de apagar a entrada em admin[x] */
+                        /* free(FAT[atual]->endereco)*/
+                        admin[atual] = NULL;
+
+                        FAT[atual]->endereco = NULL;
+                        FAT[atual]->prox = -1;
+                        bitmap[atual] = 1;
+                    }
+
+                    admin[indice] = NULL;
+                    FAT[indice]->endereco = NULL;
+                    bitmap[indice] = 1;
+
+                    printf("Arquivo deletado com sucesso!\n");
+                }
+                else 
+                    printf("O arquivo não foi encontado.\n");
+
+            }
+            else
+                printf("Esse path não existe\n");
+
+            /*
             char * dirname = strtok(NULL, " ");
             int result;
 
@@ -513,15 +598,13 @@ int main ()
                 printf("Precisa de mais argumentos.\n");
                 break;
             }
-            /* vai procurar o arquivo na tabela de diretorios, começando pelo */
-            /* Resultado: se 1, conseguiu excluir os arquivos. 
-                          se 0, não conseguiu excluir o arquivo, ou não encontrou o arquivo;*/
             result = rm_arquivo(dirname, inicio_dados); 
 
             if (result)
                 printf("\nArquivo apagado com sucesso.\n");
             else
                 printf("\nArquivo não encontrado ou problema ao excluir o arquivo. Tente novamente.\n");
+                */
 
         }
         /* PRECISA REALIZAR FUNCAO */
@@ -747,7 +830,7 @@ Celula * find_dir(char * nome, Celula * raiz) {
         
         if(aux) {
             //printf("%s\n", token);
-            getchar();
+            //getchar();
             achou = 0;
             token = strtok(NULL, "/");
         }

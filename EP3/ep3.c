@@ -272,6 +272,7 @@ int main ()
                                 int pos = find_bitmap_arq();
                                 printf("%d\n", pos);
 
+                            
                                 admin[pos] = (void *) aux;
                                 printf("aqui: |%s|\n", aux);
 
@@ -320,6 +321,8 @@ int main ()
                         novo_arquivo->tipo = 'A';
                         novo_arquivo->nome = nome_arquivo(args[0]);
 
+                        int meta_pos = find_bitmap_dir();
+                        admin[meta_pos] = (void *) novo_arquivo;
                         printf("%s criado\n", novo_arquivo->nome);
 
                         // INSERIR NO diretório
@@ -507,6 +510,7 @@ int main ()
                         bitmap[atual] = 1;
                     }
 
+                    dir_node->filhos--;
                     admin[indice] = NULL;
                     FAT[indice]->endereco = NULL;
                     bitmap[indice] = 1;
@@ -831,7 +835,7 @@ int registraAdmin(char * arquivo)
 
         fputc('\n', fp);
 
-        /* Segunda linha linha: bitmap */
+        /* Segunda linha linha: FAT */
         for (i = 0; i < BLOCOS; i++)
             fprintf(fp, "%5d", FAT[i]->prox);
         

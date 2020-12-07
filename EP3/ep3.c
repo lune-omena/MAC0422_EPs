@@ -835,7 +835,7 @@ int registraAdmin(char * arquivo)
 
         fputc('\n', fp);
 
-        /* Segunda linha linha: FAT */
+        /* Segunda linha linha: bitmap */
         for (i = 0; i < BLOCOS; i++)
             fprintf(fp, "%5d", FAT[i]->prox);
         
@@ -843,12 +843,13 @@ int registraAdmin(char * arquivo)
 
         /* Próximas linhas: dados em disco */
         /* Blocos de metadados - irnformacoes de arquivos e diretorios */
-        for(i = inicio_dados; i < (inicio_dados + 4799); i++)
+        for(i = inicio_dados; i < 4800; i++)
         {
+            
             bloco_aux = (Bloco *) admin[i];
             if (bloco_aux != NULL)
             {
-                printf("\nendereco: %p", bloco_aux );
+                printf("\nendereco: %p - pos i: %d", bloco_aux, i );
                 printf("\nNome: %s", bloco_aux->nome);
                 printf("\ntipo: %c", bloco_aux->tipo);
                 printf("\ntamanho: %d", bloco_aux->tipo);   

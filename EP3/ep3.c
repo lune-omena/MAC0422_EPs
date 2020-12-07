@@ -468,7 +468,7 @@ int main ()
             /* vai procurar o arquivo na tabela de diretorios, começando pelo */
             /* Resultado: se 1, conseguiu excluir os arquivos. 
                           se 0, não conseguiu excluir o arquivo, ou não encontrou o arquivo;*/
-            result = rm_diretorio(dirname, inicio_dados); 
+            result = rm_arquivo(dirname, inicio_dados); 
 
             if (result)
                 printf("\nArquivo apagado com sucesso.\n");
@@ -629,7 +629,6 @@ int recebeAdmin(char * arquivo)
     int i = 0;
     char ch;
     char * textfat[5];
-
 
     fp = fopen(arquivo, "r");
     

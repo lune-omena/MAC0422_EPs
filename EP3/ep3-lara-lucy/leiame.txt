@@ -1,0 +1,17 @@
+Instruções de compilação e uso
+
+1. Para compilar, rode no terminal:
+        make ep3
+
+2. Para rodar, digite:
+        ./ep3
+
+3. Ao executar, quando for usar a função mount, indique o caminho que deseja criar o arquivo para a simulação. Criaremos o arquivo com o nome "arquivo.txt".
+	Por exemplo:
+	mount /home/eps/
+
+	E um arquivo será criado em /home/eps/arquivo.txt com as informações do sistema de arquivos.
+
+3. Para rodar comandos como ls e mkdir, por favor colocar / após o nome do diretorio. Por exemplo
+	mkdir /novapasta
+

@@ -263,7 +263,8 @@ int main ()
                                 
                                 strcat(aux, c_pointer);
 
-                                int pos = find_bitmap();
+                                //int pos = find_bitmap();
+                                int pos = find_bitmap_arq();
                                 //printf("%d\n", pos);
 
                                 admin[pos] = (void *) aux;
@@ -403,7 +404,8 @@ int main ()
                     printf("Tipo: |%c|\n", new->tipo);
                     new->node_filho = new->node_prox = NULL;
                     new->tamanho = 0;
-                    new->pos_fat = find_bitmap();
+                    //new->pos_fat = find_bitmap();
+                    new->pos_fat = find_bitmap_dir();
                     printf("Posição no bitmap/FAT: |%d|\n", new->pos_fat);
                     bitmap[new->pos_fat] = 0;
                     admin[new->pos_fat] = (void *) new;
@@ -970,6 +972,29 @@ int find_bitmap() {
     int aux;
 
     for(aux = 0; aux < 24414 && !bitmap[aux]; aux++);
+
+    if(aux == 24414)
+        return -1;
+    
+    return aux;
+}
+
+
+int find_bitmap_dir() {
+    int aux;
+
+    for(aux = 56; aux < /*24414*/ 4800 && !bitmap[aux]; aux++);
+
+    if(aux == 4800)
+        return -1;
+    
+    return aux;
+}
+
+int find_bitmap_arq() {
+    int aux;
+
+    for(aux = 4800; aux < 24414 && !bitmap[aux]; aux++);
 
     if(aux == 24414)
         return -1;

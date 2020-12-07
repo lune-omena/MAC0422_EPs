@@ -68,6 +68,9 @@ typedef struct celula {
 /* PROTÓTIPOS */
 char * definePrompt(); // Criaçao de prompt personalizado
 int find_bitmap(); // Encontra espaço vago na bitmap (retorna -1 se não existe espaço)
+
+int find_bitmap_dir(); // Encontra espaço vago na bitmap para METADADOS
+int find_butmap_arq(); // Encontra espaço vago na bitmap para TEXTO
 int find_fat(); // Encontra espaço vago na FAT
 Celula * find_dir(char * nome, Celula * raiz); // Encontra o diretório desejado (NULL se não existe)
 char * nome_arquivo(char * path); // Devolve nome do arquivo dado por um path

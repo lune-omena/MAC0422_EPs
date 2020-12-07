@@ -156,6 +156,28 @@ int main ()
                     fclose(fp);
                     // precisamos carregar o sistema de arquivos com o fat, bitmap, etc.
                     //recebeAdmin(caminho2);
+
+                    raiz->nome = (char *) malloc(strlen("/")+1);
+                    strcpy(raiz->nome, "/");
+                    raiz->tipo = 'D';
+                    raiz->node_filho = raiz->node_prox = NULL; // o node_prox de raiz deve sempre ser NULL!!!
+                    raiz->filhos = 0;
+                    raiz->t_criado = raiz->t_alterado = raiz->t_acesso = (unsigned) time(NULL);
+                    raiz->pos_fat = atual_bitmap;
+                    raiz->tamanho = 0;
+
+                    printf("%d", raiz->t_acesso);
+
+                    //Vetor admin -> preciso incluir algo como o / no bloco?
+                    admin[atual_bitmap] = (void *) raiz;
+
+                    //FAT
+                    FAT[atual_bitmap]->prox = -1;
+                    FAT[atual_bitmap]->endereco = admin[atual_bitmap];
+
+                    //bitmap
+                    bitmap[atual_bitmap] = 0;
+                    atual_bitmap++;
                     recebeAdmin(new_path);
                 }
                 else {
@@ -268,12 +290,15 @@ int main ()
                                 
                                 strcat(aux, c_pointer);
 
-                                //int pos = find_bitmap();
-                                int pos = find_bitmap_arq();
+                                int pos = find_bitmap();
+                                //int pos = find_bitmap_arq();
                                 printf("%d\n", pos);
 
-                            
-                                admin[pos] = (void *) aux;
+                                //admin[pos] = (void *) aux;
+                                char * newspace = (char *) malloc(sizeof(char*)*4000);
+                                
+                                strcpy(newspace, aux);
+                                admin[pos] = (void *) newspace;
                                 printf("aqui: |%s|\n", aux);
 
                                 //FAT encontra espaço vaGO MUDAR DPS
@@ -321,8 +346,8 @@ int main ()
                         novo_arquivo->tipo = 'A';
                         novo_arquivo->nome = nome_arquivo(args[0]);
 
-                        int meta_pos = find_bitmap_dir();
-                        admin[meta_pos] = (void *) novo_arquivo;
+                        //int meta_pos = find_bitmap_dir();
+                        //admin[meta_pos] = (void *) novo_arquivo;
                         printf("%s criado\n", novo_arquivo->nome);
 
                         // INSERIR NO diretório
@@ -422,8 +447,8 @@ int main ()
                     printf("Tipo: |%c|\n", new->tipo);
                     new->node_filho = new->node_prox = NULL;
                     new->tamanho = 0;
-                    //new->pos_fat = find_bitmap();
-                    new->pos_fat = find_bitmap_dir();
+                    new->pos_fat = find_bitmap();
+                    //new->pos_fat = find_bitmap_dir();
                     printf("Posição no bitmap/FAT: |%d|\n", new->pos_fat);
                     bitmap[new->pos_fat] = 0;
                     admin[new->pos_fat] = (void *) new;
@@ -775,7 +800,7 @@ int main ()
             /* freeProgram(); */
             printf("\nEntrei no sai");
             //printf("\n Nome do diretorio: %s", arquivo);
-            registraAdmin(arquivo);
+            registraAdmin(arquivo, raiz);
             //registraAdmin(new_path);
 
             exit(1);
@@ -812,15 +837,19 @@ char * definePrompt()
 }
 
 
-int registraAdmin(char * arquivo)
+int registraAdmin(char * arquivo, Celula * raiz)
 {
     FILE *fp;
     Celula * bloco_aux;
     int i, inicio_dados = 56;
     char new_path[strlen(arquivo)+12]; 
+    Celula * aux =  raiz->node_filho;
+    Celula * root = raiz, * ant = aux;
 
     for (int i = 0; i < strlen(arquivo)+12; i++)
         new_path[i] = NULL;
+
+    char teste[4000];
 
     strcat(new_path, arquivo);
     strcat(new_path, "/arquivo.txt");
@@ -830,7 +859,7 @@ int registraAdmin(char * arquivo)
         printf("\nAbri o arquivo");
         
         /* Primeira linha: bitmap */
-        for (i = 0; i < BLOCOS; i++)
+        for (i = 0; i < BLOCOS; i++) // TEM QUE MUDAR A ORDEM
             fprintf(fp, "%d", bitmap[i]);
 
         fputc('\n', fp);
@@ -838,43 +867,54 @@ int registraAdmin(char * arquivo)
         /* Segunda linha linha: bitmap */
         for (i = 0; i < BLOCOS; i++)
             fprintf(fp, "%5d", FAT[i]->prox);
+
+        fprintf(fp, "|/|"); // INÍCIO
         
         printf("\nGRAVAMOS %d BLOCOS\n", i);
 
         /* Próximas linhas: dados em disco */
         /* Blocos de metadados - irnformacoes de arquivos e diretorios */
-        for(i = inicio_dados; i < 4800; i++)
-        {
-            
-            bloco_aux = (Bloco *) admin[i];
-            if (bloco_aux != NULL)
-            {
-                printf("\nendereco: %p - pos i: %d", bloco_aux, i );
-                printf("\nNome: %s", bloco_aux->nome);
-                printf("\ntipo: %c", bloco_aux->tipo);
-                printf("\ntamanho: %d", bloco_aux->tipo);   
-                fprintf(fp, "|%s|%c|%d", bloco_aux->nome, bloco_aux->tipo, bloco_aux->tamanho);
-                fprintf(fp, "|%d|%d", bloco_aux->pos_fat, bloco_aux->filhos);
-                fprintf(fp, "|%d", bloco_aux->t_criado);
-                fprintf(fp, "|%d", bloco_aux->t_acesso);
-                fprintf(fp, "|%d", bloco_aux->t_alterado);
-                
-                fprintf(fp, "|%d", (bloco_aux->node_filho != NULL)? bloco_aux->node_filho->pos_fat : -1);
-                fprintf(fp, "|%d", (bloco_aux->node_prox != NULL)? bloco_aux->node_prox->pos_fat : -1);
-            }            
-            
-            fputc('\n', fp);
-        }
-        
-        /* Blocos de dados - informações em texto */
-        for (i = 4800; i < BLOCOS; i++)
-        {
-            if (admin[i] != NULL)
-            {
-                fprintf(fp, "%s", (char *) admin[i]);
+        rec(fp, aux);
+        /*
+        while(aux) {
+            ant = aux;
+            while(ant) {
+                if(ant->tipo == 'A') {
+                    fprintf(fp, "|%d", ant->nome);
+                    fprintf(fp, "|%d", ant->tamanho);
+                    fprintf(fp, "|%d", ant->t_criado);
+                    fprintf(fp, "|%d", ant->t_acesso);
+                    fprintf(fp, "|%d", ant->t_alterado);
+                    int i = ant->pos_fat;
+                    int prox = FAT[i]->prox;
+                    fprintf(fp, "|%s", (char *) FAT[i]->endereco);
+                    while(prox != -1) {
+                        fprintf(fp, "%s", (char *) FAT[i]->endereco);
+                        prox = FAT[prox]->prox;
+                        i = FAT[i]->prox;
+                    }
+                    fputc('\n', fp);
+                }
+
+                ant = ant->node_prox;
             }
-            fputc('\n', fp);
-        }
+
+            ant = aux;
+
+            while(ant) {
+
+                if(ant->tipo == 'D') {
+                    fprintf(fp, "|%d", ant->nome);
+                    fprintf(fp, "|%d", ant->t_criado);
+                    fprintf(fp, "|%d", ant->t_acesso);
+                    fprintf(fp, "|%d|", ant->t_alterado);
+                }        
+
+                ant = ant->node_prox;
+            }
+            aux = aux->node_filho;
+        }*/
+
         fclose(fp); 
     }
     
@@ -882,6 +922,55 @@ int registraAdmin(char * arquivo)
     printf("\nSai!");
     
     return 1;
+}
+
+void rec(FILE *fp, Celula * aux) {
+    Celula * ant;
+
+    if (aux) {
+        ant = aux;
+        while(ant) {
+            if(ant->tipo == 'A') {
+                fprintf(fp, "|%s", ant->nome);
+                fprintf(fp, "|%d", ant->tamanho);
+                fprintf(fp, "|%d", ant->t_criado);
+                fprintf(fp, "|%d", ant->t_acesso);
+                fprintf(fp, "|%d", ant->t_alterado);
+                int i = ant->pos_fat;
+                int prox = FAT[i]->prox;
+                fprintf(fp, "|%s", (char *) FAT[i]->endereco);
+                while(prox != -1) {
+                    char teste[4000];
+                    strcpy(teste, FAT[i]->endereco);
+                    printf("\nENTREEEI");
+                    printf("\nVALOR DO TESTE: %s", teste);
+                    fputs(teste, fp);
+                    //fprintf(fp, "%s", (char *) (FAT[i]->endereco));
+                    prox = FAT[prox]->prox;
+                    i = FAT[i]->prox;
+                }
+                fputc('\n', fp);
+            }
+
+            ant = ant->node_prox;
+        }
+
+        ant = aux;
+
+        while(ant) {
+
+            if(ant->tipo == 'D') {
+                fprintf(fp, "|%d", ant->nome);
+                fprintf(fp, "|%d", ant->t_criado);
+                fprintf(fp, "|%d", ant->t_acesso);
+                fprintf(fp, "|%d|", ant->t_alterado);
+
+                rec(fp, ant->node_filho);
+            }        
+
+            ant = ant->node_prox;
+        }
+    }
 }
 
 int remove_filhos(Celula * pai) {

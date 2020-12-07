@@ -77,7 +77,8 @@ char * nome_arquivo(char * path); // Devolve nome do arquivo dado por um path
 Celula * devolve_ult(Celula * pai); // Devolve a última célula filha do pai
 int remove_filhos(Celula * pai);
 
-int registraAdmin(char * arquivo);
+int registraAdmin(char * arquivo, Celula * raiz);
+void rec();
 int recebeAdmin(char * arquivo);
 int ls_diretorio(char * diretorio, int inicio_dados);
 int rm_arquivo(char * arquivo, int inicio_dados);

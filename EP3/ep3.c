@@ -614,11 +614,16 @@ char * definePrompt()
 int registraAdmin(char * arquivo)
 {
     FILE *fp;
-    int i, inicio_dados = 56;
     Celula * bloco_aux;
+    int i, inicio_dados = 56;
+    char new_path[strlen(arquivo)+12]; 
 
-    fp = fopen(arquivo, "w");
+    for (int i = 0; i < strlen(arquivo)+12; i++)
+        new_path[i] = NULL;
 
+    strcat(new_path, arquivo);
+    strcat(new_path, "/arquivo.txt");
+    fp = fopen(new_path, "w");
     if (fp != NULL)
     {
         printf("\nAbri o arquivo");
@@ -663,11 +668,12 @@ int registraAdmin(char * arquivo)
             }
             fputc('\n', fp);
         }
+        fclose(fp);
     }
     
     //fseek( fp, 0, SEEK_CUR );
     printf("\nSai!");
-    fclose(fp);
+    
     return 1;
 }
 

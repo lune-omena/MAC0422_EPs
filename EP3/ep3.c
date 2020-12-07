@@ -387,28 +387,14 @@ int main ()
                     printf("O diretório %s chegou no limite de arquivos (10)!\n", aux->nome);
                 }
                 else {
-                    if(aux->filhos > 0) {
-                        aux = aux->node_filho;
-                        
-                        while(aux) {
-                            ant = aux;
-                            aux = aux->node_prox;
-                        }
-
-                        ant->node_prox = new;
-
-                        aux->filhos += 1;
-                    }
-                    else {
-                        aux->node_filho = new;
-                        aux->filhos += 1;
-                    }
-
-                    /*
+                    
                     if(aux->filhos)
                         devolve_ult(aux)->node_prox = new;
                     else
-                        aux->node_filho = new;*/
+                        aux->node_filho = new;
+                    
+                    
+                    aux->filhos += 1;
     
                     new->t_acesso = new->t_alterado = new->t_criado = (unsigned) time(NULL);
                     printf("Tempo: |%d|\n", new->t_acesso);

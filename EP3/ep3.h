@@ -57,9 +57,8 @@ typedef struct celula {
     unsigned int t_acesso; // instante de tempo em que o arquivo foi acessado -> 4B
 
     int pos_fat; // posição inicial no FAT -> 4B
-    int tamanho; // tamanho em bytes, só para não diretórios -> 4B
-
     int filhos; // conta o número de filhos do diretório
+    int tamanho; // tamanho em bytes, só para não diretórios -> 4B
 
     struct celula * node_filho; // Diretório abaixo na hierarquia -> 4B
     struct celula * node_prox; // Diretório na mesma hierarquia -> 4B

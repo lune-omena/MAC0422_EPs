@@ -269,16 +269,16 @@ int main ()
 
                                 admin[pos] = (void *) aux;
                                 printf("aqui: |%s|\n", aux);
-                                
-                                // insere no bitmap/FAT
-                                bitmap[pos] = 0;
-                                pos_ultimo = pos;
 
                                 //FAT encontra espaço vaGO MUDAR DPS
                                 if(pos_ultimo != -1)
                                     FAT[pos_ultimo]->prox = pos;
                                 else
                                     ini = pos;
+
+                                // insere no bitmap/FAT
+                                bitmap[pos] = 0;
+                                pos_ultimo = pos;
 
                                 FAT[pos]->prox = -1;
                                 FAT[pos]->endereco = admin[pos];
@@ -334,30 +334,52 @@ int main ()
 
         }
         else if(!strcmp(buf_break, "mkdir"))
-        {
+        { // /home/lara/code/4o/so/MAC0422_EPs/EP3
+
+            // Necessário fazer cópia de dirname para não alterar seu conteúdo!
             char * dirname = strtok(NULL, " ");
-            printf("%s\n", dirname);
+            char * aux_dir = (char *) malloc((strlen(dirname)+1)*sizeof(char));
+            printf("%s, com tamanho %d \n", dirname, strlen(dirname));
+            strcpy(aux_dir, dirname);
 
             // Separar o nome do diretório entre parte existente e parte criada
             printf("Criando diretório!\n");
-            int nome_size;
-            char * novo = nome_arquivo(dirname); // pega nome do diretório SEM /
 
-            nome_size = strlen(novo);
+            char * novo = nome_arquivo(aux_dir); // pega nome do diretório SEM /
+            int nome_size = strlen(novo);
+            printf("%d é o tamanho do novo diretório\n", nome_size);
 
             if(nome_size) { // path existe!
                 Celula * new = (Celula *) malloc(sizeof(Celula));
                 Celula * aux = NULL, * ant = NULL;
-                int n_pai = strlen(dirname) - nome_size - 1; //  retira o / do fim do nome
+                int n_pai = strlen(dirname) - strlen(novo) - 1; //  retira o / do fim do nome
+                //if(dirname[strlen(dirname)] == '/')
+                //    n_pai--;
+
+                printf("%d é o tamanho do diretório pai!\n DIRNAME: %s| AUX_DIR: %s\n", n_pai, dirname, aux_dir);
                 char * pai = (char *) malloc((n_pai+1)*sizeof(char)); // +1 para o \0
 
                 strncpy(pai, dirname, n_pai); 
 
-                printf("%s é o nome do novo diretório, %s é seu pai!\n", novo, pai);
+                printf("%s é o nome do novo diretório (%d), %s é seu pai (%d)!\n", novo, strlen(novo), pai, strlen(pai));
+
+                if(n_pai > 1) { // preciso pegar o pai, se não for "/"
+                    strcpy(aux_dir, pai);
+                    printf("\n\n%s (%d) %s (%d) %s (%d)\n\n", dirname, strlen(dirname), pai, strlen(pai), aux_dir, strlen(aux_dir));
+                    pai = nome_arquivo(aux_dir);
+                    n_pai = strlen(dirname) - strlen(pai) - 1; // retira o /
+                    char * new_pai = (char *) malloc((n_pai+1)*sizeof(char));
+                    strncpy(new_pai, dirname, n_pai);
+
+                    printf("%s é o nome do novo diretório (%d), %s é seu pai (%d)!\n", novo, strlen(novo), new_pai, strlen(new_pai));
+                } 
 
                 aux = find_dir(pai, raiz);
 
-                if(aux->filhos == 10) {
+                if(!aux) {
+                    printf("Esse path não existe... Indique um path possível\n");
+                }
+                else if(aux->filhos == 10) {
                     printf("O diretório %s chegou no limite de arquivos (10)!\n", aux->nome);
                 }
                 else {
@@ -375,7 +397,6 @@ int main ()
                         aux->node_filho = new;
 
                     aux->filhos++;
-
                     new->t_acesso = new->t_alterado = new->t_criado = (unsigned) time(NULL);
                     printf("Tempo: |%d|\n", new->t_acesso);
                     new->nome = novo;
@@ -641,15 +662,20 @@ Celula * find_dir(char * nome, Celula * raiz) {
     return aux;
 }
 
+// CUIDADO!!!! ELE ALTERA O PATH PARA ALGO SEM O / DPS!!!!!!!!!
 char * nome_arquivo(char * path) {  // Devolve nome do arquivo dado por um path
 
     char * token = strtok(path, "/");
+    printf("\n%s ", token);
     char * past;
 
     while(token) {
         past = token;
+        printf("- %s", token);
         token = strtok(NULL, "/");
     }
+
+    printf(": %s\n", past);
 
     return past;
 }

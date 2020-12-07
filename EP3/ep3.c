@@ -642,7 +642,7 @@ int registraAdmin(char * arquivo)
 
         /* Próximas linhas: dados em disco */
         /* Blocos de metadados - irnformacoes de arquivos e diretorios */
-        for(i = inicio_dados; i < (inicio_dados + 4882); i++)
+        /* for(i = inicio_dados; i < (inicio_dados + 4882); i++)
         {
             bloco_aux = (Bloco *) FAT[i]->endereco;
             if (bloco_aux != NULL)
@@ -657,17 +657,17 @@ int registraAdmin(char * arquivo)
             }            
             
             fputc('\n', fp);
-        }
+        } */
         
         /* Blocos de dados - informações em texto */
-        for (i = i; i < BLOCOS; i++)
+        /* for (i = i; i < BLOCOS; i++)
         {
             if (FAT[i] != -1)
             {
                 fprintf(fp, "%s", (char *) admin[i]);
             }
             fputc('\n', fp);
-        }
+        } */
         fclose(fp);
     }
     

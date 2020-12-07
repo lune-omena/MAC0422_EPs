@@ -632,6 +632,9 @@ int main ()
                     else if(aux->node_prox) { // o aux era o primeiro
                         dir_node->node_filho = aux->node_prox;
                     }
+                    else {
+                        dir_node->node_filho = NULL;
+                    }
 
                     /* retira registro na FAT e bitmap */
                     indice = aux->pos_fat;

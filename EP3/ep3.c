@@ -341,15 +341,16 @@ int main ()
             // Necessário fazer cópia de dirname para não alterar seu conteúdo!
             char * dirname = strtok(NULL, " ");
             char * aux_dir = (char *) malloc((strlen(dirname)+1)*sizeof(char));
-            printf("%s, com tamanho %ld \n", dirname, strlen(dirname));
+            printf("%s, com tamanho %d \n", dirname, strlen(dirname));
             strcpy(aux_dir, dirname);
 
             // Separar o nome do diretório entre parte existente e parte criada
             printf("Criando diretório!\n");
 
             char * novo = nome_arquivo(aux_dir); // pega nome do diretório SEM /
+            char * aux_novo;
             int nome_size = strlen(novo);
-            printf("%d é o tamanho do novo diretório\n", nome_size);
+            //printf("%d é o tamanho do novo diretório\n", nome_size);
 
             if(nome_size) { // path existe!
                 Celula * new = (Celula *) malloc(sizeof(Celula));
@@ -363,20 +364,21 @@ int main ()
 
                 strncpy(pai, dirname, n_pai); 
 
-                printf("%s é o nome do novo diretório (%ld), %s é seu pai (%ld)!\n", novo, strlen(novo), pai, strlen(pai));
+                printf("%s é o nome do novo diretório (%d), %s é seu pai (%d)!\n", novo, strlen(novo), pai, strlen(pai));
 
+                /*
                 if(n_pai > 1) { // preciso pegar o pai, se não for "/"
-                    strcpy(aux_dir, pai);
-                    printf("\n\n%s (%ld) %s (%ld) %s (%ld)\n\n", dirname, strlen(dirname), pai, strlen(pai), aux_dir, strlen(aux_dir));
-                    pai = nome_arquivo(aux_dir);
-                    n_pai = strlen(dirname) - strlen(pai) - 1; // retira o /
-                    char * new_pai = (char *) malloc((n_pai+1)*sizeof(char));
-                    strncpy(new_pai, dirname, n_pai);
+                    aux_novo = (char *) malloc(strlen(pai)*sizeof(char));
+                    strcpy(aux_novo, pai);
+                    pai = nome_arquivo(aux_novo);
+                    printf("\n\n%s (%d) %s (%d) %s (%d)\n\n", dirname, strlen(dirname), pai, strlen(pai), aux_novo, strlen(aux_novo));
 
-                    printf("%s é o nome do novo diretório (%ld), %s é seu pai (%ld)!\n", novo, strlen(novo), new_pai, strlen(new_pai));
-                } 
-
+                }*/
+                
                 aux = find_dir(pai, raiz);
+
+                printf("%s é o nome do novo diretório (%d), %s é seu pai (%d)!\n", novo, strlen(novo), aux->nome, strlen(aux->nome));
+
 
                 if(!aux) {
                     printf("Esse path não existe... Indique um path possível\n");
@@ -394,16 +396,26 @@ int main ()
                         }
 
                         ant->node_prox = new;
-                    }
-                    else
-                        aux->node_filho = new;
 
-                    aux->filhos++;
+                        aux->filhos += 1;
+                    }
+                    else {
+                        aux->node_filho = new;
+                        aux->filhos += 1;
+                    }
+
+                    /*
+                    if(aux->filhos)
+                        devolve_ult(aux)->node_prox = new;
+                    else
+                        aux->node_filho = new;*/
+    
                     new->t_acesso = new->t_alterado = new->t_criado = (unsigned) time(NULL);
                     printf("Tempo: |%d|\n", new->t_acesso);
                     new->nome = novo;
                     printf("Nome: |%s|\n", new->nome);
                     new->filhos = 0;
+                    printf("Filhos: |%d|\n", new->filhos);
                     new->tipo = 'D';
                     printf("Tipo: |%c|\n", new->tipo);
                     new->node_filho = new->node_prox = NULL;
@@ -411,6 +423,8 @@ int main ()
                     new->pos_fat = find_bitmap();
                     printf("Posição no bitmap/FAT: |%d|\n", new->pos_fat);
                     bitmap[new->pos_fat] = 0;            
+
+                    printf("Agora %s é filho oficia de %s\n\n", new->nome, aux->nome);
                 }
 
             }
@@ -644,20 +658,30 @@ int find_bitmap() {
 
 Celula * find_dir(char * nome, Celula * raiz) {
     Celula * aux = raiz;
+    int achou = 0;
 
     if(!strcmp(nome, raiz->nome)) // é o "/"
         return raiz;
 
     char * token = strtok(nome, "/");
+    //printf("%s\n", token);
 
-    while(token) {
+    while(token && !achou) {
         aux = aux->node_filho;
 
-        while(aux && aux->tipo == 'D' && !strcmp(token, aux->nome))
-            aux = aux->node_prox;
+        while(aux && !achou) {
+            if(aux->tipo == 'D' && !strcmp(token, aux->nome))
+                achou = 1;
+            else
+                aux = aux->node_prox;
+        }
         
-        if(aux)
-            token = strtok(nome, "/");
+        if(aux) {
+            //printf("%s\n", token);
+            getchar();
+            achou = 0;
+            token = strtok(NULL, "/");
+        }
         else token = NULL;
     }
 

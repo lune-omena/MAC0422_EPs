@@ -34,6 +34,8 @@ int main ()
 
     admin[0] = (void *) bitmap;
     admin[1] = (void *) FAT;
+    for (int i = 2; i < BLOCOS; i++)
+        admin[i] = NULL;
 
     /* argumentos usados como parâmetros para as funcoes cp e find */
     char * args[2];  
@@ -50,9 +52,6 @@ int main ()
      * somam no total 24414 entradas na tabela. Mas o FAT utiliza 8 bytes por entrada, portanto o espaço
      * total ocupado pelo FAT é dado por ~195KB. Logo, ocupa 49 blocos. */
     /* No total, são 49+7 = 56 espaços pré-ocupados */ 
-
-    for (int i = 0; i < BLOCOS; i ++)
-        FAT[i] = malloc(sizeof(Bloco));
 
     for(int i = 0; i < BLOCOS; i++)
         bitmap[i] = 1; // blocos livres representados por 1
@@ -78,15 +77,16 @@ int main ()
     printf("Posicao 1 do bitmap pelo vetorzao: %d\n",  *(int *) &admin[0][sizeof(int)*posicao]); */
 
     /* inicialização do FAT */
-    FAT[0]->prox = -1;
-    FAT[0]->endereco = admin[0];
+    for (int i = 0; i < BLOCOS; i ++)
+    {
+        FAT[i] = malloc(sizeof(Bloco));
+        FAT[i]->endereco = NULL;
+        FAT[i]->prox = -1;
+    }
 
     for(int i = 1; i < atual_bitmap; i++)
         FAT[i]->prox =  i+1;
-    for(int i = atual_bitmap; i < BLOCOS; i++)
-        FAT[i]->prox =  -1;
-    
-    FAT[atual_bitmap-1]->prox = -1;
+    FAT[0]->endereco = admin[0];
     FAT[1]->endereco = admin[1];
 
     // Diretório "/" é o raiz
@@ -839,33 +839,38 @@ int registraAdmin(char * arquivo)
 
         /* Próximas linhas: dados em disco */
         /* Blocos de metadados - irnformacoes de arquivos e diretorios */
-        /* for(i = inicio_dados; i < (inicio_dados + 4882); i++)
+        for(i = inicio_dados; i < (inicio_dados + 4799); i++)
         {
-            bloco_aux = (Bloco *) FAT[i]->endereco;
+            bloco_aux = (Bloco *) admin[i];
             if (bloco_aux != NULL)
             {
+                printf("\nendereco: %p", bloco_aux );
+                printf("\nNome: %s", bloco_aux->nome);
+                printf("\ntipo: %c", bloco_aux->tipo);
+                printf("\ntamanho: %d", bloco_aux->tipo);   
                 fprintf(fp, "|%s|%c|%d", bloco_aux->nome, bloco_aux->tipo, bloco_aux->tamanho);
                 fprintf(fp, "|%d|%d", bloco_aux->pos_fat, bloco_aux->filhos);
-                fprintf(fp, "|%s", asctime(localtime(bloco_aux->t_criado)));
-                fprintf(fp, "|%s", asctime(localtime(bloco_aux->t_acesso)));
-                fprintf(fp, "|%s", asctime(localtime(bloco_aux->t_alterado)));
-                fprintf(fp, "|%d", bloco_aux->node_filho->pos_fat);
-                fprintf(fp, "|%d", bloco_aux->node_prox->pos_fat);
+                fprintf(fp, "|%d", bloco_aux->t_criado);
+                fprintf(fp, "|%d", bloco_aux->t_acesso);
+                fprintf(fp, "|%d", bloco_aux->t_alterado);
+                
+                fprintf(fp, "|%d", (bloco_aux->node_filho != NULL)? bloco_aux->node_filho->pos_fat : -1);
+                fprintf(fp, "|%d", (bloco_aux->node_prox != NULL)? bloco_aux->node_prox->pos_fat : -1);
             }            
             
             fputc('\n', fp);
-        } */
+        }
         
         /* Blocos de dados - informações em texto */
-        /* for (i = i; i < BLOCOS; i++)
+        for (i = 4800; i < BLOCOS; i++)
         {
-            if (FAT[i] != -1)
+            if (admin[i] != NULL)
             {
                 fprintf(fp, "%s", (char *) admin[i]);
             }
             fputc('\n', fp);
-        } */
-        fclose(fp);
+        }
+        fclose(fp); 
     }
     
     //fseek( fp, 0, SEEK_CUR );
@@ -967,10 +972,11 @@ int remove_filhos(Celula * pai) {
 int recebeAdmin(char * arquivo)
 {
     FILE *fp;
-    int i = 0;
+    int i = 0, inicio_dados = 56, final_metadados = 4800;
     char ch;
     char * textfat[5];
-
+    char * line[350];
+    char * buffer[4000];
     fp = fopen(arquivo, "r");
     
     if (fp != NULL)
@@ -993,11 +999,81 @@ int recebeAdmin(char * arquivo)
             if (i == BLOCOS)
                 break;
         }
+        
+        i = inicio_dados;
+        /* Next lines: metadados */
+        while ((ch = fgets(line, 350, fp)) != NULL && ch != EOF && i < final_metadados)
+        {    
+            printf("\nlinha : %s", line);
+            printf("\ntamanho da linha: %d", strlen(line));
+            char * token = strtok(line, "|");
+            printf("\ntamanho do token: %d", strlen(line));
+            Celula * newcelula = (Celula *) malloc(sizeof(Celula));
+            char * nome = (char*) malloc(sizeof(char)*(strlen(token)+1));
+
+            
+            if (token != NULL && token != '\n' && token != '\0' && strlen(line) > 1)
+            {
+                newcelula->nome = nome;
+                token = strtok(NULL, "|");
+                newcelula->tipo = token;
+                token = strtok(NULL, "|");
+                newcelula->tamanho = atoi(token);
+                token = strtok(NULL, "|");
+                newcelula->pos_fat = atoi(token);
+                token = strtok(NULL, "|");
+                newcelula->filhos = atoi(token);
+                token = strtok(NULL, "|");
+                newcelula->t_criado = atoi(token);
+                token = strtok(NULL, "|");
+                newcelula->t_acesso = atoi(token);
+                token = strtok(NULL, "|");
+                newcelula->t_alterado = atoi(token);
+                token = strtok(NULL, "|");
+                newcelula->node_filho = admin[atoi(token)];
+                token = strtok(NULL, "|");
+                newcelula->node_prox = admin[atoi(token)];
+                token = strtok(NULL, "|");
+                printf("token: %s", token);
+
+                admin[i] = newcelula;
+            }
+            else
+            {
+                admin[i] = NULL;
+            }
+            
+            i++;
+        }
+
+        /* Next lines: dados */
+        while ((ch = fgets(buffer, 4000, fp)) != NULL && ch != EOF && i < BLOCOS)
+        {    
+            //printf("\nlinha : %s", line);
+            char * token = strtok(line, "\n");
+            Celula * newcelula = (Celula *) malloc(sizeof(Celula));
+            if (token == NULL)
+            {
+                //printf("\nconteudo null na posicao i = %d", i);
+                admin[i] = NULL;
+                i++;
+                continue;
+            }
+            printf("\nconteudo null na posicao i = %d", i);
+
+            char * linha = (char*) malloc(sizeof(char)*(strlen(token)+1));
+
+            if (token != NULL && token != '\n' && token != '\0')
+                admin[i] = linha;
+            else
+                admin[i] = NULL;
+            i++;
+        }        
+        
+        fclose(fp);
     }
     
-
     printf("\nSai!");
-    fclose(fp);
     return 1;
 }
 
@@ -1106,7 +1182,7 @@ int ls_diretorio(char * diretorio, int inicio_dados)
     Celula * raiz, * aux, * aux_ant;
     int pos_fat, atual;
     raiz = admin[inicio_dados]; //recebendo o /
-
+    printf("\nConteudo no inicio de dados: %d", raiz);
     char * caminho = strtok(diretorio, "/");
     char * proximo = strtok(NULL, "/");
 

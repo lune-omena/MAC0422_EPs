@@ -111,9 +111,11 @@ int main ()
 
     using_history();
     printf("Digite CTRL+D para finalizar.\n");
-    char * caminho2 = "/home/lara/code/4o/so/MAC0422_EPs/EP3/arquivo.txt";
-    char * caminho = "/home/lara/code/4o/so/MAC0422_EPs/EP3";
-
+    /* char * caminho2 = "/home/lara/code/4o/so/MAC0422_EPs/EP3/arquivo.txt";
+    char * caminho = "/home/lara/code/4o/so/MAC0422_EPs/EP3"; */
+    char * caminho2 = "/media/lune/Data/Desktop/USP/Github/MAC0422_EPs/EP3/arquivo.txt";
+    char * caminho = "/media/lune/Data/Desktop/USP/Github/MAC0422_EPs/EP3";
+    char * arquivo;
     while ((buffer = readline(prompt)))
     {
         add_history(buffer);
@@ -126,7 +128,7 @@ int main ()
         }
         /* PRECISA REALIZAR FUNCAO */
         else if(!strcmp(buf_break, "mount")) {
-            char * arquivo = strtok(NULL, "\n"); // delimitador é o fim do texto, ou seja \n
+            arquivo = strtok(NULL, "\n"); // delimitador é o fim do texto, ou seja \n
             
             if (arquivo != NULL)
             printf("%s\n", arquivo);
@@ -339,7 +341,7 @@ int main ()
             // Necessário fazer cópia de dirname para não alterar seu conteúdo!
             char * dirname = strtok(NULL, " ");
             char * aux_dir = (char *) malloc((strlen(dirname)+1)*sizeof(char));
-            printf("%s, com tamanho %d \n", dirname, strlen(dirname));
+            printf("%s, com tamanho %ld \n", dirname, strlen(dirname));
             strcpy(aux_dir, dirname);
 
             // Separar o nome do diretório entre parte existente e parte criada
@@ -361,17 +363,17 @@ int main ()
 
                 strncpy(pai, dirname, n_pai); 
 
-                printf("%s é o nome do novo diretório (%d), %s é seu pai (%d)!\n", novo, strlen(novo), pai, strlen(pai));
+                printf("%s é o nome do novo diretório (%ld), %s é seu pai (%ld)!\n", novo, strlen(novo), pai, strlen(pai));
 
                 if(n_pai > 1) { // preciso pegar o pai, se não for "/"
                     strcpy(aux_dir, pai);
-                    printf("\n\n%s (%d) %s (%d) %s (%d)\n\n", dirname, strlen(dirname), pai, strlen(pai), aux_dir, strlen(aux_dir));
+                    printf("\n\n%s (%ld) %s (%ld) %s (%ld)\n\n", dirname, strlen(dirname), pai, strlen(pai), aux_dir, strlen(aux_dir));
                     pai = nome_arquivo(aux_dir);
                     n_pai = strlen(dirname) - strlen(pai) - 1; // retira o /
                     char * new_pai = (char *) malloc((n_pai+1)*sizeof(char));
                     strncpy(new_pai, dirname, n_pai);
 
-                    printf("%s é o nome do novo diretório (%d), %s é seu pai (%d)!\n", novo, strlen(novo), new_pai, strlen(new_pai));
+                    printf("%s é o nome do novo diretório (%ld), %s é seu pai (%ld)!\n", novo, strlen(novo), new_pai, strlen(new_pai));
                 } 
 
                 aux = find_dir(pai, raiz);
@@ -526,8 +528,8 @@ int main ()
         {
             /* freeProgram(); */
             printf("\nEntrei no sai");
-
-            registraAdmin(caminho2);
+            //printf("\n Nome do diretorio: %s", arquivo);
+            registraAdmin(arquivo);
             //registraAdmin(new_path);
 
             exit(1);
@@ -693,11 +695,8 @@ int ls_diretorio(char * diretorio, int inicio_dados)
 {
     Celula * raiz, * aux, * aux_ant;
     int pos_fat, atual;
-    Bloco * bloco;
     raiz = admin[inicio_dados]; //recebendo o /
-    /* printf("\nRaiz: %s", raiz->nome);
-    printf("\n filho: %p", raiz->node_filho);
-    printf("\n irmao: %p", raiz->node_prox); */
+
     char * caminho = strtok(diretorio, "/");
     char * proximo = strtok(NULL, "/");
 
@@ -745,14 +744,18 @@ int rm_diretorio(char * arquivo, int inicio_dados)
 {
     Celula * raiz, * aux, * aux_ant;
     int pos_fat, atual;
-    Bloco * bloco;
+    //Bloco * bloco;
     raiz = admin[inicio_dados]; //recebendo o /
     printf("\nRaiz: %s", raiz->nome);
 
     char * caminho = strtok(arquivo, "/");
     char * proximo = strtok(NULL, "/");
 
+    printf("\nCaminho: %s proximo: %s", caminho, proximo);
+    aux_ant = raiz;
+    printf("\nOlá");
     aux = raiz->node_filho;
+    printf("\naux: %p", aux);
     
     /* percorrendo caminho enviado pelo arquivo */
     while( proximo != NULL )
@@ -761,6 +764,7 @@ int rm_diretorio(char * arquivo, int inicio_dados)
         /* percorrendo lista de filhos */
         while (aux->node_filho != NULL && strcmp(aux->nome, caminho) != 0 )
         {
+            aux_ant = aux;
             aux = aux->node_filho;
         }
 
@@ -769,27 +773,45 @@ int rm_diretorio(char * arquivo, int inicio_dados)
         
         caminho = proximo;
         proximo = strtok(NULL, "/");
+        
     }
-
+    printf("\nOpa, passei - e devia ter passado mesmo");
     /* encontrei a pasta do arquivo, percorro a lista de irmaos
        para encontrar o arquivo.*/
-    aux_ant = aux;
-    aux = aux->node_prox;
-    
+    if (aux->node_prox != NULL)
+    {
+        aux_ant = aux;
+        aux = aux->node_prox;
+        printf("\n Aqui não preciso entrar");
+    }
+    printf("\n Passei por onde não precisava entrar");
+    printf("\n Comparação: %d", strcmp(aux->nome, caminho));
+    printf("\n Antes da comparação, valor de aux: %p", aux);
     while (aux != NULL && strcmp(aux->nome, caminho) != 0 )
     {
+        aux_ant = aux;
         aux = aux->node_filho;
     }
-
+    printf("\n Depois da comparação");
+    
     if (aux == NULL)
         return 0;
     else /* Encontrei o arquivo, vamos apagá-lo */
     {
-        /* retira registro do diretorio anterior */
-        aux_ant->node_prox = aux->node_prox;
+        printf("\n Encontrei o arquivo");
+        printf("\n auxant %p nome %s  -- auxprox %p", aux_ant, aux_ant->nome, aux->node_prox);
+         /* retira registro do diretorio anterior */
+         /* caso o anterior seja um irmão */
+        if (aux_ant->node_prox == aux)
+            aux_ant->node_prox = aux->node_prox;
+        /* caso o anterior seja uma mãe */
+        if (aux_ant->node_filho == aux)
+            aux_ant->node_filho = aux->node_prox;
 
         /* retira registro na FAT e bitmap */
         pos_fat = aux->pos_fat;
+        printf("\nPosicao na fat do arquivo a ser deletado: %d", pos_fat);
+        
         while (FAT[pos_fat]->prox != -1)
         {
             atual = pos_fat;

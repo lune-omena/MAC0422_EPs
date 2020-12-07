@@ -218,6 +218,7 @@ int main ()
         {
             //char * dirname = strtok(NULL, " ");
             
+            registraAdmin(arquivo, raiz);
             /* if(dirname == NULL) 
                 printf("Precisa de mais argumentos.\n");
 
@@ -595,10 +596,12 @@ int main ()
                     
                     indice = aux->pos_fat;
                     int i = FAT[indice]->prox;
+                    char teste[4000];
                     
                     if(aux->tamanho >= 4000) {
                         while(i != -1) {
-                            printf("%s", (char *) admin[i]);
+                            strcpy(teste, FAT[i]->endereco);
+                            printf("%s", teste);
                             i = FAT[i]->prox;
                         }
                     }
@@ -800,7 +803,7 @@ int main ()
             /* freeProgram(); */
             printf("\nEntrei no sai");
             //printf("\n Nome do diretorio: %s", arquivo);
-            registraAdmin(arquivo, raiz);
+            //registraAdmin(arquivo, raiz);
             //registraAdmin(new_path);
 
             exit(1);

@@ -232,7 +232,9 @@ int main ()
             if(dir) {
 
                 FILE * f_cp = fopen(args[0], "r");
-                char * c_pointer = (char *) malloc(sizeof(char));
+                //char * c_pointer = (char *) malloc(sizeof(char));
+                char c_pointer[2]; //  char + \0
+                Celula * novo_arquivo = (Celula *) malloc(sizeof(Celula));
 
                 if(f_cp) { // encontrou path para arquivo texto
 
@@ -244,7 +246,6 @@ int main ()
                     }
                     else {
                         //Arquivo * novo_arquivo = (Arquivo *) malloc(sizeof(Arquivo));
-                        Celula * novo_arquivo = (Celula *) malloc(sizeof(Celula));
                         // preciso atualizar primeiro na FAT e pegar tamanho
                         int pos_ultimo = -1;
 
@@ -254,10 +255,14 @@ int main ()
 
                             if( c == EOF || strlen(aux) + 1 == 4000 ) {
 
-                                if(c == EOF)
-                                    strcpy(c_pointer, aux2);
+                                if(c == EOF) {
+                                    //strcpy(c_pointer, aux2);
+                                    c_pointer[0] = '\0';
+                                }
                                 else {
-                                    *c_pointer = c;
+                                    //*c_pointer = c;
+                                    c_pointer[0] = c;
+                                    c_pointer[1] = '\0';
                                     //printf("%d é o tamanho de c_pointer\n", strlen(c_pointer));
                                 }
                                 
@@ -265,7 +270,7 @@ int main ()
 
                                 //int pos = find_bitmap();
                                 int pos = find_bitmap_arq();
-                                //printf("%d\n", pos);
+                                printf("%d\n", pos);
 
                                 admin[pos] = (void *) aux;
                                 printf("aqui: |%s|\n", aux);
@@ -292,8 +297,10 @@ int main ()
 
                             }
                             else {
-                                c_pointer = (char *) malloc(sizeof(char));
-                                *c_pointer = c;
+                                //c_pointer = (char *) malloc(sizeof(char));
+                                //*c_pointer = c;
+                                c_pointer[0] = c;
+                                c_pointer[1] = '\0';
                                 strcat(aux, c_pointer);
                             }
                             
@@ -303,7 +310,7 @@ int main ()
 
                         // atualizar dados do arquivo dentro do diretório que está
                         novo_arquivo->t_acesso = novo_arquivo->t_alterado = novo_arquivo->t_criado = (unsigned) time(NULL);
-                        printf("%d", novo_arquivo->t_acesso);
+                        //printf("%d", novo_arquivo->t_acesso);
                         novo_arquivo->tamanho = (tam_bytes);
                         novo_arquivo->pos_fat = ini;
                         novo_arquivo->node_filho = (Celula *) malloc(sizeof(Celula));
@@ -316,10 +323,18 @@ int main ()
                         printf("%s criado\n", novo_arquivo->nome);
 
                         // INSERIR NO diretório
-                        if(dir->filhos == 0)
+                        if(dir->filhos == 0) {
+                            //printf("ENTROU1\n");
                             dir->node_filho = novo_arquivo;
-                        else
-                            devolve_ult(dir)->node_prox = novo_arquivo;
+                            //if(dir->node_filho == novo_arquivo)
+                            //    printf("Deu certo afinal\n");
+                        }
+                        else {
+                            //printf("ENTROU2\n");
+                            //printf("%s\n", dir->node_filho->nome);
+                            Celula * ant = devolve_ult(dir);
+                            ant->node_prox = novo_arquivo;
+                        }
                         
                         dir->filhos++;
 
@@ -586,6 +601,7 @@ int main ()
             char * dirname = strtok(NULL, " ");
             Celula * dir_node, * aux, * ant;
 
+
             // Copia dirname para um dummy para não alterar valor original
             char * org_aux = (char *) malloc((strlen(dirname)+1)*sizeof(char));
             strncpy(org_aux, dirname, strlen(dirname));
@@ -594,15 +610,25 @@ int main ()
             // vai ter o path e o nome do arquivo
             // do tipo /home/lara/code/4o/so/MAC0422_EPs/EP3/oi.txt
 
-            char * arqv = nome_arquivo(org_aux);
+            //char * arqv = nome_arquivo(org_aux); // PROB
+            char * arqv;
+            char * dummy = nome_arquivo(org_aux);
+            arqv = (char *) malloc((strlen(dummy)+1)*sizeof(char)); // PROB
+            
+            for(int j = 0; j < strlen(dummy); j++) // PROB
+                arqv[j] = dummy[j];
+            
+            arqv[strlen(dummy)] = '\0';
+
+            printf("%s eh o nome do arquivo\n", arqv); // PROB
 
             // Copia diretório a dir
-            int arq_tam = strlen(dirname) - strlen(arqv);
+            int arq_tam = strlen(dirname) - strlen(arqv); // PROB
             char * dir = (char *) malloc((arq_tam+1)*sizeof(char));
             strncpy(dir, dirname, arq_tam);
-            printf("nome do dir: %s\n", dir);
+            printf("nome do dir: %s\n", dir); // PROB
 
-            dir_node = find_dir(dir, raiz);
+            dir_node = find_dir(dir, raiz); //  PROB
 
             if(dir_node) { // dir_node deve ser pai do arquivo, logo:
 
@@ -612,9 +638,11 @@ int main ()
                 while(aux && !achou) {
 
                     if(aux->tipo == 'A'  && !strcmp(aux->nome, arqv)) {
+                        printf("%s \n", aux->nome);
                         achou = 1;
                     }
                     else {
+                        printf("%s \n",aux->nome);
                         ant = aux;
                         aux = aux->node_prox;
                     }
@@ -656,6 +684,7 @@ int main ()
                         bitmap[atual] = 1;
                     }
 
+                    dir_node->filhos--;
                     admin[indice] = NULL;
                     FAT[indice]->endereco = NULL;
                     bitmap[indice] = 1;
@@ -750,7 +779,7 @@ int main ()
         }
 
 
-       free(buffer);
+       //free(buffer);
     }
 
     free(prompt);
@@ -1038,16 +1067,16 @@ Celula * find_dir(char * nome, Celula * raiz) {
 char * nome_arquivo(char * path) {  // Devolve nome do arquivo dado por um path
 
     char * token = strtok(path, "/");
-    printf("\n%s ", token);
+    //printf("\n%s ", token);
     char * past;
 
     while(token) {
         past = token;
-        printf("- %s", token);
+        //printf("- %s", token);
         token = strtok(NULL, "/");
     }
 
-    printf(": %s\n", past);
+    //printf(": %s\n", past);
 
     return past;
 }
@@ -1055,8 +1084,15 @@ char * nome_arquivo(char * path) {  // Devolve nome do arquivo dado por um path
 Celula * devolve_ult(Celula * pai) {
     Celula * aux  = pai->node_filho;
 
-    while(aux->node_prox)
+    //printf("\nLISTAA:");
+
+    while(aux->node_prox) {
+        //printf(" |%s| ", aux->nome);
         aux = aux->node_prox;
+    }
+
+
+    //printf("|%s|\n", aux->nome);
 
     return aux;
 }
